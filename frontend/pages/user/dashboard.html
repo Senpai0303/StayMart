@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - StayMart</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>"/>
+  <link rel="stylesheet" href="../../css/global.css"/>
+  <link rel="stylesheet" href="../../css/dashboard.css"/>
+</head>
+<body class="dash-body">
+  <button class="dash-hamburger" id="dashHamburger" aria-label="Toggle menu">☰</button>
+  <div class="dash-overlay" id="dashOverlay"></div>
+
+  <aside class="dash-sidebar" id="dashSidebar">
+    <a class="dash-brand logo" href="../../index.html">StayMart<small>Dehradun · Uttarakhand</small></a>
+    <nav class="dash-nav" id="dashNav"></nav>
+    <div class="dash-user" id="dashUser"></div>
+  </aside>
+
+  <main class="dash-main">
+    <header class="dash-topbar">
+      <div>
+        <h1 class="dash-title" data-dash-title>Dashboard</h1>
+        <p class="dash-subtitle" data-dash-subtitle>Your activity at a glance</p>
+      </div>
+      <div class="dash-topbar-actions">
+        <a href="../../search-properties.html" class="btn btn-secondary btn-sm">🔍 Browse</a>
+        <a href="../../post-property.html" class="btn btn-primary btn-sm">+ Post Property</a>
+      </div>
+    </header>
+
+    <div class="dash-content">
+      <div class="stat-grid" id="statGrid">
+        <div class="row-skeleton" style="height:132px"></div>
+        <div class="row-skeleton" style="height:132px"></div>
+        <div class="row-skeleton" style="height:132px"></div>
+        <div class="row-skeleton" style="height:132px"></div>
+      </div>
+
+      <section class="dash-section" id="recommendedSection" style="display:none">
+        <h2 class="dash-section-title">✨ Recommended for You</h2>
+        <div class="grid-4" id="recommendedGrid"></div>
+      </section>
+
+      <div class="grid-2">
+        <section class="panel">
+          <div class="panel-header">
+            <span class="panel-title">📅 Recent Bookings</span>
+            <div class="panel-actions">
+              <a href="bookings.html" class="btn btn-secondary btn-sm">View all</a>
+            </div>
+          </div>
+          <div class="panel-body no-pad" id="recentBookings"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <span class="panel-title">📦 Recent Orders</span>
+            <div class="panel-actions">
+              <a href="orders.html" class="btn btn-secondary btn-sm">View all</a>
+            </div>
+          </div>
+          <div class="panel-body no-pad" id="recentOrders"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../js/api.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/dashboard.js"></script>
+  <script src="../../js/user-dashboard.js"></script>
+</body>
+</html>

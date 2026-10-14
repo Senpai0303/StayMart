@@ -1,0 +1,40 @@
+package com.staymart.security;
+
+import com.staymart.entity.User;
+import com.staymart.entity.enums.Role;
+import com.staymart.repository.UserRepository;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
+
+    private final UserRepository userRepository;
+
+    public CustomUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+        return new SecurityUser(user);
+    }
+
+    @Transactional(readOnly = true)
+    public SecurityUser loadUserById(Long id) {
+        return new SecurityUser(userRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + id)));
+    }
+
+    @Transactional(readOnly = true)
+    public SecurityUser loadUserByEmailForLogin(String email) {
+        return new SecurityUser(userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email)));
+    }
+}

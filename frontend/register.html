@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - StayMart</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>"/>
+  <link rel="stylesheet" href="css/global.css"/>
+</head>
+<body>
+  <div class="auth-wrap">
+    <div class="auth-card" style="max-width:480px">
+      <a href="index.html" class="logo">StayMart<small style="text-align:center">Dehradun · Uttarakhand</small></a>
+      <h1 class="auth-heading" style="margin-top:16px">Join StayMart 💚</h1>
+      <p class="auth-sub">Post rentals, sell pre-loved items & find your next home in the hills.</p>
+
+      <form id="registerForm" novalidate>
+        <div class="input-group">
+          <label for="name">Full name</label>
+          <div class="input-with-icon">
+            <span class="field-icon">👤</span>
+            <input id="name" type="text" placeholder="e.g. Aisha Rawat" maxlength="80" required autocomplete="name"/>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <div class="input-with-icon">
+            <span class="field-icon">✉️</span>
+            <input id="email" type="email" placeholder="you@example.com" required autocomplete="email"/>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="phone">Phone</label>
+          <div class="input-with-icon">
+            <span class="field-icon">📱</span>
+            <input id="phone" type="tel" placeholder="9876543210" maxlength="10" required autocomplete="tel"/>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="input-group">
+            <label for="city">City</label>
+            <select id="city">
+              <option value="">Select</option>
+              <option>Dehradun</option>
+              <option>Rishikesh</option>
+              <option>Haridwar</option>
+              <option>Mussoorie</option>
+              <option>Nainital</option>
+              <option>Roorkee</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="state">State</label>
+            <input id="state" type="text" value="Uttarakhand" maxlength="40"/>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <div class="input-with-icon">
+            <span class="field-icon">🔒</span>
+            <input id="password" type="password" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password"/>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="confirmPassword">Confirm password</label>
+          <div class="input-with-icon">
+            <span class="field-icon">🔒</span>
+            <input id="confirmPassword" type="password" placeholder="Re-enter password" required autocomplete="new-password"/>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">Create Account</button>
+      </form>
+
+      <div class="auth-link">Already have an account? <a href="login.html">Login</a></div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

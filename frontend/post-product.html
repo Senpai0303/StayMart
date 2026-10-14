@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post a Product - StayMart</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>"/>
+  <link rel="stylesheet" href="css/global.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">StayMart<small>Dehradun · Uttarakhand</small></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="search-properties.html">Properties</a>
+        <a href="search-products.html">Products</a>
+      </div>
+      <div class="nav-actions"></div>
+    </div>
+  </nav>
+
+  <div class="container" style="padding-top:32px;max-width:860px">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">›</span><span>Post a Product</span>
+    </nav>
+
+    <h1 class="section-title" style="font-size:30px;margin-bottom:8px">🛒 Sell or Rent Pre-loved items</h1>
+    <p class="text-secondary-text" style="margin-bottom:28px">Moving out, upgrading, or decluttering? Turn your stuff into cash.</p>
+
+    <form id="productForm" novalidate>
+      <div class="post-form-section">
+        <h2>🗂️ Category *</h2>
+        <div class="radio-cards" id="categoryCards">
+          <div class="text-muted-text">Loading categories…</div>
+        </div>
+      </div>
+
+      <div class="post-form-section">
+        <h2>✏️ Item details</h2>
+        <div class="input-group">
+          <label for="title">Item title *</label>
+          <input id="title" type="text" maxlength="120" placeholder="e.g. Hero Splendor Plus, 2019, single owner" required/>
+        </div>
+        <div class="input-group">
+          <label for="description">Description *</label>
+          <textarea id="description" rows="4" maxlength="1000" placeholder="Condition details, age, reason for selling/renting, original bill available?" required></textarea>
+          <span class="char-count"><span id="descCount">0</span>/1000</span>
+        </div>
+        <div class="grid-2">
+          <div class="input-group">
+            <label for="brand">Brand</label>
+            <input id="brand" type="text" maxlength="40" placeholder="e.g. Samsung, Hero, Rolex"/>
+          </div>
+          <div class="input-group">
+            <label for="price">Price (₹) *</label>
+            <input id="price" type="number" min="0" step="100" placeholder="e.g. 45000 or 1500/month" required/>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-form-section">
+        <h2>🏷️ Listing type</h2>
+        <div class="radio-cards">
+          <label class="radio-card">
+            <input type="radio" name="listingType" value="SELL" checked/>
+            <div class="radio-card-body">🏷️ For Sale</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="listingType" value="RENT"/>
+            <div class="radio-card-body">🗓️ For Rent</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="listingType" value="BOTH"/>
+            <div class="radio-card-body">🔄 Buy or Rent</div>
+          </label>
+        </div>
+      </div>
+
+      <div class="post-form-section">
+        <h2>✨ Condition</h2>
+        <div class="radio-cards">
+          <label class="radio-card">
+            <input type="radio" name="condition" value="NEW"/>
+            <div class="radio-card-body">✨ Brand New</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="condition" value="LIKE_NEW" checked/>
+            <div class="radio-card-body">👍 Like New</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="condition" value="GOOD"/>
+            <div class="radio-card-body">🙂 Good</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="condition" value="FAIR"/>
+            <div class="radio-card-body">😐 Fair</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="condition" value="OLD"/>
+            <div class="radio-card-body">👴 Old</div>
+          </label>
+        </div>
+      </div>
+
+      <div class="post-form-section">
+        <h2>📍 Location</h2>
+        <div class="grid-2">
+          <div class="input-group">
+            <label for="city">City *</label>
+            <select id="city" required>
+              <option value="">Select city</option>
+              <option>Dehradun</option>
+              <option>Rishikesh</option>
+              <option>Haridwar</option>
+              <option>Mussoorie</option>
+              <option>Nainital</option>
+              <option>Roorkee</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="area">Area / Locality</label>
+            <input id="area" type="text" maxlength="80" placeholder="e.g. Rajpur Road, Ballupur"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-form-section">
+        <h2>🖼️ Photos</h2>
+        <p class="text-muted-text" style="font-size:13px;margin-bottom:12px">Add image URLs (paste a link and click Add).</p>
+        <div class="image-input-row">
+          <input id="imageInput" type="url" placeholder="https://example.com/photo.jpg"/>
+          <button type="button" class="btn btn-secondary" onclick="addImageUrl()">+ Add</button>
+        </div>
+        <div id="imagePreviews" class="image-previews"></div>
+      </div>
+
+      <button type="submit" class="btn btn-post btn-block btn-lg">🚀 Post Product Now</button>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">© 2026 StayMart · Made with 💚 in Dehradun</div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/behavior.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/post-product.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Users - StayMart</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>"/>
+  <link rel="stylesheet" href="../../css/global.css"/>
+  <link rel="stylesheet" href="../../css/dashboard.css"/>
+</head>
+<body class="dash-body">
+  <button class="dash-hamburger" id="dashHamburger" aria-label="Toggle menu">☰</button>
+  <div class="dash-overlay" id="dashOverlay"></div>
+
+  <aside class="dash-sidebar" id="dashSidebar">
+    <a class="dash-brand logo" href="../../index.html">StayMart<small>Admin Console</small></a>
+    <nav class="dash-nav" id="dashNav"></nav>
+    <div class="dash-user" id="dashUser"></div>
+  </aside>
+
+  <main class="dash-main">
+    <header class="dash-topbar">
+      <div>
+        <h1 class="dash-title" data-dash-title>All Users</h1>
+        <p class="dash-subtitle" data-dash-subtitle>Manage platform accounts</p>
+      </div>
+      <div class="dash-topbar-actions">
+        <input type="search" id="userSearch" class="search-input" placeholder="Search by name or email..." oninput="filterUsers()"/>
+        <span class="pill" id="userCount">…</span>
+      </div>
+    </header>
+
+    <div class="dash-content">
+      <section class="panel">
+        <div class="panel-body no-pad">
+          <div class="table-wrap">
+            <table class="table" id="usersTable">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Contact</th>
+                  <th>Location</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Joined</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersBody">
+                <tr><td colspan="7" class="inline-empty">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <div class="pagination" id="usersPagination"></div>
+    </div>
+  </main>
+
+  <script src="../../js/api.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/dashboard.js"></script>
+  <script src="../../js/admin-users.js"></script>
+</body>
+</html>

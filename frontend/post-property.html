@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post a Property - StayMart</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>"/>
+  <link rel="stylesheet" href="css/global.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">StayMart<small>Dehradun · Uttarakhand</small></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="search-properties.html">Properties</a>
+        <a href="search-products.html">Products</a>
+      </div>
+      <div class="nav-actions"></div>
+    </div>
+  </nav>
+
+  <div class="container" style="padding-top:32px;max-width:860px">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">›</span><span>Post a Property</span>
+    </nav>
+
+    <h1 class="section-title" style="font-size:30px;margin-bottom:8px">🏠 Post a Property for Rent</h1>
+    <p class="text-secondary-text" style="margin-bottom:28px">Reach thousands of students and professionals in the hills. It's quick & free.</p>
+
+    <form id="propertyForm" novalidate>
+      <div class="post-form-section">
+        <h2>🛏️ What are you listing?</h2>
+        <div class="radio-cards">
+          <label class="radio-card">
+            <input type="radio" name="type" value="PG" checked/>
+            <div class="radio-card-body"><span class="radio-card-icon">🏠</span>PG</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="type" value="ROOM"/>
+            <div class="radio-card-body"><span class="radio-card-icon">🚪</span>Room</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="type" value="HOSTEL"/>
+            <div class="radio-card-body"><span class="radio-card-icon">🛏️</span>Hostel</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="type" value="HOTEL"/>
+            <div class="radio-card-body"><span class="radio-card-icon">🏨</span>Hotel</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="type" value="FLAT"/>
+            <div class="radio-card-body"><span class="radio-card-icon">🏢</span>Flat</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="type" value="DORMITORY"/>
+            <div class="radio-card-body"><span class="radio-card-icon">👥</span>Dormitory</div>
+          </label>
+        </div>
+      </div>
+
+      <div class="post-form-section">
+        <h2>👥 Preferred gender</h2>
+        <div class="radio-cards">
+          <label class="radio-card">
+            <input type="radio" name="gender" value="ANY" checked/>
+            <div class="radio-card-body">😊 Anyone</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="gender" value="MALE"/>
+            <div class="radio-card-body">👨 Boys Only</div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="gender" value="FEMALE"/>
+            <div class="radio-card-body">👩 Girls Only</div>
+          </label>
+        </div>
+      </div>
+
+      <div class="post-form-section">
+        <h2>✏️ Basic details</h2>
+        <div class="input-group">
+          <label for="title">Listing title *</label>
+          <input id="title" type="text" maxlength="120" placeholder="e.g. Cozy AC PG near Graphic Era University" required/>
+        </div>
+        <div class="input-group">
+          <label for="description">Description *</label>
+          <textarea id="description" rows="4" maxlength="1000" placeholder="Describe the place — rooms, food & mess days, house rules, distance from colleges/market, hike stay, etc." required></textarea>
+          <span class="char-count"><span id="descCount">0</span>/1000</span>
+        </div>
+        <div class="input-group">
+          <label for="address">Full address</label>
+          <input id="address" type="text" maxlength="255" placeholder="House no, street, landmark"/>
+        </div>
+      </div>
+
+      <div class="post-form-section">
+        <h2>📍 Location</h2>
+        <div class="grid-2">
+          <div class="input-group">
+            <label for="city">City *</label>
+            <select id="city" required>
+              <option value="">Select city</option>
+              <option>Dehradun</option>
+              <option>Rishikesh</option>
+              <option>Haridwar</option>
+              <option>Mussoorie</option>
+              <option>Nainital</option>
+              <option>Roorkee</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="area">Area / Locality *</label>
+            <input id="area" type="text" maxlength="80" placeholder="e.g. Prem Nagar, Paltan Bazaar, Clock Tower" required/>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-form-section">
+        <h2>💰 Pricing & capacity</h2>
+        <div class="grid-2">
+          <div class="input-group">
+            <label for="pricePerMonth">Rent per month (₹) *</label>
+            <input id="pricePerMonth" type="number" min="0" step="100" placeholder="e.g. 6500" required/>
+          </div>
+          <div class="input-group">
+            <label for="depositAmount">Deposit (₹)</label>
+            <input id="depositAmount" type="number" min="0" step="100" placeholder="e.g. 10000 (optional)"/>
+          </div>
+          <div class="input-group">
+            <label for="totalRooms">Total rooms</label>
+            <input id="totalRooms" type="number" min="1" value="1"/>
+          </div>
+          <div class="input-group">
+            <label for="availableRooms">Rooms available now</label>
+            <input id="availableRooms" type="number" min="0" value="1"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-form-section">
+        <h2>🛠️ Facilities & amenities</h2>
+        <div class="checkbox-grid" id="amenitiesGrid">
+          <label class="checkbox-card"><input type="checkbox" value="Wifi"/><div class="checkbox-card-body">📶 WiFi</div></label>
+          <label class="checkbox-card"><input type="checkbox" value="Parking"/><div class="checkbox-card-body">🅿️ Parking</div></label>
+          <label class="checkbox-card"><input type="checkbox" value="Water"/><div class="checkbox-card-body">🚰 24/7 Water</div></label>
+          <label class="checkbox-card"><input type="checkbox" value="Power Backup"/><div class="checkbox-card-body">⚡ Power Backup</div></label>
+          <label class="checkbox-card"><input type="checkbox" value="Security"/><div class="checkbox-card-body">🔒 Security</div></label>
+          <label class="checkbox-card"><input type="checkbox" value="Cleaning"/><div class="checkbox-card-body">🧹 Cleaning</div></label>
+          <label class="checkbox-card"><input type="checkbox" value="Food"/><div class="checkbox-card-body">🍲 Mess / Food</div></label>
+          <label class="checkbox-card"><input type="checkbox" value="Furnished"/><div class="checkbox-card-body">🛋️ Furnished</div></label>
+          <label class="checkbox-card"><input type="checkbox" value="Laundry"/><div class="checkbox-card-body">🧺 Laundry</div></label>
+          <label class="checkbox-card"><input type="checkbox" value="Hot Water"/><div class="checkbox-card-body">🚿 Hot Water</div></label>
+          <label class="checkbox-card"><input type="checkbox" value="Study Table"/><div class="checkbox-card-body">📚 Study Table</div></label>
+          <label class="checkbox-card"><input type="checkbox" value="Balcony"/><div class="checkbox-card-body">🏞️ Balcony</div></label>
+        </div>
+      </div>
+
+      <div class="post-form-section">
+        <h2>🖼️ Photos</h2>
+        <p class="text-muted-text" style="font-size:13px;margin-bottom:12px">Add image URLs (paste a link and click Add). At least one photo makes listings 5× more likely to connect.</p>
+        <div class="image-input-row">
+          <input id="imageInput" type="url" placeholder="https://example.com/photo.jpg"/>
+          <button type="button" class="btn btn-secondary" onclick="addImageUrl()">+ Add</button>
+        </div>
+        <div id="imagePreviews" class="image-previews"></div>
+      </div>
+
+      <button type="submit" class="btn btn-post btn-block btn-lg">🚀 Post Property Now</button>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">© 2026 StayMart · Made with 💚 in Dehradun</div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/behavior.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/post-property.js"></script>
+</body>
+</html>

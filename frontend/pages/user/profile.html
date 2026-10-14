@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile - StayMart</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>"/>
+  <link rel="stylesheet" href="../../css/global.css"/>
+  <link rel="stylesheet" href="../../css/dashboard.css"/>
+</head>
+<body class="dash-body">
+  <button class="dash-hamburger" id="dashHamburger" aria-label="Toggle menu">☰</button>
+  <div class="dash-overlay" id="dashOverlay"></div>
+
+  <aside class="dash-sidebar" id="dashSidebar">
+    <a class="dash-brand logo" href="../../index.html">StayMart<small>Dehradun · Uttarakhand</small></a>
+    <nav class="dash-nav" id="dashNav"></nav>
+    <div class="dash-user" id="dashUser"></div>
+  </aside>
+
+  <main class="dash-main">
+    <header class="dash-topbar">
+      <div>
+        <h1 class="dash-title" data-dash-title>My Profile</h1>
+        <p class="dash-subtitle" data-dash-subtitle>Manage your account details and security</p>
+      </div>
+    </header>
+
+    <div class="dash-content">
+      <section class="panel dash-section">
+        <div class="panel-body">
+          <div class="profile-head" id="profileHead">
+            <div class="avatar">…</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid-2">
+        <section class="panel">
+          <div class="panel-header"><span class="panel-title">👤 Account Details</span></div>
+          <div class="panel-body">
+            <form id="profileForm" novalidate>
+              <div class="form-grid">
+                <div class="input-group">
+                  <label for="name">Full Name</label>
+                  <input id="name" type="text" required maxlength="100"/>
+                </div>
+                <div class="input-group">
+                  <label for="phone">Phone</label>
+                  <input id="phone" type="tel" maxlength="15"/>
+                </div>
+                <div class="input-group">
+                  <label for="city">City</label>
+                  <input id="city" type="text" maxlength="100"/>
+                </div>
+                <div class="input-group">
+                  <label for="state">State</label>
+                  <input id="state" type="text" maxlength="100"/>
+                </div>
+                <div class="input-group span-2">
+                  <label for="profilePic">Profile Picture URL</label>
+                  <input id="profilePic" type="url" placeholder="https://..." maxlength="255"/>
+                </div>
+                <div class="input-group span-2">
+                  <label for="bio">Bio</label>
+                  <textarea id="bio" rows="4" maxlength="2000" placeholder="Tell others a little about yourself..."></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" id="saveProfileBtn">Save Changes</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header"><span class="panel-title">🔒 Change Password</span></div>
+          <div class="panel-body">
+            <form id="passwordForm" novalidate>
+              <div class="input-group">
+                <label for="currentPassword">Current Password</label>
+                <input id="currentPassword" type="password" required autocomplete="current-password"/>
+              </div>
+              <div class="input-group">
+                <label for="newPassword">New Password</label>
+                <input id="newPassword" type="password" required minlength="6" autocomplete="new-password"/>
+              </div>
+              <div class="input-group">
+                <label for="confirmPassword">Confirm New Password</label>
+                <input id="confirmPassword" type="password" required minlength="6" autocomplete="new-password"/>
+              </div>
+              <p class="field-error" id="pwError" style="display:none"></p>
+              <button type="submit" class="btn btn-primary" id="savePasswordBtn">Update Password</button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../js/api.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/dashboard.js"></script>
+  <script src="../../js/profile.js"></script>
+</body>
+</html>

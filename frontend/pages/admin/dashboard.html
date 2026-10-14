@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - StayMart</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>"/>
+  <link rel="stylesheet" href="../../css/global.css"/>
+  <link rel="stylesheet" href="../../css/dashboard.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body class="dash-body">
+  <button class="dash-hamburger" id="dashHamburger" aria-label="Toggle menu">☰</button>
+  <div class="dash-overlay" id="dashOverlay"></div>
+
+  <aside class="dash-sidebar" id="dashSidebar">
+    <a class="dash-brand logo" href="../../index.html">StayMart<small>Admin Console</small></a>
+    <nav class="dash-nav" id="dashNav"></nav>
+    <div class="dash-user" id="dashUser"></div>
+  </aside>
+
+  <main class="dash-main">
+    <header class="dash-topbar">
+      <div>
+        <h1 class="dash-title" data-dash-title>Admin Dashboard</h1>
+        <p class="dash-subtitle" data-dash-subtitle>Platform overview and analytics</p>
+      </div>
+      <div class="dash-topbar-actions">
+        <a href="pending-properties.html" class="btn btn-secondary btn-sm">🏠 Pending <span id="ppCount"></span></a>
+        <a href="pending-products.html" class="btn btn-primary btn-sm">📦 Pending <span id="pprodCount"></span></a>
+      </div>
+    </header>
+
+    <div class="dash-content">
+      <div class="stat-grid" id="statGrid">
+        <div class="row-skeleton" style="height:132px"></div>
+        <div class="row-skeleton" style="height:132px"></div>
+        <div class="row-skeleton" style="height:132px"></div>
+        <div class="row-skeleton" style="height:132px"></div>
+      </div>
+
+      <div class="chart-grid" style="margin-top:24px">
+        <div class="chart-card">
+          <h3>📈 Listings Created (Last 6 Months)</h3>
+          <div class="chart-wrap"><canvas id="monthlyListingsChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3>👥 New Registrations (Last 6 Months)</h3>
+          <div class="chart-wrap"><canvas id="monthlyUsersChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3>🏠 Properties by Type</h3>
+          <div class="chart-wrap"><canvas id="propertiesByTypeChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3>🛍️ Products by Category</h3>
+          <div class="chart-wrap"><canvas id="productsByCategoryChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3>📍 Users by City</h3>
+          <div class="chart-wrap"><canvas id="usersByCityChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../js/api.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/dashboard.js"></script>
+  <script src="../../js/admin-dashboard.js"></script>
+</body>
+</html>

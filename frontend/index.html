@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StayMart - Dehradun's #1 Property & Second-Hand Marketplace</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>"/>
+  <link rel="stylesheet" href="css/global.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">StayMart<small>Dehradun · Uttarakhand</small></a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="search-properties.html">Properties</a>
+        <a href="search-products.html">Products</a>
+      </div>
+      <div class="nav-actions"></div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1 class="hero-headline">
+      Find Your <span class="gradient-word">Perfect Pad</span> in Uttarakhand
+    </h1>
+    <p class="hero-subheadline">
+      Post or find PGs, rooms, hostels, flats and pre-loved products across Dehradun, Rishikesh, Mussoorie, Haridwar, Nainital & Roorkee.
+    </p>
+
+    <div class="hero-search">
+      <div class="search-tabs">
+        <button class="search-tab active" data-tab="properties" onclick="switchHeroTab('properties')">🏠 Properties</button>
+        <button class="search-tab" data-tab="products" onclick="switchHeroTab('products')">🛒 Products</button>
+      </div>
+      <div class="search-bar">
+        <input id="heroQuery" type="text" placeholder="Search 'PG in Dehradun', 'hostel near Doon' or 'bike for sale'..."/>
+        <select id="heroCity">
+          <option value="">All Cities</option>
+          <option>Dehradun</option>
+          <option>Rishikesh</option>
+          <option>Haridwar</option>
+          <option>Mussoorie</option>
+          <option>Nainital</option>
+          <option>Roorkee</option>
+        </select>
+        <button class="btn btn-primary" onclick="heroSearch()">🔍 Search</button>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-value">500+</div><div class="stat-label">Rental Listings</div></div>
+      <div class="stat"><div class="stat-value">1,200+</div><div class="stat-label">Products</div></div>
+      <div class="stat"><div class="stat-value">8,000+</div><div class="stat-label">Happy Users</div></div>
+      <div class="stat"><div class="stat-value">6</div><div class="stat-label">Hill Cities</div></div>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">📂 Browse Categories</h2>
+        <p class="text-secondary-text">Everything you need, organised.</p>
+      </div>
+      <div id="categoryGrid" class="category-grid"></div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="section-header">
+        <h2 class="section-title">✨ Featured for You</h2>
+        <a class="section-link" href="search-properties.html">View all properties →</a>
+      </div>
+      <div id="featuredGrid" class="grid-4"></div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="section-header">
+        <h2 class="section-title">🔥 Trending Right Now</h2>
+        <a class="section-link" href="search-properties.html">Explore more →</a>
+      </div>
+      <div id="trendingRow" class="h-scroll"></div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="section-header">
+        <h2 class="section-title">⭐ Top Rated Products</h2>
+        <a class="section-link" href="search-products.html">Explore more →</a>
+      </div>
+      <div id="topProductsRow" class="h-scroll"></div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="divider"></div>
+      <div class="section-header">
+        <h2 class="section-title">How StayMart Works</h2>
+      </div>
+      <div class="steps">
+        <div class="step-card">
+          <span class="step-icon">📢</span>
+          <h3>Post it in minutes</h3>
+          <p>Describe your property or product, add photos, and go live for thousands of students, professionals and families.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-icon">🔍</span>
+          <h3>Discover smart matches</h3>
+          <p>Search by city, area, price and amenities — with personalised recommendations that improve as you browse.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-icon">🤝</span>
+          <h3>Connect & close</h3>
+          <p>Chat directly with owners and sellers, book instantly on the platform, and move in or take it home.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="cta-banner">
+        <div class="cta-col">
+          <h3>🏠 Own a property in the hills?</h3>
+          <p>List your PG, hostel, flat or room and earn a steady monthly rental income.</p>
+          <a href="post-property.html" class="btn">Post a Property</a>
+        </div>
+        <div class="cta-col">
+          <h3>📦 Moving out? Upgrade?</h3>
+          <p>Sell or rent out electronics, bikes, furniture & appliances at the best price.</p>
+          <a href="post-product.html" class="btn">Post a Product</a>
+        </div>
+        <div class="cta-sub">Both listings are fully free on StayMart 💚</div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo">StayMart<small>Dehradun · Uttarakhand</small></a>
+          <p class="footer-desc" style="margin-top:14px;color:var(--text-secondary);font-size:14px;max-width:340px">
+            StayMart is Uttarakhand's trusted community marketplace for rentals and re-commerce — helping students, owners and families buy, sell and rent for less. 🔥
+          </p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="search-properties.html">Property Rentals</a></li>
+            <li><a href="search-products.html">Buy & Rent Products</a></li>
+            <li><a href="post-property.html">Post a Property</a></li>
+            <li><a href="post-product.html">Post a Product</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Cities We Serve 🏔️</h4>
+          <ul class="footer-links">
+            <li><a href="search-properties.html?city=Dehradun">Dehradun</a></li>
+            <li><a href="search-properties.html?city=Rishikesh">Rishikesh</a></li>
+            <li><a href="search-properties.html?city=Mussoorie">Mussoorie</a></li>
+            <li><a href="search-properties.html?city=Haridwar">Haridwar</a></li>
+            <li><a href="search-properties.html?city=Nainital">Nainital</a></li>
+            <li><a href="search-properties.html?city=Roorkee">Roorkee</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 StayMart · Made with 💚 in Dehradun
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/behavior.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

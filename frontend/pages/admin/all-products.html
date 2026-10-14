@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Products - StayMart</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>"/>
+  <link rel="stylesheet" href="../../css/global.css"/>
+  <link rel="stylesheet" href="../../css/dashboard.css"/>
+</head>
+<body class="dash-body" data-listings="products">
+  <button class="dash-hamburger" id="dashHamburger" aria-label="Toggle menu">☰</button>
+  <div class="dash-overlay" id="dashOverlay"></div>
+
+  <aside class="dash-sidebar" id="dashSidebar">
+    <a class="dash-brand logo" href="../../index.html">StayMart<small>Admin Console</small></a>
+    <nav class="dash-nav" id="dashNav"></nav>
+    <div class="dash-user" id="dashUser"></div>
+  </aside>
+
+  <main class="dash-main">
+    <header class="dash-topbar">
+      <div>
+        <h1 class="dash-title" data-dash-title>All Products</h1>
+        <p class="dash-subtitle" data-dash-subtitle>Every product listing on the platform</p>
+      </div>
+      <div class="dash-topbar-actions">
+        <span class="pill" id="listingCount">…</span>
+      </div>
+    </header>
+
+    <div class="dash-content">
+      <div class="dash-section">
+        <div class="tabs" id="statusTabs">
+          <button class="tab active" data-status="" onclick="filterListings('')">All</button>
+          <button class="tab" data-status="PENDING" onclick="filterListings('PENDING')">Pending</button>
+          <button class="tab" data-status="APPROVED" onclick="filterListings('APPROVED')">Approved</button>
+          <button class="tab" data-status="REJECTED" onclick="filterListings('REJECTED')">Rejected</button>
+        </div>
+      </div>
+
+      <section class="panel">
+        <div class="panel-body no-pad" id="listingsBox">
+          <div class="loading-block"><div class="row-skeleton"></div><div class="row-skeleton"></div><div class="row-skeleton"></div></div>
+        </div>
+      </section>
+      <div class="pagination" id="listingsPagination"></div>
+    </div>
+  </main>
+
+  <script src="../../js/api.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/dashboard.js"></script>
+  <script src="../../js/admin-listings.js"></script>
+</body>
+</html>

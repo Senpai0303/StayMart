@@ -1,0 +1,20 @@
+2026-10-14 15:19:23,739 INFO recommender - Model files missing, training fresh models
+2026-10-14 15:19:24,723 INFO recommender - Built property content matrix with 12 items
+2026-10-14 15:19:24,747 INFO recommender - Built product content matrix with 24 items
+2026-10-14 15:19:25,089 INFO recommender - No interactions to train PROPERTY SVD model
+2026-10-14 15:19:25,106 INFO recommender - No interactions to train PRODUCT SVD model
+2026-10-14 15:19:25,108 INFO recommender - All models saved: {'property_tfidf_items': 12, 'product_tfidf_items': 24, 'property_svd': False, 'product_svd': False}
+2026-10-14 15:19:25,108 INFO staymart-ml - Startup models_loaded=True
+2026-10-14 15:19:25,215 INFO werkzeug - WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.123.4.96:5000
+2026-10-14 15:19:25,215 INFO werkzeug - Press CTRL+C to quit
+2026-10-14 15:41:14,564 INFO staymart-ml - [2026-10-14 15:41:14.564985] trending city=Dehradun type=PRODUCT -> 8 results
+2026-10-14 15:41:14,564 INFO staymart-ml - [2026-10-14 15:41:14.564985] trending city=Dehradun type=PROPERTY -> 8 results
+2026-10-14 15:41:14,568 INFO werkzeug - 127.0.0.1 - - [14/Oct/2026 15:41:14] "GET /trending?type=PRODUCT&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-10-14 15:41:14,569 INFO werkzeug - 127.0.0.1 - - [14/Oct/2026 15:41:14] "GET /trending?type=PROPERTY&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-10-14 15:41:14,587 INFO staymart-ml - [2026-10-14 15:41:14.587192] user=1 city=Dehradun type=PROPERTY -> 8 results
+2026-10-14 15:41:14,588 INFO werkzeug - 127.0.0.1 - - [14/Oct/2026 15:41:14] "GET /recommend/properties?userId=1&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-10-14 15:41:59,813 INFO staymart-ml - [2026-10-14 15:41:59.813190] similar property=1 -> 3 results
+2026-10-14 15:41:59,815 INFO werkzeug - 127.0.0.1 - - [14/Oct/2026 15:41:59] "GET /similar/property?propertyId=1&limit=3 HTTP/1.1" 200 -
