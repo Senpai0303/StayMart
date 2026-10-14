@@ -35,32 +35,32 @@
 
  :: Spring Boot ::                (v3.3.5)
 
-2026-10-14T15:18:53.645+05:30  INFO 23676 --- [staymart] [           main] com.staymart.StayMartApplication         : Starting StayMartApplication using Java 21.0.12.1 with PID 23676 (D:\Mini5th\target\classes started by divya in D:\Mini5th)
-2026-10-14T15:18:53.645+05:30 DEBUG 23676 --- [staymart] [           main] com.staymart.StayMartApplication         : Running with Spring Boot v3.3.5, Spring v6.1.14
-2026-10-14T15:18:53.645+05:30  INFO 23676 --- [staymart] [           main] com.staymart.StayMartApplication         : The following 1 profile is active: "dev"
-2026-10-14T15:18:54.628+05:30  INFO 23676 --- [staymart] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-10-14T15:18:54.723+05:30  INFO 23676 --- [staymart] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 12 JPA repository interfaces.
-2026-10-14T15:18:55.339+05:30  INFO 23676 --- [staymart] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-10-14T15:18:55.356+05:30  INFO 23676 --- [staymart] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-10-14T15:18:55.358+05:30  INFO 23676 --- [staymart] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
-2026-10-14T15:18:55.424+05:30  INFO 23676 --- [staymart] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-10-14T15:18:55.425+05:30  INFO 23676 --- [staymart] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1741 ms
-2026-10-14T15:18:55.578+05:30  INFO 23676 --- [staymart] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-10-14T15:18:55.639+05:30  INFO 23676 --- [staymart] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2026-10-14T15:18:55.688+05:30  INFO 23676 --- [staymart] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-10-14T15:18:55.958+05:30  INFO 23676 --- [staymart] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-10-14T15:18:55.988+05:30  INFO 23676 --- [staymart] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-10-14T15:18:56.171+05:30  INFO 23676 --- [staymart] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5342eec5
-2026-10-14T15:18:56.175+05:30  INFO 23676 --- [staymart] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-10-14T15:18:56.222+05:30  WARN 23676 --- [staymart] [           main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-10-14T15:18:57.256+05:30  INFO 23676 --- [staymart] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-10-14T15:18:57.301+05:30  INFO 23676 --- [staymart] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-10-14T15:18:57.571+05:30  INFO 23676 --- [staymart] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-10-14T15:18:58.055+05:30 DEBUG 23676 --- [staymart] [           main] c.s.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
-2026-10-14T15:18:58.398+05:30  INFO 23676 --- [staymart] [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2026-10-14T15:18:58.402+05:30  WARN 23676 --- [staymart] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
-2026-10-14T15:18:59.306+05:30  INFO 23676 --- [staymart] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2026-10-14T15:18:59.306+05:30  INFO 23676 --- [staymart] [           main] com.staymart.StayMartApplication         : Started StayMartApplication in 6.128 seconds (process running for 6.482)
+2026-10-14T17:33:22.924+05:30  INFO 1992 --- [staymart] [           main] com.staymart.StayMartApplication         : Starting StayMartApplication using Java 21.0.12.1 with PID 1992 (D:\Mini5th\target\classes started by divya in D:\Mini5th)
+2026-10-14T17:33:22.932+05:30 DEBUG 1992 --- [staymart] [           main] com.staymart.StayMartApplication         : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-10-14T17:33:22.932+05:30  INFO 1992 --- [staymart] [           main] com.staymart.StayMartApplication         : The following 1 profile is active: "dev"
+2026-10-14T17:33:23.574+05:30  INFO 1992 --- [staymart] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-14T17:33:23.654+05:30  INFO 1992 --- [staymart] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 12 JPA repository interfaces.
+2026-10-14T17:33:24.110+05:30  INFO 1992 --- [staymart] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-10-14T17:33:24.123+05:30  INFO 1992 --- [staymart] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-14T17:33:24.123+05:30  INFO 1992 --- [staymart] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-10-14T17:33:24.178+05:30  INFO 1992 --- [staymart] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-10-14T17:33:24.178+05:30  INFO 1992 --- [staymart] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1210 ms
+2026-10-14T17:33:24.305+05:30  INFO 1992 --- [staymart] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-10-14T17:33:24.448+05:30  INFO 1992 --- [staymart] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-10-14T17:33:24.496+05:30  INFO 1992 --- [staymart] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-10-14T17:33:24.777+05:30  INFO 1992 --- [staymart] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-14T17:33:24.831+05:30  INFO 1992 --- [staymart] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-14T17:33:24.990+05:30  INFO 1992 --- [staymart] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3b2db389
+2026-10-14T17:33:24.994+05:30  INFO 1992 --- [staymart] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-14T17:33:25.043+05:30  WARN 1992 --- [staymart] [           main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-10-14T17:33:25.975+05:30  INFO 1992 --- [staymart] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-14T17:33:26.032+05:30  INFO 1992 --- [staymart] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-14T17:33:26.179+05:30  INFO 1992 --- [staymart] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-14T17:33:26.626+05:30 DEBUG 1992 --- [staymart] [           main] c.s.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2026-10-14T17:33:26.943+05:30  INFO 1992 --- [staymart] [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-10-14T17:33:26.945+05:30  WARN 1992 --- [staymart] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2026-10-14T17:33:27.699+05:30  INFO 1992 --- [staymart] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-10-14T17:33:27.699+05:30  INFO 1992 --- [staymart] [           main] com.staymart.StayMartApplication         : Started StayMartApplication in 5.076 seconds (process running for 5.338)
 Hibernate: 
     select
         count(*) 
@@ -85,11 +85,68 @@ Hibernate:
         users u1_0 
     where
         u1_0.email=?
-2026-10-14T15:18:59.484+05:30  INFO 23676 --- [staymart] [           main] com.staymart.config.DataSeeder           : Admin user already exists: admin@staymart.com
-2026-10-14T15:18:59.485+05:30  INFO 23676 --- [staymart] [           main] com.staymart.config.DataSeeder           : StayMart data seeding completed
-2026-10-14T15:19:22.688+05:30  INFO 23676 --- [staymart] [nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-10-14T15:19:22.689+05:30  INFO 23676 --- [staymart] [nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-10-14T15:19:22.692+05:30  INFO 23676 --- [staymart] [nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-10-14T17:33:27.873+05:30  INFO 1992 --- [staymart] [           main] com.staymart.config.DataSeeder           : Admin user already exists: admin@staymart.com
+2026-10-14T17:33:27.875+05:30  INFO 1992 --- [staymart] [           main] com.staymart.config.DataSeeder           : StayMart data seeding completed
+2026-10-14T17:34:45.367+05:30  INFO 1992 --- [staymart] [nio-8080-exec-7] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-14T17:34:45.383+05:30  INFO 1992 --- [staymart] [nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-14T17:34:45.386+05:30  INFO 1992 --- [staymart] [nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
 Hibernate: 
     select
         p1_0.id,
@@ -115,25 +172,13 @@ Hibernate:
     where
         p1_0.status=? 
         and p1_0.is_available 
+        and p1_0.gender_preference=? 
     order by
         p1_0.created_at desc 
     limit
         ?, ?
 Hibernate: 
     select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
         u1_0.id,
         u1_0.bio,
         u1_0.city,
@@ -152,76 +197,12 @@ Hibernate:
     where
         u1_0.id=?
 Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
+    insert 
+    into
+        user_behaviors
+        (action, city_filter, item_id, item_type, search_query, `timestamp`, user_id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
 Hibernate: 
     select
         l1_0.id,
@@ -269,17 +250,23 @@ Hibernate:
         l1_0.id=?
 Hibernate: 
     select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
     from
-        locations l1_0 
+        users u1_0 
     where
-        l1_0.id=?
+        u1_0.email=?
 Hibernate: 
     select
         u1_0.id,
@@ -298,59 +285,97 @@ Hibernate:
     from
         users u1_0 
     where
-        u1_0.id=?
+        u1_0.email=?
 Hibernate: 
     select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
     from
-        locations l1_0 
+        users u1_0 
     where
-        l1_0.id=?
+        u1_0.email=?
 Hibernate: 
     select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
     from
-        locations l1_0 
+        users u1_0 
     where
-        l1_0.id=?
+        u1_0.email=?
 Hibernate: 
     select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
     from
-        locations l1_0 
+        users u1_0 
     where
-        l1_0.id=?
+        u1_0.email=?
 Hibernate: 
     select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
+        c1_0.id,
+        c1_0.icon,
+        c1_0.name,
+        c1_0.parent_id,
+        c1_0.type 
     from
-        locations l1_0 
+        categories c1_0
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.address,
+        p1_0.amenities,
+        p1_0.area,
+        p1_0.available_rooms,
+        p1_0.created_at,
+        p1_0.deposit_amount,
+        p1_0.description,
+        p1_0.gender_preference,
+        p1_0.images,
+        p1_0.is_available,
+        p1_0.location_id,
+        p1_0.posted_by,
+        p1_0.price_per_month,
+        p1_0.status,
+        p1_0.title,
+        p1_0.total_rooms,
+        p1_0.type 
+    from
+        properties p1_0 
     where
-        l1_0.id=?
+        p1_0.id in (?)
 Hibernate: 
     select
         p1_0.id,
@@ -372,12 +397,20 @@ Hibernate:
     from
         products p1_0 
     where
-        p1_0.status=? 
-        and p1_0.is_available 
-    order by
-        p1_0.created_at desc 
-    limit
-        ?, ?
+        p1_0.id in (?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.area,
+        l1_0.city,
+        l1_0.latitude,
+        l1_0.longitude,
+        l1_0.pincode,
+        l1_0.state 
+    from
+        locations l1_0 
+    where
+        l1_0.id=?
 Hibernate: 
     select
         c1_0.id,
@@ -389,6 +422,57 @@ Hibernate:
         categories c1_0 
     where
         c1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+Hibernate: 
+    select
+        l1_0.id,
+        l1_0.area,
+        l1_0.city,
+        l1_0.latitude,
+        l1_0.longitude,
+        l1_0.pincode,
+        l1_0.state 
+    from
+        locations l1_0 
+    where
+        l1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
 Hibernate: 
     select
         l1_0.id,
@@ -503,82 +587,6 @@ Hibernate:
         l1_0.id=?
 Hibernate: 
     select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
         l1_0.id,
         l1_0.area,
         l1_0.city,
@@ -609,190 +617,6 @@ Hibernate:
         users u1_0 
     where
         u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
-    from
-        properties p1_0 
-    left join
-        locations l1_0 
-            on l1_0.id=p1_0.location_id 
-    where
-        p1_0.status=? 
-        and p1_0.is_available 
-        and p1_0.type=? 
-        and lower(l1_0.city) like ? escape '' 
-    order by
-        p1_0.created_at desc 
-    limit
-        ?, ?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
 Hibernate: 
     select
         p1_0.id,
@@ -816,51 +640,7 @@ Hibernate:
     from
         properties p1_0 
     where
-        p1_0.id=?
-Hibernate: 
-    select
-        r1_0.id,
-        r1_0.capacity,
-        r1_0.floor_number,
-        r1_0.images,
-        r1_0.is_available,
-        r1_0.price,
-        r1_0.property_id,
-        r1_0.room_number,
-        r1_0.type 
-    from
-        rooms r1_0 
-    where
-        r1_0.property_id=?
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
-    from
-        properties p1_0 
-    where
-        p1_0.status=? 
-        and p1_0.is_available 
-    order by
-        p1_0.created_at desc 
-    limit
-        ?, ?
+        p1_0.id in (?, ?, ?, ?, ?, ?, ?)
 Hibernate: 
     select
         l1_0.id,
@@ -906,6 +686,25 @@ Hibernate:
         locations l1_0 
     where
         l1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
 Hibernate: 
     select
         l1_0.id,
@@ -996,396 +795,6 @@ Hibernate:
         users u1_0 
     where
         u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.area,
-        p1_0.brand,
-        p1_0.category_id,
-        p1_0.`condition`,
-        p1_0.created_at,
-        p1_0.description,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.listing_type,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price,
-        p1_0.status,
-        p1_0.title,
-        p1_0.views_count 
-    from
-        products p1_0 
-    where
-        p1_0.status=? 
-        and p1_0.is_available 
-    order by
-        p1_0.created_at desc 
-    limit
-        ?, ?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
 Hibernate: 
     select
         l1_0.id,
@@ -1456,214 +865,14 @@ Hibernate:
         users u1_0 
     where
         u1_0.email=?
-Hibernate: 
-    select
-        count(*) 
-    from
-        users u1_0
-Hibernate: 
-    select
-        count(*) 
-    from
-        properties p1_0
-Hibernate: 
-    select
-        count(p1_0.id) 
-    from
-        properties p1_0 
-    where
-        p1_0.status=?
-Hibernate: 
-    select
-        count(p1_0.id) 
-    from
-        properties p1_0 
-    where
-        p1_0.status=?
-Hibernate: 
-    select
-        count(*) 
-    from
-        products p1_0
-Hibernate: 
-    select
-        year(p1_0.created_at),
-        month(p1_0.created_at),
-        count(p1_0.id) 
-    from
-        properties p1_0 
-    where
-        p1_0.created_at>=? 
-    group by
-        year(p1_0.created_at),
-        month(p1_0.created_at) 
-    order by
-        year(p1_0.created_at),
-        month(p1_0.created_at)
-Hibernate: 
-    select
-        count(p1_0.id) 
-    from
-        products p1_0 
-    where
-        p1_0.status=?
-Hibernate: 
-    select
-        count(p1_0.id) 
-    from
-        products p1_0 
-    where
-        p1_0.status=?
-Hibernate: 
-    select
-        year(p1_0.created_at),
-        month(p1_0.created_at),
-        count(p1_0.id) 
-    from
-        products p1_0 
-    where
-        p1_0.created_at>=? 
-    group by
-        year(p1_0.created_at),
-        month(p1_0.created_at) 
-    order by
-        year(p1_0.created_at),
-        month(p1_0.created_at)
-Hibernate: 
-    select
-        count(*) 
-    from
-        bookings b1_0
-Hibernate: 
-    select
-        year(u1_0.created_at),
-        month(u1_0.created_at),
-        count(u1_0.id) 
-    from
-        users u1_0 
-    where
-        u1_0.created_at>=? 
-    group by
-        year(u1_0.created_at),
-        month(u1_0.created_at) 
-    order by
-        year(u1_0.created_at),
-        month(u1_0.created_at)
-Hibernate: 
-    select
-        count(b1_0.id) 
-    from
-        bookings b1_0 
-    where
-        b1_0.status=?
-Hibernate: 
-    select
-        count(*) 
-    from
-        users u1_0
-Hibernate: 
-    select
-        count(*) 
-    from
-        properties p1_0
-Hibernate: 
-    select
-        count(*) 
-    from
-        orders o1_0
-Hibernate: 
-    select
-        count(*) 
-    from
-        products p1_0
 Hibernate: 
     select
         count(c1_0.id) 
     from
         chats c1_0 
     where
-        not(c1_0.is_read)
-Hibernate: 
-    select
-        count(*) 
-    from
-        bookings b1_0
-Hibernate: 
-    select
-        count(*) 
-    from
-        orders o1_0
-Hibernate: 
-    select
-        p1_0.type,
-        count(p1_0.id) 
-    from
-        properties p1_0 
-    group by
-        p1_0.type 
-    order by
-        count(p1_0.id) desc
-Hibernate: 
-    select
-        coalesce(c1_0.name, 'Uncategorized'),
-        count(p1_0.id) 
-    from
-        products p1_0 
-    left join
-        categories c1_0 
-            on c1_0.id=p1_0.category_id 
-    group by
-        c1_0.name 
-    order by
-        count(p1_0.id) desc
-Hibernate: 
-    select
-        coalesce(u1_0.city, 'Unknown'),
-        count(u1_0.id) 
-    from
-        users u1_0 
-    group by
-        u1_0.city 
-    order by
-        count(u1_0.id) desc
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
+        c1_0.receiver_id=? 
+        and not(c1_0.is_read)
 Hibernate: 
     select
         p1_0.id,
@@ -1687,71 +896,7 @@ Hibernate:
     from
         properties p1_0 
     where
-        p1_0.status=? 
-    order by
-        p1_0.created_at desc 
-    limit
-        ?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.area,
-        p1_0.brand,
-        p1_0.category_id,
-        p1_0.`condition`,
-        p1_0.created_at,
-        p1_0.description,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.listing_type,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price,
-        p1_0.status,
-        p1_0.title,
-        p1_0.views_count 
-    from
-        products p1_0 
-    where
-        p1_0.status=? 
+        p1_0.posted_by=? 
     order by
         p1_0.created_at desc 
     limit
@@ -1811,10 +956,37 @@ Hibernate:
         u1_0.state 
     from
         users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        count(c1_0.id) 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and not(c1_0.is_read)
+Hibernate: 
+    select
+        b1_0.id,
+        b1_0.booker_id,
+        b1_0.check_in,
+        b1_0.check_out,
+        b1_0.created_at,
+        b1_0.message,
+        b1_0.months,
+        b1_0.property_id,
+        b1_0.room_id,
+        b1_0.status,
+        b1_0.total_amount 
+    from
+        bookings b1_0 
+    where
+        b1_0.booker_id=? 
     order by
-        u1_0.created_at desc 
+        b1_0.created_at desc 
     limit
-        ?, ?
+        ?
 Hibernate: 
     select
         u1_0.id,
@@ -1855,241 +1027,55 @@ Hibernate:
         u1_0.email=?
 Hibernate: 
     select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
     from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        count(c1_0.id) 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and not(c1_0.is_read)
+Hibernate: 
+    select
+        b1_0.id,
+        b1_0.booker_id,
+        b1_0.check_in,
+        b1_0.check_out,
+        b1_0.created_at,
+        b1_0.message,
+        b1_0.months,
+        b1_0.property_id,
+        b1_0.room_id,
+        b1_0.status,
+        b1_0.total_amount 
+    from
+        bookings b1_0 
+    join
         properties p1_0 
+            on p1_0.id=b1_0.property_id 
+    where
+        p1_0.posted_by=? 
     order by
-        p1_0.created_at desc 
+        b1_0.created_at desc 
     limit
-        ?, ?
-Hibernate: 
-    select
-        count(p1_0.id) 
-    from
-        properties p1_0
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
+        ?
 Hibernate: 
     select
         u1_0.id,
@@ -2130,264 +1116,53 @@ Hibernate:
         u1_0.email=?
 Hibernate: 
     select
-        p1_0.id,
-        p1_0.area,
-        p1_0.brand,
-        p1_0.category_id,
-        p1_0.`condition`,
-        p1_0.created_at,
-        p1_0.description,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.listing_type,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price,
-        p1_0.status,
-        p1_0.title,
-        p1_0.views_count 
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
     from
-        products p1_0 
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        count(c1_0.id) 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and not(c1_0.is_read)
+Hibernate: 
+    select
+        o1_0.id,
+        o1_0.amount,
+        o1_0.buyer_id,
+        o1_0.created_at,
+        o1_0.message,
+        o1_0.order_type,
+        o1_0.product_id,
+        o1_0.quantity,
+        o1_0.rent_end,
+        o1_0.rent_start,
+        o1_0.seller_id,
+        o1_0.status 
+    from
+        orders o1_0 
+    where
+        o1_0.buyer_id=? 
     order by
-        p1_0.created_at desc 
+        o1_0.created_at desc 
     limit
-        ?, ?
-Hibernate: 
-    select
-        count(p1_0.id) 
-    from
-        products p1_0
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
+        ?
 Hibernate: 
     select
         u1_0.id,
@@ -2409,575 +1184,74 @@ Hibernate:
         u1_0.email=?
 Hibernate: 
     select
-        p1_0.id,
-        p1_0.area,
-        p1_0.brand,
-        p1_0.category_id,
-        p1_0.`condition`,
-        p1_0.created_at,
-        p1_0.description,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.listing_type,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price,
-        p1_0.status,
-        p1_0.title,
-        p1_0.views_count 
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
     from
-        products p1_0 
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        count(c1_0.id) 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and not(c1_0.is_read)
+Hibernate: 
+    select
+        b1_0.id,
+        b1_0.booker_id,
+        b1_0.check_in,
+        b1_0.check_out,
+        b1_0.created_at,
+        b1_0.message,
+        b1_0.months,
+        b1_0.property_id,
+        b1_0.room_id,
+        b1_0.status,
+        b1_0.total_amount 
+    from
+        bookings b1_0 
+    join
+        properties p1_0 
+            on p1_0.id=b1_0.property_id 
+    where
+        p1_0.posted_by=? 
     order by
-        p1_0.created_at desc 
+        b1_0.created_at desc 
     limit
-        ?, ?
-Hibernate: 
-    select
-        count(p1_0.id) 
-    from
-        products p1_0
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.area,
-        p1_0.brand,
-        p1_0.category_id,
-        p1_0.`condition`,
-        p1_0.created_at,
-        p1_0.description,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.listing_type,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price,
-        p1_0.status,
-        p1_0.title,
-        p1_0.views_count 
-    from
-        products p1_0 
-    order by
-        p1_0.created_at desc 
-    limit
-        ?, ?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0
+        ?
 Hibernate: 
     select
         u1_0.id,
@@ -3037,2449 +1311,25 @@ Hibernate:
         u1_0.email=?
 Hibernate: 
     select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
+        count(c1_0.id) 
     from
-        users u1_0 
+        chats c1_0 
     where
-        u1_0.email=?
+        c1_0.receiver_id=? 
+        and not(c1_0.is_read)
 Hibernate: 
     select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
-    from
-        properties p1_0 
-    where
-        p1_0.id in (?, ?, ?, ?, ?, ?, ?, ?)
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
-    from
-        properties p1_0 
-    where
-        p1_0.id in (?, ?, ?, ?, ?, ?, ?, ?)
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.area,
-        p1_0.brand,
-        p1_0.category_id,
-        p1_0.`condition`,
-        p1_0.created_at,
-        p1_0.description,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.listing_type,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price,
-        p1_0.status,
-        p1_0.title,
-        p1_0.views_count 
-    from
-        products p1_0 
-    where
-        p1_0.id in (?, ?, ?, ?, ?, ?, ?, ?)
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        c1_0.id,
-        c1_0.icon,
-        c1_0.name,
-        c1_0.parent_id,
-        c1_0.type 
-    from
-        categories c1_0 
-    where
-        c1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
-    from
-        properties p1_0 
-    where
-        p1_0.status=? 
-        and p1_0.is_available 
-    order by
-        p1_0.created_at desc 
-    limit
-        ?, ?
-Hibernate: 
-    select
-        count(p1_0.id) 
-    from
-        properties p1_0 
-    where
-        p1_0.status=? 
-        and p1_0.is_available
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    insert 
-    into
-        user_behaviors
-        (action, city_filter, item_id, item_type, search_query, `timestamp`, user_id) 
-    values
-        (?, ?, ?, ?, ?, ?, ?)
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
-    from
-        properties p1_0 
-    where
-        p1_0.status=? 
-        and p1_0.is_available 
-    order by
-        p1_0.created_at desc 
-    limit
-        ?, ?
-Hibernate: 
-    select
-        count(p1_0.id) 
-    from
-        properties p1_0 
-    where
-        p1_0.status=? 
-        and p1_0.is_available
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    insert 
-    into
-        user_behaviors
-        (action, city_filter, item_id, item_type, search_query, `timestamp`, user_id) 
-    values
-        (?, ?, ?, ?, ?, ?, ?)
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
-    from
-        properties p1_0 
-    where
-        p1_0.status=? 
-        and p1_0.is_available 
-    order by
-        p1_0.created_at desc 
-    limit
-        ?, ?
-Hibernate: 
-    select
-        count(p1_0.id) 
-    from
-        properties p1_0 
-    where
-        p1_0.status=? 
-        and p1_0.is_available
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    insert 
-    into
-        user_behaviors
-        (action, city_filter, item_id, item_type, search_query, `timestamp`, user_id) 
-    values
-        (?, ?, ?, ?, ?, ?, ?)
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
-    from
-        properties p1_0 
-    where
-        p1_0.status=? 
-        and p1_0.is_available 
-        and p1_0.type=? 
-        and p1_0.gender_preference=? 
-    order by
-        p1_0.created_at desc 
-    limit
-        ?, ?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    insert 
-    into
-        user_behaviors
-        (action, city_filter, item_id, item_type, search_query, `timestamp`, user_id) 
-    values
-        (?, ?, ?, ?, ?, ?, ?)
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
-    from
-        properties p1_0 
-    where
-        p1_0.status=? 
-        and p1_0.is_available 
-        and p1_0.gender_preference=? 
-    order by
-        p1_0.created_at desc 
-    limit
-        ?, ?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    insert 
-    into
-        user_behaviors
-        (action, city_filter, item_id, item_type, search_query, `timestamp`, user_id) 
-    values
-        (?, ?, ?, ?, ?, ?, ?)
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
-    from
-        properties p1_0 
-    where
-        p1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    insert 
-    into
-        user_behaviors
-        (action, city_filter, item_id, item_type, search_query, `timestamp`, user_id) 
-    values
-        (?, ?, ?, ?, ?, ?, ?)
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    insert 
-    into
-        user_behaviors
-        (action, city_filter, item_id, item_type, search_query, `timestamp`, user_id) 
-    values
-        (?, ?, ?, ?, ?, ?, ?)
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
-    from
-        properties p1_0 
-    where
-        p1_0.id=?
-Hibernate: 
-    select
-        avg(r1_0.rating) 
-    from
-        reviews r1_0 
-    where
-        r1_0.item_type=? 
-        and r1_0.item_id=?
-Hibernate: 
-    select
-        r1_0.id,
-        r1_0.capacity,
-        r1_0.floor_number,
-        r1_0.images,
-        r1_0.is_available,
-        r1_0.price,
-        r1_0.property_id,
-        r1_0.room_number,
-        r1_0.type 
-    from
-        rooms r1_0 
-    where
-        r1_0.property_id=?
-Hibernate: 
-    select
-        w1_0.id 
+        w1_0.id,
+        w1_0.created_at,
+        w1_0.item_id,
+        w1_0.item_type,
+        w1_0.user_id 
     from
         wishlists w1_0 
     where
         w1_0.user_id=? 
-        and w1_0.item_type=? 
-        and w1_0.item_id=? 
-    limit
-        ?
-Hibernate: 
-    select
-        count(r1_0.id) 
-    from
-        reviews r1_0 
-    where
-        r1_0.item_type=? 
-        and r1_0.item_id=?
-Hibernate: 
-    select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
-    from
-        properties p1_0 
-    where
-        p1_0.id in (?, ?, ?)
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.email=?
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
-Hibernate: 
-    select
-        u1_0.id,
-        u1_0.bio,
-        u1_0.city,
-        u1_0.created_at,
-        u1_0.email,
-        u1_0.is_active,
-        u1_0.is_verified,
-        u1_0.name,
-        u1_0.password_hash,
-        u1_0.phone,
-        u1_0.profile_pic,
-        u1_0.role,
-        u1_0.state 
-    from
-        users u1_0 
-    where
-        u1_0.id=?
-Hibernate: 
-    select
-        avg(r1_0.rating) 
-    from
-        reviews r1_0 
-    where
-        r1_0.item_type=? 
-        and r1_0.item_id=?
-Hibernate: 
-    select
-        count(r1_0.id) 
-    from
-        reviews r1_0 
-    where
-        r1_0.item_type=? 
-        and r1_0.item_id=?
-Hibernate: 
-    select
-        r1_0.id,
-        r1_0.comment,
-        r1_0.created_at,
-        r1_0.item_id,
-        r1_0.item_type,
-        r1_0.rating,
-        r1_0.reviewer_id 
-    from
-        reviews r1_0 
-    where
-        r1_0.item_type=? 
-        and r1_0.item_id=? 
     order by
-        r1_0.created_at desc 
+        w1_0.created_at desc 
     limit
         ?
 Hibernate: 
@@ -5541,34 +1391,28 @@ Hibernate:
         u1_0.email=?
 Hibernate: 
     select
-        p1_0.id,
-        p1_0.address,
-        p1_0.amenities,
-        p1_0.area,
-        p1_0.available_rooms,
-        p1_0.created_at,
-        p1_0.deposit_amount,
-        p1_0.description,
-        p1_0.gender_preference,
-        p1_0.images,
-        p1_0.is_available,
-        p1_0.location_id,
-        p1_0.posted_by,
-        p1_0.price_per_month,
-        p1_0.status,
-        p1_0.title,
-        p1_0.total_rooms,
-        p1_0.type 
+        count(c1_0.id) 
     from
-        properties p1_0 
+        chats c1_0 
     where
-        p1_0.status=? 
-        and p1_0.is_available 
-        and p1_0.gender_preference=? 
-    order by
-        p1_0.created_at desc 
-    limit
-        ?, ?
+        c1_0.receiver_id=? 
+        and not(c1_0.is_read)
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
 Hibernate: 
     select
         u1_0.id,
@@ -5587,27 +1431,7 @@ Hibernate:
     from
         users u1_0 
     where
-        u1_0.id=?
-Hibernate: 
-    insert 
-    into
-        user_behaviors
-        (action, city_filter, item_id, item_type, search_query, `timestamp`, user_id) 
-    values
-        (?, ?, ?, ?, ?, ?, ?)
-Hibernate: 
-    select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
-    from
-        locations l1_0 
-    where
-        l1_0.id=?
+        u1_0.email=?
 Hibernate: 
     select
         u1_0.id,
@@ -5626,17 +1450,2026 @@ Hibernate:
     from
         users u1_0 
     where
-        u1_0.id=?
+        u1_0.email=?
 Hibernate: 
     select
-        l1_0.id,
-        l1_0.area,
-        l1_0.city,
-        l1_0.latitude,
-        l1_0.longitude,
-        l1_0.pincode,
-        l1_0.state 
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
     from
-        locations l1_0 
+        users u1_0 
     where
-        l1_0.id=?
+        u1_0.email=?
+Hibernate: 
+    select
+        count(c1_0.id) 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and not(c1_0.is_read)
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        count(c1_0.id) 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and not(c1_0.is_read)
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.city,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.is_verified,
+        u1_0.name,
+        u1_0.password_hash,
+        u1_0.phone,
+        u1_0.profile_pic,
+        u1_0.role,
+        u1_0.state 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.receiver_id 
+    from
+        chats c1_0 
+    where
+        c1_0.sender_id=? 
+        and c1_0.receiver_id<>?
+Hibernate: 
+    select
+        count(c1_0.id) 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and not(c1_0.is_read)
+Hibernate: 
+    select
+        c1_0.sender_id 
+    from
+        chats c1_0 
+    where
+        c1_0.receiver_id=? 
+        and c1_0.sender_id<>?
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:06 h
+[INFO] Finished at: 2026-10-14T18:39:23+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.3.5:run (default-cli) on project staymart: Process terminated with exit code: -1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

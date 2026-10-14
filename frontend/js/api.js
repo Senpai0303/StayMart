@@ -1,4 +1,9 @@
-const BASE_URL = 'http://localhost:8080/api';
+// Auto-detect local development vs cloud deployment
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const BASE_URL = isLocal
+  ? 'http://localhost:8080/api'
+  : (window.STAYMART_API_URL || localStorage.getItem('STAYMART_API_URL') || 'https://staymart.onrender.com/api');
+
 
 async function apiCall(endpoint, method = 'GET', body = null) {
   const headers = {
