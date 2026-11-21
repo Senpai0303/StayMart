@@ -3,7 +3,8 @@
 
 param(
     [switch]$SkipMySQL,
-    [switch]$Restart
+    [switch]$Restart,
+    [switch]$Wait
 )
 
 $ErrorActionPreference = 'Continue'
@@ -270,3 +271,8 @@ Write-Host '  API      : http://localhost:8080/api'
 Write-Host '  Swagger  : http://localhost:8080/swagger-ui.html'
 Write-Host '  ML       : http://localhost:5000/health'
 Write-Host '  Admin    : admin@staymart.com / Admin@123'
+
+if ($Wait) {
+    Write-Host '==> Services running in background daemon mode. Monitoring processes...'
+    while ($true) { Start-Sleep -Seconds 60 }
+}

@@ -8,7 +8,7 @@
   <meta http-equiv="Expires" content="0"/>
   <title>Register - StayMart</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>"/>
-  <link rel="stylesheet" href="css/global.css?v=4.1.0"/>
+  <link rel="stylesheet" href="css/global.css?v=4.2.0"/>
 </head>
 <body>
   <div class="auth-wrap">
@@ -61,16 +61,18 @@
         </div>
         <div class="input-group">
           <label for="password">Password</label>
-          <div class="input-with-icon">
+          <div class="input-with-icon" style="position:relative">
             <span class="field-icon">🔒</span>
-            <input id="password" type="password" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password"/>
+            <input id="password" type="password" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password" style="padding-right:42px"/>
+            <button type="button" id="togglePassBtn" aria-label="Show password" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;padding:4px;line-height:1">👁️</button>
           </div>
         </div>
         <div class="input-group">
           <label for="confirmPassword">Confirm password</label>
-          <div class="input-with-icon">
+          <div class="input-with-icon" style="position:relative">
             <span class="field-icon">🔒</span>
-            <input id="confirmPassword" type="password" placeholder="Re-enter password" required autocomplete="new-password"/>
+            <input id="confirmPassword" type="password" placeholder="Re-enter password" required autocomplete="new-password" style="padding-right:42px"/>
+            <button type="button" id="toggleConfirmPassBtn" aria-label="Show password" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;padding:4px;line-height:1">👁️</button>
           </div>
         </div>
         <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">Create Account</button>
@@ -80,9 +82,9 @@
     </div>
   </div>
 
-  <script src="js/api.js?v=4.1.0"></script>
-  <script src="js/auth.js?v=4.1.0"></script>
-  <script src="js/utils.js?v=4.1.0"></script>
-  <script src="js/register.js?v=4.1.0"></script>
+  <script src="js/api.js?v=4.2.0"></script>
+  <script src="js/auth.js?v=4.2.0"></script>
+  <script src="js/utils.js?v=4.2.0"></script>
+  <script src="js/register.js?v=4.2.0"></script>
 </body>
 </html>

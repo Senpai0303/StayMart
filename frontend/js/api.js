@@ -14,7 +14,8 @@ async function apiCall(endpoint, method = 'GET', body = null) {
     'Content-Type': 'application/json'
   };
   const token = localStorage.getItem('staymart_token');
-  if (token) {
+  const isAuthEndpoint = endpoint.includes('/auth/register') || endpoint.includes('/auth/login');
+  if (token && !isAuthEndpoint) {
     headers['Authorization'] = `Bearer ${token}`;
   }
   const config = { method, headers };
@@ -24,12 +25,33 @@ async function apiCall(endpoint, method = 'GET', body = null) {
   const cleanBase = (BASE_URL || '').replace(/\/+$/, '');
   const cleanPath = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
   const res = await fetch(cleanBase + cleanPath, config);
-  const data = await res.json();
-  if (!data || data.success === false) {
-    throw new Error((data && data.message) || 'Something went wrong');
+  
+  let data = null;
+  const contentType = res.headers.get('content-type') || '';
+  if (contentType.includes('application/json')) {
+    try {
+      data = await res.json();
+    } catch (parseErr) {
+      data = null;
+    }
   }
-  if (res.ok === false) {
-    throw new Error((data && data.message) || 'Something went wrong');
+
+  if (!data) {
+    let rawText = '';
+    try {
+      rawText = await res.text();
+    } catch (_) {}
+    if (!res.ok) {
+      throw new Error(rawText ? `Request failed (${res.status}): ${rawText.slice(0, 120)}` : `Server returned HTTP ${res.status}`);
+    }
+    return rawText;
+  }
+
+  if (data && data.success === false) {
+    throw new Error(data.message || 'Something went wrong');
+  }
+  if (!res.ok) {
+    throw new Error((data && data.message) || `Request failed with status ${res.status}`);
   }
   if (data && typeof data === 'object' && 'success' in data && 'data' in data) {
     return data.data;

@@ -30,8 +30,8 @@ def verify_report_pdf():
 
     reader = pypdf.PdfReader(PDF_PATH)
     total_pages = len(reader.pages)
-    print(f"[PASS] Total page count: {total_pages} (Requirement: > 100 pages)", flush=True)
-    assert total_pages >= 100, f"Expected >= 100 pages, got {total_pages}"
+    print(f"[PASS] Total page count: {total_pages} (Requirement: 80 pages)", flush=True)
+    assert total_pages == 80, f"Expected 80 pages, got {total_pages}"
 
     print(f"Pre-extracting text across all {total_pages} pages...", flush=True)
     all_texts = [p.extract_text() for p in reader.pages]
@@ -45,12 +45,13 @@ def verify_report_pdf():
 
     # 3. Check Cover Page (Page 1)
     p1_txt = all_texts[0]
+    p1_norm = " ".join(p1_txt.split())
     p1_lines = [l.strip() for l in p1_txt.split('\n') if l.strip()]
-    assert "STAYMART: AN INTELLIGENT ACCOMMODATION" in p1_txt, "Cover page missing title"
+    assert "STAYMART: SMART STUDENT HOUSING AND CAMPUS MARKETPLACE" in p1_norm, "Cover page missing title"
     assert "A PROJECT REPORT" in p1_txt, "Cover page missing 'A PROJECT REPORT'"
-    assert "BACHELOR OF TECHNOLOGY IN COMPUTER SCIENCE AND ENGINEERING" in p1_txt, "Cover page missing Degree"
-    assert "DIVYANSHU SINGH" in p1_txt, "Cover page missing Candidate"
-    assert "FACULTY MENTOR, SCHOOL OF COMPUTING" in p1_txt, "Cover page missing Mentor"
+    assert "BACHELOR OF COMPUTER APPLICATIONS" in p1_txt, "Cover page missing Degree"
+    assert "DIVYANSH JOSHI" in p1_txt and "GORAV KUMAR" in p1_txt, "Cover page missing Candidates"
+    assert "Ms. TABISH RAO" in p1_txt, "Cover page missing Mentor"
     assert "SCHOOL OF COMPUTING" in p1_txt, "Cover page missing School"
     assert "GRAPHIC ERA HILL UNIVERSITY" in p1_txt, "Cover page missing University"
     assert "NOVEMBER, 2026" in p1_txt, "Cover page missing Date"
@@ -59,10 +60,12 @@ def verify_report_pdf():
 
     # 4. Check Title Page (Page 2)
     p2_txt = all_texts[1]
+    p2_norm = " ".join(p2_txt.split())
     p2_lines = [l.strip() for l in p2_txt.split('\n') if l.strip()]
-    assert "STAYMART: AN INTELLIGENT ACCOMMODATION" in p2_txt, "Title page missing title"
+    assert "STAYMART: SMART STUDENT HOUSING AND CAMPUS MARKETPLACE" in p2_norm, "Title page missing title"
     assert "PROJECT REPORT" in p2_txt, "Title page missing 'PROJECT REPORT'"
-    assert "DIVYANSHU SINGH" in p2_txt, "Title page missing Candidate"
+    assert "DIVYANSH JOSHI" in p2_txt and "GORAV KUMAR" in p2_txt, "Title page missing Candidates"
+    assert "Ms. TABISH RAO" in p2_txt, "Title page missing Mentor"
     assert "School of Computing" in p2_txt, "Title page missing School"
     assert "NOVEMBER, 2026" in p2_txt, "Title page missing Date"
     assert p2_lines[-1] == "NOVEMBER, 2026", f"Title page does not end with Date; ends with: {p2_lines[-1]!r}"
@@ -73,9 +76,9 @@ def verify_report_pdf():
     p3_norm = " ".join(p3_txt.split())
     p3_lines = [l.strip() for l in p3_txt.split('\n') if l.strip()]
     assert "CANDIDATE" in p3_txt and "DECLARATION" in p3_txt, "Page 3 missing CANDIDATE'S DECLARATION"
-    assert "I hereby certify that the work which is being presented in the PROJECT REPORT entitled" in p3_norm, "Declaration missing verbatim certification opening"
-    assert "The matter presented in this Project Report has not been submitted by me for the award of any other degree of this or any other institution." in p3_norm, "Declaration missing verbatim non-submission statement"
-    assert "This is to certify that the above statement made by the candidate is correct to the best of my/our knowledge." in p3_norm, "Declaration missing verbatim mentor certification"
+    assert "We hereby certify that the work which is being presented in the PROJECT REPORT entitled" in p3_norm, "Declaration missing verbatim certification opening"
+    assert "The matter presented in this Project Report has not been submitted by us for the award of any other degree of this or any other institution." in p3_norm, "Declaration missing verbatim non-submission statement"
+    assert "This is to certify that the above statement made by the candidates is correct to the best of my/our knowledge." in p3_norm, "Declaration missing verbatim mentor certification"
     assert p3_lines[-1] == "i", f"Page 3 should be stamped with 'i', got: {p3_lines[-1]!r}"
     print("[PASS] Page 3: Candidate's Declaration matches verbatim Graphic Era Hill University wording with Roman numeral 'i'", flush=True)
 
@@ -141,10 +144,6 @@ def verify_report_pdf():
         ("Chapter 8", "CHAPTER 8"),
         ("Chapter 9", "CHAPTER 9"),
         ("References", "1. Adomavicius"),
-        ("Appendix A", "APPENDIX A:"),
-        ("Appendix B", "APPENDIX B:"),
-        ("Appendix C", "APPENDIX C:"),
-        ("Appendix D", "APPENDIX D:"),
     ]
 
     chapter_locations = {}

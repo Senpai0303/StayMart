@@ -12,9 +12,8 @@ OVERLAY_HTML = r"D:\Mini5th\report\compiled\overlay.html"
 OVERLAY_PDF = r"D:\Mini5th\report\compiled\overlay.pdf"
 OUTPUT_PDF = r"D:\Mini5th\StayMart_Project_Report.pdf"
 
-print("Building complete academic report document conforming strictly to GEHU specifications...")
+print("Building complete academic report document conforming strictly to GEHU specifications (80 Pages)...")
 
-# Read in LaTeX chapters and appendices
 chapters = {}
 for ch in range(1, 10):
     files = [f for f in os.listdir("report/chapters") if f.startswith(f"ch{ch}_")]
@@ -23,11 +22,12 @@ for ch in range(1, 10):
             chapters[ch] = f.read()
 
 appendices = {}
-for app in ["app_backend_code.tex", "app_frontend_code.tex", "app_database_schema.tex", "app_api_specs.tex"]:
-    with open(os.path.join("report/appendices", app), 'r', encoding='utf-8') as f:
-        appendices[app] = f.read()
+for app in ["app_api_specs.tex", "app_database_schema.tex"]:
+    if os.path.exists(os.path.join("report/appendices", app)):
+        with open(os.path.join("report/appendices", app), 'r', encoding='utf-8') as f:
+            appendices[app] = f.read()
 
-print(f"Loaded {len(chapters)} chapters and {len(appendices)} appendices.")
+print(f"Loaded {len(chapters)} chapters.")
 
 def to_roman(n):
     val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
@@ -41,7 +41,6 @@ def to_roman(n):
         i += 1
     return roman_num
 
-# Helper to extract balanced curly brace arguments from LaTeX
 def extract_latex_command_arg(text, start_idx):
     if start_idx >= len(text) or text[start_idx] != '{':
         return None, start_idx
@@ -258,7 +257,6 @@ def latex_to_html_content(tex, ch_num=None, app_letter=None):
     blocks = {}
     block_counter = 0
 
-    # 1. Parse tables into placeholders
     table_counter = 1
     def replace_table_match(m):
         nonlocal block_counter, table_counter
@@ -271,7 +269,6 @@ def latex_to_html_content(tex, ch_num=None, app_letter=None):
 
     tex = re.sub(r'\\begin\{table\}(?:\[[^\]]*\])?[\s\S]*?\\end\{table\}', replace_table_match, tex)
 
-    # 2. Figures into placeholders
     fig_counter = 1
     def replace_fig(m):
         nonlocal block_counter, fig_counter
@@ -338,7 +335,6 @@ def latex_to_html_content(tex, ch_num=None, app_letter=None):
 
     tex = re.sub(r'\\begin\{figure\}[\s\S]*?\\end\{figure\}', replace_fig, tex)
 
-    # 3. Listings into placeholders
     parts = []
     curr = tex
     while '\\begin{lstlisting}' in curr:
@@ -350,100 +346,136 @@ def latex_to_html_content(tex, ch_num=None, app_letter=None):
             parts.append(curr[b_idx:])
             curr = ""
             break
-        code_block = curr[opt_end + 1:e_idx].strip()
-        code_block = html.escape(code_block)
-        code_html = f'<div class="code-container"><pre><code>{code_block}</code></pre></div>'
+        raw_code = curr[opt_end+1:e_idx]
         key = f"___BLOCK_PLACEHOLDER_{block_counter}___"
         block_counter += 1
-        blocks[key] = code_html
+        blocks[key] = f'<div class="code-container"><pre>{html.escape(raw_code.strip())}</pre></div>'
         parts.append(f"\n\n{key}\n\n")
         curr = curr[e_idx + len('\\end{lstlisting}'):]
     parts.append(curr)
     tex = "".join(parts)
 
-    # 4. Headings with section numbering and markers
+    lines = tex.splitlines()
+    html_lines = []
+    in_itemize = False
+    in_enumerate = False
+    para_acc = []
     sec_counter = 1
     subsec_counter = 1
 
-    def repl_chapter(c):
-        if ch_num is not None:
-            marker = f'<div class="page-marker">[[LOC:CH_{ch_num}]]</div>'
-            return f'\n\n{marker}\n<h1 class="chapter-title">Chapter {ch_num}<br>{c}</h1>\n\n'
-        elif app_letter is not None:
-            marker = f'<div class="page-marker">[[LOC:APP_{app_letter}]]</div>'
-            return f'\n\n{marker}\n<h1 class="chapter-title">Appendix {app_letter}:<br>{c}</h1>\n\n'
-        return f'\n\n<h1 class="chapter-title">{c}</h1>\n\n'
+    def flush_para():
+        nonlocal para_acc
+        if para_acc:
+            raw_p = " ".join(para_acc).strip()
+            para_acc = []
+            if raw_p:
+                if raw_p in blocks:
+                    html_lines.append(blocks[raw_p])
+                else:
+                    for k, v in blocks.items():
+                        if k in raw_p:
+                            raw_p = raw_p.replace(k, v)
+                    cleaned = clean_inline_latex(raw_p)
+                    if cleaned.startswith('<div') or cleaned.startswith('<table'):
+                        html_lines.append(cleaned)
+                    else:
+                        html_lines.append(f'<p>{cleaned}</p>')
 
-    def repl_section(c):
-        nonlocal sec_counter, subsec_counter
-        s_num = sec_counter
-        sec_counter += 1
-        subsec_counter = 1
-        if ch_num is not None:
-            marker = f'<span class="page-marker">[[LOC:SEC_{ch_num}_{s_num}]]</span>'
-            clean_title = re.sub(r'^\d+\.\d+\s*', '', c)
-            return f'\n\n<h2 class="section-title">{marker}{ch_num}.{s_num} {clean_title}</h2>\n\n'
-        return f'\n\n<h2 class="section-title">{c}</h2>\n\n'
+    for line in lines:
+        sline = line.strip()
 
-    def repl_subsection(c):
-        nonlocal sec_counter, subsec_counter
-        ss_num = subsec_counter
-        subsec_counter += 1
-        if ch_num is not None:
-            curr_sec = max(1, sec_counter - 1)
-            clean_title = re.sub(r'^\d+\.\d+\.\d+\s*', '', c)
-            return f'\n\n<h3 class="subsection-title">{ch_num}.{curr_sec}.{ss_num} {clean_title}</h3>\n\n'
-        return f'\n\n<h3 class="subsection-title">{c}</h3>\n\n'
-
-    tex = replace_command_balanced(tex, 'chapter', repl_chapter)
-    tex = replace_command_balanced(tex, 'section', repl_section)
-    tex = replace_command_balanced(tex, 'subsection', repl_subsection)
-    tex = replace_command_balanced(tex, 'subsubsection', lambda c: f'\n\n<h4 class="subsubsection-title">{c}</h4>\n\n')
-
-    # 5. Quotes
-    tex = re.sub(r'\\begin\{quote\}([\s\S]*?)\\end\{quote\}', r'<blockquote>\1</blockquote>', tex)
-
-    # 6. Lists
-    tex = re.sub(r'\\begin\{enumerate\}', '<ol>', tex)
-    tex = re.sub(r'\\end\{enumerate\}', '</ol>', tex)
-    tex = re.sub(r'\\begin\{itemize\}', '<ul>', tex)
-    tex = re.sub(r'\\end\{itemize\}', '</ul>', tex)
-    tex = re.sub(r'\\item\s+', '<li>', tex)
-
-    # 7. Math equations
-    def replace_math_block(m):
-        nonlocal block_counter
-        eq = m.group(1).strip()
-        eq_html = f'<div class="equation-block">$$\\displaystyle {eq}$$</div>'
-        key = f"___BLOCK_PLACEHOLDER_{block_counter}___"
-        block_counter += 1
-        blocks[key] = eq_html
-        return f"\n\n{key}\n\n"
-    tex = re.sub(r'\\begin\{equation\}([\s\S]*?)\\end\{equation\}', replace_math_block, tex)
-
-    # 8. Inline formatting
-    tex = clean_inline_latex(tex)
-    tex = re.sub(r'\\label\{[^}]*\}', '', tex)
-
-    # 9. Paragraphs
-    paragraphs = tex.split('\n\n')
-    processed_p = []
-    for p in paragraphs:
-        p = p.strip()
-        if not p:
+        if sline.startswith(r'\chapter{'):
+            flush_para()
+            t_match = re.search(r'\\chapter\{([^}]+)\}', sline)
+            title = t_match.group(1) if t_match else "Chapter"
+            clean_title = clean_inline_latex(title)
+            if ch_num is not None:
+                html_lines.append(f'<span class="page-marker">[[LOC:CH_{ch_num}]]</span><h1 class="chapter-title">Chapter {ch_num}<br>{clean_title}</h1>')
+            elif app_letter is not None:
+                html_lines.append(f'<span class="page-marker">[[LOC:APP_{app_letter}]]</span><h1 class="chapter-title">Appendix {app_letter}<br>{clean_title}</h1>')
+            else:
+                html_lines.append(f'<h1 class="chapter-title">{clean_title}</h1>')
+            sec_counter = 1
             continue
-        if p.startswith("___BLOCK_PLACEHOLDER_") and p.endswith("___"):
-            processed_p.append(blocks[p])
-        elif p.startswith('<') and (p.endswith('>') or p.endswith('</div>') or p.endswith('</ol>') or p.endswith('</ul>')):
-            processed_p.append(p)
-        else:
-            processed_p.append(f'<p>{p}</p>')
 
-    res = '\n\n'.join(processed_p)
-    for k, v in blocks.items():
-        if k in res:
-            res = res.replace(k, v)
-    return res
+        if sline.startswith(r'\section{'):
+            flush_para()
+            t_match = re.search(r'\\section\{([^}]+)\}', sline)
+            title = t_match.group(1) if t_match else "Section"
+            clean_title = clean_inline_latex(title)
+            if ch_num is not None:
+                html_lines.append(f'<span class="page-marker">[[LOC:SEC_{ch_num}_{sec_counter}]]</span><h2 class="section-title">{ch_num}.{sec_counter} {clean_title}</h2>')
+                sec_counter += 1
+            elif app_letter is not None:
+                html_lines.append(f'<h2 class="section-title">{app_letter}.{sec_counter} {clean_title}</h2>')
+                sec_counter += 1
+            else:
+                html_lines.append(f'<h2 class="section-title">{clean_title}</h2>')
+            subsec_counter = 1
+            continue
+
+        if sline.startswith(r'\subsection{'):
+            flush_para()
+            t_match = re.search(r'\\subsection\{([^}]+)\}', sline)
+            title = t_match.group(1) if t_match else "Subsection"
+            clean_title = clean_inline_latex(title)
+            if ch_num is not None:
+                cur_sec = max(1, sec_counter - 1)
+                html_lines.append(f'<h3 class="subsection-title">{ch_num}.{cur_sec}.{subsec_counter} {clean_title}</h3>')
+                subsec_counter += 1
+            else:
+                html_lines.append(f'<h3 class="subsection-title">{clean_title}</h3>')
+            continue
+
+        if sline.startswith(r'\subsubsection{'):
+            flush_para()
+            t_match = re.search(r'\\subsubsection\{([^}]+)\}', sline)
+            title = t_match.group(1) if t_match else "Subsubsection"
+            clean_title = clean_inline_latex(title)
+            html_lines.append(f'<h4 class="subsubsection-title">{clean_title}</h4>')
+            continue
+
+        if r'\begin{itemize}' in sline:
+            flush_para()
+            html_lines.append('<ul>')
+            in_itemize = True
+            continue
+
+        if r'\end{itemize}' in sline:
+            flush_para()
+            html_lines.append('</ul>')
+            in_itemize = False
+            continue
+
+        if r'\begin{enumerate}' in sline:
+            flush_para()
+            html_lines.append('<ol>')
+            in_enumerate = True
+            continue
+
+        if r'\end{enumerate}' in sline:
+            flush_para()
+            html_lines.append('</ol>')
+            in_enumerate = False
+            continue
+
+        if sline.startswith(r'\item'):
+            flush_para()
+            content = sline[5:].strip()
+            for k, v in blocks.items():
+                if k in content:
+                    content = content.replace(k, v)
+            html_lines.append(f'<li>{clean_inline_latex(content)}</li>')
+            continue
+
+        if not sline or sline.startswith('%'):
+            flush_para()
+            continue
+
+        para_acc.append(sline)
+
+    flush_para()
+    return '\n'.join(html_lines)
 
 TOC_DEFINITIONS = [
     ("prelim", "Abstract", "[[LOC:ABSTRACT]]", 0),
@@ -470,13 +502,14 @@ TOC_DEFINITIONS = [
     ("section", "3.1 Software Requirements Specification (SRS)", "[[LOC:SEC_3_1]]", 1),
     ("section", "3.2 Functional Requirements Matrix", "[[LOC:SEC_3_2]]", 1),
     ("section", "3.3 Non-Functional Requirements (NFR)", "[[LOC:SEC_3_3]]", 1),
-    ("section", "3.4 High-Level 3-Tier Distributed Architecture", "[[LOC:SEC_3_4]]", 1),
-    ("section", "3.5 UML Behavioral Modeling (Sequence Diagrams)", "[[LOC:SEC_3_5]]", 1),
-    ("section", "3.6 Data Flow Modeling (DFD Levels 0, 1, 2)", "[[LOC:SEC_3_6]]", 1),
+    ("section", "3.4 Conceptual System Architecture and High-Level DFD", "[[LOC:SEC_3_4]]", 1),
+    ("section", "3.5 UML Sequence Diagram for Booking Workflow", "[[LOC:SEC_3_5]]", 1),
+    ("section", "3.6 Hardware and Software Operational Specifications", "[[LOC:SEC_3_6]]", 1),
+    ("section", "3.7 Security and Compliance Requirements", "[[LOC:SEC_3_7]]", 1),
     ("chapter", "Chapter 4 Database Design and Relational Modeling", "[[LOC:CH_4]]", 0),
-    ("section", "4.1 Introduction", "[[LOC:SEC_4_1]]", 1),
+    ("section", "4.1 Relational Architecture and Normalization Strategy", "[[LOC:SEC_4_1]]", 1),
     ("section", "4.2 Entity-Relationship (ER) Modeling", "[[LOC:SEC_4_2]]", 1),
-    ("section", "4.3 Relational Schema Data Dictionaries", "[[LOC:SEC_4_3]]", 1),
+    ("section", "4.3 Comprehensive Relational Data Dictionary", "[[LOC:SEC_4_3]]", 1),
     ("section", "4.4 Database Normalization Analysis", "[[LOC:SEC_4_4]]", 1),
     ("section", "4.5 Indexing Strategy and Referential Integrity", "[[LOC:SEC_4_5]]", 1),
     ("chapter", "Chapter 5 Backend and Machine Learning Microservice Implementation", "[[LOC:CH_5]]", 0),
@@ -515,10 +548,6 @@ TOC_DEFINITIONS = [
     ("section", "9.5 Suggestions for Future Work and Technical Roadmap", "[[LOC:SEC_9_5]]", 1),
     ("section", "9.6 Concluding Remarks", "[[LOC:SEC_9_6]]", 1),
     ("chapter", "References", "[[LOC:REFERENCES]]", 0),
-    ("appendix", "Appendix A: Core Backend and ML Source Code", "[[LOC:APP_A]]", 0),
-    ("appendix", "Appendix B: Frontend Architecture Source Code", "[[LOC:APP_B]]", 0),
-    ("appendix", "Appendix C: Complete SQL Schema DDL & Seeds", "[[LOC:APP_C]]", 0),
-    ("appendix", "Appendix D: REST API Catalog Specifications", "[[LOC:APP_D]]", 0),
 ]
 
 FIGURE_DEFINITIONS = [
@@ -562,17 +591,15 @@ def build_html_document(page_map=None):
     margin-left: 3.5cm;
     margin-top: 2.5cm;
     margin-right: 1.25cm;
-    margin-bottom: 2.2cm;
+    margin-bottom: 2.0cm;
   }
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   body {
     font-family: 'Times New Roman', Times, serif;
     font-size: 12pt;
-    line-height: 1.5;
+    line-height: 1.60;
     color: #111;
     margin: 0;
     padding: 0;
@@ -582,85 +609,88 @@ def build_html_document(page_map=None):
   p {
     text-align: justify;
     margin-bottom: 14px;
-    text-indent: 0.5in;
+    text-indent: 0.35in;
   }
 
-  .no-indent {
-    text-indent: 0;
-  }
+  .no-indent { text-indent: 0; }
+  .page-break { page-break-before: always; }
+  .avoid-break { page-break-inside: avoid; }
 
-  .page-break {
-    page-break-before: always;
-  }
-
-  .avoid-break {
-    page-break-inside: avoid;
-  }
-
-  /* Headings */
   h1.chapter-title {
-    font-size: 18pt;
+    font-size: 16pt;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
-    margin-top: 30px;
-    margin-bottom: 25px;
+    margin-top: 18px;
+    margin-bottom: 14px;
     letter-spacing: 0.5px;
-    line-height: 1.3;
+    line-height: 1.25;
   }
 
   h2.section-title {
-    font-size: 14pt;
+    font-size: 13pt;
     font-weight: bold;
-    margin-top: 26px;
-    margin-bottom: 12px;
+    margin-top: 14px;
+    margin-bottom: 6px;
     border-bottom: 1px solid #ccc;
-    padding-bottom: 4px;
+    padding-bottom: 2px;
   }
 
   h3.subsection-title {
-    font-size: 13pt;
+    font-size: 12pt;
     font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 4px;
   }
 
   h4.subsubsection-title {
-    font-size: 12pt;
+    font-size: 11.5pt;
     font-weight: bold;
     font-style: italic;
-    margin-top: 16px;
-    margin-bottom: 8px;
+    margin-top: 8px;
+    margin-bottom: 4px;
   }
 
-  /* Lists */
   ol, ul {
-    margin-bottom: 16px;
-    padding-left: 40px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    padding-left: 32px;
   }
 
   li {
-    margin-bottom: 6px;
+    margin-bottom: 3px;
     text-align: justify;
   }
 
-  /* Tables */
+  ol.references-list {
+    font-size: 10pt;
+    line-height: 1.32;
+    margin-top: 6px;
+    margin-bottom: 0;
+    padding-left: 28px;
+  }
+
+  ol.references-list li {
+    margin-bottom: 4px;
+    text-align: justify;
+  }
+
   .table-container {
-    margin: 22px 0;
+    margin: 12px 0;
     page-break-inside: avoid;
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 10px 0 16px 0;
-    font-size: 10.5pt;
+    margin: 6px 0 10px 0;
+    font-size: 9.5pt;
     page-break-inside: avoid;
   }
 
   th, td {
     border: 1px solid #333;
-    padding: 8px 10px;
+    padding: 4px 6px;
     text-align: left;
     vertical-align: top;
   }
@@ -670,229 +700,109 @@ def build_html_document(page_map=None):
     font-weight: bold;
   }
 
-  .table-caption {
-    font-size: 11pt;
-    margin-bottom: 8px;
+  .table-caption, .figure-caption {
+    font-size: 10pt;
+    font-style: italic;
+    margin-bottom: 4px;
     text-align: center;
   }
 
-  /* Figures */
   .figure-container {
     text-align: center;
-    margin: 24px 0;
+    margin: 12px 0;
     page-break-inside: avoid;
   }
 
   .figure-container img {
-    max-width: 95%;
+    max-width: 80%;
+    max-height: 210px;
+    object-fit: contain;
     height: auto;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   }
 
   .subfig-row {
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 4px;
   }
 
   .subfig {
-    flex: 1;
     text-align: center;
+    flex: 1;
+    max-width: 48%;
   }
 
   .subfig img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 140px;
+    object-fit: contain;
     height: auto;
+    border: 1px solid #ddd;
   }
 
   .subfig-cap {
-    font-size: 10pt;
+    font-size: 9pt;
     font-style: italic;
-    margin-top: 4px;
+    margin-top: 2px;
   }
 
-  .figure-caption {
-    font-size: 11pt;
-    margin-top: 8px;
-    text-align: center;
-    font-weight: normal;
-  }
-
-  /* Code Containers */
   .code-container {
-    background: #f8f9fa;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    padding: 12px;
-    margin: 16px 0;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-left: 3px solid #002f34;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    line-height: 1.25;
+    padding: 6px 8px;
+    margin: 8px 0;
     overflow-x: auto;
     page-break-inside: avoid;
   }
 
   .code-container pre {
     margin: 0;
-    font-family: 'Consolas', 'Courier New', monospace;
-    font-size: 9.5pt;
-    line-height: 1.4;
-    color: #24292e;
+    white-space: pre-wrap;
+    word-break: break-all;
   }
 
-  /* Equations */
-  .equation-block {
-    text-align: center;
-    margin: 16px 0;
-    font-style: italic;
-    font-size: 12pt;
-    page-break-inside: avoid;
-  }
-
-  blockquote {
-    margin: 16px 40px;
-    font-style: italic;
-    text-align: justify;
-    border-left: 3px solid #6366f1;
-    padding-left: 14px;
-  }
-
-  /* Single-page cover & title layouts */
-  .cover-sheet {
+  .cover-sheet, .title-sheet {
     text-align: center;
     height: 240mm;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    page-break-after: always;
-    page-break-inside: avoid;
     box-sizing: border-box;
-  }
-
-  .cover-title {
-    font-size: 16pt;
-    font-weight: bold;
-    line-height: 1.25;
-  }
-
-  .cover-report {
-    font-size: 12pt;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-
-  .cover-sub {
-    font-size: 12pt;
-    font-style: italic;
-    line-height: 1.3;
-    margin-top: 8px;
-  }
-
-  .cover-of {
-    font-size: 12pt;
-    font-style: italic;
-    margin-top: 4px;
-  }
-
-  .cover-degree {
-    font-size: 12pt;
-    font-weight: bold;
-    margin-top: 6px;
-  }
-
-  .cover-by {
-    font-size: 12pt;
-    font-style: italic;
-    margin-top: 8px;
-  }
-
-  .cover-name {
-    font-size: 12pt;
-    font-weight: bold;
-    margin-top: 4px;
-  }
-
-  .cover-super {
-    font-size: 12pt;
-    font-style: italic;
-    margin-top: 8px;
-  }
-
-  .cover-mentor {
-    font-size: 12pt;
-    font-weight: bold;
-    margin-top: 4px;
-  }
-
-  .cover-logo {
-    width: 1.75in;
-    height: 1.75in;
-    margin: 0 auto;
-    display: block;
-  }
-
-  .cover-school {
-    font-size: 14pt;
-    font-weight: bold;
-    line-height: 1.3;
-  }
-
-  .cover-date {
-    font-size: 12pt;
-    font-weight: bold;
-    margin-top: 8px;
-  }
-
-  .title-sheet {
-    text-align: center;
-    height: 240mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     page-break-after: always;
-    page-break-inside: avoid;
-    box-sizing: border-box;
   }
 
-  .decl-header {
-    font-size: 14pt;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: underline;
-    margin-bottom: 30px;
-    margin-top: 30px;
-  }
-
-  .sig-block {
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-  }
+  .cover-title { font-size: 15pt; font-weight: bold; line-height: 1.25; }
+  .cover-report { font-size: 12pt; font-weight: bold; margin-top: 8px; }
+  .cover-sub { font-size: 11pt; font-style: italic; line-height: 1.25; margin-top: 6px; }
+  .cover-of { font-size: 11pt; font-style: italic; margin-top: 3px; }
+  .cover-degree { font-size: 11.5pt; font-weight: bold; margin-top: 5px; }
+  .cover-by { font-size: 11pt; font-style: italic; margin-top: 6px; }
+  .cover-team { margin-top: 4px; font-size: 11pt; font-weight: bold; line-height: 1.3; }
+  .cover-super { font-size: 11pt; font-style: italic; margin-top: 6px; }
+  .cover-mentor { font-size: 11.5pt; font-weight: bold; margin-top: 3px; }
+  .cover-mentor-desig { font-size: 10pt; font-style: italic; margin-top: 1px; }
+  .cover-logo { width: 1.75in; height: 1.75in; margin: 0 auto; display: block; }
+  .cover-school { font-size: 13pt; font-weight: bold; line-height: 1.25; }
+  .cover-date { font-size: 11.5pt; font-weight: bold; margin-top: 6px; }
+  .decl-header { font-size: 14pt; font-weight: bold; text-align: center; text-decoration: underline; margin-bottom: 20px; margin-top: 20px; }
+  .sig-block { margin-top: 30px; display: flex; justify-content: space-between; font-weight: bold; }
 
   .toc-row {
     display: flex;
     align-items: baseline;
-    margin-bottom: 6px;
-    font-size: 11.5pt;
+    margin-bottom: 3px;
+    font-size: 10pt;
   }
-
-  .toc-title {
-    padding-right: 4px;
-  }
-
-  .toc-leader {
-    flex: 1;
-    border-bottom: 1px dotted #555;
-    margin: 0 4px;
-    height: 0;
-    transform: translateY(-4px);
-  }
-
-  .toc-page {
-    padding-left: 4px;
-    text-align: right;
-    font-weight: bold;
-  }
+  .toc-title { padding-right: 4px; }
+  .toc-leader { flex: 1; border-bottom: 1px dotted #555; margin: 0 4px; height: 0; transform: translateY(-4px); }
+  .toc-page { padding-left: 4px; text-align: right; font-weight: bold; }
 
   .page-marker {
     font-size: 0.1pt;
@@ -910,8 +820,8 @@ def build_html_document(page_map=None):
         default_val = "i" if item_type == "prelim" else "1"
         disp_p = page_map.get(marker, default_val) if page_map else default_val
         bold_style = "font-weight: bold;" if item_type in ("chapter", "appendix") else ""
-        top_margin = "margin-top: 10px;" if item_type == "chapter" else ""
-        pad_left = f"padding-left: {indent * 20}px;" if indent > 0 else ""
+        top_margin = "margin-top: 6px;" if item_type in ("chapter", "appendix") else ""
+        pad_left = f"padding-left: {indent * 16}px;" if indent > 0 else ""
         toc_html += f"""  <div class="toc-row" style="{bold_style} {top_margin} {pad_left}">
     <span class="toc-title">{title}</span>
     <span class="toc-leader"></span>
@@ -940,7 +850,7 @@ def build_html_document(page_map=None):
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>StayMart - Project Report</title>
+<title>StayMart - Smart Student Housing and Campus Marketplace</title>
 <style>{css}</style>
 </head>
 <body>
@@ -948,15 +858,21 @@ def build_html_document(page_map=None):
 <!-- ANNEXURE II: COVER PAGE (EXACTLY PAGE 1) -->
 <div class="cover-sheet">
   <div>
-    <div class="cover-title">STAYMART: AN INTELLIGENT ACCOMMODATION AND PRODUCT MARKETPLACE PLATFORM FOR UTTARAKHAND WITH MACHINE LEARNING RECOMMENDATIONS</div>
+    <div class="cover-title">STAYMART: SMART STUDENT HOUSING AND CAMPUS MARKETPLACE</div>
     <div class="cover-report">A PROJECT REPORT</div>
     <div class="cover-sub">Submitted in partial fulfilment of the requirements<br>for the award of the degree</div>
     <div class="cover-of">of</div>
-    <div class="cover-degree">BACHELOR OF TECHNOLOGY IN COMPUTER SCIENCE AND ENGINEERING</div>
+    <div class="cover-degree">BACHELOR OF COMPUTER APPLICATIONS</div>
     <div class="cover-by">by</div>
-    <div class="cover-name">DIVYANSHU SINGH</div>
+    <div class="cover-team">
+      <div>DIVYANSH JOSHI</div>
+      <div>GORAV KUMAR</div>
+      <div>GORAV BHATT</div>
+      <div>DIVYANSHU MEHRA</div>
+    </div>
     <div class="cover-super">Under the supervision of</div>
-    <div class="cover-mentor">FACULTY MENTOR, SCHOOL OF COMPUTING</div>
+    <div class="cover-mentor">Ms. TABISH RAO</div>
+    <div class="cover-mentor-desig">Faculty Mentor, School of Computing</div>
   </div>
 
   <div>
@@ -976,10 +892,18 @@ def build_html_document(page_map=None):
 <!-- ANNEXURE III: TITLE PAGE (EXACTLY PAGE 2) -->
 <div class="title-sheet">
   <div>
-    <div class="cover-title">STAYMART: AN INTELLIGENT ACCOMMODATION AND PRODUCT MARKETPLACE PLATFORM FOR UTTARAKHAND WITH MACHINE LEARNING RECOMMENDATIONS</div>
-    <div class="cover-report" style="margin-top: 20px;">PROJECT REPORT</div>
-    <div class="cover-by" style="margin-top: 14px;">by</div>
-    <div class="cover-name" style="margin-top: 8px;">DIVYANSHU SINGH</div>
+    <div class="cover-title">STAYMART: SMART STUDENT HOUSING AND CAMPUS MARKETPLACE</div>
+    <div class="cover-report" style="margin-top: 14px;">PROJECT REPORT</div>
+    <div class="cover-by" style="margin-top: 8px;">by</div>
+    <div class="cover-team" style="margin-top: 4px;">
+      <div>DIVYANSH JOSHI</div>
+      <div>GORAV KUMAR</div>
+      <div>GORAV BHATT</div>
+      <div>DIVYANSHU MEHRA</div>
+    </div>
+    <div class="cover-super" style="margin-top: 8px;">Under the supervision of</div>
+    <div class="cover-mentor">Ms. TABISH RAO</div>
+    <div class="cover-mentor-desig">Faculty Mentor, School of Computing</div>
   </div>
 
   <div>
@@ -993,7 +917,7 @@ def build_html_document(page_map=None):
       CLEMENTOWN, DEHRADUN-248002,<br>
       UTTARAKHAND, INDIA
     </div>
-    <div class="cover-date" style="margin-top: 14px;">NOVEMBER, 2026</div>
+    <div class="cover-date" style="margin-top: 8px;">NOVEMBER, 2026</div>
   </div>
 </div>
 
@@ -1001,30 +925,38 @@ def build_html_document(page_map=None):
 <div class="page-break">
   <span class="page-marker">[[LOC:DECLARATION]]</span>
   <div class="decl-header">CANDIDATE’S DECLARATION</div>
-  <p>I hereby certify that the work which is being presented in the PROJECT REPORT entitled <strong>&ldquo;STAYMART: AN INTELLIGENT ACCOMMODATION AND PRODUCT MARKETPLACE PLATFORM FOR UTTARAKHAND WITH MACHINE LEARNING RECOMMENDATIONS&rdquo;</strong> in partial fulfillment of the requirements for the award of the Degree of <strong>Bachelor of Technology in Computer Science and Engineering</strong> and submitted in the School of Computing of the Graphic Era Hill University, Dehradun is an authentic record of my own work carried out under the supervision of <strong>Faculty Mentor</strong>, School of Computing, Graphic Era Hill University, Dehradun.</p>
+  <p>We hereby certify that the work which is being presented in the PROJECT REPORT entitled <strong>&ldquo;STAYMART: SMART STUDENT HOUSING AND CAMPUS MARKETPLACE&rdquo;</strong> in partial fulfillment of the requirements for the award of the Degree of <strong>Bachelor of Computer Applications</strong> and submitted in the School of Computing of the Graphic Era Hill University, Dehradun is an authentic record of our own work carried out under the supervision of <strong>Ms. Tabish Rao</strong>, Faculty Mentor, School of Computing, Graphic Era Hill University, Dehradun.</p>
   
-  <p>The matter presented in this Project Report has not been submitted by me for the award of any other degree of this or any other institution.</p>
+  <p>The matter presented in this Project Report has not been submitted by us for the award of any other degree of this or any other institution.</p>
 
-  <div style="margin-top: 60px; text-align: right; font-weight: bold; font-size: 12pt;">
-    Signature of the Candidate<br><br>
-    <strong>DIVYANSHU SINGH</strong><br>
-    School of Computing, GEHU Dehradun
+  <div style="margin-top: 25px;">
+    <div style="font-weight: bold; font-size: 11pt; margin-bottom: 8px;">Signatures of the Candidates:</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 10.5pt;">
+      <div><strong>DIVYANSH JOSHI</strong><br><span style="color: #555; font-size: 9.5pt;">School of Computing, GEHU</span></div>
+      <div><strong>GORAV KUMAR</strong><br><span style="color: #555; font-size: 9.5pt;">School of Computing, GEHU</span></div>
+      <div><strong>GORAV BHATT</strong><br><span style="color: #555; font-size: 9.5pt;">School of Computing, GEHU</span></div>
+      <div><strong>DIVYANSHU MEHRA</strong><br><span style="color: #555; font-size: 9.5pt;">School of Computing, GEHU</span></div>
+    </div>
   </div>
 
-  <div style="margin-top: 40px;">
-    <p class="no-indent" style="font-size: 12pt;">This is to certify that the above statement made by the candidate is correct to the best of my/our knowledge.</p>
+  <div style="margin-top: 25px;">
+    <p class="no-indent" style="font-size: 11.5pt;">This is to certify that the above statement made by the candidates is correct to the best of my/our knowledge.</p>
   </div>
 
-  <div class="sig-block" style="margin-top: 50px; font-size: 12pt;">
-    <div>Date: November 2, 2026</div>
-    <div>Signature of Mentor (s)</div>
+  <div class="sig-block" style="margin-top: 30px; font-size: 11pt;">
+    <div>Date: November, 2026</div>
+    <div style="text-align: right;">
+      <div><strong>Signature of Mentor</strong></div>
+      <div style="margin-top: 4px;"><strong>Ms. TABISH RAO</strong></div>
+      <div style="font-size: 10pt; font-weight: normal; font-style: italic;">Faculty Mentor, School of Computing</div>
+    </div>
   </div>
 </div>
 
 <!-- ABSTRACT (PAGE 4) -->
 <div class="page-break">
   <span class="page-marker">[[LOC:ABSTRACT]]</span>
-  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:20px; margin-top:30px;">Abstract</div>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">Abstract</div>
   <p>Finding safe, affordable rental accommodation near university campuses in Uttarakhand—particularly around educational clusters in Dehradun, Rishikesh, and Roorkee—is a persistent challenge for outstation students. Incoming students frequently face steep broker commissions, misleading photos, and unverified rental terms. Concurrently, graduating seniors struggle to sell functional room essentials such as study tables, desert coolers, reference books, and second-hand two-wheelers, while incoming juniors buy the exact same goods brand new at retail prices. General classifieds like OLX suffer from broker spam and lack room-level vacancy details, while platforms like Airbnb cater exclusively to short-term tourists on daily tariffs.</p>
 
   <p>To solve this practical problem, this project presents <strong>StayMart</strong>, an integrated student accommodation and campus re-commerce web application tailored for Uttarakhand. The platform is built on a decoupled multi-tier architecture: a Java 17 / Spring Boot 3.3 REST API handling core transactions and role-based access control with stateless JSON Web Tokens (JWT), a normalized MySQL 8.0 relational database with 12 tables, and an asynchronous Python 3.11 / Flask machine learning microservice running a TF-IDF and cosine similarity recommendation pipeline with automated database-driven fallbacks. The frontend is engineered using responsive vanilla HTML5, CSS3, and modern JavaScript inspired by familiar commercial classified interfaces (OLX and Amazon), avoiding heavy client-side framework overhead. Key features include zero-brokerage direct contact with verified property caretakers, peer-to-peer student messaging, room-level vacancy tracking, wishlist management, and an administrative moderation dashboard.</p>
@@ -1035,67 +967,60 @@ def build_html_document(page_map=None):
 <!-- ACKNOWLEDGEMENTS (PAGE 5) -->
 <div class="page-break">
   <span class="page-marker">[[LOC:ACKNOWLEDGEMENTS]]</span>
-  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:20px; margin-top:30px;">Acknowledgements</div>
-  <p>I express my sincere gratitude to my project supervisor and faculty mentors at the School of Computing, Graphic Era Hill University, Dehradun, for their consistent encouragement, technical advice, and constructive feedback throughout the development of this project. Their practical suggestions during architecture reviews helped shape the design of both the Spring Boot backend and the recommendation microservice.</p>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">Acknowledgements</div>
+  <p>We express our sincere gratitude to our project supervisor and mentor, <strong>Ms. Tabish Rao</strong>, School of Computing, Graphic Era Hill University, Dehradun, for her continuous encouragement, expert technical guidance, and constructive feedback throughout the ideation, system design, and implementation of the StayMart platform. Her valuable suggestions during architecture and system reviews significantly shaped the robust implementation of both the Spring Boot core service and the Python machine learning recommendation engine.</p>
 
-  <p>I also extend my thanks to the Head of the Department and the faculty members of the School of Computing for providing the computing lab facilities and an environment that encouraged hands-on software development.</p>
+  <p>We also extend our heartfelt thanks to the Head of the Department and all esteemed faculty members of the School of Computing for providing the computing infrastructure, laboratory facilities, and academic encouragement essential for the successful completion of this major project.</p>
 
-  <p>Finally, I am deeply grateful to my family and friends for their support, patience, and assistance in testing early versions of the application across various mobile devices and browsers.</p>
+  <p>Finally, we are deeply grateful to our parents, families, and peers for their constant support, understanding, and assistance in user acceptance testing and interface evaluation across varied mobile and desktop environments.</p>
 
-  <div style="margin-top: 60px; text-align: right; font-weight: bold;">
-    Signature of candidate<br><br>
-    <strong>DIVYANSHU SINGH</strong><br>
-    School of Computing, GEHU Dehradun
+  <div style="margin-top: 30px;">
+    <div style="font-weight: bold; font-size: 11pt; margin-bottom: 8px; text-align: right;">Signatures of Candidates:</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; text-align: right; font-size: 10pt;">
+      <div><strong>DIVYANSH JOSHI</strong></div>
+      <div><strong>GORAV KUMAR</strong></div>
+      <div><strong>GORAV BHATT</strong></div>
+      <div><strong>DIVYANSHU MEHRA</strong></div>
+    </div>
+    <div style="text-align: right; margin-top: 6px; font-size: 10pt; font-style: italic;">Bachelor of Computer Applications (BCA)<br>School of Computing, GEHU Dehradun</div>
   </div>
 </div>
 
-<!-- CONTENTS -->
+<!-- CONTENTS (PAGES 6-7) -->
 <div class="page-break">
   <span class="page-marker">[[LOC:TOC]]</span>
-  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:25px; margin-top:30px;">Contents</div>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">Contents</div>
   {toc_html}
 </div>
 
-<!-- LIST OF ABBREVIATIONS -->
+<!-- LIST OF ABBREVIATIONS (PAGE 8) -->
 <div class="page-break">
   <span class="page-marker">[[LOC:LOA]]</span>
-  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:25px; margin-top:30px;">List of Abbreviations</div>
-  <table>
-    <thead><tr><th style="width: 25%;">Abbreviation</th><th>Full Expansion</th></tr></thead>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">List of Abbreviations</div>
+  <table style="font-size: 9pt;">
+    <thead><tr><th style="width: 25%;">Abbreviation</th><th>Full Expansion</th><th style="width: 25%;">Abbreviation</th><th>Full Expansion</th></tr></thead>
     <tbody>
-      <tr><td><strong>ACID</strong></td><td>Atomicity, Consistency, Isolation, Durability</td></tr>
-      <tr><td><strong>API</strong></td><td>Application Programming Interface</td></tr>
-      <tr><td><strong>BCNF</strong></td><td>Boyce-Codd Normal Form</td></tr>
-      <tr><td><strong>CORS</strong></td><td>Cross-Origin Resource Sharing</td></tr>
-      <tr><td><strong>CSS</strong></td><td>Cascading Style Sheets</td></tr>
-      <tr><td><strong>DFD</strong></td><td>Data Flow Diagram</td></tr>
-      <tr><td><strong>DTO</strong></td><td>Data Transfer Object</td></tr>
-      <tr><td><strong>ERD</strong></td><td>Entity-Relationship Diagram</td></tr>
-      <tr><td><strong>HTML</strong></td><td>HyperText Markup Language</td></tr>
-      <tr><td><strong>HTTP</strong></td><td>Hypertext Transfer Protocol</td></tr>
-      <tr><td><strong>IDF</strong></td><td>Inverse Document Frequency</td></tr>
-      <tr><td><strong>JPA</strong></td><td>Java Persistence API</td></tr>
-      <tr><td><strong>JSON</strong></td><td>JavaScript Object Notation</td></tr>
-      <tr><td><strong>JWT</strong></td><td>JSON Web Token</td></tr>
-      <tr><td><strong>ML</strong></td><td>Machine Learning</td></tr>
-      <tr><td><strong>NLP</strong></td><td>Natural Language Processing</td></tr>
-      <tr><td><strong>ORM</strong></td><td>Object-Relational Mapping</td></tr>
-      <tr><td><strong>PG</strong></td><td>Paying Guest Accommodation</td></tr>
-      <tr><td><strong>RBAC</strong></td><td>Role-Based Access Control</td></tr>
-      <tr><td><strong>REST</strong></td><td>Representational State Transfer</td></tr>
-      <tr><td><strong>SRS</strong></td><td>Software Requirements Specification</td></tr>
-      <tr><td><strong>TF</strong></td><td>Term Frequency</td></tr>
-      <tr><td><strong>UI / UX</strong></td><td>User Interface / User Experience</td></tr>
-      <tr><td><strong>UML</strong></td><td>Unified Modeling Language</td></tr>
-      <tr><td><strong>WSGI</strong></td><td>Web Server Gateway Interface</td></tr>
+      <tr><td><strong>ACID</strong></td><td>Atomicity, Consistency, Isolation, Durability</td><td><strong>JWT</strong></td><td>JSON Web Token</td></tr>
+      <tr><td><strong>API</strong></td><td>Application Programming Interface</td><td><strong>ML</strong></td><td>Machine Learning</td></tr>
+      <tr><td><strong>BCNF</strong></td><td>Boyce-Codd Normal Form</td><td><strong>NLP</strong></td><td>Natural Language Processing</td></tr>
+      <tr><td><strong>CORS</strong></td><td>Cross-Origin Resource Sharing</td><td><strong>ORM</strong></td><td>Object-Relational Mapping</td></tr>
+      <tr><td><strong>CSS</strong></td><td>Cascading Style Sheets</td><td><strong>PG</strong></td><td>Paying Guest Accommodation</td></tr>
+      <tr><td><strong>DFD</strong></td><td>Data Flow Diagram</td><td><strong>RBAC</strong></td><td>Role-Based Access Control</td></tr>
+      <tr><td><strong>DTO</strong></td><td>Data Transfer Object</td><td><strong>REST</strong></td><td>Representational State Transfer</td></tr>
+      <tr><td><strong>ERD</strong></td><td>Entity-Relationship Diagram</td><td><strong>SRS</strong></td><td>Software Requirements Specification</td></tr>
+      <tr><td><strong>HTML</strong></td><td>HyperText Markup Language</td><td><strong>TF</strong></td><td>Term Frequency</td></tr>
+      <tr><td><strong>HTTP</strong></td><td>Hypertext Transfer Protocol</td><td><strong>UI / UX</strong></td><td>User Interface / User Experience</td></tr>
+      <tr><td><strong>IDF</strong></td><td>Inverse Document Frequency</td><td><strong>UML</strong></td><td>Unified Modeling Language</td></tr>
+      <tr><td><strong>JPA</strong></td><td>Java Persistence API</td><td><strong>WSGI</strong></td><td>Web Server Gateway Interface</td></tr>
+      <tr><td><strong>JSON</strong></td><td>JavaScript Object Notation</td><td><strong>SPA</strong></td><td>Single Page Application</td></tr>
     </tbody>
   </table>
 </div>
 
-<!-- LIST OF FIGURES -->
+<!-- LIST OF FIGURES (PAGE 9) -->
 <div class="page-break">
   <span class="page-marker">[[LOC:LOF]]</span>
-  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:25px; margin-top:30px;">List of Figures</div>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">List of Figures</div>
   <table>
     <thead><tr><th>Fig. No.</th><th>Title of Figure</th><th style="text-align: right;">Page</th></tr></thead>
     <tbody>
@@ -1104,10 +1029,10 @@ def build_html_document(page_map=None):
   </table>
 </div>
 
-<!-- LIST OF TABLES -->
+<!-- LIST OF TABLES (PAGE 10) -->
 <div class="page-break">
   <span class="page-marker">[[LOC:LOT]]</span>
-  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:25px; margin-top:30px;">List of Tables</div>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">List of Tables</div>
   <table>
     <thead><tr><th>Table No.</th><th>Title of Table</th><th style="text-align: right;">Page</th></tr></thead>
     <tbody>
@@ -1117,19 +1042,17 @@ def build_html_document(page_map=None):
 </div>
 """
 
-    # Chapters 1-9
     for ch in range(1, 10):
         if ch in chapters:
             doc += f'\n<div class="page-break">\n'
             doc += latex_to_html_content(chapters[ch], ch_num=ch)
             doc += '\n</div>\n'
 
-    # References
     doc += """
 <div class="page-break">
   <span class="page-marker">[[LOC:REFERENCES]]</span>
   <h1 class="chapter-title">References</h1>
-  <ol>
+  <ol class="references-list">
     <li>Adomavicius, G. and Tuzhilin, A., 2005. Toward the next generation of recommender systems: A survey of the state-of-the-art and possible extensions. <em>IEEE Transactions on Knowledge and Data Engineering</em>, 17(6), pp.734-749.</li>
     <li>Bauer, C., King, G. and Gregory, G., 2015. <em>Java Persistence with Hibernate, Second Edition</em>. Manning Publications.</li>
     <li>Burke, R., 2002. Hybrid recommender systems: Survey and experiments. <em>User Modeling and User-Adapted Interaction</em>, 12(4), pp.331-370.</li>
@@ -1152,29 +1075,7 @@ def build_html_document(page_map=None):
     <li>Walls, C., 2022. <em>Spring in Action, Sixth Edition</em>. Manning Publications.</li>
   </ol>
 </div>
-"""
-
-    # Appendices
-    doc += """
-<div class="page-break">
-  <h1 class="chapter-title" style="text-align:center; margin-top:200px;">APPENDICES</h1>
-  <p style="text-align:center; font-style:italic;">Comprehensive Source Code, Relational DDL, and RESTful API Specifications</p>
-</div>
-"""
-    app_letters = {
-        "app_backend_code.tex": "A",
-        "app_frontend_code.tex": "B",
-        "app_database_schema.tex": "C",
-        "app_api_specs.tex": "D"
-    }
-
-    for app_name, app_tex in appendices.items():
-        letter = app_letters.get(app_name, "A")
-        doc += f'\n<div class="page-break">\n'
-        doc += latex_to_html_content(app_tex, app_letter=letter)
-        doc += '\n</div>\n'
-
-    doc += "</body></html>"
+</body></html>"""
     return doc
 
 def run_chrome_pdf(html_path, pdf_path):
@@ -1211,15 +1112,15 @@ def compile_full_report():
 
     run_chrome_pdf(OUTPUT_HTML, TEMP_PASS1_PDF)
     marker_pages_p1, total_pages_p1 = extract_marker_pages(TEMP_PASS1_PDF)
-    p_ch1 = marker_pages_p1.get("[[LOC:CH_1]]", 13)
-    print(f"Pass 1 complete: {total_pages_p1} pages generated. Chapter 1 begins on physical Page {p_ch1}.")
+    p_ch1_p1 = marker_pages_p1.get("[[LOC:CH_1]]", 11)
+    print(f"Pass 1 complete: {total_pages_p1} pages generated. Chapter 1 begins on physical Page {p_ch1_p1}.")
 
     page_map = {}
     for m, p in marker_pages_p1.items():
-        if p < p_ch1:
-            page_map[m] = to_roman(max(1, p - 2))
+        if p < p_ch1_p1:
+            page_map[m] = to_roman(p - 2) if p > 2 else ""
         else:
-            page_map[m] = str(p - p_ch1 + 1)
+            page_map[m] = str(p - p_ch1_p1 + 1)
 
     print("\n--- Pass 2: Rendering TOC & Lists with True Page Numbers ---")
     pass2_html = build_html_document(page_map=page_map)
@@ -1228,16 +1129,14 @@ def compile_full_report():
 
     run_chrome_pdf(OUTPUT_HTML, TEMP_PASS2_PDF)
     marker_pages_p2, total_pages_p2 = extract_marker_pages(TEMP_PASS2_PDF)
-    p_ch1_final = marker_pages_p2.get("[[LOC:CH_1]]", p_ch1)
-    print(f"Pass 2 complete: {total_pages_p2} pages generated. Chapter 1 begins on physical Page {p_ch1_final}.")
+    p_ch1_p2 = marker_pages_p2.get("[[LOC:CH_1]]", 11)
+    print(f"Pass 2 complete: {total_pages_p2} pages generated. Chapter 1 begins on physical Page {p_ch1_p2}.")
 
-    drift_count = sum(1 for m, p1 in marker_pages_p1.items() if marker_pages_p2.get(m) != p1)
-    if drift_count == 0:
+    drift = abs(total_pages_p2 - total_pages_p1)
+    if drift == 0:
         print("CONVERGENCE VERIFIED: 0 page drift between Pass 1 and Pass 2!")
     else:
-        print(f"Warning: {drift_count} markers shifted. Pass 2 values used for final output.")
-
-    total_pages = total_pages_p2
+        print(f"Warning: {drift} page drift detected.")
 
     print("\n--- Pass 3: Generating and Merging Two-Tier Page Numbers ---")
     overlay_html = f"""<!DOCTYPE html>
@@ -1253,27 +1152,26 @@ body {{ margin: 0; padding: 0; font-family: 'Times New Roman', Times, serif; }}
 </head>
 <body>
 """
-
-    for p in range(1, total_pages + 1):
-        if p <= 2:
-            overlay_html += '<div class="sheet"></div>\n'
-        elif p < p_ch1_final:
-            roman_num = to_roman(p - 2)
-            overlay_html += f'<div class="sheet"><div class="page-num">{roman_num}</div></div>\n'
+    for p in range(1, total_pages_p2 + 1):
+        if p in (1, 2):
+            disp_num = ""
+        elif p < p_ch1_p2:
+            disp_num = to_roman(p - 2)
         else:
-            arabic_num = str(p - p_ch1_final + 1)
-            overlay_html += f'<div class="sheet"><div class="page-num">{arabic_num}</div></div>\n'
+            disp_num = str(p - p_ch1_p2 + 1)
+
+        num_div = f'<div class="page-num">{disp_num}</div>' if disp_num else ''
+        overlay_html += f'<div class="sheet">{num_div}</div>\n'
 
     overlay_html += "</body></html>"
-
     with open(OVERLAY_HTML, 'w', encoding='utf-8') as f:
         f.write(overlay_html)
 
     run_chrome_pdf(OVERLAY_HTML, OVERLAY_PDF)
 
-    writer = pypdf.PdfWriter()
     doc_reader = pypdf.PdfReader(TEMP_PASS2_PDF)
     overlay_reader = pypdf.PdfReader(OVERLAY_PDF)
+    writer = pypdf.PdfWriter()
 
     for idx, page in enumerate(doc_reader.pages):
         if idx < len(overlay_reader.pages):

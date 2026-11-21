@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-11-21T03:31:57Z",
+  "timestamp": "2026-11-22T11:14:36Z",
   "total_tests": 106,
   "passed_tests": 106,
   "failed_tests": 0,
-  "elapsed_seconds": 6.576,
+  "elapsed_seconds": 7.696,
   "live_backend_online": true,
   "live_ml_online": true,
   "verdict": "PASS",
@@ -543,9 +543,9 @@
       "category": "resilience_logic"
     },
     {
-      "name": "Model file property_tfidf.pkl exists and meets size threshold (55789 bytes >= 40000)",
+      "name": "Model file property_tfidf.pkl exists and meets size threshold (55783 bytes >= 40000)",
       "passed": true,
-      "message": "Actual size: 55789 bytes",
+      "message": "Actual size: 55783 bytes",
       "category": "model_integrity"
     },
     {
@@ -555,15 +555,15 @@
       "category": "model_integrity"
     },
     {
-      "name": "Model file product_tfidf.pkl exists and meets size threshold (131764 bytes >= 80000)",
+      "name": "Model file product_tfidf.pkl exists and meets size threshold (176192 bytes >= 80000)",
       "passed": true,
-      "message": "Actual size: 131764 bytes",
+      "message": "Actual size: 176192 bytes",
       "category": "model_integrity"
     },
     {
       "name": "Model product_tfidf.pkl unpickles valid TF-IDF vectorizer and similarity matrix",
       "passed": true,
-      "message": "Matrix shape: (24, 2159), IDs count: 24",
+      "message": "Matrix shape: (36, 2774), IDs count: 36",
       "category": "model_integrity"
     },
     {

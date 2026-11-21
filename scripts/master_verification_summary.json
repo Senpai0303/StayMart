@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-21T03:31:57Z",
+  "timestamp": "2026-11-22T11:14:36Z",
   "overall_verdict": "PASS",
   "total_suites": 7,
   "suites_passed": 7,
@@ -7,7 +7,7 @@
   "total_tests_run": 292,
   "total_tests_passed": 292,
   "total_tests_failed": 0,
-  "total_duration_seconds": 97.66,
+  "total_duration_seconds": 99.93,
   "suites": [
     {
       "index": 1,
@@ -16,7 +16,7 @@
       "tests_run": 13,
       "passed": 13,
       "failed": 0,
-      "duration_seconds": 8.34,
+      "duration_seconds": 10.52,
       "return_code": 0,
       "status": "PASS"
     },
@@ -27,7 +27,7 @@
       "tests_run": 30,
       "passed": 30,
       "failed": 0,
-      "duration_seconds": 43.15,
+      "duration_seconds": 49.15,
       "return_code": 0,
       "status": "PASS"
     },
@@ -38,7 +38,7 @@
       "tests_run": 8,
       "passed": 8,
       "failed": 0,
-      "duration_seconds": 8.03,
+      "duration_seconds": 8.08,
       "return_code": 0,
       "status": "PASS"
     },
@@ -49,7 +49,7 @@
       "tests_run": 87,
       "passed": 87,
       "failed": 0,
-      "duration_seconds": 0.6,
+      "duration_seconds": 1.04,
       "return_code": 0,
       "status": "PASS"
     },
@@ -60,7 +60,7 @@
       "tests_run": 47,
       "passed": 47,
       "failed": 0,
-      "duration_seconds": 0.06,
+      "duration_seconds": 0.16,
       "return_code": 0,
       "status": "PASS"
     },
@@ -71,7 +71,7 @@
       "tests_run": 1,
       "passed": 1,
       "failed": 0,
-      "duration_seconds": 30.72,
+      "duration_seconds": 23.07,
       "return_code": 0,
       "status": "PASS"
     },
@@ -82,7 +82,7 @@
       "tests_run": 106,
       "passed": 106,
       "failed": 0,
-      "duration_seconds": 6.75,
+      "duration_seconds": 7.91,
       "return_code": 0,
       "status": "PASS"
     }

@@ -201,7 +201,7 @@ INSERT INTO products
 (17, 2, 11, 'Prestige 1600W Induction Cooktop + Non-Stick Frying Pan & Pot',
  'Allowed in student PGs where LPG cylinders are restricted. Push-button Indian menu presets (milk, boil, fry, chapati). Includes non-stick frying pan and stainless steel boiling pot with glass lid.',
  1500.00, 'SELL', 'GOOD', 'Prestige', 6, 'Ballupur',
- '["https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 40, DATE_SUB(NOW(), INTERVAL 3 DAY)),
+ '["https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 40, DATE_SUB(NOW(), INTERVAL 3 DAY)),
 
 -- Vehicles (category 12)
 (18, 3, 12, 'Honda Activa 6G (2021, UK-07 Passing) - Senior Moving Out',
@@ -214,10 +214,10 @@ INSERT INTO products
  95000.00, 'SELL', 'GOOD', 'Royal Enfield', 2, 'Clock Tower',
  '["https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 480, DATE_SUB(NOW(), INTERVAL 5 DAY)),
 
-(20, 5, 12, 'Hero Sprint Pro 21-Speed Geared Mountain Bicycle with Number Lock',
- '21-speed Shimano derailleur and shifters, front telescopic suspension, and dual disc brakes. Saves daily auto fare between Clement Town and Graphic Era campus. Includes sturdy combination cable lock.',
- 4500.00, 'SELL', 'GOOD', 'Hero', 4, 'Patel Nagar',
- '["https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 220, DATE_SUB(NOW(), INTERVAL 10 DAY)),
+(20, 5, 12, 'Bajaj Pulsar 150 Twin Disc (2020 BS6) - Black & Neon Red',
+ 'Fast, reliable campus bike with twin disc brakes, tubeless MRF tyres, and 45-48 kmpl mileage. Single hand used for commute between ISBT and Graphic Era campus. All papers complete.',
+ 59000.00, 'SELL', 'GOOD', 'Bajaj', 4, 'Patel Nagar',
+ '["https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 220, DATE_SUB(NOW(), INTERVAL 10 DAY)),
 
 -- Sports & Study Essentials (category 13)
 (21, 2, 13, 'Yonex Nanoray 18i Carbon Graphite Racket + Shuttles Tube',
@@ -225,10 +225,10 @@ INSERT INTO products
  2200.00, 'RENT', 'GOOD', 'Yonex', 6, 'Ballupur',
  '["https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1613918108466-292b78a8ef95?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 65, DATE_SUB(NOW(), INTERVAL 4 DAY)),
 
-(22, 3, 13, 'First-Year Engineering Drawing (ED) Complete Kit + White Lab Apron',
- 'Essential first-year kit: Omega mini-drafter with carry pouch, imperial drawing board, sheet container tube, set squares, roller scale, French curves, and size 38 white cotton chemistry lab coat.',
- 1200.00, 'SELL', 'GOOD', 'Omega', 5, 'Kaonli',
- '["https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 80, DATE_SUB(NOW(), INTERVAL 12 DAY)),
+(22, 3, 13, 'SS Ton Matrix Full Cricket Kit (English Willow Bat + Gear)',
+ 'Grade 1 English willow cricket bat (1180g), SS test batting pads, leather gloves, thigh guard, helmet, and kit bag. Used for university inter-college tournament. In solid condition.',
+ 4200.00, 'SELL', 'GOOD', 'SS Ton', 5, 'Kaonli',
+ '["https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 80, DATE_SUB(NOW(), INTERVAL 12 DAY)),
 
 -- Fashion (category 15)
 (23, 4, 15, 'Levis Original Trucker Denim Jacket (Size L) - Dark Indigo Blue',
@@ -240,4 +240,65 @@ INSERT INTO products
 (24, 5, 16, 'Collapsible 4-Tier Portable Clothes Wardrobe with Dust Cover',
  'Powder-coated steel pipe frame with zipped dustproof fabric cover and 4 tier fabric shelves. Assembles in 10 minutes without tools. Holds 25+ shirts and jackets. Folds flat to carry on a scooty.',
  950.00, 'SELL', 'GOOD', NULL, 5, 'Kaonli',
- '["https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 85, DATE_SUB(NOW(), INTERVAL 7 DAY));
+ '["https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 85, DATE_SUB(NOW(), INTERVAL 7 DAY)),
+
+-- Newly added verified student items (Senior Passing Out Re-Commerce)
+(25, 2, 11, 'Symphony Diet 3D 30i Personal Tower Air Cooler (Honeycomb / 4 Castor Wheels)',
+ '30-litre compact tower air cooler with 3D honeycomb cooling pads, low power consumption (145W) that runs smoothly on student PG inverters. Easy to move between study desk and bed on smooth castor wheels. Graduating senior passing out.',
+ 3200.00, 'SELL', 'GOOD', 'Symphony', 3, 'ISBT',
+ '["https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 85, DATE_SUB(NOW(), INTERVAL 2 DAY)),
+
+(26, 2, 11, 'Prestige PIC 20 1200W Induction Cooktop + Stainless Steel Tea & Maggi Pan',
+ 'Essential for student hostel & PG rooms where gas cylinders are prohibited. Push-button Indian menu options (Milk, Boil, Curry, Dosa). Includes stainless steel saucepan with handle for midnight Maggi, tea, and boiling eggs.',
+ 1400.00, 'SELL', 'LIKE_NEW', 'Prestige', 3, 'Clement Town',
+ '["https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 60, DATE_SUB(NOW(), INTERVAL 1 DAY)),
+
+(27, 2, 11, 'Whirlpool 190L 4-Star Single Door Direct Cool Refrigerator (Silver Mirror)',
+ 'Single door compact refrigerator used by 2 roommates near Graphic Era. 4-star energy rating adds negligible cost to shared electricity. Ice maker freezer, vegetable crisper box, and silent reciprocating compressor.',
+ 7200.00, 'SELL', 'GOOD', 'Whirlpool', 3, 'Clement Town',
+ '["https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 115, DATE_SUB(NOW(), INTERVAL 3 DAY)),
+
+(28, 3, 9, 'Wakefit Orthopedic Single Bed Mattress (72x36x5 inch) + Quilted Washable Cover',
+ '72x36x5 inch high-density orthopedic memory foam mattress for single student PG cots. Excellent spine support for long study hours. Clean, spotless with breathable zipper cover. Purchased 9 months ago.',
+ 2800.00, 'SELL', 'LIKE_NEW', 'Wakefit', 1, 'Rajpur Road',
+ '["https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1540518614846-7ede433c4ef7?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 92, DATE_SUB(NOW(), INTERVAL 4 DAY)),
+
+(29, 3, 9, 'Nilkamal Mid-Back Ergonomic Computer Study Chair (Breathable Mesh / Black)',
+ 'Ergonomic swivel desk chair with pneumatic height adjustment, lumbar support cushion, and 360-degree smooth nylon wheels. Ideal for study tables, coding projects, and online lectures.',
+ 2100.00, 'SELL', 'GOOD', 'Nilkamal', 1, 'Rajpur Road',
+ '["https://images.unsplash.com/photo-1580481077195-c9a75d5e236b?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1505797149-43b0069ec26b?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 74, DATE_SUB(NOW(), INTERVAL 2 DAY)),
+
+(30, 3, 11, 'Bajaj Flashy 1000W Radiant Room Heater for Dehradun Winters',
+ 'Instant infrared quartz heating element with safety tip-over switch and stainless steel heat reflector. Warms student study rooms in 5 minutes during chilly Dehradun and Mussoorie winter mornings.',
+ 850.00, 'SELL', 'LIKE_NEW', 'Bajaj', 1, 'Rajpur Road',
+ '["https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 110, DATE_SUB(NOW(), INTERVAL 5 DAY)),
+
+(31, 4, 7, 'HP Pavilion 14 Lightweight Student Laptop (Core i5 11th Gen / 16GB / 512GB SSD)',
+ '14-inch Full HD IPS anti-glare display, Intel Core i5 1135G7, 16GB dual-channel DDR4 RAM, 512GB NVMe SSD, backlit keyboard, Bang & Olufsen audio. 6 hours genuine battery life. Perfect for BCA/CSE coding, Java, and projects.',
+ 34000.00, 'SELL', 'GOOD', 'HP', 6, 'Ballupur',
+ '["https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 210, DATE_SUB(NOW(), INTERVAL 3 DAY)),
+
+(32, 4, 7, 'Sony WH-CH520 Wireless Bluetooth Headphones (50-Hr Battery for Late Night Study)',
+ 'Lightweight on-ear headphones with 50-hour playback, DSEE sound enhancement, dual device multipoint connection, and built-in mic for viva and Zoom classes. 3-minute quick charge provides 1.5 hours listening.',
+ 2900.00, 'SELL', 'LIKE_NEW', 'Sony', 6, 'Ballupur',
+ '["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 88, DATE_SUB(NOW(), INTERVAL 6 DAY)),
+
+(33, 4, 7, 'Casio FX-991CW Advanced Scientific Calculator (Classwiz / High-Res Natural Display)',
+ 'High-resolution natural textbook 4-gradation display with spreadsheet, matrix calculation (4x4), equation solver, and numerical integration. Mandatory for engineering math, statistics, and university exams.',
+ 1100.00, 'SELL', 'LIKE_NEW', 'Casio', 6, 'Ballupur',
+ '["https://images.unsplash.com/photo-1594980596870-8aa52a78d8cd?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1611117775350-ac3950990985?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 65, DATE_SUB(NOW(), INTERVAL 4 DAY)),
+
+(34, 5, 12, 'Firefox Target 21-Speed Hardtail Mountain Bicycle with Disc Brakes & Mudguards',
+ 'Sturdy steel hardtail mountain bike with 21-speed Shimano Tourney gearing, front zoom suspension fork, and mechanical disc brakes. Saves daily auto fare to Graphic Era / UPES. Includes bottle holder and cable lock.',
+ 6500.00, 'SELL', 'GOOD', 'Firefox', 4, 'Patel Nagar',
+ '["https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 185, DATE_SUB(NOW(), INTERVAL 1 DAY)),
+
+(35, 5, 10, 'HC Verma Concepts of Physics (Part 1 & 2) + Irodov General Physics Problems',
+ 'HC Verma Part 1 & Part 2 in neat condition with clean problem margins, paired with IE Irodov Problems in General Physics. Proven question bank for 1st year engineering physics and competitive exams.',
+ 750.00, 'SELL', 'GOOD', 'Bharati Bhawan', 4, 'Patel Nagar',
+ '["https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1532012164546-f432f2e3777f?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 45, DATE_SUB(NOW(), INTERVAL 2 DAY)),
+
+(36, 5, 16, 'Spacious 4-Shelf Collapsible Fabric Wardrobe with Steel Frame (Grey Dustproof Cover)',
+ 'Heavy-duty powder-coated iron pipes with plastic connectors and water-resistant non-woven fabric zipped cover. 4 storage shelves for folded clothes and center hanging rod. Folds compact into a box for easy moving.',
+ 900.00, 'SELL', 'GOOD', 'Caddy', 4, 'Patel Nagar',
+ '["https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1558997519-83ea9252def8?auto=format&fit=crop&w=800&q=80"]', 'APPROVED', TRUE, 80, DATE_SUB(NOW(), INTERVAL 5 DAY));
