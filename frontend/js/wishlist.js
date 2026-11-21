@@ -10,7 +10,7 @@ async function loadWishlist() {
   renderListSkeleton(box, 3);
   try {
     const items = await WishlistAPI.getAll();
-    const list = Array.isArray(items) ? items : [];
+    const list = Array.isArray(items) ? items : ((items && items.content) || []);
     count.textContent = `${list.length} item${list.length === 1 ? '' : 's'}`;
     if (!list.length) {
       renderInlineEmpty(box, '❤️', 'Your wishlist is empty',

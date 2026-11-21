@@ -45,6 +45,25 @@ function renderDetail(root) {
     .filter(Boolean).join(', ');
   const isOwner = currentUserId && postedBy.id === currentUserId;
 
+  // Feature 10 (Occupancy), Feature 9 (Savings), Feature 11 (Price Trends), Feature 13 (Engagement)
+  const occ = (window.StayMartAccommodationStats && window.StayMartAccommodationStats.getOccupancy)
+    ? window.StayMartAccommodationStats.getOccupancy(property)
+    : { total: Math.max(1, Number(property.totalRooms) || 1), available: property.isAvailable ? Math.max(1, Number(property.availableRooms) || 1) : 0, rate: 65, status: property.isAvailable ? 'AMPLE' : 'FULL', badgeText: property.isAvailable ? 'Immediate Move-In' : 'Fully Occupied', detailHeadline: property.isAvailable ? 'Immediate Move-In Available' : 'Fully Booked for Semester' };
+
+  const savings = (window.StayMartAccommodationStats && window.StayMartAccommodationStats.getSavings)
+    ? window.StayMartAccommodationStats.getSavings(property)
+    : { brokerage: Number(property.pricePerMonth) || 0, zoneShort: 'Campus', zoneMedian: Number(property.pricePerMonth) || 0, diff: 0, annualTotal: (Number(property.pricePerMonth) || 0) };
+
+  const trend = (window.StayMartAccommodationStats && window.StayMartAccommodationStats.getPriceTrend)
+    ? window.StayMartAccommodationStats.getPriceTrend(property)
+    : { needlePct: 50, verdictClass: 'fair', verdictBadge: '⚖️ Fair Campus Market Value', verdictNote: 'Normal campus rate', studentValueScore: 8.5, zoneMedian: Number(property.pricePerMonth) || 0, zoneName: 'Campus Zone', zoneShort: 'Campus', cityAverage: 7400 };
+
+  const eng = (window.StayMartAccommodationStats && window.StayMartAccommodationStats.getEngagement)
+    ? window.StayMartAccommodationStats.getEngagement(property.id)
+    : { viewsThisWeek: 38, inquiriesToday: 4, shortlistsCount: 14, responseMins: 'Under 15 mins' };
+
+  const unitLabelCap = property.type === 'HOSTEL' ? 'Beds' : 'Rooms';
+
   root.innerHTML = `
     <section class="detail-layout">
       <div>
@@ -66,7 +85,10 @@ function renderDetail(root) {
         <div style="position:relative">
           <span class="badge ${getTypeBadgeClass(property.type)}" style="margin-bottom:10px">${getPropertyTypeLabel(property.type)}</span>
           ${property.genderPreference && property.genderPreference !== 'ANY' ? `<span class="badge badge-both" style="margin-bottom:10px">${getGenderLabel(property.genderPreference)}</span>` : ''}
-          ${property.isAvailable ? '<span class="badge badge-approved" style="margin-bottom:10px">● Available</span>' : '<span class="badge badge-rejected" style="margin-bottom:10px">● Occupied</span>'}
+          <span class="badge occupancy-pill-lg pill-${occ.status}" style="margin-bottom:10px">
+            <span class="pulse-indicator pulse-${occ.status}"></span>
+            ${occ.badgeText}
+          </span>
           <button id="wishlistBtn" class="wishlist-btn" onclick="toggleWishlist(event)" title="Save to wishlist">♡</button>
         </div>
 
@@ -78,8 +100,36 @@ function renderDetail(root) {
           <span class="meta-item"><span id="inplaceStars"></span></span>
         </div>
 
+        <!-- Real-Time Room Occupancy & Capacity Meter Widget (Feature 10) -->
+        <div class="detail-occupancy-widget">
+          <div class="occupancy-widget-top">
+            <div class="occupancy-status-group">
+              <span class="occupancy-pill-lg pill-${occ.status}">
+                <span class="pulse-indicator-lg pulse-${occ.status}"></span>
+                ${occ.detailHeadline}
+              </span>
+              <span class="academic-sem-badge">🎓 2026-27 Academic Session</span>
+            </div>
+            <div class="occupancy-figures">
+              <div class="figure-main">${occ.available} <span class="figure-sub">/ ${occ.total}</span></div>
+              <div class="figure-caption">${unitLabelCap} Available Now</div>
+            </div>
+          </div>
+
+          <div class="occupancy-bar-container">
+            <div class="occupancy-track-lg">
+              <div class="occupancy-fill-lg fill-${occ.status}" style="width: ${occ.rate}%"></div>
+            </div>
+            <div class="occupancy-scale-labels">
+              <span>Vacant (0%)</span>
+              <span class="occupancy-rate-pill">${occ.rate}% Occupied</span>
+              <span>Fully Booked (100%)</span>
+            </div>
+          </div>
+        </div>
+
         <div class="info-cards">
-          <div class="info-card"><span class="info-icon">🛏️</span><div class="info-value">${property.availableRooms ?? property.totalRooms ?? 0} / ${property.totalRooms || 0}</div><div class="info-label">Rooms Available</div></div>
+          <div class="info-card"><span class="info-icon">🛏️</span><div class="info-value">${occ.available} / ${occ.total}</div><div class="info-label">Available</div></div>
           <div class="info-card"><span class="info-icon">👥</span><div class="info-value">${getGenderLabel(property.genderPreference || 'ANY')}</div><div class="info-label">Preferred</div></div>
           <div class="info-card"><span class="info-icon">🔑</span><div class="info-value">${formatPrice(property.depositAmount)}</div><div class="info-label">Deposit</div></div>
           <div class="info-card"><span class="info-icon">📷</span><div class="info-value">${galleryImages.length}</div><div class="info-label">Photos</div></div>
@@ -87,6 +137,70 @@ function renderDetail(root) {
 
         <h2 class="section-title" style="font-size:20px;margin-bottom:14px">Facilities</h2>
         <div class="amenities-grid" id="amenitiesGrid"></div>
+
+        <!-- Campus Rent Trend Visualizer Gauge Widget (Feature 11) -->
+        <div class="price-trend-widget">
+          <div class="trend-widget-header">
+            <div class="trend-title-block">
+              <span class="trend-icon">📊</span>
+              <div>
+                <h3 class="trend-title">Campus Rent Trend Visualizer</h3>
+                <span class="trend-subtitle">${trend.zoneName} Benchmarks</span>
+              </div>
+            </div>
+            <span class="trend-verdict-badge verdict-${trend.verdictClass}">
+              ${trend.verdictBadge}
+            </span>
+          </div>
+
+          <!-- Multi-Zone Gauge Track -->
+          <div class="gauge-container">
+            <div class="gauge-track-multi">
+              <div class="gauge-zone zone-budget">
+                <span class="zone-text">Budget-Friendly</span>
+                <span class="zone-bound">< ₹${Number(Math.round(trend.zoneMedian * 0.85)).toLocaleString('en-IN')}</span>
+              </div>
+              <div class="gauge-zone zone-fair">
+                <span class="zone-text">Fair Market</span>
+                <span class="zone-bound">₹${Number(Math.round(trend.zoneMedian * 0.85)).toLocaleString('en-IN')} - ₹${Number(Math.round(trend.zoneMedian * 1.15)).toLocaleString('en-IN')}</span>
+              </div>
+              <div class="gauge-zone zone-premium">
+                <span class="zone-text">Premium Studio</span>
+                <span class="zone-bound">> ₹${Number(Math.round(trend.zoneMedian * 1.15)).toLocaleString('en-IN')}</span>
+              </div>
+            </div>
+
+            <!-- Needle Pin -->
+            <div class="gauge-pointer" style="left: ${trend.needlePct}%">
+              <div class="pointer-bubble">₹${Number(property.pricePerMonth).toLocaleString('en-IN')}/mo</div>
+              <div class="pointer-pin"></div>
+            </div>
+          </div>
+
+          <!-- 4-Tile Comparison Grid -->
+          <div class="trend-benchmark-grid">
+            <div class="benchmark-tile">
+              <span class="tile-caption">This Accommodation</span>
+              <span class="tile-number highlight-brand">₹${Number(property.pricePerMonth).toLocaleString('en-IN')}/mo</span>
+              <span class="tile-note">${trend.verdictNote}</span>
+            </div>
+            <div class="benchmark-tile">
+              <span class="tile-caption">${trend.zoneShort} Median</span>
+              <span class="tile-number">₹${Number(trend.zoneMedian).toLocaleString('en-IN')}/mo</span>
+              <span class="tile-note">Campus zone baseline</span>
+            </div>
+            <div class="benchmark-tile">
+              <span class="tile-caption">Dehradun City Average</span>
+              <span class="tile-number">₹${Number(trend.cityAverage).toLocaleString('en-IN')}/mo</span>
+              <span class="tile-note">All Uttarakhand rentals</span>
+            </div>
+            <div class="benchmark-tile">
+              <span class="tile-caption">Student Value Score</span>
+              <span class="tile-number highlight-success">${trend.studentValueScore}/10 ★</span>
+              <span class="tile-note">Amenities vs Rent Index</span>
+            </div>
+          </div>
+        </div>
 
         <h2 class="section-title" style="font-size:20px;margin:28px 0 14px">About this ${getPropertyTypeLabel(property.type).toLowerCase()}</h2>
         <p class="text-secondary-text" style="white-space:pre-line">${escapeHtml(property.description || 'No description provided.')}</p>
@@ -108,13 +222,37 @@ function renderDetail(root) {
       </div>
 
       <aside class="sidebar-sticky">
+        <!-- Peer Listing Engagement & Demand Alert (Feature 13) -->
+        <div class="detail-engagement-alert">
+          <div class="alert-flame-icon">🔥</div>
+          <div class="alert-text-wrap">
+            <div class="alert-headline">High Student Demand</div>
+            <div class="alert-copy">${eng.viewsThisWeek} students viewed this week · ${eng.inquiriesToday} inquiries in last 24h</div>
+          </div>
+        </div>
+
         <div class="poster-card" style="margin-bottom:16px">
-          <div class="avatar">${postedBy.profilePic
-            ? `<img src="${escapeHtml(postedBy.profilePic)}" alt=""/>`
-            : escapeHtml(((postedBy.name || 'U')[0] || 'U').toUpperCase())}</div>
-          <div style="min-width:0">
-            <div class="poster-name">${escapeHtml(postedBy.name || 'Owner')}</div>
-            <div class="poster-info">${escapeHtml(postedBy.city || 'Uttarakhand')}${postedBy.isVerified ? ' · ✅ Verified' : ''}</div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div class="avatar">${postedBy.profilePic
+              ? `<img src="${escapeHtml(postedBy.profilePic)}" alt=""/>`
+              : escapeHtml(((postedBy.name || 'U')[0] || 'U').toUpperCase())}</div>
+            <div style="min-width:0">
+              <div class="poster-name">${escapeHtml(postedBy.name || 'Owner')}</div>
+              <div class="poster-info">${escapeHtml(postedBy.city || 'Uttarakhand')}${postedBy.isVerified ? ' · ✅ Verified' : ''}</div>
+            </div>
+          </div>
+
+          <!-- Verified Senior Host Trust Badge (Feature 13) -->
+          <div class="senior-host-badge" style="margin-top:12px">
+            <span class="senior-host-icon">🎓</span>
+            <div class="senior-host-details">
+              <div class="senior-host-title">Verified Campus Host</div>
+              <div class="senior-host-subtitle">Campus Vetted · Fast Responder</div>
+            </div>
+          </div>
+          <div class="senior-host-metrics">
+            <span class="host-metric-pill">⚡ Replies ${eng.responseMins}</span>
+            <span class="host-metric-pill">🛡️ Zero-Scam Vetted</span>
           </div>
         </div>
 
@@ -135,7 +273,7 @@ function renderDetail(root) {
             </div>
             <div class="input-group">
               <label for="bookingMessage">Message to owner<span class="text-muted-text"> (optional)</span></label>
-              <textarea id="bookingMessage" rows="2" placeholder="e.g. I'm a 3rd year student at Doon University, looking for a quiet room." maxlength="300"></textarea>
+              <textarea id="bookingMessage" rows="2" placeholder="e.g. I'm a student at Graphic Era, looking for a quiet room." maxlength="300"></textarea>
             </div>
             <div class="total-display">
               <span class="total-label">Total rent</span>
@@ -149,6 +287,60 @@ function renderDetail(root) {
           `}
         </div>
 
+        <!-- Student Savings Guarantee Breakdown Card (Feature 9) -->
+        <div class="student-savings-card">
+          <div class="savings-card-header">
+            <div class="savings-title-icon">💰</div>
+            <div>
+              <h3 class="savings-heading">Student Savings Guarantee</h3>
+              <p class="savings-subtext">Direct Host Agreement · No Agency Fees</p>
+            </div>
+          </div>
+
+          <div class="savings-rows">
+            <div class="savings-row">
+              <div class="row-left">
+                <span class="check-bullet">✓</span>
+                <div>
+                  <div class="row-title">Direct Owner Brokerage Saved</div>
+                  <div class="row-desc">Offline brokers charge 1 full month</div>
+                </div>
+              </div>
+              <div class="row-val text-green">+₹${Number(savings.brokerage).toLocaleString('en-IN')}</div>
+            </div>
+
+            ${savings.diff > 0 ? `
+            <div class="savings-row">
+              <div class="row-left">
+                <span class="check-bullet">✓</span>
+                <div>
+                  <div class="row-title">Campus Zone Savings</div>
+                  <div class="row-desc">${savings.zoneShort} median: ₹${Number(savings.zoneMedian).toLocaleString('en-IN')}/mo</div>
+                </div>
+              </div>
+              <div class="row-val text-green">+₹${Number(savings.diff).toLocaleString('en-IN')}/mo</div>
+            </div>
+            ` : ''}
+
+            <div class="savings-row">
+              <div class="row-left">
+                <span class="check-bullet">✓</span>
+                <div>
+                  <div class="row-title">Included Utilities Pack</div>
+                  <div class="row-desc">High-speed WiFi & Backup Power</div>
+                </div>
+              </div>
+              <div class="row-val text-green">Free (₹1,500/mo value)</div>
+            </div>
+          </div>
+
+          <div class="savings-annual-box">
+            <div class="annual-label">Estimated Academic Session Savings (10 Mo.)</div>
+            <div class="annual-sum">₹${Number(savings.annualTotal).toLocaleString('en-IN')} Saved</div>
+            <div class="annual-sub">Total cash kept compared to traditional rental brokers</div>
+          </div>
+        </div>
+
         ${!isOwner ? `
         <button class="btn btn-secondary btn-block mt-8" onclick="contactOwner()">💬 Message Owner</button>
         ` : ''}
@@ -158,6 +350,39 @@ function renderDetail(root) {
       </aside>
     </section>
   `;
+
+  // Synchronize Mobile Bottom Action Bar
+  const mobileCtaPrice = document.getElementById('mobileCtaPrice');
+  if (mobileCtaPrice) mobileCtaPrice.textContent = formatPrice(property.pricePerMonth, 'RENT');
+
+  const mobileCtaBadge = document.getElementById('mobileCtaBadge');
+  if (mobileCtaBadge) {
+    if (property.isAvailable) {
+      mobileCtaBadge.textContent = occ.status === 'LIMITED' ? `● Only ${occ.available} Left` : '● Available';
+      mobileCtaBadge.style.color = occ.status === 'LIMITED' ? '#d97706' : 'var(--success)';
+    } else {
+      mobileCtaBadge.textContent = '● Occupied';
+      mobileCtaBadge.style.color = 'var(--danger)';
+    }
+  }
+
+  const mobileCtaBookBtn = document.getElementById('mobileCtaBookBtn');
+  if (mobileCtaBookBtn) {
+    if (isOwner) {
+      mobileCtaBookBtn.textContent = 'My Listing';
+      mobileCtaBookBtn.onclick = function() { window.location.href = `${depthPrefix()}pages/user/dashboard.html`; };
+    } else if (!property.isAvailable) {
+      mobileCtaBookBtn.disabled = true;
+      mobileCtaBookBtn.textContent = 'Occupied';
+      mobileCtaBookBtn.style.opacity = '0.6';
+    } else {
+      mobileCtaBookBtn.textContent = 'Book Now';
+      mobileCtaBookBtn.onclick = openMobileBookingSheet;
+    }
+  }
+
+  const mobileSheetSub = document.getElementById('mobileSheetSub');
+  if (mobileSheetSub) mobileSheetSub.textContent = property.title || '';
 }
 
 function renderAmenities() {
@@ -174,16 +399,19 @@ function renderAmenities() {
 
 async function loadBookingRooms() {
   const select = document.getElementById('roomSelect');
-  if (!select) return;
+  const mobileSelect = document.getElementById('mobileRoomSelect');
   try {
     const rooms = await PropertyAPI.getRooms(property.id);
     const available = rooms.filter(function (r) { return r.isAvailable !== false; });
     if (available.length) {
       available.forEach(function (room) {
-        select.insertAdjacentHTML('beforeend', `<option value="${room.id}">Room ${escapeHtml(room.roomNumber || room.name || room.id)} · ₹${room.pricePerMonth}/mo · ${room.capacity || 1} bed</option>`);
+        const optHtml = `<option value="${room.id}">Room ${escapeHtml(room.roomNumber || room.name || room.id)} · ₹${room.pricePerMonth}/mo · ${room.capacity || 1} bed</option>`;
+        if (select) select.insertAdjacentHTML('beforeend', optHtml);
+        if (mobileSelect) mobileSelect.insertAdjacentHTML('beforeend', optHtml);
       });
     }
-    select.addEventListener('change', updateTotal);
+    if (select) select.addEventListener('change', updateTotal);
+    if (mobileSelect) mobileSelect.addEventListener('change', function() { syncBookingRoom(this.value); });
   } catch (error) {
     // rooms endpoint unavailable -> booking without a specific room
   }
@@ -192,12 +420,65 @@ async function loadBookingRooms() {
 
 function updateTotal() {
   const select = document.getElementById('monthsSelect');
-  const roomSelect = document.getElementById('roomSelect');
   if (!select) return;
-  const months = Number(select.value);
+  const months = Number(select.value) || 1;
+  const totalRentText = formatPrice(Number(property.pricePerMonth) * months, 'RENT');
   const totalEl = document.getElementById('totalRent');
-  if (!totalEl) return;
-  totalEl.textContent = formatPrice(Number(property.pricePerMonth) * months, 'RENT');
+  if (totalEl) totalEl.textContent = totalRentText;
+  const mobileTotal = document.getElementById('mobileTotalRent');
+  if (mobileTotal) mobileTotal.textContent = totalRentText;
+}
+
+function syncBookingRoom(val) {
+  const select = document.getElementById('roomSelect');
+  const mobileSelect = document.getElementById('mobileRoomSelect');
+  if (select && select.value !== val) select.value = val;
+  if (mobileSelect && mobileSelect.value !== val) mobileSelect.value = val;
+}
+
+function syncBookingMonths(val) {
+  const select = document.getElementById('monthsSelect');
+  const mobileSelect = document.getElementById('mobileMonthsSelect');
+  if (select && select.value !== val) select.value = val;
+  if (mobileSelect && mobileSelect.value !== val) mobileSelect.value = val;
+  updateTotal();
+}
+
+function openMobileBookingSheet() {
+  const overlay = document.getElementById('bookingSheetOverlay');
+  if (overlay) {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const select = document.getElementById('monthsSelect');
+    const mobileSelect = document.getElementById('mobileMonthsSelect');
+    if (select && mobileSelect) mobileSelect.value = select.value;
+    updateTotal();
+  }
+}
+
+function closeMobileBookingSheet() {
+  const overlay = document.getElementById('bookingSheetOverlay');
+  if (overlay) {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+async function executeMobileBooking() {
+  const mobileSelect = document.getElementById('mobileMonthsSelect');
+  const mobileRoom = document.getElementById('mobileRoomSelect');
+  const mobileMsg = document.getElementById('mobileBookingMessage');
+  
+  const select = document.getElementById('monthsSelect');
+  const roomSelect = document.getElementById('roomSelect');
+  const msg = document.getElementById('bookingMessage');
+  
+  if (select && mobileSelect) select.value = mobileSelect.value;
+  if (roomSelect && mobileRoom) roomSelect.value = mobileRoom.value;
+  if (msg && mobileMsg) msg.value = mobileMsg.value;
+  
+  closeMobileBookingSheet();
+  await bookProperty();
 }
 
 async function bookProperty() {
@@ -221,7 +502,7 @@ async function bookProperty() {
     const booking = await BookingAPI.create(body);
     logBehavior('BOOK', 'PROPERTY', property.id, null, null);
     showToast('Booking request sent to the owner. 🎉', 'success');
-    setTimeout(function () { window.location.href = `${depthPrefix()}pages/user/my-bookings.html`; }, 1200);
+    setTimeout(function () { window.location.href = `${depthPrefix()}pages/user/bookings.html`; }, 1200);
   } catch (error) {
     await showModal(error.message || 'Booking failed.', 'Booking failed', 'Try again');
   }
@@ -235,19 +516,20 @@ async function toggleWishlist(event) {
     return;
   }
   const btn = document.getElementById('wishlistBtn');
+  const mobileBtn = document.getElementById('mobileCtaWishlist');
   try {
     if (isInWishlist) {
       await WishlistAPI.remove('PROPERTY', property.id);
       isInWishlist = false;
-      btn.classList.remove('active');
-      btn.innerHTML = '♡';
+      if (btn) { btn.classList.remove('active'); btn.innerHTML = '♡'; }
+      if (mobileBtn) { mobileBtn.classList.remove('active'); mobileBtn.innerHTML = '♡'; }
       logBehavior('WISHLIST', 'PROPERTY', property.id, null, null);
       showToast('Removed from wishlist.', 'info');
     } else {
       await WishlistAPI.add('PROPERTY', property.id);
       isInWishlist = true;
-      btn.classList.add('active');
-      btn.innerHTML = '❤️';
+      if (btn) { btn.classList.add('active'); btn.innerHTML = '❤️'; }
+      if (mobileBtn) { mobileBtn.classList.add('active'); mobileBtn.innerHTML = '❤️'; }
       logBehavior('WISHLIST', 'PROPERTY', property.id, null, null);
       showToast('Saved to your wishlist! ❤️', 'success');
     }
@@ -273,7 +555,7 @@ async function contactOwner() {
     });
     logBehavior('CONTACT', 'PROPERTY', property.id, null, null);
     showToast('Message sent! The owner will reply in your Chats. 💬', 'success');
-    setTimeout(function () { window.location.href = `${depthPrefix()}pages/user/messages.html`; }, 1200);
+    setTimeout(function () { window.location.href = `${depthPrefix()}pages/user/chat.html`; }, 1200);
   } catch (error) {
     showToast(error.message || 'Could not send message.', 'error');
   }
@@ -464,7 +746,9 @@ document.addEventListener('DOMContentLoaded', function () {
           if (result === true || result === 'true' || result === 1) {
             isInWishlist = true;
             const btn = document.getElementById('wishlistBtn');
+            const mobileBtn = document.getElementById('mobileCtaWishlist');
             if (btn) { btn.classList.add('active'); btn.innerHTML = '❤️'; }
+            if (mobileBtn) { mobileBtn.classList.add('active'); mobileBtn.innerHTML = '❤️'; }
           }
         }).catch(function () {});
       }

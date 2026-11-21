@@ -5,8 +5,11 @@ import com.staymart.common.PageResponse;
 import com.staymart.dto.request.PropertyRequest;
 import com.staymart.dto.request.PropertySearchCriteria;
 import com.staymart.dto.response.PropertyResponse;
+import com.staymart.entity.Property;
 import com.staymart.entity.enums.GenderPreference;
+import com.staymart.entity.enums.ModerationStatus;
 import com.staymart.entity.enums.PropertyType;
+import com.staymart.repository.PropertyRepository;
 import com.staymart.service.PropertyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -15,6 +18,7 @@ import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +30,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/properties")
@@ -33,9 +41,11 @@ import java.math.BigDecimal;
 public class PropertyController {
 
     private final PropertyService propertyService;
+    private final PropertyRepository propertyRepository;
 
-    public PropertyController(PropertyService propertyService) {
+    public PropertyController(PropertyService propertyService, PropertyRepository propertyRepository) {
         this.propertyService = propertyService;
+        this.propertyRepository = propertyRepository;
     }
 
     @GetMapping
@@ -60,6 +70,26 @@ public class PropertyController {
     @Operation(summary = "Post a new property listing", security = @SecurityRequirement(name = "bearerAuth"))
     public ApiResponse<PropertyResponse> create(@Valid @RequestBody PropertyRequest request) {
         return ApiResponse.ok("Property submitted for review", propertyService.create(request));
+    }
+
+    @GetMapping("/stats")
+    @Operation(summary = "Get public property marketplace statistics")
+    public ResponseEntity<ApiResponse<Map<String, Object>>> getPropertyStats() {
+        long total = propertyRepository.count();
+        long verified = propertyRepository.countByStatus(ModerationStatus.APPROVED);
+        List<Property> all = propertyRepository.findAll();
+        double avgPrice = all.stream()
+                .map(Property::getPricePerMonth)
+                .filter(Objects::nonNull)
+                .mapToDouble(BigDecimal::doubleValue)
+                .average()
+                .orElse(0.0);
+
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("totalProperties", total);
+        stats.put("verifiedProperties", verified);
+        stats.put("averageRent", Math.round(avgPrice));
+        return ResponseEntity.ok(ApiResponse.ok(stats));
     }
 
     @GetMapping("/{id}")

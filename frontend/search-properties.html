@@ -3,99 +3,187 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Search Properties - StayMart</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <title>Search Properties - StayMart Student PGs, Hostels & Flats</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>"/>
-  <link rel="stylesheet" href="css/global.css"/>
+  <link rel="stylesheet" href="css/global.css?v=4.1.0"/>
 </head>
 <body>
-  <nav class="navbar">
+  <!-- Commercial Header -->
+  <header class="navbar" id="siteNavbar">
     <div class="navbar-inner">
-      <a href="index.html" class="logo">StayMart<small>Dehradun · Uttarakhand</small></a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="search-properties.html" class="active">Properties</a>
-        <a href="search-products.html">Products</a>
+      <div class="nav-left">
+        <button class="nav-mobile-toggle" id="mobileMenuToggle" aria-label="Open mobile menu" onclick="openMobileDrawer()">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+
+        <a href="index.html" class="logo">
+          <span class="logo-stay">Stay</span><span class="logo-mart">Mart</span>
+          <span class="logo-badge">UK</span>
+        </a>
       </div>
+
+      <!-- Location Dropdown -->
+      <div class="nav-location" id="navLocationBtn" onclick="toggleLocationDropdown(event)">
+        <span class="loc-pin">📍</span>
+        <div class="loc-text">
+          <span class="loc-label">Location</span>
+          <span class="loc-val" id="selectedCityLabel">Dehradun</span>
+        </div>
+        <span class="loc-arrow">▼</span>
+        <div class="loc-dropdown" id="navLocDropdown">
+          <div class="loc-dropdown-title">Student Locations</div>
+          <div class="loc-item active" onclick="selectCityFilter('')">All Uttarakhand</div>
+          <div class="loc-item" onclick="selectCityFilter('Dehradun')">📍 Dehradun (All Areas)</div>
+          <div class="loc-item" onclick="selectCityFilter('Rishikesh')">🏔️ Rishikesh</div>
+          <div class="loc-item" onclick="selectCityFilter('Haridwar')">🌊 Haridwar</div>
+          <div class="loc-item" onclick="selectCityFilter('Mussoorie')">🌲 Mussoorie</div>
+          <div class="loc-item" onclick="selectCityFilter('Roorkee')">🏛️ Roorkee</div>
+          <div class="loc-item" onclick="selectCityFilter('Nainital')">⛵ Nainital</div>
+        </div>
+      </div>
+
+      <!-- Unified Search Form -->
+      <form class="nav-search-bar" onsubmit="applySearchFromNav(event)">
+        <div class="search-cat-picker">
+          <select id="citySelect" onchange="applySearch()">
+            <option value="">All Cities</option>
+            <option value="Dehradun">Dehradun</option>
+            <option value="Rishikesh">Rishikesh</option>
+            <option value="Haridwar">Haridwar</option>
+            <option value="Mussoorie">Mussoorie</option>
+            <option value="Roorkee">Roorkee</option>
+            <option value="Nainital">Nainital</option>
+          </select>
+        </div>
+        <input id="searchInput" type="text" placeholder="Search 'PG near Graphic Era', 'Boys Hostel Premnagar', '2BHK flat'..."/>
+        <button type="submit" class="nav-search-btn" title="Search">🔍</button>
+      </form>
+
+      <nav class="nav-links">
+        <a href="search-properties.html" class="active">Accommodations</a>
+        <a href="search-products.html">Buy & Sell</a>
+      </nav>
+
+      <button type="button" class="nav-icon-btn mobile-search-trigger" id="mobileSearchTrigger" aria-label="Search" onclick="toggleMobileSearch()">
+        🔍
+      </button>
+
       <div class="nav-actions"></div>
     </div>
-  </nav>
 
-  <div class="container" style="padding-top:32px;padding-bottom:20px">
-    <div class="search-bar" style="max-width:720px;margin:0 auto">
-      <input id="searchInput" type="text" placeholder="Search 'PG near Graphic Era', 'hostel in Mussoorie'..."/>
-      <select id="citySelect">
-        <option value="">All Cities</option>
-        <option>Dehradun</option>
-        <option>Rishikesh</option>
-        <option>Haridwar</option>
-        <option>Mussoorie</option>
-        <option>Nainital</option>
-        <option>Roorkee</option>
-      </select>
-      <button class="btn btn-primary" onclick="applySearch()">🔍 Search</button>
+    <!-- Expandable Mobile Search Drawer -->
+    <div class="mobile-search-drawer" id="mobileSearchDrawer">
+      <form class="mobile-search-form" onsubmit="applySearchFromNav(event)">
+        <div class="mobile-search-inner">
+          <span class="search-lens">🔍</span>
+          <input id="mobileSearchInput" type="text" placeholder="Search PGs, rooms, flats..." autocomplete="off"/>
+          <button type="button" class="search-clear-btn" id="mobileSearchClear" onclick="clearMobileSearch()">✕</button>
+          <button type="submit" class="search-go-btn">Go</button>
+        </div>
+      </form>
+    </div>
+  </header>
+
+  <!-- Horizontal Category Strip -->
+  <div class="category-strip">
+    <div class="category-strip-inner">
+      <a href="index.html" class="cat-strip-item cat-all">ALL CATEGORIES ▼</a>
+      <a href="search-properties.html?type=PG" class="cat-strip-item">🏠 Student PGs (Food & WiFi)</a>
+      <a href="search-properties.html?type=HOSTEL" class="cat-strip-item">🛏️ Hostels</a>
+      <a href="search-properties.html?type=FLAT" class="cat-strip-item">🏢 Independent Flats</a>
+      <a href="search-properties.html?type=ROOM" class="cat-strip-item">🚪 Single Private Rooms</a>
+      <a href="search-properties.html?gender=MALE" class="cat-strip-item">Boys Accommodations</a>
+      <a href="search-properties.html?gender=FEMALE" class="cat-strip-item">Girls Accommodations</a>
+      <a href="search-products.html" class="cat-strip-item">Student Re-Commerce</a>
     </div>
   </div>
 
-  <div class="container">
+  <div class="container" style="padding-top:20px;padding-bottom:30px">
     <nav class="breadcrumb">
-      <a href="index.html">Home</a><span class="sep">›</span><span>Properties</span>
+      <a href="index.html">Home</a><span class="sep">›</span>
+      <a href="search-properties.html">Accommodations</a><span class="sep">›</span>
+      <span>PGs, Hostels & Rental Flats</span>
     </nav>
 
-    <div class="detail-layout" style="grid-template-columns:270px 1fr;gap:28px;align-items:start">
-      <aside class="filter-sidebar">
-        <div class="filter-group" style="padding-top:0" data-group="amenities">
-          <div class="filter-group-title">Facilities</div>
-          <label class="check-row"><input type="checkbox" value="Wifi"/> 📶 WiFi</label>
-          <label class="check-row"><input type="checkbox" value="Parking"/> 🅿️ Parking</label>
-          <label class="check-row"><input type="checkbox" value="Water"/> 🚰 Water Supply</label>
-          <label class="check-row"><input type="checkbox" value="Power"/> ⚡ Power Backup</label>
-          <label class="check-row"><input type="checkbox" value="Security"/> 🔒 Security</label>
-          <label class="check-row"><input type="checkbox" value="Cleaning"/> 🧹 Cleaning</label>
-          <label class="check-row"><input type="checkbox" value="Food"/> 🍲 Mess / Food</label>
-          <label class="check-row"><input type="checkbox" value="Furnished"/> 🛋️ Furnished</label>
-          <label class="check-row"><input type="checkbox" value="Laundry"/> 🧺 Laundry</label>
-          <label class="check-row"><input type="checkbox" value="Hot Water"/> 🚿 Hot Water</label>
-          <label class="check-row"><input type="checkbox" value="Study Table"/> 📚 Study Table</label>
-          <label class="check-row"><input type="checkbox" value="Balcony"/> 🏞️ Balcony</label>
+    <!-- Mobile Filter Backdrop -->
+    <div class="filter-drawer-backdrop" id="filterDrawerOverlay" onclick="toggleMobileFilters(false)"></div>
+
+    <div class="detail-layout search-layout">
+      <!-- Faceted Sidebar -->
+      <aside class="filter-sidebar" id="filterSidebar">
+        <div class="filter-sidebar-header">
+          <span class="filter-sidebar-title">⚡ Filters & Sorting</span>
+          <button type="button" class="filter-close-btn" onclick="toggleMobileFilters(false)" aria-label="Close filters">✕</button>
         </div>
-        <div class="filter-group" data-group="types">
+
+        <div class="filter-group" style="padding-top:0" data-group="types">
           <div class="filter-group-title">Property Type</div>
-          <label class="check-row"><input type="checkbox" value="PG"/> 🏠 PG</label>
-          <label class="check-row"><input type="checkbox" value="ROOM"/> 🚪 Room</label>
-          <label class="check-row"><input type="checkbox" value="HOSTEL"/> 🛏️ Hostel</label>
-          <label class="check-row"><input type="checkbox" value="FLAT"/> 🏢 Flat</label>
-          <label class="check-row"><input type="checkbox" value="DORMITORY"/> 👥 Dormitory</label>
+          <label class="check-row"><input type="checkbox" value="PG" onchange="applySearch()"/> 🏠 Paying Guest (PG)</label>
+          <label class="check-row"><input type="checkbox" value="HOSTEL" onchange="applySearch()"/> 🛏️ Student Hostel</label>
+          <label class="check-row"><input type="checkbox" value="FLAT" onchange="applySearch()"/> 🏢 Flat (1/2/3 BHK)</label>
+          <label class="check-row"><input type="checkbox" value="ROOM" onchange="applySearch()"/> 🚪 Independent Room</label>
         </div>
+
         <div class="filter-group">
-          <div class="filter-group-title">Gender</div>
-          <label class="check-row"><input type="radio" name="gender" value=""/checked/> Any</label>
-          <label class="check-row"><input type="radio" name="gender" value="MALE"/> 👨 Boys Only</label>
-          <label class="check-row"><input type="radio" name="gender" value="FEMALE"/> 👩 Girls Only</label>
+          <div class="filter-group-title">Gender Preference</div>
+          <label class="check-row"><input type="radio" name="gender" value="" checked onchange="applySearch()"/> Any Gender</label>
+          <label class="check-row"><input type="radio" name="gender" value="MALE" onchange="applySearch()"/> Boys Accommodations</label>
+          <label class="check-row"><input type="radio" name="gender" value="FEMALE" onchange="applySearch()"/> Girls Accommodations</label>
         </div>
+
         <div class="filter-group">
-          <div class="filter-group-title">Price (per month)</div>
-          <div class="price-range">
-            <input id="minPrice" type="number" min="0" step="500" placeholder="Min ₹"/>
+          <div class="filter-group-title">Monthly Rent Range (₹)</div>
+          <div class="price-range" style="display:flex;gap:8px;align-items:center;">
+            <input id="minPrice" type="number" min="0" step="500" placeholder="Min ₹" style="width:100%"/>
             <span>—</span>
-            <input id="maxPrice" type="number" min="0" step="500" placeholder="Max ₹"/>
+            <input id="maxPrice" type="number" min="0" step="500" placeholder="Max ₹" style="width:100%"/>
           </div>
+          <button class="btn btn-secondary btn-block mt-8" onclick="applySearch()" style="padding:6px;font-size:13px">Go</button>
         </div>
-        <button class="btn btn-primary btn-block" onclick="applySearch()">Apply Filters</button>
+
+        <div class="filter-group" data-group="amenities">
+          <div class="filter-group-title">Included Facilities</div>
+          <label class="check-row"><input type="checkbox" value="WiFi" onchange="applySearch()"/> 📶 High-Speed WiFi</label>
+          <label class="check-row"><input type="checkbox" value="Meals" onchange="applySearch()"/> 🍲 Mess / Homestyle Food</label>
+          <label class="check-row"><input type="checkbox" value="Hot Water" onchange="applySearch()"/> 🚿 Geyser / Hot Water</label>
+          <label class="check-row"><input type="checkbox" value="Power Backup" onchange="applySearch()"/> ⚡ 24/7 Power Backup</label>
+          <label class="check-row"><input type="checkbox" value="Security" onchange="applySearch()"/> 🔒 CCTV & Biometric Security</label>
+          <label class="check-row"><input type="checkbox" value="Cleaning" onchange="applySearch()"/> 🧹 Daily Housekeeping</label>
+          <label class="check-row"><input type="checkbox" value="Laundry" onchange="applySearch()"/> 🧺 Washing Machine / Laundry</label>
+          <label class="check-row"><input type="checkbox" value="Parking" onchange="applySearch()"/> 🅿️ Two-Wheeler Parking</label>
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="applyAndCloseFilters()">Apply Filters</button>
         <button class="btn btn-secondary btn-block mt-8" onclick="resetFilters()">Reset All</button>
       </aside>
 
-      <main>
+      <!-- Main Results Column -->
+      <main class="search-results-col">
         <div class="results-topbar">
-          <div class="results-count" id="resultsCount">Loading…</div>
-          <select id="sortSelect" class="btn btn-secondary" onchange="applySearch()" style="padding:9px 14px">
-            <option value="newest">Newest First</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-          </select>
+          <div class="results-count" id="resultsCount">Loading verified listings…</div>
+          <div class="results-topbar-actions">
+            <button type="button" class="mobile-filter-toggle" onclick="toggleMobileFilters(true)">
+              ⚡ Filters <span class="filter-badge" id="filterBadge" style="display:none">0</span>
+            </button>
+            <div class="sort-wrap">
+              <label for="sortSelect" class="sort-label">Sort By:</label>
+              <select id="sortSelect" class="sort-select" onchange="applySearch()">
+                <option value="newest">Featured & Verified</option>
+                <option value="price-asc">Rent: Low to High</option>
+                <option value="price-desc">Rent: High to Low</option>
+              </select>
+            </div>
+          </div>
         </div>
+
         <div id="activeFilters" class="active-filters"></div>
         <div id="resultsGrid" class="grid-3"></div>
-        <div id="pagination" class="pagination"></div>
+        <div id="pagination" class="pagination" style="margin-top:28px;"></div>
       </main>
     </div>
   </div>
@@ -104,41 +192,189 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a href="index.html" class="logo">StayMart<small>Dehradun · Uttarakhand</small></a>
-          <p style="margin-top:14px;color:var(--text-secondary);font-size:14px;max-width:340px">
-            StayMart is Uttarakhand's trusted community marketplace for rentals and re-commerce. 🔥
+          <a href="index.html" class="logo">
+            <span class="logo-stay">Stay</span><span class="logo-mart">Mart</span>
+            <span class="logo-badge">UK</span>
+          </a>
+          <p style="margin-top:14px;color:rgba(255,255,255,0.7);font-size:14px;max-width:340px;line-height:1.6">
+            StayMart connects students and tenants directly with verified PG owners and shared flats across Dehradun and Uttarakhand with zero brokerage.
           </p>
         </div>
         <div>
-          <h4>Quick Links</h4>
+          <h4>Campus Hubs</h4>
           <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="search-products.html">Buy & Rent Products</a></li>
-            <li><a href="post-property.html">Post a Property</a></li>
-            <li><a href="post-product.html">Post a Product</a></li>
-            <li><a href="login.html">Login</a></li>
+            <li><a href="search-properties.html?q=Graphic%20Era">Graphic Era University (GEU/GEHU)</a></li>
+            <li><a href="search-properties.html?q=UPES">UPES Dehradun</a></li>
+            <li><a href="search-properties.html?q=DIT">DIT University</a></li>
+            <li><a href="search-properties.html?q=Doon">Doon University</a></li>
           </ul>
         </div>
         <div>
-          <h4>Cities We Serve 🏔️</h4>
+          <h4>Hill Cities</h4>
           <ul class="footer-links">
             <li><a href="search-properties.html?city=Dehradun">Dehradun</a></li>
             <li><a href="search-properties.html?city=Rishikesh">Rishikesh</a></li>
             <li><a href="search-properties.html?city=Mussoorie">Mussoorie</a></li>
             <li><a href="search-properties.html?city=Haridwar">Haridwar</a></li>
-            <li><a href="search-properties.html?city=Nainital">Nainital</a></li>
             <li><a href="search-properties.html?city=Roorkee">Roorkee</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">© 2026 StayMart · Made with 💚 in Dehradun</div>
+      <div class="footer-bottom" style="margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:13px;display:flex;justify-content:space-between;align-items:center;">
+        <div>© 2026 StayMart · Built for students in Uttarakhand</div>
+        <div>Zero Brokerage · Direct student-to-student</div>
+      </div>
     </div>
   </footer>
 
-  <script src="js/api.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/behavior.js"></script>
-  <script src="js/utils.js"></script>
-  <script src="js/search.js"></script>
+  <script src="js/api.js?v=4.1.0"></script>
+  <script src="js/auth.js?v=4.1.0"></script>
+  <script src="js/behavior.js?v=4.1.0"></script>
+  <script src="js/utils.js?v=4.1.0"></script>
+  <script src="js/stats.js?v=4.1.0"></script>
+  <script src="js/search.js?v=4.1.0"></script>
+  <script>
+    function toggleLocationDropdown(e) {
+      e.stopPropagation();
+      const dd = document.getElementById('navLocDropdown');
+      if (dd) dd.classList.toggle('open');
+    }
+
+    function selectCityFilter(city) {
+      document.getElementById('citySelect').value = city;
+      document.getElementById('selectedCityLabel').textContent = city || 'All UK';
+      const dd = document.getElementById('navLocDropdown');
+      if (dd) dd.classList.remove('open');
+      applySearch();
+    }
+
+    function applySearchFromNav(e) {
+      e.preventDefault();
+      applySearch();
+    }
+
+    document.addEventListener('click', function(e) {
+      const dd = document.getElementById('navLocDropdown');
+      if (dd && dd.classList.contains('open') && !e.target.closest('#navLocationBtn')) {
+        dd.classList.remove('open');
+      }
+    });
+  </script>
+
+  <!-- Mobile Navigation Drawer & Backdrop -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileDrawer()"></div>
+
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation">
+    <div class="drawer-header">
+      <div class="drawer-user-card" id="drawerUserCard">
+        <div class="drawer-user-avatar">👤</div>
+        <div class="drawer-user-meta">
+          <div class="drawer-user-name">Welcome, Student!</div>
+          <div class="drawer-user-role">Dehradun & Uttarakhand Hub</div>
+        </div>
+      </div>
+      <button class="drawer-close-btn" onclick="closeMobileDrawer()" aria-label="Close menu">✕</button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="drawer-post-cards">
+        <a href="post-property.html" class="drawer-post-card card-property">
+          <span class="post-card-icon">🏠</span>
+          <div class="post-card-text">
+            <strong>List a PG / Room</strong>
+            <small>Zero Brokerage · Free</small>
+          </div>
+        </a>
+        <a href="post-product.html" class="drawer-post-card card-product">
+          <span class="post-card-icon">🏷️</span>
+          <div class="post-card-text">
+            <strong>Sell Pre-Loved Gear</strong>
+            <small>Tech, Cycles, Books</small>
+          </div>
+        </a>
+      </div>
+
+      <div class="drawer-group-title">Browse Marketplace</div>
+      <nav class="drawer-links">
+        <a href="index.html" class="drawer-link"><span class="link-icon">🏠</span> Home</a>
+        <a href="search-properties.html" class="drawer-link"><span class="link-icon">🛏️</span> Student Accommodations & PGs</a>
+        <a href="search-products.html" class="drawer-link"><span class="link-icon">🛒</span> Student Buy & Sell Re-Commerce</a>
+        <a href="search-properties.html?type=PG" class="drawer-link sub-link"><span>•</span> Paying Guest (PGs)</a>
+        <a href="search-properties.html?type=FLAT" class="drawer-link sub-link"><span>•</span> Shared Rental Flats</a>
+        <a href="search-products.html?category=Electronics" class="drawer-link sub-link"><span>•</span> Laptops & Computer Gear</a>
+        <a href="search-products.html?category=Books" class="drawer-link sub-link"><span>•</span> Tech & GATE Textbooks</a>
+      </nav>
+
+      <div class="drawer-group-title">Campus Hubs</div>
+      <div class="drawer-campus-grid">
+        <a href="search-properties.html?q=Graphic+Era" class="drawer-campus-chip">🎓 Graphic Era (GEU)</a>
+        <a href="search-properties.html?q=UPES" class="drawer-campus-chip">🎓 UPES Dehradun</a>
+        <a href="search-properties.html?q=DIT" class="drawer-campus-chip">🎓 DIT University</a>
+        <a href="search-properties.html?q=Roorkee" class="drawer-campus-chip">🏛️ IIT Roorkee</a>
+        <a href="search-properties.html?city=Rishikesh" class="drawer-campus-chip">🏔️ Rishikesh</a>
+      </div>
+
+      <div id="drawerAccountSection" style="display:none">
+        <div class="drawer-group-title">My Student Space</div>
+        <nav class="drawer-links" id="drawerAccountLinks"></nav>
+      </div>
+    </div>
+
+    <div class="drawer-footer" id="drawerFooter"></div>
+  </aside>
+
+  <!-- Mobile Sticky Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile Navigation">
+    <a href="search-properties.html" class="bottom-nav-item active" data-tab="properties">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-label">Explore</span>
+    </a>
+    <a href="search-products.html" class="bottom-nav-item" data-tab="products">
+      <span class="nav-icon">🛒</span>
+      <span class="nav-label">Market</span>
+    </a>
+    <div class="bottom-nav-post-wrap">
+      <button class="bottom-nav-post-btn" onclick="openPostChooser(event)" aria-label="Post a listing">
+        <span class="post-plus">+</span>
+      </button>
+      <span class="nav-label">Post</span>
+    </div>
+    <a href="pages/user/chat.html" class="bottom-nav-item" data-tab="chat" id="bottomTabChat">
+      <span class="nav-icon">💬</span>
+      <span class="nav-label">Chats</span>
+    </a>
+    <a href="pages/user/dashboard.html" class="bottom-nav-item" data-tab="account" id="bottomTabAccount">
+      <span class="nav-icon">👤</span>
+      <span class="nav-label">Account</span>
+    </a>
+  </nav>
+
+  <!-- Post Chooser Modal Sheet -->
+  <div class="post-chooser-overlay" id="postChooserOverlay" onclick="closePostChooser(event)">
+    <div class="post-chooser-sheet" onclick="event.stopPropagation()">
+      <div class="sheet-drag-handle"></div>
+      <div class="sheet-title">What would you like to list?</div>
+      <p class="sheet-desc">Reach 8,000+ local students across Dehradun, Rishikesh & Roorkee</p>
+      <div class="chooser-card-list">
+        <a href="post-property.html" class="chooser-card-item">
+          <div class="chooser-icon-box" style="background:#e0f2fe;color:#0284c7">🏠</div>
+          <div class="chooser-text">
+            <div class="chooser-head">List an Accommodation</div>
+            <div class="chooser-info">Post a PG room, student hostel, shared flat, or 1 BHK</div>
+          </div>
+          <span class="chooser-chevron">›</span>
+        </a>
+        <a href="post-product.html" class="chooser-card-item">
+          <div class="chooser-icon-box" style="background:#fef3c7;color:#d97706">📦</div>
+          <div class="chooser-text">
+            <div class="chooser-head">Sell or Rent a Product</div>
+            <div class="chooser-info">Laptops, study tables, bicycles, books, electronics</div>
+          </div>
+          <span class="chooser-chevron">›</span>
+        </a>
+      </div>
+      <button type="button" class="btn btn-secondary btn-block mt-8" onclick="closePostChooser()">Cancel</button>
+    </div>
+  </div>
 </body>
 </html>

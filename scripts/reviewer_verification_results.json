@@ -1,0 +1,194 @@
+{
+  "feature8Counters": {
+    "status": "PASS",
+    "checks": [
+      {
+        "counter": 1,
+        "target": "500",
+        "text": "500+",
+        "valid": true
+      },
+      {
+        "counter": 2,
+        "target": "1200",
+        "text": "1,200+",
+        "valid": true
+      },
+      {
+        "counter": 3,
+        "target": "500",
+        "text": "500+",
+        "valid": true
+      },
+      {
+        "counter": 4,
+        "target": "1200",
+        "text": "1,200+",
+        "valid": true
+      },
+      {
+        "counter": 5,
+        "target": "4500",
+        "text": "₹4,500/mo",
+        "valid": true
+      },
+      {
+        "counter": 6,
+        "target": "98",
+        "text": "98%",
+        "valid": true
+      }
+    ]
+  },
+  "feature9Calculator": {
+    "status": "PASS",
+    "checks": [
+      {
+        "test": "Initial Accommodation State",
+        "initialTotal": "₹21,000",
+        "initialRent": "₹9,000 / month",
+        "initialCta": "search-properties.html?maxPrice=9000",
+        "pass": true
+      },
+      {
+        "test": "Slider to 15k",
+        "updatedTotal15k": "₹27,000",
+        "updatedRent15k": "₹15,000 / month",
+        "updatedCta15k": "search-properties.html?maxPrice=15000",
+        "pass": true
+      },
+      {
+        "test": "Preset Chip to 6k",
+        "chipTotal6k": "₹18,000",
+        "pass": true
+      },
+      {
+        "test": "Duration to 6 months",
+        "durTotal6m": "₹13,200",
+        "pass": true
+      },
+      {
+        "test": "Uncheck Utilities",
+        "noUtilTotal": "₹6,000",
+        "pass": true
+      },
+      {
+        "test": "Switch to Gear Mode",
+        "gearPaneVisible": true,
+        "accPaneHidden": true,
+        "initialGearPkgRetail": "₹6,500",
+        "initialGearPkgSenior": "₹1,800",
+        "initialGearSavings": "₹4,700",
+        "pass": true
+      },
+      {
+        "test": "Select Laptop Package",
+        "laptopRetail": "₹56,000",
+        "laptopSenior": "₹24,500",
+        "laptopSavings": "₹31,500",
+        "laptopCo2": "185 kg",
+        "pass": true
+      },
+      {
+        "test": "Select Mobility Package",
+        "cycleRetail": "₹12,000",
+        "cycleSenior": "₹4,200",
+        "cycleSavings": "₹7,800",
+        "pass": true
+      },
+      {
+        "test": "Custom Checklist",
+        "customRetail": "₹12,000",
+        "customSenior": "₹4,000",
+        "customSavings": "₹8,000",
+        "customCo2": "42 kg",
+        "pass": true
+      }
+    ]
+  },
+  "feature12Charts": {
+    "status": "PASS",
+    "checks": [
+      {
+        "test": "Offline CDN Blocked SVG Fallback",
+        "fallbackCheck": {
+          "hasRentSvg": true,
+          "hasGearSvg": true,
+          "rentRects": 15,
+          "rentTexts": 10,
+          "gearRects": 12,
+          "gearTexts": 10,
+          "svgFilteredRects": 15,
+          "svgVolRects": 12
+        },
+        "pass": true
+      }
+    ]
+  },
+  "responsiveBreakpoints": {
+    "status": "PASS",
+    "checks": [
+      {
+        "viewport": 320,
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "ribbonScrollWidth": 320,
+        "ribbonClientWidth": 320,
+        "calcScrollWidth": 296,
+        "calcClientWidth": 296,
+        "chartsScrollWidth": 296,
+        "chartsClientWidth": 296,
+        "hasOverflow": false
+      },
+      {
+        "viewport": 375,
+        "docScrollWidth": 375,
+        "docClientWidth": 375,
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "ribbonScrollWidth": 375,
+        "ribbonClientWidth": 375,
+        "calcScrollWidth": 351,
+        "calcClientWidth": 351,
+        "chartsScrollWidth": 351,
+        "chartsClientWidth": 351,
+        "hasOverflow": false
+      },
+      {
+        "viewport": 768,
+        "docScrollWidth": 768,
+        "docClientWidth": 768,
+        "bodyScrollWidth": 768,
+        "bodyClientWidth": 768,
+        "ribbonScrollWidth": 768,
+        "ribbonClientWidth": 768,
+        "calcScrollWidth": 736,
+        "calcClientWidth": 736,
+        "chartsScrollWidth": 736,
+        "chartsClientWidth": 736,
+        "hasOverflow": false
+      },
+      {
+        "viewport": 1280,
+        "docScrollWidth": 1280,
+        "docClientWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "bodyClientWidth": 1280,
+        "ribbonScrollWidth": 1280,
+        "ribbonClientWidth": 1280,
+        "calcScrollWidth": 1248,
+        "calcClientWidth": 1248,
+        "chartsScrollWidth": 1248,
+        "chartsClientWidth": 1248,
+        "hasOverflow": false
+      }
+    ]
+  },
+  "integrityAudit": {
+    "status": "PASS",
+    "checks": [],
+    "findings": []
+  }
+}

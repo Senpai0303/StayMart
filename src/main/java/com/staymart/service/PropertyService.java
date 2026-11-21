@@ -24,7 +24,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class PropertyService {
@@ -162,8 +166,11 @@ public class PropertyService {
 
     @Transactional(readOnly = true)
     public List<PropertyResponse> findRecommendedProperties(List<Long> ids, int limit) {
-        List<Property> properties = propertyRepository.findAllById(ids);
-        return properties.stream()
+        Map<Long, Property> propertiesById = propertyRepository.findAllById(ids).stream()
+                .collect(Collectors.toMap(Property::getId, Function.identity()));
+        return ids.stream()
+                .map(propertiesById::get)
+                .filter(Objects::nonNull)
                 .filter(p -> p.getStatus() == ModerationStatus.APPROVED)
                 .map(PropertyResponse::from)
                 .limit(limit)

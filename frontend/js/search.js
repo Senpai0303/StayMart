@@ -23,17 +23,43 @@ function initState() {
   state.categoryId = params.get('category') || '';
   const page = parseInt(params.get('page'), 10);
   state.page = !isNaN(page) && page > 0 ? page - 1 : 0;
-  document.getElementById('searchInput').value = state.q;
-  document.getElementById('citySelect').value = state.city;
+  
+  if (document.getElementById('searchInput')) document.getElementById('searchInput').value = state.q;
+  if (document.getElementById('citySelect')) document.getElementById('citySelect').value = state.city;
+  
+  const typeParam = params.get('type');
+  if (typeParam) {
+    state.types = [typeParam.toUpperCase()];
+    const typeBox = document.querySelector(`[data-group="types"] input[value="${typeParam.toUpperCase()}"]`);
+    if (typeBox) typeBox.checked = true;
+  }
+  
+  const genderParam = params.get('gender');
+  if (genderParam) {
+    state.gender = genderParam.toUpperCase();
+    const genderRadio = document.querySelector(`input[name="gender"][value="${genderParam.toUpperCase()}"]`);
+    if (genderRadio) genderRadio.checked = true;
+  }
+
+  const maxPriceParam = params.get('maxPrice');
+  if (maxPriceParam) {
+    state.maxPrice = maxPriceParam;
+    const maxEl = document.getElementById('maxPrice');
+    if (maxEl) maxEl.value = maxPriceParam;
+  }
+
   if (pageType === 'products' && state.categoryId) {
     markCategoryRadio(state.categoryId);
   }
 }
 
-function markCategoryRadio(id) {
+function markCategoryRadio(idOrName) {
   const radios = document.querySelectorAll('input[name="category"]');
   radios.forEach(function (r) {
-    if (r.value === String(id)) r.checked = true;
+    if (r.value === String(idOrName) || (r.dataset.catName && r.dataset.catName.toLowerCase() === String(idOrName).toLowerCase())) {
+      r.checked = true;
+      state.categoryId = r.value;
+    }
   });
 }
 
@@ -50,8 +76,10 @@ async function loadProductCategories() {
     });
     let html = '<label class="check-row"><input type="radio" name="category" value="" checked/> All Categories</label>';
     productCategories.forEach(function (c) {
-      const checked = c.id === Number(state.categoryId) ? ' checked' : '';
-      html += `<label class="check-row"><input type="radio" name="category" value="${c.id}"${checked}/> ${escapeHtml(c.icon || '🏷️')} ${escapeHtml(c.name)}</label>`;
+      const isMatch = (state.categoryId && (c.id === Number(state.categoryId) || c.name.toLowerCase() === state.categoryId.toLowerCase()));
+      if (isMatch) state.categoryId = String(c.id);
+      const checked = isMatch ? ' checked' : '';
+      html += `<label class="check-row"><input type="radio" name="category" value="${c.id}" data-cat-name="${escapeHtml(c.name)}"${checked}/> ${escapeHtml(c.icon || '🏷️')} ${escapeHtml(c.name)}</label>`;
     });
     list.innerHTML = productCategories.length ? html : 'No categories available.';
   } catch (error) {
@@ -196,7 +224,19 @@ function renderActiveFilters() {
     if (state.conditions.length) chips.push(['conditions', `✨ ${state.conditions.join(', ')}`]);
   }
   if (state.minPrice) chips.push(['minPrice', `Min ₹${state.minPrice}`]);
-  if (state.maxPrice) chips.push(['maxPrice', `Max ₹${state.maxPrice}`]);
+  const badge1 = document.getElementById('filterBadge');
+  const badge2 = document.getElementById('filterCountBadge');
+  [badge1, badge2].forEach(b => {
+    if (b) {
+      if (chips.length > 0) {
+        b.textContent = chips.length;
+        b.style.display = 'inline-block';
+      } else {
+        b.style.display = 'none';
+      }
+    }
+  });
+
   if (!chips.length) {
     box.innerHTML = '';
     return;
@@ -291,6 +331,35 @@ function emptyHtml(icon, title, text) {
       <p>${escapeHtml(text)}</p>
     </div>
   `;
+}
+
+function toggleMobileFilters(open) {
+  const sidebar = document.getElementById('filterSidebar');
+  const backdrop = document.getElementById('filterDrawerOverlay') || document.getElementById('filterDrawerBackdrop');
+  if (!sidebar) return;
+  const shouldOpen = open !== undefined ? open : !sidebar.classList.contains('open');
+  if (shouldOpen) {
+    sidebar.classList.add('open');
+    if (backdrop) backdrop.classList.add('open', 'active');
+    document.body.style.overflow = 'hidden';
+  } else {
+    sidebar.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('open', 'active');
+    document.body.style.overflow = '';
+  }
+}
+
+function openFilterDrawer() {
+  toggleMobileFilters(true);
+}
+
+function closeFilterDrawer() {
+  toggleMobileFilters(false);
+}
+
+function applyAndCloseFilters() {
+  applySearch();
+  closeFilterDrawer();
 }
 
 document.addEventListener('DOMContentLoaded', function () {

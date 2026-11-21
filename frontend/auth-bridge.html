@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Auth Bridge</title></head>
+<body>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const target = params.get('to') || 'index.html';
+  const token = params.get('token');
+  const user = params.get('user');
+  if (token) localStorage.setItem('staymart_token', token);
+  if (user) localStorage.setItem('staymart_user', decodeURIComponent(user));
+  window.location.replace(target);
+</script>
+</body>
+</html>

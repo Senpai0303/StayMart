@@ -1,0 +1,239 @@
+{
+  "files_scanned_count": 87,
+  "scanned_files": [
+    "database/01_schema.sql",
+    "database/02_seed.sql",
+    "database/03_seed_listings.sql",
+    "database/04_update_realistic_media.sql",
+    "database/05_olx_amazon_listings.sql",
+    "frontend/auth-bridge.html",
+    "frontend/css/dashboard.css",
+    "frontend/css/global.css",
+    "frontend/index.html",
+    "frontend/js/admin-categories.js",
+    "frontend/js/admin-dashboard.js",
+    "frontend/js/admin-listings.js",
+    "frontend/js/admin-locations.js",
+    "frontend/js/admin-pending.js",
+    "frontend/js/admin-users.js",
+    "frontend/js/api.js",
+    "frontend/js/auth.js",
+    "frontend/js/behavior.js",
+    "frontend/js/bookings.js",
+    "frontend/js/charts.js",
+    "frontend/js/chat.js",
+    "frontend/js/dashboard.js",
+    "frontend/js/home.js",
+    "frontend/js/login.js",
+    "frontend/js/my-listings.js",
+    "frontend/js/orders.js",
+    "frontend/js/post-product.js",
+    "frontend/js/post-property.js",
+    "frontend/js/product-detail.js",
+    "frontend/js/profile.js",
+    "frontend/js/property-detail.js",
+    "frontend/js/register.js",
+    "frontend/js/requests-received.js",
+    "frontend/js/search.js",
+    "frontend/js/stats.js",
+    "frontend/js/user-dashboard.js",
+    "frontend/js/utils.js",
+    "frontend/js/wishlist.js",
+    "frontend/login.html",
+    "frontend/pages/admin/all-products.html",
+    "frontend/pages/admin/all-properties.html",
+    "frontend/pages/admin/all-users.html",
+    "frontend/pages/admin/categories.html",
+    "frontend/pages/admin/dashboard.html",
+    "frontend/pages/admin/locations.html",
+    "frontend/pages/admin/pending-products.html",
+    "frontend/pages/admin/pending-properties.html",
+    "frontend/pages/user/bookings.html",
+    "frontend/pages/user/chat.html",
+    "frontend/pages/user/dashboard.html",
+    "frontend/pages/user/my-listings.html",
+    "frontend/pages/user/orders.html",
+    "frontend/pages/user/profile.html",
+    "frontend/pages/user/requests-received.html",
+    "frontend/pages/user/wishlist.html",
+    "frontend/post-product.html",
+    "frontend/post-property.html",
+    "frontend/product-detail.html",
+    "frontend/property-detail.html",
+    "frontend/register.html",
+    "frontend/search-products.html",
+    "frontend/search-properties.html",
+    "frontend/vercel.json",
+    "README.md",
+    "report/admin_auth.json",
+    "report/appendices/app_api_specs.tex",
+    "report/appendices/app_backend_code.tex",
+    "report/appendices/app_database_schema.tex",
+    "report/appendices/app_frontend_code.tex",
+    "report/chapters/ch1_introduction.tex",
+    "report/chapters/ch2_literature_review.tex",
+    "report/chapters/ch3_requirements_architecture.tex",
+    "report/chapters/ch4_database_design.tex",
+    "report/chapters/ch5_backend_ml.tex",
+    "report/chapters/ch6_frontend_ui.tex",
+    "report/chapters/ch7_testing_walkthrough.tex",
+    "report/chapters/ch8_deployment_hosting.tex",
+    "report/chapters/ch9_conclusion.tex",
+    "report/compiled/report.html",
+    "report/diagrams/arch_diagram.html",
+    "report/diagrams/deployment_arch.html",
+    "report/diagrams/dfd_level0.html",
+    "report/diagrams/er_diagram.html",
+    "report/diagrams/ml_pipeline.html",
+    "report/diagrams/seq_booking.html",
+    "report/main.tex",
+    "scripts/compile_report_pdf.py"
+  ],
+  "total_findings": 0,
+  "mandated_violations_count": 0,
+  "extended_violations_count": 0,
+  "verdict": "PASS",
+  "pattern_summary": {
+    "transient_demographic_cohorts": {
+      "name": "Transient demographic cohorts",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "interdependent_necessities": {
+      "name": "Interdependent necessities",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "structural_bottlenecks": {
+      "name": "Structural bottlenecks",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "bespoke_glassmorphism": {
+      "name": "Bespoke glassmorphism",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "bespoke_non_generic": {
+      "name": "Bespoke, non-generic",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "tfidf_ai_algorithm": {
+      "name": "TF-IDF AI algorithm",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "marketplace_inc": {
+      "name": "Marketplace Inc.",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "in_contemporary_urban": {
+      "name": "In contemporary urban",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "prohibitive_capital_expenditures": {
+      "name": "Prohibitive capital expenditures",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "virtual_thread_scheduling": {
+      "name": "Virtual thread scheduling",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "java_21_claim": {
+      "name": "Java 21 backend claim",
+      "category": "mandated",
+      "scope": "report_and_readme",
+      "match_count": 0,
+      "findings": []
+    },
+    "dark_mode_glassmorphic": {
+      "name": "Dark-mode glassmorphic",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "slate_dark_hex": {
+      "name": "Slate dark (#0f172a) in UI themes",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "pivotal": {
+      "name": "Pivotal (generic AI filler)",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "delve_into": {
+      "name": "Delve into",
+      "category": "mandated",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "seamlessly_marketing": {
+      "name": "Seamlessly in marketing copy",
+      "category": "mandated",
+      "scope": "marketing_only",
+      "match_count": 0,
+      "findings": []
+    },
+    "hyper_local_socioeconomic": {
+      "name": "Hyper-local socioeconomic",
+      "category": "extended_adversarial",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "tapestry_filler": {
+      "name": "Tapestry AI filler",
+      "category": "extended_adversarial",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "testament_filler": {
+      "name": "Testament AI filler",
+      "category": "extended_adversarial",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    },
+    "holistic_buzzword": {
+      "name": "Holistic buzzword",
+      "category": "extended_adversarial",
+      "scope": "all",
+      "match_count": 0,
+      "findings": []
+    }
+  },
+  "all_findings": []
+}

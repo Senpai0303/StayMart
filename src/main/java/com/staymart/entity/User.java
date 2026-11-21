@@ -37,18 +37,18 @@ public class User {
     @Column(nullable = false, unique = true, length = 150)
     private String email;
 
-    @Column(name = "password_hash", nullable = false)
+    @Column(name = "password_hash", nullable = false, length = 255)
     private String passwordHash;
 
     @Column(length = 15)
     private String phone;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "role", nullable = false)
     @Builder.Default
     private Role role = Role.USER;
 
-    @Column(name = "profile_pic")
+    @Column(name = "profile_pic", length = 255)
     private String profilePic;
 
     @Column(length = 100)

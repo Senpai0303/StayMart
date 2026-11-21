@@ -1,0 +1,188 @@
+\chapter{Frontend Architecture and Client JavaScript Source Code}
+
+\section{Introduction}
+This appendix provides the core client-side JavaScript architecture governing the StayMart frontend web portal, including the unified API client, the state and session manager, behavioral tracking beacons, and formatting utilities.
+
+\section{Unified API Client (\texttt{api.js})}
+\begin{lstlisting}[language=Java, caption={Complete api.js Client Service}]
+// Auto-detect local development vs cloud deployment
+const isLocal = window.location.hostname === 'localhost' ||
+                window.location.hostname === '127.0.0.1' ||
+                window.location.protocol === 'file:';
+
+const customUrl = window.STAYMART_API_URL || localStorage.getItem('STAYMART_API_URL');
+const BASE_URL = isLocal
+  ? 'http://localhost:8080/api'
+  : (customUrl ? customUrl.replace(/\/+$/, '') : '/api');
+
+async function apiCall(endpoint, method = 'GET', body = null) {
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+  const token = localStorage.getItem('staymart_token');
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+  const config = { method, headers };
+  if (body) {
+    config.body = JSON.stringify(body);
+  }
+  const cleanBase = (BASE_URL || '').replace(/\/+$/, '');
+  const cleanPath = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const res = await fetch(cleanBase + cleanPath, config);
+  const data = await res.json();
+  if (!data || data.success === false) {
+    throw new Error((data && data.message) || 'Something went wrong');
+  }
+  if (res.ok === false) {
+    throw new Error((data && data.message) || 'Something went wrong');
+  }
+  if (data && typeof data === 'object' && 'success' in data && 'data' in data) {
+    return data.data;
+  }
+  return data;
+}
+
+const PropertyAPI = {
+  getAll: (params) => apiCall(`/properties${buildQuery(params)}`),
+  getMy: () => apiCall('/users/me/properties'),
+  getById: (id) => apiCall(`/properties/${id}`),
+  create: (propertyData) => apiCall('/properties', 'POST', propertyData),
+  update: (id, propertyData) => apiCall(`/properties/${id}`, 'PUT', propertyData),
+  delete: (id) => apiCall(`/properties/${id}`, 'DELETE'),
+  getPending: () => apiCall('/properties/pending'),
+  approve: (id) => apiCall(`/properties/${id}/approve`, 'PATCH'),
+  reject: (id) => apiCall(`/properties/${id}/reject`, 'PATCH')
+};
+
+const ProductAPI = {
+  getAll: (params) => apiCall(`/products${buildQuery(params)}`),
+  getMy: () => apiCall('/users/me/products'),
+  getById: (id) => apiCall(`/products/${id}`),
+  create: (productData) => apiCall('/products', 'POST', productData),
+  update: (id, productData) => apiCall(`/products/${id}`, 'PUT', productData),
+  delete: (id) => apiCall(`/products/${id}`, 'DELETE'),
+  getPending: () => apiCall('/products/pending'),
+  approve: (id) => apiCall(`/products/${id}/approve`, 'PATCH'),
+  reject: (id) => apiCall(`/products/${id}/reject`, 'PATCH')
+};
+
+const BookingAPI = {
+  create: (bookingData) => apiCall('/bookings', 'POST', bookingData),
+  getMy: () => apiCall('/bookings/mine'),
+  getIncoming: () => apiCall('/bookings/incoming'),
+  getById: (id) => apiCall(`/bookings/${id}`),
+  updateStatus: (id, status) => apiCall(`/bookings/${id}/status?status=${encodeURIComponent(status)}`, 'PATCH')
+};
+
+const OrderAPI = {
+  create: (orderData) => apiCall('/orders', 'POST', orderData),
+  getMy: () => apiCall('/orders/mine'),
+  getIncoming: () => apiCall('/orders/incoming'),
+  getById: (id) => apiCall(`/orders/${id}`),
+  updateStatus: (id, status) => apiCall(`/orders/${id}/status?status=${encodeURIComponent(status)}`, 'PATCH')
+};
+
+const ChatAPI = {
+  getConversations: () => apiCall('/chat/conversations'),
+  getMessages: (userId) => apiCall(`/chat/messages/${userId}`),
+  send: (receiverId, message) => apiCall('/chat/send', 'POST', { receiverId, message }),
+  getUnreadCount: () => apiCall('/chat/unread-count')
+};
+
+const RecommendationAPI = {
+  getForUser: (userId, limit = 8) => apiCall(`/recommendations/user/${userId}?limit=${limit}`),
+  getRecommendedProperties: (city, limit = 6) => apiCall(`/recommendations/properties?city=${encodeURIComponent(city || '')}&limit=${limit}`),
+  getSimilarProperties: (id, limit = 4) => apiCall(`/recommendations/properties/${id}/similar?limit=${limit}`),
+  getRecommendedProducts: (limit = 6) => apiCall(`/recommendations/products?limit=${limit}`),
+  getSimilarProducts: (id, limit = 4) => apiCall(`/recommendations/products/${id}/similar?limit=${limit}`),
+  getTrendingProperties: (limit = 8) => apiCall(`/recommendations/trending/properties?limit=${limit}`),
+  getTopRatedProducts: (limit = 8) => apiCall(`/recommendations/top-rated/products?limit=${limit}`)
+};
+\end{lstlisting}
+
+\section{Authentication and Session Guard (\texttt{auth.js})}
+\begin{lstlisting}[language=Java, caption={Complete auth.js Session Service}]
+const Auth = {
+  user: null,
+  async init() {
+    const token = localStorage.getItem('staymart_token');
+    if (token) {
+      try {
+        this.user = await AuthAPI.getCurrentUser();
+      } catch (error) {
+        this.logout();
+      }
+    }
+  },
+  isLoggedIn() {
+    return !!this.user;
+  },
+  isAdmin() {
+    if (!this.user) return false;
+    if (this.user.role) return this.user.role === 'ADMIN';
+    if (Array.isArray(this.user.roles)) return this.user.roles.includes('ADMIN');
+    return false;
+  },
+  async login(email, password) {
+    const result = await AuthAPI.login({ email, password });
+    if (result && result.token) {
+      localStorage.setItem('staymart_token', result.token);
+      localStorage.setItem('staymart_user', JSON.stringify(result.user));
+      this.user = result.user;
+    }
+  },
+  logout() {
+    localStorage.removeItem('staymart_token');
+    localStorage.removeItem('staymart_user');
+    this.user = null;
+  },
+  guardPage() {
+    if (!this.isLoggedIn()) {
+      window.location.href = `${depthPrefix()}login.html?redirect=${encodeURIComponent(window.location.pathname)}`;
+      return false;
+    }
+    return true;
+  },
+  guardAdmin() {
+    if (!this.isLoggedIn() || !this.isAdmin()) {
+      window.location.href = `${depthPrefix()}login.html`;
+      return false;
+    }
+    return true;
+  }
+};
+\end{lstlisting}
+
+\section{Behavioral Telemetry Tracker (\texttt{behavior.js})}
+\begin{lstlisting}[language=Java, caption={Complete behavior.js Telemetry Service}]
+const BehaviorTracker = {
+  record: async function (itemType, itemId, action) {
+    try {
+      if (typeof Auth !== 'undefined' && Auth.isLoggedIn && !Auth.isLoggedIn()) {
+        return; // Only log authenticated behavior
+      }
+      await apiCall('/behaviors', 'POST', {
+        itemType: itemType,
+        itemId: itemId,
+        action: action
+      });
+    } catch (err) {
+      // Telemetry failure is completely silent to avoid interrupting user flows
+      console.debug('Telemetry skipped:', err.message);
+    }
+  },
+
+  trackView: function (itemType, itemId) {
+    this.record(itemType, itemId, 'VIEW');
+  },
+
+  trackWishlist: function (itemType, itemId) {
+    this.record(itemType, itemId, 'WISHLIST');
+  },
+
+  trackContact: function (itemType, itemId) {
+    this.record(itemType, itemId, 'CONTACT');
+  }
+};
+\end{lstlisting}

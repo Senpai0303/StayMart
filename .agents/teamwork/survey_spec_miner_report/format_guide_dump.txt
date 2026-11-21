@@ -1,0 +1,477 @@
+=== PAGE 1 ===
+ 
+ 
+SPECIFICATIONS FOR PROJECT REPORT 
+1. The PROJECT REPORT shall be typed or printed on A4 size executive bond paper. 
+No hand written PROJECT REPORT will be accepted. 
+2. The PROJECT REPORT shall be typed on both side with 1½ spacing with a margin of 3.5 cms on the left 
+2.5cms on the top and 1.25 cms on the right and bottom. (as per annexure I) 
+3. In a PROJECT REPORT, the Cover page is given (as per annexure II) 
+4. the title page should be given first, then the certificate by the candidate and the mentors 
+followed by an abstract of the PROJECT REPORT not exceeding 300 words. This should be 
+followed by acknowledgement and a table of contents. (as per annexure III) 
+5. The references should be given at the end of the PROJECT REPORT  preferably in 
+alphabetic order of the authors’ names. 
+6. In the body of the text, a reference should be indicated by a number in parenthesis such as 
+[5].These references should be listed giving (i) the author’s name and his initials (ii) the title 
+of the paper and the name of the journal (iii) the name of the book and the publisher (iv) the 
+number of volume, page numbers and the year of public ation. Standard abbreviations may be 
+used in the names of the journals. 
+7. The diagrams should be all in ink or should be printed on a light background. Tabular matter 
+should be clearly arranged. Decimal points may be indicated by a full-stop. 
+8. The PROJECT REPORT shall be spiral bound at the time of initial submission. 
+9. After the viva -voce examination the PROJECT REPORT shall be submitted in hard bound. 
+The PROJECT REPORT shall be bound in card sheet paper of maroon colour for final PG and 
+dark gray for final undergraduate semester.  The name of the candidate, the degree and the year 
+shall be printed in bold on the cover in gold (as per annexure II), For PG second and UG fourth 
+semester, the project report will be spiral binded 
+
+
+=== PAGE 2 ===
+Top (2.5 cms) 
+ 
+ 
+Left (3.5 cms) 
+Annexure I (Margins dimension only) 
+ 
+Right (1.25 cms) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Bottom (1.25 cms) 
+ 
+  
+
+=== PAGE 3 ===
+ 
+  
+
+=== PAGE 4 ===
+Annexure II (Cover Page) 
+ 
+ 
+TITLE 
+ 
+ 
+ 
+A PROJECT REPORT 
+ 
+Submitted in partial fulfilment of the requirements 
+for the award of the degree 
+ 
+of 
+MASTER OF COMPUTER APPLICATIONS 
+ 
+ 
+ 
+ 
+by 
+ 
+NAME OF CANDIDATE 
+ 
+ 
+Under the supervision of 
+ 
+Dr. XYZ 
+ 
+ 
+ 
+ 
+ 
+ 
+SCHOOL  OF COMPUTING, 
+GRAPHIC ERA HILL UNIVERSITY, CLEMENTOWN, 
+DEHRADUN-248002, UTTARAKHAND, INDIA 
+Month, Year 
+ 
+12 + Bold 
+12 Italic 
+12 + Bold, Uppercase 
+12 Italic 
+12 + Bold, Uppercase 
+12 Italic 
+12 Italic + Bold & 
+Both line Single Space 
+12 + Bold 
+16 + Bold & 
+Single Space 
+Seal size 
+1.75” by 1.75” 
+New Seal 
+14 + Bold 
+And Single 
+Space 
+
+
+=== PAGE 5 ===
+Month, Year 
+ 
+ 
+Annexure III 
+SAMPLE COPY TITLE 
+ 
+ 
+ 
+ 
+PROJECT REPORT 
+ 
+ 
+ 
+ 
+by 
+ 
+ 
+ 
+NAME OF CANDIDATE 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+School of Computing 
+ GRAPHIC ERA HILL UNIVERSITY, 
+CLEMENTOWN, DEHRADUN-248002, 
+UTTARAKHAND, INDIA 
+14 + Bold 
+and 
+Single 
+Space 
+12 + Bold , 
+Uppercase 
+12 Italic 
+12 + Bold 
+16 + Bold & 
+Single Space 
+NOTE: Font may be Arial or 
+New Time Roman all 
+through out 
+Seal size 
+1.75” by 1.75” 
+New Seal 
+
+=== PAGE 6 ===
+Month, Year 
+ 
+ 
+TITLE 
+ 
+ 
+ 
+A PROJECT REPORT 
+ 
+Submitted in partial fulfilment of the 
+requirements for the award of the degree 
+ 
+of 
+MASTER OF COMPUTER APPLICATIONS 
+ 
+ 
+ 
+ 
+by 
+ 
+NAME OF CANDIDATE 
+ 
+ 
+Under the supervision of 
+ 
+Dr. XYZ 
+ 
+ 
+ 
+ 
+SCHOOL  OF COMPUTING, 
+GRAPHIC ERA HILL UNIVERSITY, 
+CLEMENTOWN, DEHRADUN-248002, 
+UTTARAKHAND, INDIA 
+12 + Bold 
+12 Italic 
+12 + Bold, Uppercase 
+12 Italic 
+12 + Bold, Uppercase 
+12 Italic 
+12 Italic + Bold & 
+Both line Single Space 
+12 + Bold 
+16 + Bold & 
+Single Space 
+Seal size 
+1.75” by 1.75” 
+New Seal 
+14 + Bold 
+And Single 
+Space 
+
+=== PAGE 7 ===
+ 
+14 + Bold underline 
+ 
+ 
+ 
+ 
+CANDIDATE’S DECLARATION 
+ 
+ 
+I hereby certify that the work which is being presented in the PROJECT REPORT
+ entitled 
+....................................………………………………………………………… 
+in partial fulfillment of the requirements for the award of the Degree of Master Applications 
+and submitted in the School of Computing of the Graphic Era Hill University, Dehradun is an 
+authentic record of my own work carried out under the supervision of 
+…………………………, School of Computing , Graphic Era Hill University, Dehradun. 
+ 
+ 
+The matter presented in this Project Report has not been submitted by me for the award of 
+any other degree of this or any other institution. 
+ 
+Signature of the Candidate 12 
++Bold 
+ 
+ 
+This is to certify that the above statement made by the candidate is correct to the best of 
+my/our knowledge. 
+ 
+ 
+ 
+ 
+ 
+Date:   Signature of Mentor (s) 
+ 
+12 + 
+both 
+line 
+Single 
+space 
+12+line space 
+1.5 
+12 + 
+line 
+space 
+1.5 and 
+Topic 
+in 
+inverted 
+commas 
+& Bold 
+12 +Bold 
+
+=== PAGE 8 ===
+ 
+ 
+ 
+CANDIDATE’S DECLARATION 
+ 
+I hereby certify that the work which is being presented in  the PROJECT REPORT  
+entitled 
+..................................…………………………………………………………………..in partial 
+fulfillment of the requirements for the award of the Degree of Master / Bachelor of Computer 
+Applications and submitted in the School of Computing of the Graphic Era Hill  
+University, Dehradun is an authentic record of my own work carried out  
+under the supervision of ………………………. 
+ 
+Signature of the Candidate 
+ 
+ 
+This is to certify that the above statement made by the candidate is correct to the best of my (our) knowledge. 
+ 
+12+line space 1.5 
+ 
+ 
+ 
+Signature of Mentor (s) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+12 +Bold 
+12 + line 
+space 
+1.5 and 
+Topic in 
+inverted 
+commas 
+& Bold 
+14 + Bold underline 
+ 12 + bold & both line  
+Single space 
+ 
+
+=== PAGE 9 ===
+i  
+ 
+
+=== PAGE 10 ===
+ii  
+ 
+ 
+Abstract 
+ 
+The abstract begins here. Abstract can have maximum 300 words. In the present study, initially 
+of data. It involves tasks such as classification, clustering and association rule mining. Simple  
+whereas the one with heterogeneous attribute types may be termed as complex. Further, such 
+datasets can be very challenging the, noisy and incomplete. Most of the real world  datasets are 
+incomplete, noisy and complex in nature. Mining data may be high -dimensional. Typical 
+examples include – climatic data, transactional data, financial data, etc. ……………… 
+………………………………………………………………………………………………… 
+………………………………………………………………………………………… 
+
+=== PAGE 11 ===
+iii  
+Acknowledgements 
+I would like to express my deep and sincere gratitude to my 
+supervisors.…………………………………………………………………………………… 
+………………………………………………………………………………………………… 
+…………………………………………….. 
+ 
+ 
+ 
+ 
+Signature of candidate 
+
+=== PAGE 12 ===
+iv  
+Contents 
+Abstract ..................................................................................................................................... i 
+Acknowledgements .................................................................................................................. ii 
+Contents ................................................................................................................................. iii 
+List of Abbreviations ............................................................................................................... v 
+List of Figures ......................................................................................................................... vi 
+List of Tables ......................................................................................................................... vii 
+Chapter 1 Introduction and Problem Statement 1 
+1.1 Introduction ....................................................................................................................... 1 
+1.2 Motivation ......................................................................................................................... 2 
+1.3 Problem Statement ............................................................................................................ 2 
+1.4 Proposed Framework for ................................................................................................... 3 
+1.5 Organization of PROJECT REPORT ................................................................................ 4 
+Chapter 2 Literature Review 5 
+2.1 Introduction ....................................................................................................................... 5 
+2.2 Data Pre ............................................................................................................................. 5 
+2.2.1 Value… .................................................................................................................. 5 
+2.3 Reduction… ...................................................................................................................... 7 
+2.3.1 Extraction… ............................................................................................................ 7 
+2.3.2 Selection… ............................................................................................................. 8 
+2.4 Design… ....................................................................................................................... 10 
+2.5 Hybrid Techniques .......................................................................................................... 19 
+2.6 Research Gaps… ............................................................................................................ 19 
+Chapter 3 Proposed Methods for 23 
+3.1 Introduction ..................................................................................................................... 23 
+3.2 k-means… ..................................................................................................................... 24 
+3.3 Theorem… .................................................................................................................... 26 
+3.4 Dataset Description ......................................................................................................... 27 
+3.5 Experiments ..................................................................................................................... 28 
+3.5.1 Clustering ............................................................................................................. 29 
+3.5.2 theorem… ............................................................................................................ 30 
+3.6 Result and Discussion ..................................................................................................... 32 
+
+=== PAGE 13 ===
+v  
+3.6.1 using the k-means clustering ................................................................................ 32 
+3.6.2 using Bayes’ theorem… ....................................................................................... 34 
+3.7 Conclusion… ................................................................................................................. 34 
+Chapter 4 Genetic Based ...................................................................................................... 37 
+4.1 
+4.2 Conclusion… .................................................................................................................... 39 
+Chapter 5 Framework for ................................................................................................... 43 
+5.1 Proposed Framework................................................................................................... 44 
+5.2 Experiments and Discussion ........................................................................................... 49 
+5.7.1 KMCDTI ............................................................................................................ 49 
+5.7.2 KMCSVM ........................................................................................................... 51 
+5.7.3 KMCNB ............................................................................................................... 52 
+5.7.4 KMCBP ............................................................................................................... 52 
+5.3 Conclusion ....................................................................................................................... 53 
+Chapter 6 Analysis for ........................................................................................................... 55 
+Chapter 7 Conclusion and Future Work 67 
+7.1 Conclusion ....................................................................................................................... 67 
+7.2 Suggestions for the Future Work .................................................................................... 69 
+Appendix AProof of the Temporal 72 
+References 75 
+Publications out of the work 87 
+
+=== PAGE 14 ===
+vi  
+List of Abbreviations 
+ 
+A% Accuracy 
+AGNES Agglomerative Nesting Clustering 
+ 
+AIRS Artificial Immune Recognition System 
+AIRS-LSSVM Artificial Immune Recognition System Least square support Vector 
+Machine 
+
+=== PAGE 15 ===
+vii  
+List of Figures 
+1.1 Probability mass in Bayesian………………………………………………… 3 
+2.1 Filter method… .............................................................................................................. 9 
+2.2 Wrapper method… ......................................................................................................... 9 
+3.1 Performance evaluation of .......................................................................................... 33 
+3.2 Performance evaluation of .......................................................................................... 33 
+
+=== PAGE 16 ===
+viii  
+List of Tables 
+2.1 Pseudo code of the MY algorithm ............................................................................... 14 
+2.2 A list of some recent research works on my work ..................................................... 19 
+3.1 Details of datasets including description of attributes and distribution of records ..... 28 
+
+=== PAGE 17 ===
+ 
+ 
+

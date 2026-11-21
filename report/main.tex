@@ -1,0 +1,304 @@
+\documentclass[12pt,a4paper]{report}
+
+% -----------------------------------------------------------------------------
+% Graphic Era Hill University - Project Report Format Specifications
+% Annexure I: Margins: Left 3.5cm, Top 2.5cm, Right 1.25cm, Bottom 1.25cm
+% 1.5 Line Spacing, Times New Roman Font
+% -----------------------------------------------------------------------------
+\usepackage[left=3.5cm, top=2.5cm, right=1.25cm, bottom=1.25cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{mathptmx} % Times New Roman font
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Code Listing Styling
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=blue
+}
+
+% Page numbering and headers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\begin{document}
+
+% =============================================================================
+% ANNEXURE II: COVER PAGE
+% =============================================================================
+\begin{titlepage}
+\begin{center}
+    \vspace*{0.2cm}
+    {\fontsize{16pt}{20pt}\selectfont \textbf{STAYMART: AN INTELLIGENT ACCOMMODATION AND PRODUCT MARKETPLACE PLATFORM FOR UTTARAKHAND WITH MACHINE LEARNING RECOMMENDATIONS}\par}
+    
+    \vspace{1.0cm}
+    {\fontsize{12pt}{14pt}\selectfont \textbf{A PROJECT REPORT}\par}
+    
+    \vspace{0.6cm}
+    {\fontsize{12pt}{14pt}\selectfont \textit{\textbf{Submitted in partial fulfilment of the requirements \\ for the award of the degree}}\par}
+    
+    \vspace{0.4cm}
+    {\fontsize{12pt}{14pt}\selectfont \textit{of}\par}
+    
+    \vspace{0.4cm}
+    {\fontsize{12pt}{14pt}\selectfont \textbf{BACHELOR OF TECHNOLOGY IN COMPUTER SCIENCE AND ENGINEERING}\par}
+    
+    \vspace{0.8cm}
+    {\fontsize{12pt}{14pt}\selectfont \textit{by}\par}
+    
+    \vspace{0.4cm}
+    {\fontsize{12pt}{14pt}\selectfont \textbf{DIVYANSHU SINGH}\par}
+    
+    \vspace{0.8cm}
+    {\fontsize{12pt}{14pt}\selectfont \textit{Under the supervision of}\par}
+    
+    \vspace{0.4cm}
+    {\fontsize{12pt}{14pt}\selectfont \textbf{FACULTY MENTOR, SCHOOL OF COMPUTING}\par}
+    
+    \vspace{1.0cm}
+    % Seal size: 1.75" by 1.75" as per specifications
+    \includegraphics[width=1.75in,height=1.75in]{gehu_logo.png}\par
+    
+    \vspace{1.0cm}
+    {\fontsize{14pt}{16pt}\selectfont \textbf{SCHOOL OF COMPUTING,}\par}
+    \vspace{0.2cm}
+    {\fontsize{14pt}{16pt}\selectfont \textbf{GRAPHIC ERA HILL UNIVERSITY, CLEMENTOWN,}\par}
+    {\fontsize{14pt}{16pt}\selectfont \textbf{DEHRADUN-248002, UTTARAKHAND, INDIA}\par}
+    
+    \vspace{0.6cm}
+    {\fontsize{12pt}{14pt}\selectfont \textbf{NOVEMBER, 2026}\par}
+\end{center}
+\end{titlepage}
+
+% =============================================================================
+% ANNEXURE III: TITLE PAGE (SAMPLE COPY)
+% =============================================================================
+\newpage
+\begin{center}
+    \vspace*{0.2cm}
+    {\fontsize{16pt}{20pt}\selectfont \textbf{STAYMART: AN INTELLIGENT ACCOMMODATION AND PRODUCT MARKETPLACE PLATFORM FOR UTTARAKHAND WITH MACHINE LEARNING RECOMMENDATIONS}\par}
+    
+    \vspace{1.0cm}
+    {\fontsize{12pt}{14pt}\selectfont \textbf{PROJECT REPORT}\par}
+    
+    \vspace{0.8cm}
+    {\fontsize{12pt}{14pt}\selectfont \textit{by}\par}
+    
+    \vspace{0.4cm}
+    {\fontsize{12pt}{14pt}\selectfont \textbf{DIVYANSHU SINGH}\par}
+    
+    \vspace{1.2cm}
+    \includegraphics[width=1.75in,height=1.75in]{gehu_logo.png}\par
+    
+    \vspace{1.2cm}
+    {\fontsize{14pt}{16pt}\selectfont \textbf{School of Computing}\par}
+    \vspace{0.2cm}
+    {\fontsize{14pt}{16pt}\selectfont \textbf{GRAPHIC ERA HILL UNIVERSITY,}\par}
+    {\fontsize{14pt}{16pt}\selectfont \textbf{CLEMENTOWN, DEHRADUN-248002,}\par}
+    {\fontsize{14pt}{16pt}\selectfont \textbf{UTTARAKHAND, INDIA}\par}
+    
+    \vspace{0.8cm}
+    {\fontsize{12pt}{14pt}\selectfont \textbf{NOVEMBER, 2026}\par}
+\end{center}
+
+% =============================================================================
+% CANDIDATE'S DECLARATION
+% =============================================================================
+\newpage
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\begin{center}
+    {\fontsize{14pt}{16pt}\selectfont \textbf{\underline{CANDIDATE'S DECLARATION}}\par}
+\end{center}
+
+\vspace{0.8cm}
+\noindent I hereby certify that the work which is being presented in the PROJECT REPORT entitled ``\textbf{STAYMART: AN INTELLIGENT ACCOMMODATION AND PRODUCT MARKETPLACE PLATFORM FOR UTTARAKHAND WITH MACHINE LEARNING RECOMMENDATIONS}'' in partial fulfillment of the requirements for the award of the Degree of \textbf{Bachelor of Technology in Computer Science and Engineering} and submitted in the School of Computing of the Graphic Era Hill University, Dehradun is an authentic record of my own work carried out under the supervision of \textbf{Faculty Mentor}, School of Computing, Graphic Era Hill University, Dehradun.
+
+\vspace{0.6cm}
+\noindent The matter presented in this Project Report has not been submitted by me for the award of any other degree of this or any other institution.
+
+\vspace{1.5cm}
+\begin{flushright}
+    \textbf{Signature of the Candidate} \\
+    \textbf{DIVYANSHU SINGH} \\
+    School of Computing, GEHU Dehradun
+\end{flushright}
+
+\vspace{1.5cm}
+\noindent This is to certify that the above statement made by the candidate is correct to the best of my/our knowledge.
+
+\vspace{2.0cm}
+\noindent \textbf{Date:} \today \hfill \textbf{Signature of Mentor (s)}
+
+% =============================================================================
+% ABSTRACT
+% =============================================================================
+\newpage
+\addcontentsline{toc}{chapter}{Abstract}
+\begin{center}
+    {\fontsize{14pt}{16pt}\selectfont \textbf{Abstract}\par}
+\end{center}
+\vspace{0.5cm}
+
+Finding safe, affordable rental accommodation near university campuses in Uttarakhand—particularly around educational clusters in Dehradun, Rishikesh, and Roorkee—is a persistent challenge for outstation students. Incoming students frequently face steep broker commissions, misleading photos, and unverified rental terms. Concurrently, graduating seniors struggle to sell functional room essentials such as study tables, desert coolers, reference books, and second-hand two-wheelers, while incoming juniors buy the exact same goods brand new at retail prices. General classifieds like OLX suffer from broker spam and lack room-level vacancy details, while platforms like Airbnb cater exclusively to short-term tourists on daily tariffs.
+
+To solve this practical problem, this project presents \textbf{StayMart}, an integrated student accommodation and campus re-commerce web application tailored for Uttarakhand. The platform is built on a decoupled multi-tier architecture: a Java 17 / Spring Boot 3.3 REST API handling core transactions and role-based access control with stateless JSON Web Tokens (JWT), a normalized MySQL 8.0 relational database with 12 tables, and an asynchronous Python 3.11 / Flask machine learning microservice running a TF-IDF and cosine similarity recommendation pipeline with automated database-driven fallbacks. The frontend is engineered using responsive vanilla HTML5, CSS3, and modern JavaScript inspired by familiar commercial classified interfaces (OLX and Amazon), avoiding heavy client-side framework overhead. Key features include zero-brokerage direct contact with verified property caretakers, peer-to-peer student messaging, room-level vacancy tracking, wishlist management, and an administrative moderation dashboard.
+
+System evaluation confirms sub-50ms database queries under typical loads, reliable recommendation fallbacks when the ML microservice is offline, and clean mobile responsiveness across standard viewports. This report details the software requirements, relational schema, algorithm design, system implementation, and zero-cost cloud deployment guidelines for the platform.
+
+% =============================================================================
+% ACKNOWLEDGEMENTS
+% =============================================================================
+\newpage
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\begin{center}
+    {\fontsize{14pt}{16pt}\selectfont \textbf{Acknowledgements}\par}
+\end{center}
+\vspace{0.5cm}
+
+I express my sincere gratitude to my project supervisor and faculty mentors at the School of Computing, Graphic Era Hill University, Dehradun, for their consistent encouragement, technical advice, and constructive feedback throughout the development of this project. Their practical suggestions during architecture reviews helped shape the design of both the Spring Boot backend and the recommendation microservice.
+
+I also extend my thanks to the Head of the Department and the faculty members of the School of Computing for providing the computing lab facilities and an environment that encouraged hands-on software development.
+
+Finally, I am deeply grateful to my family and friends for their support, patience, and assistance in testing early versions of the application across various mobile devices and browsers.
+
+\vspace{1.5cm}
+\begin{flushright}
+    \textbf{DIVYANSHU SINGH} \\
+    Student, School of Computing \\
+    Graphic Era Hill University, Dehradun
+\end{flushright}
+
+% =============================================================================
+% FRONT MATTER LISTS
+% =============================================================================
+\newpage
+\tableofcontents
+
+\newpage
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+\begin{center}
+    {\fontsize{14pt}{16pt}\selectfont \textbf{List of Abbreviations}\par}
+\end{center}
+\vspace{0.5cm}
+
+\begin{tabular}{ll}
+\textbf{ACID} & Atomicity, Consistency, Isolation, Durability \\
+\textbf{API} & Application Programming Interface \\
+\textbf{BCNF} & Boyce-Codd Normal Form \\
+\textbf{CORS} & Cross-Origin Resource Sharing \\
+\textbf{CSS} & Cascading Style Sheets \\
+\textbf{DFD} & Data Flow Diagram \\
+\textbf{ERD} & Entity-Relationship Diagram \\
+\textbf{HTML} & HyperText Markup Language \\
+\textbf{HTTP} & Hypertext Transfer Protocol \\
+\textbf{IDF} & Inverse Document Frequency \\
+\textbf{JPA} & Java Persistence API \\
+\textbf{JSON} & JavaScript Object Notation \\
+\textbf{JWT} & JSON Web Token \\
+\textbf{ML} & Machine Learning \\
+\textbf{ORM} & Object-Relational Mapping \\
+\textbf{PG} & Paying Guest \\
+\textbf{RBAC} & Role-Based Access Control \\
+\textbf{REST} & Representational State Transfer \\
+\textbf{SRS} & Software Requirements Specification \\
+\textbf{TF} & Term Frequency \\
+\textbf{UI} & User Interface \\
+\textbf{UML} & Unified Modeling Language \\
+\textbf{URI} & Uniform Resource Identifier \\
+\textbf{UX} & User Experience \\
+\textbf{WSGI} & Web Server Gateway Interface
+\end{tabular}
+
+\newpage
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+\newpage
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+% =============================================================================
+% CHAPTERS
+% =============================================================================
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{chapters/ch1_introduction.tex}
+\input{chapters/ch2_literature_review.tex}
+\input{chapters/ch3_requirements_architecture.tex}
+\input{chapters/ch4_database_design.tex}
+\input{chapters/ch5_backend_ml.tex}
+\input{chapters/ch6_frontend_ui.tex}
+\input{chapters/ch7_testing_walkthrough.tex}
+\input{chapters/ch8_deployment_hosting.tex}
+\input{chapters/ch9_conclusion.tex}
+
+% =============================================================================
+% REFERENCES
+% =============================================================================
+\newpage
+\addcontentsline{toc}{chapter}{References}
+\bibliographystyle{plain}
+\bibliography{references}
+
+% =============================================================================
+% APPENDICES
+% =============================================================================
+\appendix
+\input{appendices/app_backend_code.tex}
+\input{appendices/app_frontend_code.tex}
+\input{appendices/app_database_schema.tex}
+\input{appendices/app_api_specs.tex}
+
+\end{document}

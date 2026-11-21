@@ -1,0 +1,648 @@
+{
+  "timestamp": "2026-11-21T03:31:57Z",
+  "total_tests": 106,
+  "passed_tests": 106,
+  "failed_tests": 0,
+  "elapsed_seconds": 6.576,
+  "live_backend_online": true,
+  "live_ml_online": true,
+  "verdict": "PASS",
+  "results": [
+    {
+      "name": "Live GET /api/properties",
+      "passed": true,
+      "message": "Status 200, Payload keys: ['success', 'message', 'data']",
+      "category": "live_api"
+    },
+    {
+      "name": "Live GET /api/properties/stats",
+      "passed": true,
+      "message": "Status 200, Payload keys: ['success', 'message', 'data']",
+      "category": "live_api"
+    },
+    {
+      "name": "Live GET /api/products",
+      "passed": true,
+      "message": "Status 200, Payload keys: ['success', 'message', 'data']",
+      "category": "live_api"
+    },
+    {
+      "name": "Live GET /api/locations",
+      "passed": true,
+      "message": "Status 200, Payload keys: ['success', 'message', 'data']",
+      "category": "live_api"
+    },
+    {
+      "name": "Live GET /api/categories",
+      "passed": true,
+      "message": "Status 200, Payload keys: ['success', 'message', 'data']",
+      "category": "live_api"
+    },
+    {
+      "name": "Live GET /api/recommendations/properties/trending",
+      "passed": true,
+      "message": "Status 200, Payload keys: ['success', 'message', 'data']",
+      "category": "live_api"
+    },
+    {
+      "name": "Live GET /api/recommendations/products/top-rated",
+      "passed": true,
+      "message": "Status 200, Payload keys: ['success', 'message', 'data']",
+      "category": "live_api"
+    },
+    {
+      "name": "Live POST /api/auth/login invalid credentials rejection",
+      "passed": true,
+      "message": "Returned expected HTTP 401 client rejection (not 500 crash)",
+      "category": "live_api"
+    },
+    {
+      "name": "Live ML GET /health",
+      "passed": true,
+      "message": "Status: healthy",
+      "category": "live_ml"
+    },
+    {
+      "name": "Controller PropertyController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller PropertyController.java base route matches '/api/properties'",
+      "passed": true,
+      "message": "Found '/api/properties', expected '/api/properties'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller ProductController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller ProductController.java base route matches '/api/products'",
+      "passed": true,
+      "message": "Found '/api/products', expected '/api/products'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller LocationController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller LocationController.java base route matches '/api/locations'",
+      "passed": true,
+      "message": "Found '/api/locations', expected '/api/locations'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller CategoryController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller CategoryController.java base route matches '/api/categories'",
+      "passed": true,
+      "message": "Found '/api/categories', expected '/api/categories'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller AuthController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller AuthController.java base route matches '/api/auth'",
+      "passed": true,
+      "message": "Found '/api/auth', expected '/api/auth'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller RecommendationController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller RecommendationController.java base route matches '/api/recommendations'",
+      "passed": true,
+      "message": "Found '/api/recommendations', expected '/api/recommendations'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller FileController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller FileController.java base route matches '/api/files'",
+      "passed": true,
+      "message": "Found '/api/files', expected '/api/files'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller AdminController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller AdminController.java base route matches '/api/admin'",
+      "passed": true,
+      "message": "Found '/api/admin', expected '/api/admin'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller BookingController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller BookingController.java base route matches '/api/bookings'",
+      "passed": true,
+      "message": "Found '/api/bookings', expected '/api/bookings'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller OrderController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller OrderController.java base route matches '/api/orders'",
+      "passed": true,
+      "message": "Found '/api/orders', expected '/api/orders'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller WishlistController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller WishlistController.java base route matches '/api/wishlist'",
+      "passed": true,
+      "message": "Found '/api/wishlist', expected '/api/wishlist'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller ChatController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller ChatController.java base route matches '/api/chats'",
+      "passed": true,
+      "message": "Found '/api/chats', expected '/api/chats'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller UserController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller UserController.java base route matches '/api/users'",
+      "passed": true,
+      "message": "Found '/api/users', expected '/api/users'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller RoomController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller RoomController.java base route matches '/api/properties/{propertyId}/rooms'",
+      "passed": true,
+      "message": "Found '/api/properties/{propertyId}/rooms', expected '/api/properties/{propertyId}/rooms'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller ReviewController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller ReviewController.java base route matches '/api/reviews'",
+      "passed": true,
+      "message": "Found '/api/reviews', expected '/api/reviews'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller BehaviorController.java has @RestController",
+      "passed": true,
+      "message": "",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Controller BehaviorController.java base route matches '/api/behaviors'",
+      "passed": true,
+      "message": "Found '/api/behaviors', expected '/api/behaviors'",
+      "category": "controller_structure"
+    },
+    {
+      "name": "Mandated endpoint contract: GET /api/properties",
+      "passed": true,
+      "message": "Mapped in PropertyController.java as GET /api/properties",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "Mandated endpoint contract: GET /api/properties/stats (public property statistics)",
+      "passed": true,
+      "message": "Mapped in PropertyController.java as GET /api/properties/stats",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "Mandated endpoint contract: POST /api/properties",
+      "passed": true,
+      "message": "Mapped in PropertyController.java as POST /api/properties",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "Mandated endpoint contract: GET /api/products",
+      "passed": true,
+      "message": "Mapped in ProductController.java as GET /api/products",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "Mandated endpoint contract: POST /api/products",
+      "passed": true,
+      "message": "Mapped in ProductController.java as POST /api/products",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "Mandated endpoint contract: GET /api/locations",
+      "passed": true,
+      "message": "Mapped in LocationController.java as GET /api/locations",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "Mandated endpoint contract: GET /api/categories",
+      "passed": true,
+      "message": "Mapped in CategoryController.java as GET /api/categories",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "Mandated endpoint contract: POST /api/auth/register",
+      "passed": true,
+      "message": "Mapped in AuthController.java as POST /api/auth/register",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "Mandated endpoint contract: POST /api/auth/login",
+      "passed": true,
+      "message": "Mapped in AuthController.java as POST /api/auth/login",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "Mandated endpoint contract: GET /api/recommendations/properties/trending",
+      "passed": true,
+      "message": "Mapped in RecommendationController.java as GET /api/recommendations/properties/trending",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "Mandated endpoint contract: GET /api/recommendations/products/top-rated (trending products)",
+      "passed": true,
+      "message": "Mapped in RecommendationController.java as GET /api/recommendations/products/top-rated",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "Mandated endpoint contract: POST /api/files/upload",
+      "passed": true,
+      "message": "Mapped in FileController.java as POST /api/files/upload",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "Mandated endpoint contract: GET /api/admin/stats (marketplace dashboard stats)",
+      "passed": true,
+      "message": "Mapped in AdminController.java as GET /api/admin/stats",
+      "category": "mandated_endpoints"
+    },
+    {
+      "name": "RegisterRequest contains validated name, email, password, phone",
+      "passed": true,
+      "message": "Record attributes and bean validation constraints verified",
+      "category": "dto_contracts"
+    },
+    {
+      "name": "LoginRequest contains @NotBlank email and password",
+      "passed": true,
+      "message": "Credentials structure verified",
+      "category": "dto_contracts"
+    },
+    {
+      "name": "PropertyRequest contains validated title, locationId, type",
+      "passed": true,
+      "message": "Property submission DTO verified",
+      "category": "dto_contracts"
+    },
+    {
+      "name": "ProductRequest contains validated title, categoryId, price",
+      "passed": true,
+      "message": "Product submission DTO verified",
+      "category": "dto_contracts"
+    },
+    {
+      "name": "DashboardStats contains platform aggregates (users, properties, products, bookings, orders)",
+      "passed": true,
+      "message": "Marketplace metrics payload confirmed",
+      "category": "dto_contracts"
+    },
+    {
+      "name": "ApiResponse defines standardized envelope (success, message, data, errors)",
+      "passed": true,
+      "message": "API contract envelope verified",
+      "category": "dto_contracts"
+    },
+    {
+      "name": "Entity User.java maps to schema table 'users'",
+      "passed": true,
+      "message": "JPA @Table('users') verified against database schema",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Entity Property.java maps to schema table 'properties'",
+      "passed": true,
+      "message": "JPA @Table('properties') verified against database schema",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Entity Room.java maps to schema table 'rooms'",
+      "passed": true,
+      "message": "JPA @Table('rooms') verified against database schema",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Entity Product.java maps to schema table 'products'",
+      "passed": true,
+      "message": "JPA @Table('products') verified against database schema",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Entity Category.java maps to schema table 'categories'",
+      "passed": true,
+      "message": "JPA @Table('categories') verified against database schema",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Entity Location.java maps to schema table 'locations'",
+      "passed": true,
+      "message": "JPA @Table('locations') verified against database schema",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Entity Booking.java maps to schema table 'bookings'",
+      "passed": true,
+      "message": "JPA @Table('bookings') verified against database schema",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Entity Order.java maps to schema table 'orders'",
+      "passed": true,
+      "message": "JPA @Table('orders') verified against database schema",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Entity Review.java maps to schema table 'reviews'",
+      "passed": true,
+      "message": "JPA @Table('reviews') verified against database schema",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Entity Wishlist.java maps to schema table 'wishlists'",
+      "passed": true,
+      "message": "JPA @Table('wishlists') verified against database schema",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Entity Chat.java maps to schema table 'chats'",
+      "passed": true,
+      "message": "JPA @Table('chats') verified against database schema",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Entity UserBehavior.java maps to schema table 'user_behaviors'",
+      "passed": true,
+      "message": "JPA @Table('user_behaviors') verified against database schema",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "User entity enforces unique non-null email constraint",
+      "passed": true,
+      "message": "Security & identity constraint verified",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Property entity maintains @ManyToOne relations to User and Location",
+      "passed": true,
+      "message": "Accommodation relational graph verified",
+      "category": "jpa_schema"
+    },
+    {
+      "name": "Flask ML route contract: GET /health -> health()",
+      "passed": true,
+      "message": "Mapped methods ['GET']",
+      "category": "ml_contracts"
+    },
+    {
+      "name": "Flask ML route contract: GET /recommend/properties -> recommend_properties()",
+      "passed": true,
+      "message": "Mapped methods ['GET']",
+      "category": "ml_contracts"
+    },
+    {
+      "name": "Flask ML route contract: GET /recommend/properties/<int:user_id> -> recommend_properties_for_user()",
+      "passed": true,
+      "message": "Mapped methods ['GET']",
+      "category": "ml_contracts"
+    },
+    {
+      "name": "Flask ML route contract: GET /recommend/products -> recommend_products()",
+      "passed": true,
+      "message": "Mapped methods ['GET']",
+      "category": "ml_contracts"
+    },
+    {
+      "name": "Flask ML route contract: GET /recommend/products/<int:user_id> -> recommend_products_for_user()",
+      "passed": true,
+      "message": "Mapped methods ['GET']",
+      "category": "ml_contracts"
+    },
+    {
+      "name": "Flask ML route contract: GET /similar/property -> similar_property()",
+      "passed": true,
+      "message": "Mapped methods ['GET']",
+      "category": "ml_contracts"
+    },
+    {
+      "name": "Flask ML route contract: GET /similar/product -> similar_product()",
+      "passed": true,
+      "message": "Mapped methods ['GET']",
+      "category": "ml_contracts"
+    },
+    {
+      "name": "Flask ML route contract: GET /trending -> trending()",
+      "passed": true,
+      "message": "Mapped methods ['GET']",
+      "category": "ml_contracts"
+    },
+    {
+      "name": "Flask ML route contract: POST /retrain -> retrain()",
+      "passed": true,
+      "message": "Mapped methods ['POST']",
+      "category": "ml_contracts"
+    },
+    {
+      "name": "Flask ML /health endpoint implements status, database, models_loaded contract",
+      "passed": true,
+      "message": "Health contract conforms to microservice spec",
+      "category": "ml_contracts"
+    },
+    {
+      "name": "Flask ML input sanitization bounds limit to [1, 50]",
+      "passed": true,
+      "message": "Guards against denial of service queries",
+      "category": "ml_contracts"
+    },
+    {
+      "name": "ML microservice implements collaborative filtering fallback on sparse interactions",
+      "passed": true,
+      "message": "Threshold switches dynamically between Hybrid CF and Trending heuristics",
+      "category": "resilience_logic"
+    },
+    {
+      "name": "ML config defines MIN_INTERACTIONS_FOR_CF, ACTION_WEIGHTS, and TRENDING_DAYS",
+      "passed": true,
+      "message": "Behavioral scoring constants verified",
+      "category": "resilience_logic"
+    },
+    {
+      "name": "Spring Boot MlServiceClient enforces 2000ms connect / 3000ms read timeout with safe empty fallback",
+      "passed": true,
+      "message": "Resilience contract verified against network faults and latency spikes",
+      "category": "resilience_logic"
+    },
+    {
+      "name": "Spring Boot RecommendationService falls back to database catalog when ML service is down",
+      "passed": true,
+      "message": "Zero-downtime database fallback verified",
+      "category": "resilience_logic"
+    },
+    {
+      "name": "Model file property_tfidf.pkl exists and meets size threshold (55789 bytes >= 40000)",
+      "passed": true,
+      "message": "Actual size: 55789 bytes",
+      "category": "model_integrity"
+    },
+    {
+      "name": "Model property_tfidf.pkl unpickles valid TF-IDF vectorizer and similarity matrix",
+      "passed": true,
+      "message": "Matrix shape: (12, 886), IDs count: 12",
+      "category": "model_integrity"
+    },
+    {
+      "name": "Model file product_tfidf.pkl exists and meets size threshold (131764 bytes >= 80000)",
+      "passed": true,
+      "message": "Actual size: 131764 bytes",
+      "category": "model_integrity"
+    },
+    {
+      "name": "Model product_tfidf.pkl unpickles valid TF-IDF vectorizer and similarity matrix",
+      "passed": true,
+      "message": "Matrix shape: (24, 2159), IDs count: 24",
+      "category": "model_integrity"
+    },
+    {
+      "name": "Frontend client PropertyAPI.getAll targets contract path '/properties'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    },
+    {
+      "name": "Frontend client PropertyAPI.getById targets contract path '/properties/${id}'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    },
+    {
+      "name": "Frontend client ProductAPI.getAll targets contract path '/products'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    },
+    {
+      "name": "Frontend client ProductAPI.getById targets contract path '/products/${id}'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    },
+    {
+      "name": "Frontend client AuthAPI.register targets contract path '/auth/register'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    },
+    {
+      "name": "Frontend client AuthAPI.login targets contract path '/auth/login'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    },
+    {
+      "name": "Frontend client LocationAPI.getAll targets contract path '/locations'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    },
+    {
+      "name": "Frontend client CategoryAPI.getAll targets contract path '/categories'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    },
+    {
+      "name": "Frontend client RecommendationAPI.getTrendingProperties targets contract path '/recommendations/properties/trending'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    },
+    {
+      "name": "Frontend client RecommendationAPI.getTopRatedProducts targets contract path '/recommendations/products/top-rated'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    },
+    {
+      "name": "Frontend client AdminAPI.getStats targets contract path '/admin/stats'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    },
+    {
+      "name": "Frontend client BookingAPI.create targets contract path '/bookings'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    },
+    {
+      "name": "Frontend client OrderAPI.create targets contract path '/orders'",
+      "passed": true,
+      "message": "Contract path verified in api.js",
+      "category": "frontend_api"
+    }
+  ]
+}

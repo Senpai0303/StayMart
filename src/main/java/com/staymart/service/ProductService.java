@@ -25,6 +25,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -162,8 +166,11 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public List<ProductResponse> findRecommendedProducts(List<Long> ids, int limit) {
-        List<Product> products = productRepository.findAllById(ids);
-        return products.stream()
+        Map<Long, Product> productsById = productRepository.findAllById(ids).stream()
+                .collect(Collectors.toMap(Product::getId, Function.identity()));
+        return ids.stream()
+                .map(productsById::get)
+                .filter(Objects::nonNull)
                 .filter(p -> p.getStatus() == ModerationStatus.APPROVED)
                 .map(ProductResponse::from)
                 .limit(limit)

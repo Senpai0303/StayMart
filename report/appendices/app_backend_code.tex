@@ -1,0 +1,372 @@
+\chapter{Core Backend and Machine Learning Source Code}
+
+\section{Introduction}
+This appendix provides the authoritative source code listings for the core architectural components of the StayMart backend, including JPA entities, the Spring Security JWT authentication filter, transactional services, and the Python Flask machine learning recommendation engine.
+
+\section{JPA Entity Implementations}
+
+\subsection{Property Entity (\texttt{Property.java})}
+\begin{lstlisting}[language=Java, caption={Property.java JPA Entity}]
+package com.staymart.entity;
+
+import com.staymart.entity.enums.GenderPreference;
+import com.staymart.entity.enums.ListingStatus;
+import com.staymart.entity.enums.PropertyType;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "properties", indexes = {
+    @Index(name = "idx_properties_status", columnList = "status"),
+    @Index(name = "idx_properties_location", columnList = "location_id"),
+    @Index(name = "idx_properties_posted_by", columnList = "posted_by")
+})
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Property {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "posted_by", nullable = false)
+    private User postedBy;
+
+    @Column(nullable = false, length = 200)
+    private String title;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String description;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private PropertyType type;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender_preference", nullable = false, length = 20)
+    private GenderPreference genderPreference;
+
+    @Column(nullable = false, length = 300)
+    private String address;
+
+    @Column(length = 100)
+    private String area;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id")
+    private Location location;
+
+    @Column(name = "price_per_month", nullable = false, precision = 10, scale = 2)
+    private BigDecimal pricePerMonth;
+
+    @Column(name = "deposit_amount", nullable = false, precision = 10, scale = 2)
+    private BigDecimal depositAmount;
+
+    @Column(columnDefinition = "JSON")
+    private String amenities;
+
+    @Column(name = "total_rooms", nullable = false)
+    private Integer totalRooms;
+
+    @Column(name = "available_rooms", nullable = false)
+    private Integer availableRooms;
+
+    @Column(columnDefinition = "JSON")
+    private String images;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private ListingStatus status;
+
+    @Column(name = "is_available", nullable = false)
+    private Boolean isAvailable;
+
+    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Room> rooms = new ArrayList<>();
+
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+}
+\end{lstlisting}
+
+\subsection{Product Entity (\texttt{Product.java})}
+\begin{lstlisting}[language=Java, caption={Product.java JPA Entity}]
+package com.staymart.entity;
+
+import com.staymart.entity.enums.ListingStatus;
+import com.staymart.entity.enums.ProductCondition;
+import com.staymart.entity.enums.ProductListingType;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "products", indexes = {
+    @Index(name = "idx_products_category", columnList = "category_id"),
+    @Index(name = "idx_products_status", columnList = "status"),
+    @Index(name = "idx_products_posted_by", columnList = "posted_by")
+})
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "posted_by", nullable = false)
+    private User postedBy;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
+    @Column(nullable = false, length = 200)
+    private String title;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String description;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal price;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "listing_type", nullable = false, length = 20)
+    private ProductListingType listingType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "condition", nullable = false, length = 50)
+    private ProductCondition condition;
+
+    @Column(length = 100)
+    private String brand;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id")
+    private Location location;
+
+    @Column(length = 100)
+    private String area;
+
+    @Column(columnDefinition = "JSON")
+    private String images;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private ListingStatus status;
+
+    @Column(name = "is_available", nullable = false)
+    private Boolean isAvailable;
+
+    @Column(name = "views_count", nullable = false)
+    private Integer viewsCount;
+
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+}
+\end{lstlisting}
+
+\section{Security Token Provider (\texttt{JwtTokenProvider.java})}
+\begin{lstlisting}[language=Java, caption={JwtTokenProvider.java Cryptographic Token Service}]
+package com.staymart.security;
+
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import java.security.Key;
+import java.util.Date;
+
+@Component
+public class JwtTokenProvider {
+
+    private final Key key;
+    private final long validityInMilliseconds;
+
+    public JwtTokenProvider(@Value("${app.jwt.secret}") String secret,
+                            @Value("${app.jwt.expiration-ms:86400000}") long validity) {
+        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+        this.validityInMilliseconds = validity;
+    }
+
+    public String generateToken(Long userId, String email, String role) {
+        Date now = new Date();
+        Date validity = new Date(now.getTime() + this.validityInMilliseconds);
+
+        return Jwts.builder()
+                .setSubject(email)
+                .claim("userId", userId)
+                .claim("role", role)
+                .setIssuedAt(now)
+                .setExpiration(validity)
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    public String getEmailFromToken(String token) {
+        return Jwts.parserBuilder().setSigningKey(key).build()
+                .parseClaimsJws(token).getBody().getSubject();
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            return true;
+        } catch (JwtException | IllegalArgumentException e) {
+            return false;
+        }
+    }
+}
+\end{lstlisting}
+
+\section{Machine Learning Microservice Source Code}
+
+\subsection{Flask Application Endpoints (\texttt{app.py})}
+\begin{lstlisting}[language=Python, caption={Flask ML Microservice app.py}]
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import logging
+import recommender
+
+app = Flask(__name__)
+CORS(app)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("staymart-ml")
+
+@app.route('/health', methods=['GET'])
+def health():
+    models_ready = recommender.is_ready()
+    return jsonify({
+        "status": "UP" if models_ready else "DEGRADED",
+        "models_loaded": models_ready
+    }), 200 if models_ready else 503
+
+@app.route('/recommend/properties', methods=['GET'])
+def recommend_properties():
+    user_id = request.args.get('userId', type=int)
+    city = request.args.get('city', type=str)
+    limit = request.args.get('limit', default=6, type=int)
+    
+    ids = recommender.get_recommended_property_ids(user_id=user_id, city=city, limit=limit)
+    return jsonify({"success": True, "data": ids})
+
+@app.route('/recommend/properties/similar/<int:property_id>', methods=['GET'])
+def similar_properties(property_id):
+    limit = request.args.get('limit', default=4, type=int)
+    ids = recommender.get_similar_property_ids(property_id, limit=limit)
+    return jsonify({"success": True, "data": ids})
+
+@app.route('/recommend/products', methods=['GET'])
+def recommend_products():
+    user_id = request.args.get('userId', type=int)
+    limit = request.args.get('limit', default=6, type=int)
+    ids = recommender.get_recommended_product_ids(user_id=user_id, limit=limit)
+    return jsonify({"success": True, "data": ids})
+
+if __name__ == '__main__':
+    recommender.load_models()
+    app.run(host='0.0.0.0', port=5000, debug=False)
+\end{lstlisting}
+
+\subsection{TF-IDF Recommendation Engine (\texttt{recommender.py})}
+\begin{lstlisting}[language=Python, caption={TF-IDF Recommender Engine recommender.py}]
+import os
+import joblib
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+import db_connector
+
+MODELS_DIR = os.path.join(os.path.dirname(__file__), "models")
+
+prop_vectorizer = None
+prop_matrix = None
+prop_df = None
+prod_vectorizer = None
+prod_matrix = None
+prod_df = None
+
+def is_ready():
+    return prop_matrix is not None and prod_matrix is not None
+
+def load_models():
+    global prop_vectorizer, prop_matrix, prop_df, prod_vectorizer, prod_matrix, prod_df
+    try:
+        prop_vectorizer = joblib.load(os.path.join(MODELS_DIR, "prop_vectorizer.joblib"))
+        prop_matrix = joblib.load(os.path.join(MODELS_DIR, "prop_matrix.joblib"))
+        prop_df = joblib.load(os.path.join(MODELS_DIR, "prop_metadata.joblib"))
+        prod_vectorizer = joblib.load(os.path.join(MODELS_DIR, "prod_vectorizer.joblib"))
+        prod_matrix = joblib.load(os.path.join(MODELS_DIR, "prod_matrix.joblib"))
+        prod_df = joblib.load(os.path.join(MODELS_DIR, "prod_metadata.joblib"))
+    except Exception as e:
+        print("Failed to load serialized models, retraining...", e)
+        import model_trainer
+        model_trainer.retrain_models()
+
+def get_similar_property_ids(prop_id, limit=4):
+    if not is_ready() or prop_id not in prop_df['id'].values:
+        return []
+    idx = prop_df.index[prop_df['id'] == prop_id][0]
+    sim_scores = cosine_similarity(prop_matrix[idx], prop_matrix).flatten()
+    sim_scores[idx] = -1.0 # Exclude self
+    top_indices = np.argsort(sim_scores)[::-1][:limit]
+    return [int(prop_df.iloc[i]['id']) for i in top_indices if sim_scores[i] > 0]
+
+def get_recommended_property_ids(user_id=None, city=None, limit=6):
+    if not is_ready() or len(prop_df) == 0:
+        return []
+    
+    if user_id:
+        behaviors = db_connector.get_user_behaviors(user_id, 'PROPERTY')
+        if behaviors:
+            user_vec = np.zeros(prop_matrix.shape[1])
+            for b in behaviors:
+                pid = b['item_id']
+                weight = float(b['weight'])
+                if pid in prop_df['id'].values:
+                    p_idx = prop_df.index[prop_df['id'] == pid][0]
+                    user_vec += weight * prop_matrix[p_idx].toarray().flatten()
+            
+            sim_scores = cosine_similarity(user_vec.reshape(1, -1), prop_matrix).flatten()
+            if city:
+                city_mask = (prop_df['city'].str.lower() == city.lower()).values
+                sim_scores = sim_scores * (city_mask * 1.5 + 0.5)
+            
+            top_indices = np.argsort(sim_scores)[::-1][:limit]
+            return [int(prop_df.iloc[i]['id']) for i in top_indices]
+            
+    # Default city filter
+    filtered = prop_df
+    if city:
+        filtered = prop_df[prop_df['city'].str.lower() == city.lower()]
+    return [int(x) for x in filtered['id'].head(limit).tolist()]
+\end{lstlisting}

@@ -1,0 +1,103 @@
+\chapter{REST API Catalog and Controller Specifications}
+
+\section{Introduction}
+This appendix provides the reference catalog of the 16 RESTful resource controllers exposed by the StayMart Spring Boot backend at \texttt{/api}. All protected endpoints require a valid JSON Web Token passed in the \texttt{Authorization: Bearer <token>} header.
+
+\section{Authentication Controller (\texttt{/api/auth})}
+\begin{itemize}
+    \item \textbf{\texttt{POST /api/auth/register}:} Public registration endpoint. Accepts \texttt{RegisterRequest} (\texttt{name}, \texttt{email}, \texttt{password}, \texttt{phone}, \texttt{city}). Returns 201 Created with JWT token and user profile.
+    \item \textbf{\texttt{POST /api/auth/login}:} Public login endpoint. Accepts \texttt{LoginRequest} (\texttt{email}, \texttt{password}). Returns 200 OK with JWT token and user profile.
+\end{itemize}
+
+\section{User Controller (\texttt{/api/users})}
+\begin{itemize}
+    \item \textbf{\texttt{GET /api/users/me}:} Authenticated endpoint returning current user profile details from the JWT principal.
+    \item \textbf{\texttt{PUT /api/users/me}:} Updates current user profile (name, phone, city, avatar URL).
+    \item \textbf{\texttt{GET /api/users/\{id\}}:} Retrieves public user profile (name, joined date, verified badge).
+\end{itemize}
+
+\section{Property and Room Controllers (\texttt{/api/properties}, \texttt{/api/rooms})}
+\begin{itemize}
+    \item \textbf{\texttt{GET /api/properties}:} Public paginated search supporting filters: \texttt{city}, \texttt{area}, \texttt{type}, \texttt{minPrice}, \texttt{maxPrice}, \texttt{genderPreference}, \texttt{amenities}, \texttt{page}, \texttt{size}.
+    \item \textbf{\texttt{GET /api/properties/\{id\}}:} Retrieves approved property details with attached rooms, amenities, and host information.
+    \item \textbf{\texttt{POST /api/properties}:} Authenticated endpoint for posting a new property listing (status initialized to \texttt{PENDING}).
+    \item \textbf{\texttt{PUT /api/properties/\{id\}}:} Updates property details (owner or admin only).
+    \item \textbf{\texttt{DELETE /api/properties/\{id\}}:} Deletes property listing (owner or admin only).
+    \item \textbf{\texttt{GET /api/properties/pending}:} Admin-only endpoint listing properties awaiting moderation approval.
+    \item \textbf{\texttt{PATCH /api/properties/\{id\}/approve}:} Admin endpoint setting status to \texttt{APPROVED}.
+    \item \textbf{\texttt{PATCH /api/properties/\{id\}/reject}:} Admin endpoint setting status to \texttt{REJECTED}.
+    \item \textbf{\texttt{GET /api/properties/\{id\}/rooms}:} Lists room configurations (Single, Double, Triple) and vacancies for a property.
+    \item \textbf{\texttt{POST /api/properties/\{id\}/rooms}:} Adds a room configuration to an owned property.
+\end{itemize}
+
+\section{Marketplace Product Controller (\texttt{/api/products})}
+\begin{itemize}
+    \item \textbf{\texttt{GET /api/products}:} Public search supporting filters: \texttt{categoryId}, \texttt{city}, \texttt{condition}, \texttt{minPrice}, \texttt{maxPrice}, \texttt{page}, \texttt{size}.
+    \item \textbf{\texttt{GET /api/products/\{id\}}:} Retrieves product details and increments view count.
+    \item \textbf{\texttt{POST /api/products}:} Creates a student classified listing for sale or rent.
+    \item \textbf{\texttt{PUT /api/products/\{id\}}:} Updates product details (seller or admin only).
+    \item \textbf{\texttt{DELETE /api/products/\{id\}}:} Deletes product listing (seller or admin only).
+    \item \textbf{\texttt{GET /api/products/pending}:} Admin-only endpoint listing items awaiting review.
+    \item \textbf{\texttt{PATCH /api/products/\{id\}/approve}:} Admin approval endpoint.
+    \item \textbf{\texttt{PATCH /api/products/\{id\}/reject}:} Admin rejection endpoint.
+\end{itemize}
+
+\section{Booking and Order Controllers (\texttt{/api/bookings}, \texttt{/api/orders})}
+\begin{itemize}
+    \item \textbf{\texttt{POST /api/bookings}:} Submits an accommodation booking request.
+    \item \textbf{\texttt{GET /api/bookings/mine}:} Lists reservations submitted by current student.
+    \item \textbf{\texttt{GET /api/bookings/incoming}:} Lists booking requests received by property host.
+    \item \textbf{\texttt{PATCH /api/bookings/\{id\}/status}:} Updates booking status (\texttt{CONFIRMED}, \texttt{CANCELLED}, \texttt{COMPLETED}).
+    \item \textbf{\texttt{POST /api/orders}:} Creates a purchase or rental order for a marketplace product.
+    \item \textbf{\texttt{GET /api/orders/mine}:} Lists orders placed by current student.
+    \item \textbf{\texttt{GET /api/orders/incoming}:} Lists purchase orders received by product seller.
+    \item \textbf{\texttt{PATCH /api/orders/\{id\}/status}:} Updates order status.
+\end{itemize}
+
+\section{Peer-to-Peer Chat Controller (\texttt{/api/chat})}
+\begin{itemize}
+    \item \textbf{\texttt{GET /api/chat/conversations}:} Lists active conversation threads with unread counts and last message timestamp.
+    \item \textbf{\texttt{GET /api/chat/messages/\{userId\}}:} Retrieves message history with a specific user and marks inbound messages as read.
+    \item \textbf{\texttt{POST /api/chat/send}:} Sends a text message to a recipient.
+    \item \textbf{\texttt{GET /api/chat/unread-count}:} Returns total unread message count for the current user.
+\end{itemize}
+
+\section{Recommendation and Behavior Controllers (\texttt{/api/recommendations}, \texttt{/api/behaviors})}
+\begin{itemize}
+    \item \textbf{\texttt{GET /api/recommendations/user/\{userId\}}:} Returns personalized top recommendations based on user browsing history.
+    \item \textbf{\texttt{GET /api/recommendations/properties}:} Returns top-recommended properties for a given city.
+    \item \textbf{\texttt{GET /api/recommendations/properties/\{id\}/similar}:} Returns semantically similar properties.
+    \item \textbf{\texttt{GET /api/recommendations/trending/properties}:} Returns listings with highest recent engagement.
+    \item \textbf{\texttt{POST /api/behaviors}:} Records user telemetry events (views, searches, wishlist additions).
+\end{itemize}
+
+\section{Marketplace Metadata and Statistics Controllers}
+\begin{itemize}
+    \item \textbf{\texttt{GET /api/locations}:} Returns list of Uttarakhand cities and student campus clusters.
+    \item \textbf{\texttt{GET /api/categories}:} Returns product category taxonomy.
+    \item \textbf{\texttt{GET /api/properties/stats}:} Returns public marketplace statistics (total listings, average rents, verified counts, savings estimates) powering UI counters.
+\end{itemize}
+
+\section{Wishlist and Review Controllers (\texttt{/api/wishlist}, \texttt{/api/reviews})}
+\begin{itemize}
+    \item \textbf{\texttt{GET /api/wishlist}:} Lists saved items for current user.
+    \item \textbf{\texttt{POST /api/wishlist/toggle}:} Adds or removes an item from personal wishlist.
+    \item \textbf{\texttt{GET /api/wishlist/check}:} Checks if a specific property or product is wishlisted.
+    \item \textbf{\texttt{GET /api/properties/\{id\}/reviews}:} Lists reviews and ratings for a property.
+    \item \textbf{\texttt{POST /api/properties/\{id\}/reviews}:} Submits a rating and review after confirmed stay.
+    \item \textbf{\texttt{POST /api/products/\{id\}/reviews}:} Submits a review for a purchased product.
+\end{itemize}
+
+\section{Administration Controller (\texttt{/api/admin})}
+\begin{itemize}
+    \item \textbf{\texttt{GET /api/admin/overview}:} Admin KPI metrics (total users, active listings, pending moderation counts).
+    \item \textbf{\texttt{GET /api/admin/users}:} Lists registered users with role and status management.
+    \item \textbf{\texttt{PATCH /api/admin/users/\{id\}/toggle-status}:} Enables or suspends a user account.
+    \item \textbf{\texttt{GET /api/admin/stats}:} Telemetry datasets for Chart.js administrative visualizations.
+\end{itemize}
+
+\section{File Upload Controller (\texttt{/api/files})}
+\begin{itemize}
+    \item \textbf{\texttt{POST /api/files/upload}:} Authenticated endpoint for uploading property and product photographs. Validates MIME types, generates unique filenames, and returns relative asset URLs.
+    \item \textbf{\texttt{GET /uploads/\{filename\}}:} Serves uploaded photographic assets.
+\end{itemize}

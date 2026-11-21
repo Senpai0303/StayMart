@@ -45,12 +45,13 @@ public class Room {
     private String roomNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "type", nullable = false)
     private RoomType type;
 
-    @Column(precision = 10, scale = 2)
+    @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
 
+    @Column(name = "capacity")
     @Builder.Default
     private Integer capacity = 1;
 

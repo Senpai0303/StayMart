@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; padding: 40px; background: #0f172a; font-family: 'Segoe UI', Inter, sans-serif; color: #f8fafc; }
+  .canvas { width: 1300px; margin: 0 auto; text-align: center; }
+  .title { font-size: 26px; font-weight: 700; color: #a855f7; margin-bottom: 30px; }
+  .flow { display: flex; justify-content: space-between; align-items: center; position: relative; }
+  .step-box { background: #1e293b; border: 2px solid #334155; border-radius: 14px; padding: 20px; width: 220px; text-align: left; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+  .step-num { font-size: 12px; font-weight: bold; color: #a855f7; text-transform: uppercase; margin-bottom: 6px; }
+  .step-title { font-size: 16px; font-weight: 700; color: #f8fafc; margin-bottom: 8px; }
+  .step-desc { font-size: 12px; color: #94a3b8; line-height: 1.4; }
+  .arrow { font-size: 28px; color: #64748b; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">StayMart Content-Based & Behavioral ML Recommendation Pipeline</div>
+  <div class="flow">
+    <div class="step-box" style="border-color: #38bdf8;">
+      <div class="step-num" style="color:#38bdf8">Step 1: Data Ingestion</div>
+      <div class="step-title">MySQL Aggregation</div>
+      <div class="step-desc">Extract approved properties & products along with historical interactions from user_behaviors table.</div>
+    </div>
+    <div class="arrow">➔</div>
+
+    <div class="step-box" style="border-color: #10b981;">
+      <div class="step-num" style="color:#10b981">Step 2: Feature Engineering</div>
+      <div class="step-title">Text Synthesis</div>
+      <div class="step-desc">Construct composite document: Title + Description + Category + City + Area + Price Tier + Amenities tokens.</div>
+    </div>
+    <div class="arrow">➔</div>
+
+    <div class="step-box" style="border-color: #a855f7;">
+      <div class="step-num" style="color:#a855f7">Step 3: Vectorization</div>
+      <div class="step-title">TF-IDF Sparse Matrix</div>
+      <div class="step-desc">Scikit-learn TfidfVectorizer computes term frequency-inverse document frequency vectors (n-grams: 1-2).</div>
+    </div>
+    <div class="arrow">➔</div>
+
+    <div class="step-box" style="border-color: #f59e0b;">
+      <div class="step-num" style="color:#f59e0b">Step 4: Similarity Computation</div>
+      <div class="step-title">Cosine Similarity</div>
+      <div class="step-desc">Compute dot product matrix between candidate vectors and user profile weighted interaction vectors.</div>
+    </div>
+    <div class="arrow">➔</div>
+
+    <div class="step-box" style="border-color: #ec4899;">
+      <div class="step-num" style="color:#ec4899">Step 5: Hybrid Re-Ranking</div>
+      <div class="step-title">Top-K Recommendations</div>
+      <div class="step-desc">Apply locality filter (target city), popularity prior, and recency damping; return JSON to Spring Boot REST.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

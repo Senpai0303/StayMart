@@ -57,11 +57,12 @@ public class Booking {
     @Column(name = "total_amount", precision = 10, scale = 2)
     private BigDecimal totalAmount;
 
+    @Column(name = "months", nullable = false)
     @Builder.Default
     private Integer months = 1;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "status", nullable = false)
     @Builder.Default
     private BookingStatus status = BookingStatus.PENDING;
 

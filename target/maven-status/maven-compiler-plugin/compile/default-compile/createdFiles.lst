@@ -69,6 +69,7 @@ com\staymart\entity\Review$ReviewBuilder.class
 com\staymart\dto\request\BehaviorRequest.class
 com\staymart\security\RestAuthenticationEntryPoint.class
 com\staymart\entity\enums\OrderStatus.class
+com\staymart\config\WebMvcConfig.class
 com\staymart\repository\CategoryRepository.class
 com\staymart\repository\ReviewRepository.class
 com\staymart\entity\Order$OrderBuilder.class
@@ -139,4 +140,5 @@ com\staymart\dto\request\OrderRequest.class
 com\staymart\repository\WishlistRepository.class
 com\staymart\controller\OrderController.class
 com\staymart\service\BookingService.class
+com\staymart\service\MlServiceClient.class
 com\staymart\entity\Category.class

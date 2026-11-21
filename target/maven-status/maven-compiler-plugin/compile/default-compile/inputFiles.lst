@@ -3,6 +3,7 @@ D:\Mini5th\src\main\java\com\staymart\common\PageResponse.java
 D:\Mini5th\src\main\java\com\staymart\config\DataSeeder.java
 D:\Mini5th\src\main\java\com\staymart\config\OpenApiConfig.java
 D:\Mini5th\src\main\java\com\staymart\config\SecurityConfig.java
+D:\Mini5th\src\main\java\com\staymart\config\WebMvcConfig.java
 D:\Mini5th\src\main\java\com\staymart\controller\AdminController.java
 D:\Mini5th\src\main\java\com\staymart\controller\AuthController.java
 D:\Mini5th\src\main\java\com\staymart\controller\BehaviorController.java
@@ -118,6 +119,7 @@ D:\Mini5th\src\main\java\com\staymart\service\CategoryService.java
 D:\Mini5th\src\main\java\com\staymart\service\ChatService.java
 D:\Mini5th\src\main\java\com\staymart\service\FileStorageService.java
 D:\Mini5th\src\main\java\com\staymart\service\LocationService.java
+D:\Mini5th\src\main\java\com\staymart\service\MlServiceClient.java
 D:\Mini5th\src\main\java\com\staymart\service\OrderService.java
 D:\Mini5th\src\main\java\com\staymart\service\ProductService.java
 D:\Mini5th\src\main\java\com\staymart\service\PropertyService.java

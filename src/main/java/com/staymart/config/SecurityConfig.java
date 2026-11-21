@@ -58,11 +58,12 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/reviews/mine").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/locations/**", "/api/categories/**",
                                 "/api/properties/**", "/api/products/**", "/api/reviews/**",
-                                "/api/files/**", "/api/recommendations/**").permitAll()
+                                "/api/files/**", "/uploads/**", "/api/recommendations/**").permitAll()
                         .requestMatchers("/api/locations/**", "/api/categories/**").hasRole("ADMIN")
                         .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")

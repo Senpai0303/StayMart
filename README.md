@@ -1,6 +1,6 @@
 # StayMart 🏠
 
-StayMart is a full-stack accommodation and second-hand marketplace for **Dehradun and Uttarakhand**. Users can post and discover PGs, hostels, rooms, flats and hotels, buy or rent pre-loved products, book/view rooms, place orders, chat with owners and sellers, and leave reviews. Admins moderate listings, manage users, and view platform analytics. A Python ML microservice provides personalized and trending recommendations.
+StayMart is a student accommodation discovery and campus re-commerce web platform tailored for university hubs across Uttarakhand (Dehradun, Rishikesh, Haridwar, and Roorkee). The application connects students directly with verified PG owners and passing-out seniors with zero broker commission—allowing students to discover campus housing near Graphic Era, UPES, DIT, and IIT Roorkee, or buy essential second-hand gear including study desks, room coolers, bicycles, and textbooks.
 
 ---
 
@@ -11,7 +11,7 @@ StayMart is a full-stack accommodation and second-hand marketplace for **Dehradu
 | Backend | Java 17, Spring Boot 3.3, Spring Web, Spring Data JPA, Spring Security (JWT), Bean Validation, Lombok |
 | Database | MySQL 8 (`ddl-auto: validate`, schema managed by SQL scripts) |
 | API Docs | springdoc-openapi (Swagger UI) |
-| ML Service | Python 3, Flask, scikit-learn, scikit-surprise (SVD), pandas, MySQL Connector |
+| ML Service | Python 3, Flask, scikit-learn (TF-IDF), pandas, MySQL Connector |
 | Frontend | Vanilla HTML5 / CSS3 / JavaScript (no build step), Chart.js (admin dashboards) |
 
 ---
@@ -42,8 +42,8 @@ Mini5th/
 │   ├── app.py                  # Flask app + routes
 │   ├── config.py               # DB config, weights, cities, constants
 │   ├── db_connector.py         # MySQL access layer
-│   ├── model_trainer.py        # Trains SVD + TF-IDF models
-│   ├── recommender.py          # Hybrid recommendation logic
+│   ├── model_trainer.py        # Retrains the TF-IDF models
+│   ├── recommender.py          # TF-IDF recommendation logic
 │   ├── requirements.txt
 │   └── README_ML.md            # ML service documentation
 └── frontend/
@@ -53,7 +53,7 @@ Mini5th/
     ├── post-property.html / post-product.html
     ├── property-detail.html / product-detail.html
     ├── css/
-    │   ├── global.css          # Shared theme (dark, indigo + mint)
+    │   ├── global.css          # Shared theme (OLX deep spruce + Amazon amber, mobile-first design)
     │   └── dashboard.css       # Sidebar dashboard layouts
     ├── js/                     # api.js, auth.js, utils.js, dashboard.js + page scripts
     └── pages/
@@ -108,7 +108,7 @@ If all prerequisites are installed (see above), start everything with PowerShell
 pwsh -File scripts/start-all.ps1
 ```
 
-This will: start the MySQL Docker container → wait for it → use JDK 21 → start the backend (`:8080`), ML service (`:5000`) and frontend (`:5500`).
+This will: start the MySQL Docker container → wait for it → start the backend (`:8080`), ML service (`:5000`) and frontend (`:5500`).
 
 **Then open your browser at → http://localhost:5500**
 
@@ -118,7 +118,7 @@ To stop everything:
 pwsh -File scripts/stop-all.ps1
 ```
 
-> Requirements for the script: **Docker Desktop must be running**, and Temurin **JDK 21** must be installed at `C:\Program Files\Eclipse Adoptium\jdk-21*`.
+> Requirements for the script: **Docker Desktop must be running**, and JDK 17 or JDK 21 must be installed (e.g., at `C:\Program Files\Eclipse Adoptium\jdk-*` or on system PATH).
 
 The manual steps below are the equivalent if you prefer starting each service yourself.
 
@@ -132,7 +132,7 @@ mysql -u root -p staymart < database/03_seed_listings.sql   # optional demo list
 
 This creates the `staymart` schema, all tables, and seeds locations and categories. The optional `03_seed_listings.sql` adds **demo sellers plus 12 accommodations and 24 marketplace products** (all pre-approved) so the catalogue is populated — see [Demo Listings](#-demo-listings).
 
-> The backend datasource defaults to `root` / `root` on `localhost:3306`. Override with the `DB_USERNAME` and `DB_PASSWORD` environment variables if needed.
+> The backend datasource defaults to `root` / `root` on `localhost:3306`. Override with the `DB_URL`, `DB_USERNAME` and `DB_PASSWORD` environment variables if needed.
 
 ### 2. Backend (Spring Boot)
 
@@ -159,12 +159,12 @@ python app.py
 ```
 
 - Starts on `http://localhost:5000`.
-- On startup it loads models from `models/`; missing models are trained from the DB automatically.
-- If MySQL is unreachable it still runs and recommendations degrade gracefully (empty/fallback results).
+- On startup it loads the TF-IDF models from `models/`; missing or stale models are rebuilt from the DB automatically.
+- If MySQL is unreachable it still runs, `/health` returns `503`, and recommendation calls fail explicitly. The backend then returns empty recommendation lists; there is no mock/latest-approved fallback.
 
 See [`ml-service/README_ML.md`](ml-service/README_ML.md) for endpoints and retraining.
 
-> The backend talks to this service via `app.ml.base-url` (default `http://localhost:5000`). If it is down, the backend falls back to latest-approved listings.
+> The backend talks to this service via `app.ml.base-url` (default `http://localhost:5000`). If it is down, the backend logs the failure and returns empty recommendation lists.
 
 ### 4. Frontend
 
@@ -177,7 +177,7 @@ python -m http.server 5500
 
 Then open `http://localhost:5500`.
 
-Allowed CORS origins are configured in `application.yml` (`app.cors.allowed-origins`), including `:5500`, `:3000`, `:4200`, `:5173`, `:8081`.
+Allowed CORS origins are configured in `application.yml` (`app.cors.allowed-origins`): `http://localhost:5500`, `http://127.0.0.1:5500`, `http://localhost:3000`, and `http://localhost:5173`. Override with the `CORS_ORIGINS` environment variable.
 
 ---
 
@@ -208,11 +208,11 @@ If you loaded `database/03_seed_listings.sql`, these demo seller accounts also e
 
 `database/03_seed_listings.sql` populates the marketplace so the catalogue is not empty. Everything is inserted with `status = APPROVED`, so listings appear immediately in the public pages.
 
-- **12 accommodations** (PG, hostel, flat, room, hotel, dormitory) across Dehradun, Rishikesh, Haridwar, Mussoorie and Roorkee — OYO / PG / hostel style, with amenities, monthly rent, deposits and images.
-- **8 rooms** attached to the first three PGs/hostels (shown on the property detail page).
-- **24 products** — OLX-style used goods (laptops, phones, furniture, books, appliances, bikes, sports gear, fashion) with price, condition, listing type, brand, location and images.
+- **12 accommodations** (student PGs, girls/boys hostels, shared flats, and single rooms) across Dehradun, Rishikesh, Haridwar, Mussoorie and Roorkee with verified amenities, transparent student rent, meal inclusions, and zero brokerage.
+- **8 rooms** attached to the first three campus PGs/hostels (single, double, and triple sharing rooms with availability tracking).
+- **24 student classifieds** — authentic pre-loved campus essentials (coding laptops, room coolers, bicycles, study desk combos, GATE notes, engineering drawing kits, and induction cookware) posted by graduating seniors.
 
-Images use [`picsum.photos`](https://picsum.photos) placeholder URLs (reliable, no API key). Descriptions and prices are realistic demo data modelled on typical OYO/OLX listings for Uttarakhand.
+Images use high-resolution Unsplash photo URLs tailored for student living and tech gear. Descriptions and prices represent authentic campus classifieds across Uttarakhand.
 
 ```bash
 # Reload just the demo listings into an existing database
@@ -257,6 +257,7 @@ Protected endpoints require a `Authorization: Bearer <token>` header (JWT, 24h e
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
+| `DB_URL` | `jdbc:mysql://localhost:3306/staymart?...` | Full JDBC URL |
 | `DB_USERNAME` | `root` | MySQL username |
 | `DB_PASSWORD` | `root` | MySQL password |
 | `JWT_SECRET` | built-in dev secret | JWT signing key |
@@ -269,25 +270,31 @@ Protected endpoints require a `Authorization: Bearer <token>` header (JWT, 24h e
 
 ---
 
-## 🤖 Recommendation Engine
+## 🎯 Recommendation Engine
 
-The Flask service builds a hybrid recommender:
+StayMart uses a dedicated Python Flask microservice to compute content-based recommendations using scikit-learn:
 
 - **New users** (< `MIN_INTERACTIONS_FOR_CF` = 5 behaviours) → trending items in their city (default **Dehradun**).
-- **Active users** (≥ 5 interactions) → 60% SVD collaborative filtering + 40% TF-IDF content similarity, blended into a 0–1 score.
+- **Active users** (≥ 5 interactions) → 60% TF-IDF user-profile similarity + 40% item-to-item cosine similarity, blended into a 0–1 score.
 - **Similar items** → TF-IDF + cosine similarity over text features.
 - **Trending** → time-decayed score over the last 7 days, weighted by action (VIEW/SEARCH=1, WISHLIST/CONTACT=3, BOOK/ORDER=5).
 - Excludes items already booked/ordered and only returns `APPROVED` + available items.
 
-Models are auto-generated into `ml-service/models/` (`property_svd.pkl`, `product_svd.pkl`, `property_tfidf.pkl`, `product_tfidf.pkl`) and can be rebuilt via `POST /retrain`.
+Models are auto-generated into `ml-service/models/` (`property_tfidf.pkl`, `product_tfidf.pkl`) and can be rebuilt via `POST /retrain`.
 
 ---
 
 ## 🧪 Verifying the Build
 
 ```bash
-# Backend compiles
-mvn -q compile
+# Backend compiles and tests pass
+mvn -q clean test
+
+# ML service modules are syntactically valid
+python -m py_compile ml-service/app.py ml-service/config.py ml-service/db_connector.py ml-service/recommender.py ml-service/model_trainer.py
+
+# ML service is connected to MySQL and has models loaded
+curl http://localhost:5000/health
 
 # Frontend scripts are syntactically valid
 Get-ChildItem frontend/js/*.js | ForEach-Object { node --check $_.FullName }

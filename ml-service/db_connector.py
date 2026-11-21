@@ -20,6 +20,26 @@ def get_connection():
     return conn
 
 
+def database_healthy():
+    try:
+        conn = get_connection()
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute("SELECT 1")
+                cursor.fetchone()
+        finally:
+            conn.close()
+        return True
+    except mysql.connector.Error as exc:
+        logger.error("MySQL health check failed (%s:%s/%s): %s",
+                     DB_CONFIG.get('host'), DB_CONFIG.get('port'),
+                     DB_CONFIG.get('database'), exc)
+        return False
+    except Exception as exc:
+        logger.exception("Unexpected database health check failure: %s", exc)
+        return False
+
+
 def _cursor_result_as_frame(cursor):
     columns = [column[0] for column in cursor.description]
     rows = cursor.fetchall()
@@ -62,9 +82,9 @@ def fetch_all_behaviors():
         with get_connection() as conn, conn.cursor() as cursor:
             cursor.execute(query)
             return _cursor_result_as_frame(cursor)
-    except Exception as exc:
+    except mysql.connector.Error as exc:
         logger.error("fetch_all_behaviors failed: %s", exc)
-        return pd.DataFrame(columns=BEHAVIOR_COLUMNS)
+        raise
 
 
 def fetch_user_behaviors(user_id):
@@ -74,9 +94,9 @@ def fetch_user_behaviors(user_id):
         with get_connection() as conn, conn.cursor() as cursor:
             cursor.execute(query, (int(user_id),))
             return _cursor_result_as_frame(cursor)
-    except Exception as exc:
+    except mysql.connector.Error as exc:
         logger.error("fetch_user_behaviors failed for user %s: %s", user_id, exc)
-        return pd.DataFrame(columns=BEHAVIOR_COLUMNS)
+        raise
 
 
 def fetch_approved_properties(city=None):
@@ -101,9 +121,9 @@ def fetch_approved_properties(city=None):
         with get_connection() as conn, conn.cursor() as cursor:
             cursor.execute(query, tuple(params))
             return [_enrich_property_row(row) for row in _cursor_result_as_dicts(cursor)]
-    except Exception as exc:
+    except mysql.connector.Error as exc:
         logger.error("fetch_approved_properties failed: %s", exc)
-        return []
+        raise
 
 
 def fetch_approved_products(city=None):
@@ -129,9 +149,9 @@ def fetch_approved_products(city=None):
         with get_connection() as conn, conn.cursor() as cursor:
             cursor.execute(query, tuple(params))
             return [_enrich_product_row(row) for row in _cursor_result_as_dicts(cursor)]
-    except Exception as exc:
+    except mysql.connector.Error as exc:
         logger.error("fetch_approved_products failed: %s", exc)
-        return []
+        raise
 
 
 def fetch_property_by_id(property_id):
@@ -158,9 +178,9 @@ def fetch_property_by_id(property_id):
             if not rows:
                 return None
             return _enrich_property_row(rows[0])
-    except Exception as exc:
+    except mysql.connector.Error as exc:
         logger.error("fetch_property_by_id failed for %s: %s", property_id, exc)
-        return None
+        raise
 
 
 def fetch_product_by_id(product_id):
@@ -188,9 +208,9 @@ def fetch_product_by_id(product_id):
             if not rows:
                 return None
             return _enrich_product_row(rows[0])
-    except Exception as exc:
+    except mysql.connector.Error as exc:
         logger.error("fetch_product_by_id failed for %s: %s", product_id, exc)
-        return None
+        raise
 
 
 def fetch_property_details_bulk(ids):
@@ -223,9 +243,9 @@ def fetch_property_details_bulk(ids):
             rows = [_enrich_property_row(row) for row in _cursor_result_as_dicts(cursor)]
         by_id = {row['id']: row for row in rows}
         return [by_id[i] for i in id_list if i in by_id]
-    except Exception as exc:
+    except mysql.connector.Error as exc:
         logger.error("fetch_property_details_bulk failed: %s", exc)
-        return []
+        raise
 
 
 def fetch_product_details_bulk(ids):
@@ -259,9 +279,9 @@ def fetch_product_details_bulk(ids):
             rows = [_enrich_product_row(row) for row in _cursor_result_as_dicts(cursor)]
         by_id = {row['id']: row for row in rows}
         return [by_id[i] for i in id_list if i in by_id]
-    except Exception as exc:
+    except mysql.connector.Error as exc:
         logger.error("fetch_product_details_bulk failed: %s", exc)
-        return []
+        raise
 
 
 def fetch_trending_raw(item_type, city, days=7):
@@ -278,9 +298,9 @@ def fetch_trending_raw(item_type, city, days=7):
         with get_connection() as conn, conn.cursor() as cursor:
             cursor.execute(query, params)
             return _cursor_result_as_dicts(cursor)
-    except Exception as exc:
+    except mysql.connector.Error as exc:
         logger.error("fetch_trending_raw failed: %s", exc)
-        return []
+        raise
 
 
 def get_user_interacted_ids(user_id, item_type, strong_only=False):
@@ -293,9 +313,9 @@ def get_user_interacted_ids(user_id, item_type, strong_only=False):
         with get_connection() as conn, conn.cursor() as cursor:
             cursor.execute(query, tuple(params))
             return [int(row[0]) for row in cursor.fetchall()]
-    except Exception as exc:
+    except mysql.connector.Error as exc:
         logger.error("get_user_interacted_ids failed: %s", exc)
-        return []
+        raise
 
 
 def increment_product_views(product_id):
@@ -303,5 +323,6 @@ def increment_product_views(product_id):
     try:
         with get_connection() as conn, conn.cursor() as cursor:
             cursor.execute(query, (int(product_id),))
-    except Exception as exc:
+    except mysql.connector.Error as exc:
         logger.error("increment_product_views failed for %s: %s", product_id, exc)
+        raise

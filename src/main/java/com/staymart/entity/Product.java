@@ -84,7 +84,7 @@ public class Product {
     private List<String> images = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "status", nullable = false)
     @Builder.Default
     private ModerationStatus status = ModerationStatus.PENDING;
 

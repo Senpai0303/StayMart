@@ -1,8 +1,12 @@
 // Auto-detect local development vs cloud deployment
-const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const isLocal = window.location.hostname === 'localhost' ||
+                window.location.hostname === '127.0.0.1' ||
+                window.location.protocol === 'file:';
+
+const customUrl = window.STAYMART_API_URL || localStorage.getItem('STAYMART_API_URL');
 const BASE_URL = isLocal
   ? 'http://localhost:8080/api'
-  : (window.STAYMART_API_URL || localStorage.getItem('STAYMART_API_URL') || 'https://staymart.onrender.com/api');
+  : (customUrl ? customUrl.replace(/\/+$/, '') : '/api');
 
 
 async function apiCall(endpoint, method = 'GET', body = null) {
@@ -17,7 +21,9 @@ async function apiCall(endpoint, method = 'GET', body = null) {
   if (body) {
     config.body = JSON.stringify(body);
   }
-  const res = await fetch(BASE_URL + endpoint, config);
+  const cleanBase = (BASE_URL || '').replace(/\/+$/, '');
+  const cleanPath = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const res = await fetch(cleanBase + cleanPath, config);
   const data = await res.json();
   if (!data || data.success === false) {
     throw new Error((data && data.message) || 'Something went wrong');
@@ -127,6 +133,7 @@ const RecommendationAPI = {
   getSimilarProperties: (propertyId, limit = 4) => apiCall(`/recommendations/properties/${propertyId}/similar?limit=${limit}`),
   getTrendingProperties: (limit = 8, city) => apiCall(`/recommendations/properties/trending?limit=${limit}${city ? `&city=${encodeURIComponent(city)}` : ''}`),
   getRecommendedProducts: (city, limit = 8) => apiCall(`/recommendations/products?limit=${limit}${city ? `&city=${encodeURIComponent(city)}` : ''}`),
+  getSimilarProducts: (productId, limit = 4) => apiCall(`/recommendations/products/${productId}/similar?limit=${limit}`),
   getTopRatedProducts: (limit = 8, city) => apiCall(`/recommendations/products/top-rated?limit=${limit}${city ? `&city=${encodeURIComponent(city)}` : ''}`)
 };
 

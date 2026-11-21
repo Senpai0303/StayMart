@@ -28,15 +28,17 @@ async function loadStats() {
 
     const bookingList = (bookings && bookings.content) || [];
     const orderList = (orders && orders.content) || [];
+    const wishlistList = Array.isArray(wishlist) ? wishlist : ((wishlist && wishlist.content) || []);
     const activeBookings = bookingList.filter((b) => b.status === 'PENDING' || b.status === 'CONFIRMED').length;
     const activeOrders = orderList.filter((o) => o.status === 'PENDING' || o.status === 'CONFIRMED').length;
     const listingCount = (props.totalElements || 0) + (products.totalElements || 0);
+    const wishlistCount = (wishlist && typeof wishlist.totalElements === 'number') ? wishlist.totalElements : wishlistList.length;
 
     grid.innerHTML = [
       statTile('🏠', 'sc-green', listingCount, 'My Listings'),
       statTile('📅', '', activeBookings, 'Active Bookings'),
       statTile('📦', 'sc-amber', activeOrders, 'Active Orders'),
-      statTile('❤️', 'sc-rose', (wishlist || []).length, 'Wishlist Items')
+      statTile('❤️', 'sc-rose', wishlistCount, 'Wishlist Items')
     ].join('');
   } catch (error) {
     grid.innerHTML = `<p class="field-error">${escapeHtml(error.message)}</p>`;

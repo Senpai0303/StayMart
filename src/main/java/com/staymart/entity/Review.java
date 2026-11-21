@@ -45,7 +45,7 @@ public class Review {
     @Column(name = "item_id", nullable = false)
     private Long itemId;
 
-    @Column(nullable = false)
+    @Column(name = "rating", nullable = false)
     private Integer rating;
 
     @Column(columnDefinition = "TEXT")

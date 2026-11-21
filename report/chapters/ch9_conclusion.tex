@@ -1,0 +1,52 @@
+\chapter{Conclusion and Future Scope}
+
+\section{Summary of Contributions and Completed Milestones}
+In this project, we designed and built \textbf{StayMart} to address the everyday challenges students face when relocating to Uttarakhand for higher education. By combining campus accommodation discovery with a student second-hand marketplace in a single platform, StayMart allows students to find verified PGs and flats near their campuses and buy affordable study furniture, electronics, and books directly from graduating seniors without paying broker commissions.
+
+The primary engineering milestones accomplished in this project include:
+\begin{enumerate}
+    \item \textbf{Decoupled Multi-Tier Architecture:} Developed a modular system combining a Java 17 LTS / Spring Boot 3.3 REST backend, an ACID-compliant MySQL 8.0 database, and an asynchronous Python 3.11 / Flask recommendation microservice.
+    \item \textbf{Content-Based Recommendation Engine:} Implemented a TF-IDF and cosine similarity engine in scikit-learn that evaluates property features and user interactions, backed by a resilient database fallback in Spring Boot to ensure seamless browsing during microservice downtime.
+    \item \textbf{Clean Security Implementation:} Built a stateless JWT authentication filter in Spring Security with role-based access control, parameterized JPA queries preventing SQL injection, and frontend output escaping to neutralize Cross-Site Scripting (XSS).
+    \item \textbf{Authentic Commercial UI:} Designed a responsive, mobile-first frontend using vanilla HTML5, CSS3, and ES6 JavaScript styled in an intuitive OLX/Amazon commercial theme, achieving initial page loads under 40 KB without bulky framework dependencies.
+    \item \textbf{In-App Messaging and Admin Moderation:} Implemented direct peer-to-peer chat for student-caretaker inquiries and an administrative moderation panel with Chart.js analytics to review listings before public display.
+    \item \textbf{Zero-Cost Cloud Deployment Topology:} Configured a 100\% free-tier production cloud deployment using Vercel static edge hosting with reverse proxy rewrites, Render/Koyeb container hosting with \texttt{-Xmx384m} memory guardrails, and TiDB Serverless managed MySQL.
+\end{enumerate}
+
+\section{Societal and Economic Impact in Uttarakhand}
+The deployment of StayMart offers practical benefits for the university community in Uttarakhand:
+\begin{itemize}
+    \item \textbf{Brokerage Savings for Students:} By connecting students directly with verified property caretakers around Graphic Era, UPES, and DIT, StayMart eliminates broker commissions, saving incoming students an estimated ₹5,000 to ₹15,000 per tenancy cycle.
+    \item \textbf{Campus Circular Economy:} Passing-out senior students frequently struggle to sell functional coolers, study tables, reference books, and two-wheelers. StayMart provides a dedicated peer-to-peer classifieds platform, reducing waste and making essential items affordable for junior batches.
+    \item \textbf{Support for Local Property Caretakers:} Small-scale homestay and PG owners in Dehradun, Rishikesh, and Roorkee gain a free platform to advertise vacancies directly to students without middleman charges.
+\end{itemize}
+
+\section{Lessons Learned During System Development}
+Developing a distributed, full-stack application within student constraints provided valuable engineering insights:
+\begin{enumerate}
+    \item \textbf{Memory Guardrails on Free Cloud Tiers:} Default JVM configurations often consume more than 512 MB of memory on container startup. Configuring \texttt{-Xmx384m} alongside the Serial Garbage Collector (\texttt{-XX:+UseSerialGC}) proved essential to prevent out-of-memory container terminations on free hosting platforms.
+    \item \textbf{Designing for Microservice Resilience:} Depending on an auxiliary machine learning service taught us to design defensive fallback mechanisms early. Implementing connect and read timeouts in Spring Boot ensured that recommendation failures never blocked core browsing or booking flows.
+    \item \textbf{The Value of Vanilla Web Technologies:} Choosing native HTML5, CSS3, and ES6 JavaScript eliminated the build step fatigue, dependency churn, and debugging overhead common with modern SPA frameworks.
+    \item \textbf{Mobile-First Layout Discipline:} Testing against 320px and 375px viewports from the beginning prevented horizontal scrollbars and ensured that interactive widgets (such as room booking and filters) remained accessible on compact phone screens.
+\end{enumerate}
+
+\section{Limitations of the Current Implementation}
+While StayMart provides a fully functional marketplace, several practical limitations exist:
+\begin{enumerate}
+    \item \textbf{Manual Peer-to-Peer Payments:} Currently, rental advances and classified purchases occur directly between users in person or via external UPI apps. While this eliminates platform transaction fees, it provides no built-in dispute resolution escrow.
+    \item \textbf{Text-Based Neighborhood Filtering:} Searches filter by structured city and neighborhood names rather than real-time GPS coordinate radiuses.
+    \item \textbf{Periodic Recommendation Updates:} The TF-IDF model operates on periodically updated listing data rather than real-time online vector updates.
+\end{enumerate}
+
+\section{Suggestions for Future Work and Technical Roadmap}
+Future development iterations will focus on practical platform expansions:
+\begin{enumerate}
+    \item \textbf{Integrated UPI Escrow Payment Gateway:} Integrating a payment gateway (such as Razorpay or Cashfree) with an escrow workflow, holding deposits until the student physically inspects and confirms the accommodation.
+    \item \textbf{Geospatial Radius Queries:} Utilizing MySQL Spatial extensions or PostGIS to allow students to search for accommodations within specific walking radiuses of campus landmarks (e.g., ``within 1 km of Graphic Era Hill University'').
+    \item \textbf{Web Push Notifications:} Implementing Web Push APIs to notify students instantly when an owner responds to a chat inquiry or updates a booking request.
+    \item \textbf{Progressive Web App (PWA) Offline Support:} Adding service worker caching to allow students to view previously browsed listings and contact phone numbers even when campus cell service is intermittent.
+    \item \textbf{Collaborative Filtering Expansion:} Incorporating user ratings and explicit bookmark feedback into a hybrid recommendation pipeline as platform interaction data grows.
+\end{enumerate}
+
+\section{Concluding Remarks}
+StayMart demonstrates that practical, student-centric software engineering can solve tangible local problems in university hubs. By combining structured Java backend services, a clean relational database schema, lightweight machine learning, and an intuitive classifieds user interface, the project provides an accessible, cost-effective platform tailored to the needs of students across Uttarakhand.

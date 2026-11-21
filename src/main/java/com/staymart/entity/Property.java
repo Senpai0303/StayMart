@@ -52,7 +52,7 @@ public class Property {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "type", nullable = false)
     private PropertyType type;
 
     @Enumerated(EnumType.STRING)
@@ -96,7 +96,7 @@ public class Property {
     private List<String> images = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "status", nullable = false)
     @Builder.Default
     private ModerationStatus status = ModerationStatus.PENDING;
 

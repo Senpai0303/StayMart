@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; padding: 40px; background: #0b1120; font-family: 'Segoe UI', Inter, monospace; color: #f8fafc; }
+  .canvas { width: 1500px; margin: 0 auto; }
+  .title { text-align: center; font-size: 26px; font-weight: bold; color: #38bdf8; margin-bottom: 30px; }
+  .erd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .entity-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+  .entity-head { background: #334155; padding: 10px 14px; font-weight: bold; font-size: 15px; color: #38bdf8; display: flex; justify-content: space-between; }
+  .entity-body { padding: 12px 14px; font-size: 12px; }
+  .field { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px dashed #1e293b; }
+  .pk { color: #f59e0b; font-weight: bold; }
+  .fk { color: #a855f7; font-weight: bold; }
+  .type { color: #94a3b8; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">StayMart Relational Database Schema (Entity-Relationship Model)</div>
+  <div class="erd-grid">
+    <!-- Users -->
+    <div class="entity-card" style="border-top:3px solid #38bdf8">
+      <div class="entity-head"><span>users</span><span>[Relational Node]</span></div>
+      <div class="entity-body">
+        <div class="field"><span class="pk">id (PK)</span><span class="type">BIGINT AUTO</span></div>
+        <div class="field"><span>name</span><span class="type">VARCHAR(100)</span></div>
+        <div class="field"><span>email</span><span class="type">VARCHAR(150) UNIQUE</span></div>
+        <div class="field"><span>password_hash</span><span class="type">VARCHAR(255)</span></div>
+        <div class="field"><span>phone</span><span class="type">VARCHAR(20)</span></div>
+        <div class="field"><span>role</span><span class="type">ENUM(USER,ADMIN)</span></div>
+        <div class="field"><span>city</span><span class="type">VARCHAR(100)</span></div>
+        <div class="field"><span>bio</span><span class="type">TEXT</span></div>
+        <div class="field"><span>is_active</span><span class="type">BOOLEAN</span></div>
+        <div class="field"><span>created_at</span><span class="type">TIMESTAMP</span></div>
+      </div>
+    </div>
+
+    <!-- Properties -->
+    <div class="entity-card" style="border-top:3px solid #10b981">
+      <div class="entity-head"><span>properties</span><span>[Accommodations]</span></div>
+      <div class="entity-body">
+        <div class="field"><span class="pk">id (PK)</span><span class="type">BIGINT AUTO</span></div>
+        <div class="field"><span class="fk">posted_by (FK)</span><span class="type">BIGINT -> users</span></div>
+        <div class="field"><span>title</span><span class="type">VARCHAR(200)</span></div>
+        <div class="field"><span>description</span><span class="type">TEXT</span></div>
+        <div class="field"><span>type</span><span class="type">ENUM(PG,HOSTEL..)</span></div>
+        <div class="field"><span>gender_preference</span><span class="type">ENUM</span></div>
+        <div class="field"><span class="fk">location_id (FK)</span><span class="type">BIGINT -> loc</span></div>
+        <div class="field"><span>price_per_month</span><span class="type">DECIMAL(10,2)</span></div>
+        <div class="field"><span>deposit_amount</span><span class="type">DECIMAL(10,2)</span></div>
+        <div class="field"><span>amenities</span><span class="type">JSON</span></div>
+        <div class="field"><span>images</span><span class="type">JSON</span></div>
+        <div class="field"><span>status</span><span class="type">ENUM(PENDING..)</span></div>
+      </div>
+    </div>
+
+    <!-- Rooms -->
+    <div class="entity-card" style="border-top:3px solid #10b981">
+      <div class="entity-head"><span>rooms</span><span>[Property Units]</span></div>
+      <div class="entity-body">
+        <div class="field"><span class="pk">id (PK)</span><span class="type">BIGINT AUTO</span></div>
+        <div class="field"><span class="fk">property_id (FK)</span><span class="type">BIGINT -> prop</span></div>
+        <div class="field"><span>room_number</span><span class="type">VARCHAR(50)</span></div>
+        <div class="field"><span>type</span><span class="type">ENUM(SINGLE..)</span></div>
+        <div class="field"><span>price</span><span class="type">DECIMAL(10,2)</span></div>
+        <div class="field"><span>capacity</span><span class="type">INT</span></div>
+        <div class="field"><span>floor_number</span><span class="type">INT</span></div>
+        <div class="field"><span>is_available</span><span class="type">BOOLEAN</span></div>
+        <div class="field"><span>images</span><span class="type">JSON</span></div>
+      </div>
+    </div>
+
+    <!-- Products -->
+    <div class="entity-card" style="border-top:3px solid #f59e0b">
+      <div class="entity-head"><span>products</span><span>[Marketplace]</span></div>
+      <div class="entity-body">
+        <div class="field"><span class="pk">id (PK)</span><span class="type">BIGINT AUTO</span></div>
+        <div class="field"><span class="fk">posted_by (FK)</span><span class="type">BIGINT -> users</span></div>
+        <div class="field"><span class="fk">category_id (FK)</span><span class="type">BIGINT -> cat</span></div>
+        <div class="field"><span>title</span><span class="type">VARCHAR(200)</span></div>
+        <div class="field"><span>description</span><span class="type">TEXT</span></div>
+        <div class="field"><span>price</span><span class="type">DECIMAL(10,2)</span></div>
+        <div class="field"><span>listing_type</span><span class="type">ENUM(SELL,RENT)</span></div>
+        <div class="field"><span>condition</span><span class="type">ENUM</span></div>
+        <div class="field"><span>brand</span><span class="type">VARCHAR(100)</span></div>
+        <div class="field"><span>images</span><span class="type">JSON</span></div>
+        <div class="field"><span>status</span><span class="type">ENUM</span></div>
+      </div>
+    </div>
+
+    <!-- Bookings -->
+    <div class="entity-card" style="border-top:3px solid #06b6d4">
+      <div class="entity-head"><span>bookings</span><span>[Stays]</span></div>
+      <div class="entity-body">
+        <div class="field"><span class="pk">id (PK)</span><span class="type">BIGINT AUTO</span></div>
+        <div class="field"><span class="fk">property_id (FK)</span><span class="type">BIGINT</span></div>
+        <div class="field"><span class="fk">room_id (FK)</span><span class="type">BIGINT (Opt)</span></div>
+        <div class="field"><span class="fk">user_id (FK)</span><span class="type">BIGINT</span></div>
+        <div class="field"><span>check_in_date</span><span class="type">DATE</span></div>
+        <div class="field"><span>duration_months</span><span class="type">INT</span></div>
+        <div class="field"><span>total_amount</span><span class="type">DECIMAL(10,2)</span></div>
+        <div class="field"><span>status</span><span class="type">ENUM(PENDING..)</span></div>
+      </div>
+    </div>
+
+    <!-- Orders -->
+    <div class="entity-card" style="border-top:3px solid #f59e0b">
+      <div class="entity-head"><span>orders</span><span>[Transactions]</span></div>
+      <div class="entity-body">
+        <div class="field"><span class="pk">id (PK)</span><span class="type">BIGINT AUTO</span></div>
+        <div class="field"><span class="fk">product_id (FK)</span><span class="type">BIGINT</span></div>
+        <div class="field"><span class="fk">buyer_id (FK)</span><span class="type">BIGINT</span></div>
+        <div class="field"><span>order_type</span><span class="type">ENUM(BUY,RENT)</span></div>
+        <div class="field"><span>amount</span><span class="type">DECIMAL(10,2)</span></div>
+        <div class="field"><span>quantity</span><span class="type">INT</span></div>
+        <div class="field"><span>status</span><span class="type">ENUM(PENDING..)</span></div>
+      </div>
+    </div>
+
+    <!-- Chats -->
+    <div class="entity-card" style="border-top:3px solid #ec4899">
+      <div class="entity-head"><span>chats</span><span>[Messaging]</span></div>
+      <div class="entity-body">
+        <div class="field"><span class="pk">id (PK)</span><span class="type">BIGINT AUTO</span></div>
+        <div class="field"><span class="fk">sender_id (FK)</span><span class="type">BIGINT</span></div>
+        <div class="field"><span class="fk">receiver_id (FK)</span><span class="type">BIGINT</span></div>
+        <div class="field"><span>message</span><span class="type">TEXT</span></div>
+        <div class="field"><span>is_read</span><span class="type">BOOLEAN</span></div>
+        <div class="field"><span>created_at</span><span class="type">TIMESTAMP</span></div>
+      </div>
+    </div>
+
+    <!-- User Behaviors -->
+    <div class="entity-card" style="border-top:3px solid #a855f7">
+      <div class="entity-head"><span>user_behaviors</span><span>[ML Engine]</span></div>
+      <div class="entity-body">
+        <div class="field"><span class="pk">id (PK)</span><span class="type">BIGINT AUTO</span></div>
+        <div class="field"><span class="fk">user_id (FK)</span><span class="type">BIGINT</span></div>
+        <div class="field"><span>item_type</span><span class="type">VARCHAR(20)</span></div>
+        <div class="field"><span>item_id</span><span class="type">BIGINT</span></div>
+        <div class="field"><span>action</span><span class="type">ENUM(VIEW,BOOK..)</span></div>
+        <div class="field"><span>weight</span><span class="type">FLOAT</span></div>
+        <div class="field"><span>created_at</span><span class="type">TIMESTAMP</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

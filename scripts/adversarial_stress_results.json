@@ -1,0 +1,806 @@
+{
+  "timestamp": "2026-11-02T18:49:28.918Z",
+  "testRunId": "m2-challenger-1-stress",
+  "summary": {
+    "totalViewportChecks": 40,
+    "passedViewportChecks": 40,
+    "failedViewportChecks": 0,
+    "componentChecks": {
+      "metricsRibbon": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0
+      },
+      "savingsCalc": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0
+      },
+      "campusCharts": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0
+      },
+      "cardBadges": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0
+      },
+      "detailWidgets": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0
+      }
+    },
+    "interactiveStressChecks": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0
+    }
+  },
+  "failures": [],
+  "viewportDetails": [
+    {
+      "page": "index.html",
+      "viewport": "Adversarial Narrow (iPhone SE 1st gen / tiny Android)",
+      "width": 320,
+      "height": 568,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "index.html",
+      "viewport": "Android Standard Narrow (Samsung Galaxy S / A-series)",
+      "width": 360,
+      "height": 640,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 360,
+        "docClientWidth": 360,
+        "bodyScrollWidth": 360,
+        "bodyClientWidth": 360,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "index.html",
+      "viewport": "Mobile Standard (iPhone SE 2/3 / iPhone 12/13 mini)",
+      "width": 375,
+      "height": 667,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 375,
+        "docClientWidth": 375,
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "index.html",
+      "viewport": "Mobile Large (iPhone 11/12/13/14 Pro Max / Pixel XL)",
+      "width": 414,
+      "height": 896,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 414,
+        "docClientWidth": 414,
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "index.html",
+      "viewport": "Tablet Portrait (iPad 9.7 / 10.2)",
+      "width": 768,
+      "height": 1024,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 768,
+        "docClientWidth": 768,
+        "bodyScrollWidth": 768,
+        "bodyClientWidth": 768,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "index.html",
+      "viewport": "Tablet Landscape / Small Laptop (iPad Pro / Netbook)",
+      "width": 1024,
+      "height": 768,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1024,
+        "docClientWidth": 1024,
+        "bodyScrollWidth": 1024,
+        "bodyClientWidth": 1024,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "index.html",
+      "viewport": "Desktop Standard (HD 13-15\" Laptop)",
+      "width": 1280,
+      "height": 800,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1280,
+        "docClientWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "bodyClientWidth": 1280,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "index.html",
+      "viewport": "Desktop Widescreen (Full HD 1080p Monitor)",
+      "width": 1920,
+      "height": 1080,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1920,
+        "docClientWidth": 1920,
+        "bodyScrollWidth": 1920,
+        "bodyClientWidth": 1920,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Adversarial Narrow (iPhone SE 1st gen / tiny Android)",
+      "width": 320,
+      "height": 568,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Android Standard Narrow (Samsung Galaxy S / A-series)",
+      "width": 360,
+      "height": 640,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 360,
+        "docClientWidth": 360,
+        "bodyScrollWidth": 360,
+        "bodyClientWidth": 360,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Mobile Standard (iPhone SE 2/3 / iPhone 12/13 mini)",
+      "width": 375,
+      "height": 667,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 375,
+        "docClientWidth": 375,
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Mobile Large (iPhone 11/12/13/14 Pro Max / Pixel XL)",
+      "width": 414,
+      "height": 896,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 414,
+        "docClientWidth": 414,
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Tablet Portrait (iPad 9.7 / 10.2)",
+      "width": 768,
+      "height": 1024,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 768,
+        "docClientWidth": 768,
+        "bodyScrollWidth": 768,
+        "bodyClientWidth": 768,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Tablet Landscape / Small Laptop (iPad Pro / Netbook)",
+      "width": 1024,
+      "height": 768,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1024,
+        "docClientWidth": 1024,
+        "bodyScrollWidth": 1024,
+        "bodyClientWidth": 1024,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Desktop Standard (HD 13-15\" Laptop)",
+      "width": 1280,
+      "height": 800,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1280,
+        "docClientWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "bodyClientWidth": 1280,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Desktop Widescreen (Full HD 1080p Monitor)",
+      "width": 1920,
+      "height": 1080,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1920,
+        "docClientWidth": 1920,
+        "bodyScrollWidth": 1920,
+        "bodyClientWidth": 1920,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Adversarial Narrow (iPhone SE 1st gen / tiny Android)",
+      "width": 320,
+      "height": 568,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Android Standard Narrow (Samsung Galaxy S / A-series)",
+      "width": 360,
+      "height": 640,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 360,
+        "docClientWidth": 360,
+        "bodyScrollWidth": 360,
+        "bodyClientWidth": 360,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Mobile Standard (iPhone SE 2/3 / iPhone 12/13 mini)",
+      "width": 375,
+      "height": 667,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 375,
+        "docClientWidth": 375,
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Mobile Large (iPhone 11/12/13/14 Pro Max / Pixel XL)",
+      "width": 414,
+      "height": 896,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 414,
+        "docClientWidth": 414,
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Tablet Portrait (iPad 9.7 / 10.2)",
+      "width": 768,
+      "height": 1024,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 768,
+        "docClientWidth": 768,
+        "bodyScrollWidth": 768,
+        "bodyClientWidth": 768,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Tablet Landscape / Small Laptop (iPad Pro / Netbook)",
+      "width": 1024,
+      "height": 768,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1024,
+        "docClientWidth": 1024,
+        "bodyScrollWidth": 1024,
+        "bodyClientWidth": 1024,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Desktop Standard (HD 13-15\" Laptop)",
+      "width": 1280,
+      "height": 800,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1280,
+        "docClientWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "bodyClientWidth": 1280,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Desktop Widescreen (Full HD 1080p Monitor)",
+      "width": 1920,
+      "height": 1080,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1920,
+        "docClientWidth": 1920,
+        "bodyScrollWidth": 1920,
+        "bodyClientWidth": 1920,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Adversarial Narrow (iPhone SE 1st gen / tiny Android)",
+      "width": 320,
+      "height": 568,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Android Standard Narrow (Samsung Galaxy S / A-series)",
+      "width": 360,
+      "height": 640,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 360,
+        "docClientWidth": 360,
+        "bodyScrollWidth": 360,
+        "bodyClientWidth": 360,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Mobile Standard (iPhone SE 2/3 / iPhone 12/13 mini)",
+      "width": 375,
+      "height": 667,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 375,
+        "docClientWidth": 375,
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Mobile Large (iPhone 11/12/13/14 Pro Max / Pixel XL)",
+      "width": 414,
+      "height": 896,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 414,
+        "docClientWidth": 414,
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Tablet Portrait (iPad 9.7 / 10.2)",
+      "width": 768,
+      "height": 1024,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 768,
+        "docClientWidth": 768,
+        "bodyScrollWidth": 768,
+        "bodyClientWidth": 768,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Tablet Landscape / Small Laptop (iPad Pro / Netbook)",
+      "width": 1024,
+      "height": 768,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1024,
+        "docClientWidth": 1024,
+        "bodyScrollWidth": 1024,
+        "bodyClientWidth": 1024,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Desktop Standard (HD 13-15\" Laptop)",
+      "width": 1280,
+      "height": 800,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1280,
+        "docClientWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "bodyClientWidth": 1280,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Desktop Widescreen (Full HD 1080p Monitor)",
+      "width": 1920,
+      "height": 1080,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1920,
+        "docClientWidth": 1920,
+        "bodyScrollWidth": 1920,
+        "bodyClientWidth": 1920,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Adversarial Narrow (iPhone SE 1st gen / tiny Android)",
+      "width": 320,
+      "height": 568,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Android Standard Narrow (Samsung Galaxy S / A-series)",
+      "width": 360,
+      "height": 640,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 360,
+        "docClientWidth": 360,
+        "bodyScrollWidth": 360,
+        "bodyClientWidth": 360,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Mobile Standard (iPhone SE 2/3 / iPhone 12/13 mini)",
+      "width": 375,
+      "height": 667,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 375,
+        "docClientWidth": 375,
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Mobile Large (iPhone 11/12/13/14 Pro Max / Pixel XL)",
+      "width": 414,
+      "height": 896,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 414,
+        "docClientWidth": 414,
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Tablet Portrait (iPad 9.7 / 10.2)",
+      "width": 768,
+      "height": 1024,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 768,
+        "docClientWidth": 768,
+        "bodyScrollWidth": 768,
+        "bodyClientWidth": 768,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Tablet Landscape / Small Laptop (iPad Pro / Netbook)",
+      "width": 1024,
+      "height": 768,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1024,
+        "docClientWidth": 1024,
+        "bodyScrollWidth": 1024,
+        "bodyClientWidth": 1024,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Desktop Standard (HD 13-15\" Laptop)",
+      "width": 1280,
+      "height": 800,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1280,
+        "docClientWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "bodyClientWidth": 1280,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Desktop Widescreen (Full HD 1080p Monitor)",
+      "width": 1920,
+      "height": 1080,
+      "passed": true,
+      "evaluation": {
+        "docScrollWidth": 1920,
+        "docClientWidth": 1920,
+        "bodyScrollWidth": 1920,
+        "bodyClientWidth": 1920,
+        "docOverflow": false,
+        "bodyOverflow": false,
+        "clientMismatch": false,
+        "hasAnyOverflow": false,
+        "overflowingElementsCount": 0,
+        "overflowingElements": []
+      }
+    }
+  ],
+  "interactiveDetails": [],
+  "verdict": "APPROVE"
+}

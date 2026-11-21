@@ -66,6 +66,13 @@ public class RecommendationController {
         return ApiResponse.ok(recommendationService.recommendedProducts(userId, city, limit));
     }
 
+    @GetMapping("/products/{productId}/similar")
+    @Operation(summary = "Products similar to the given product")
+    public ApiResponse<List<ProductResponse>> similarProducts(@PathVariable Long productId,
+                                                              @RequestParam(defaultValue = "4") int limit) {
+        return ApiResponse.ok(recommendationService.similarProducts(productId, limit));
+    }
+
     @GetMapping("/products/top-rated")
     @Operation(summary = "Top-rated products")
     public ApiResponse<List<ProductResponse>> topRatedProducts(

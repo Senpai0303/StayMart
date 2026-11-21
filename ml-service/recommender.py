@@ -7,7 +7,6 @@ from datetime import datetime
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from surprise import Dataset, PredictionImpossible, Reader, SVD
 
 import db_connector
 from config import (ACTION_WEIGHTS, DEFAULT_CITY, MIN_INTERACTIONS_FOR_CF,
@@ -18,8 +17,6 @@ logger = logging.getLogger(__name__)
 CF_WEIGHT = 0.6
 CB_WEIGHT = 0.4
 
-property_svd_model = None
-product_svd_model = None
 property_tfidf_data = None
 product_tfidf_data = None
 
@@ -28,7 +25,7 @@ def _ensure_model_dir():
     os.makedirs(MODEL_DIR, exist_ok=True)
 
 
-def _model_path(item_type, kind='svd'):
+def _model_path(item_type, kind='tfidf'):
     return os.path.join(MODEL_DIR, f"{item_type.lower()}_{kind}.pkl")
 
 
@@ -51,70 +48,6 @@ def _to_datetime(value):
         except ValueError:
             return datetime.min
     return datetime.min
-
-
-def build_interaction_matrix(behaviors_df, item_type):
-    df = behaviors_df[behaviors_df['item_type'] == item_type].copy()
-    df = df[df['item_id'] > 0]
-    if df.empty:
-        return pd.DataFrame(columns=['user_id', 'item_id', 'rating'])
-
-    df['weight'] = df['action'].map(ACTION_WEIGHTS).fillna(1).astype(float)
-    grouped = df.groupby(['user_id', 'item_id'])['weight'].sum().reset_index()
-
-    max_score = float(grouped['weight'].max()) if not grouped.empty else 0.0
-    if max_score > 0:
-        grouped['rating'] = 1 + (grouped['weight'] / max_score) * 4
-    else:
-        grouped['rating'] = 1.0
-
-    return grouped[['user_id', 'item_id', 'rating']]
-
-
-def train_cf_model(item_type):
-    _ensure_model_dir()
-    behaviors = db_connector.fetch_all_behaviors()
-    if behaviors.empty:
-        logger.info("No behavior data to train %s SVD model", item_type)
-        return None
-
-    matrix = build_interaction_matrix(behaviors, item_type)
-    if matrix.empty:
-        logger.info("No interactions to train %s SVD model", item_type)
-        return None
-
-    reader = Reader(rating_scale=(1, 5))
-    dataset = Dataset.load_from_df(matrix[['user_id', 'item_id', 'rating']], reader)
-    trainset = dataset.build_full_trainset()
-
-    algorithm = SVD(n_factors=50, n_epochs=20, random_state=42)
-    algorithm.fit(trainset)
-
-    path = _model_path(item_type, 'svd')
-    with open(path, 'wb') as handle:
-        pickle.dump(algorithm, handle)
-
-    logger.info("Trained %s SVD model with %d users and %d items",
-                item_type, trainset.n_users, trainset.n_items)
-    return algorithm
-
-
-def get_cf_recommendations(user_id, item_type, all_item_ids, already_interacted):
-    model = property_svd_model if item_type == 'PROPERTY' else product_svd_model
-    if model is None or not all_item_ids:
-        return {}
-
-    scores = {}
-    for item_id in all_item_ids:
-        if item_id in already_interacted:
-            continue
-        try:
-            prediction = model.predict(int(user_id), int(item_id))
-            scores[item_id] = float(prediction.est)
-        except (PredictionImpossible, ValueError, AttributeError):
-            scores[item_id] = 0.0
-
-    return scores
 
 
 def _property_text(property_row):
@@ -148,78 +81,219 @@ def _product_text(product_row):
     return ' '.join(str(part).strip() for part in parts if part)
 
 
-def build_property_content_matrix():
-    global property_tfidf_data
-    _ensure_model_dir()
+def _build_content_model(item_type, rows, text_builder):
+    ids = [int(row['id']) for row in rows]
+    texts = [text_builder(row) for row in rows]
 
-    properties = db_connector.fetch_approved_properties()
-    ids = [int(row['id']) for row in properties]
-    texts = [_property_text(row) for row in properties]
-
-    vectorizer = TfidfVectorizer(stop_words='english', max_features=5000)
     if texts:
-        tfidf = vectorizer.fit_transform(texts)
+        vectorizer = TfidfVectorizer(stop_words='english', max_features=5000, ngram_range=(1, 2))
+        tfidf_matrix = vectorizer.fit_transform(texts)
+        similarity_matrix = cosine_similarity(tfidf_matrix)
     else:
-        empty_frame = pd.Series([''])
-        tfidf = vectorizer.fit_transform(empty_frame)
+        vectorizer = None
+        tfidf_matrix = None
+        similarity_matrix = None
 
-    similarity = cosine_similarity(tfidf)
     data = {
         'vectorizer': vectorizer,
-        'matrix': similarity,
+        'tfidf_matrix': tfidf_matrix,
+        'similarity_matrix': similarity_matrix,
         'ids': ids
     }
 
-    with open(_model_path('PROPERTY', 'tfidf'), 'wb') as handle:
+    with open(_model_path(item_type), 'wb') as handle:
         pickle.dump(data, handle)
 
-    property_tfidf_data = data
-    logger.info("Built property content matrix with %d items", len(ids))
+    logger.info("Built %s TF-IDF model with %d items", item_type, len(ids))
     return data
+
+
+def build_property_content_matrix():
+    global property_tfidf_data
+    _ensure_model_dir()
+    rows = db_connector.fetch_approved_properties()
+    property_tfidf_data = _build_content_model('PROPERTY', rows, _property_text)
+    return property_tfidf_data
 
 
 def build_product_content_matrix():
     global product_tfidf_data
     _ensure_model_dir()
+    rows = db_connector.fetch_approved_products()
+    product_tfidf_data = _build_content_model('PRODUCT', rows, _product_text)
+    return product_tfidf_data
 
-    products = db_connector.fetch_approved_products()
-    ids = [int(row['id']) for row in products]
-    texts = [_product_text(row) for row in products]
 
-    vectorizer = TfidfVectorizer(stop_words='english', max_features=5000)
-    if texts:
-        tfidf = vectorizer.fit_transform(texts)
-    else:
-        empty_frame = pd.Series([''])
-        tfidf = vectorizer.fit_transform(empty_frame)
+def save_all_models():
+    _ensure_model_dir()
 
-    similarity = cosine_similarity(tfidf)
-    data = {
-        'vectorizer': vectorizer,
-        'matrix': similarity,
-        'ids': ids
+    global property_tfidf_data, product_tfidf_data
+
+    property_tfidf_data = build_property_content_matrix()
+    product_tfidf_data = build_product_content_matrix()
+
+    summary = {
+        'property_tfidf_items': len(property_tfidf_data['ids']),
+        'product_tfidf_items': len(product_tfidf_data['ids'])
     }
+    logger.info("ML models saved: %s", summary)
+    return summary
 
-    with open(_model_path('PRODUCT', 'tfidf'), 'wb') as handle:
-        pickle.dump(data, handle)
 
-    product_tfidf_data = data
-    logger.info("Built product content matrix with %d items", len(ids))
+def _load_content_model(item_type):
+    with open(_model_path(item_type), 'rb') as handle:
+        data = pickle.load(handle)
+    required = ('vectorizer', 'tfidf_matrix', 'similarity_matrix', 'ids')
+    if not all(key in data for key in required):
+        raise ValueError(f"{item_type} model file is from an older format and must be rebuilt")
     return data
 
 
-def _similar_items(data, item_id, limit=5):
-    if data is None or not data.get('ids'):
+def load_all_models():
+    global property_tfidf_data, product_tfidf_data
+
+    property_tfidf_data = _load_content_model('PROPERTY')
+    product_tfidf_data = _load_content_model('PRODUCT')
+
+    logger.info("Loaded TF-IDF models from %s", MODEL_DIR)
+    return True
+
+
+def load_or_train_all_models():
+    _ensure_model_dir()
+    try:
+        paths = [_model_path('PROPERTY'), _model_path('PRODUCT')]
+        if all(os.path.exists(path) for path in paths):
+            try:
+                load_all_models()
+                return True
+            except (ValueError, EOFError, pickle.UnpicklingError) as exc:
+                logger.warning("Stored ML models are unusable (%s); rebuilding from MySQL", exc)
+
+        logger.info("Model files missing or stale, training fresh TF-IDF models")
+        save_all_models()
+        return True
+    except Exception:
+        logger.exception("Could not prepare ML models")
+        return False
+
+
+def _data_for(item_type):
+    return property_tfidf_data if item_type == 'PROPERTY' else product_tfidf_data
+
+
+def _text_for(item_type, row):
+    return _property_text(row) if item_type == 'PROPERTY' else _product_text(row)
+
+
+def _details_for(item_type, ids):
+    if item_type == 'PROPERTY':
+        return db_connector.fetch_property_details_bulk(ids)
+    return db_connector.fetch_product_details_bulk(ids)
+
+
+def _approved_item_ids(item_type, city=None):
+    if item_type == 'PROPERTY':
+        rows = db_connector.fetch_approved_properties(city=city)
+    else:
+        rows = db_connector.fetch_approved_products(city=city)
+    return [int(row['id']) for row in rows]
+
+
+def get_profile_scores(user_id, item_type, all_item_ids, already_interacted):
+    """Score candidates against a TF-IDF profile built from the user's own interactions."""
+    data = _data_for(item_type)
+    if data is None or data.get('vectorizer') is None or not data.get('ids'):
+        return {}
+
+    behaviors = db_connector.fetch_user_behaviors(user_id)
+    if behaviors.empty:
+        return {}
+
+    relevant = behaviors[(behaviors['item_type'] == item_type) & (behaviors['item_id'] > 0)].copy()
+    if relevant.empty:
+        return {}
+
+    weights = relevant.groupby('item_id')['action'].apply(
+        lambda actions: sum(ACTION_WEIGHTS.get(action, 1) for action in actions)
+    ).to_dict()
+
+    rows = _details_for(item_type, list(weights.keys()))
+    if not rows:
+        return {}
+
+    texts = []
+    for row in rows:
+        weight = int(min(max(round(float(weights.get(row['id'], 1))), 1), 5))
+        texts.extend([_text_for(item_type, row)] * weight)
+
+    if not texts:
+        return {}
+
+    profile_vector = data['vectorizer'].transform([' '.join(texts)])
+    similarities = cosine_similarity(profile_vector, data['tfidf_matrix'])[0]
+
+    candidates = set(all_item_ids)
+    scores = {}
+    for item_id, score in zip(data['ids'], similarities):
+        if item_id in candidates and item_id not in already_interacted and score > 0:
+            scores[item_id] = float(score)
+    return scores
+
+
+def get_item_similarity_scores(user_id, item_type, limit=30):
+    """Item-to-item cosine scores derived from the items a user most recently viewed."""
+    data = _data_for(item_type)
+    if data is None or not data.get('ids') or data.get('similarity_matrix') is None:
+        return {}
+
+    behaviors = db_connector.fetch_user_behaviors(user_id)
+    if behaviors.empty:
+        return {}
+
+    views = behaviors[(behaviors['item_type'] == item_type) &
+                      (behaviors['action'] == 'VIEW') &
+                      (behaviors['item_id'] > 0)].copy()
+    if views.empty:
+        return {}
+
+    views = views.sort_values('timestamp', ascending=False).head(10)
+
+    ids = data['ids']
+    index_of = {item_id: index for index, item_id in enumerate(ids)}
+    similarity_matrix = data['similarity_matrix']
+    interacted = set(db_connector.get_user_interacted_ids(user_id, item_type, strong_only=False))
+
+    scores = {}
+    for position, (_, behavior) in enumerate(views.iterrows()):
+        viewed_id = int(behavior['item_id'])
+        viewed_index = index_of.get(viewed_id)
+        if viewed_index is None:
+            continue
+
+        recency_weight = 1.0 / (position + 1)
+        for index, candidate_id in enumerate(ids):
+            if candidate_id == viewed_id or candidate_id in interacted:
+                continue
+            contribution = float(similarity_matrix[viewed_index][index]) * recency_weight
+            if contribution > 0:
+                scores[candidate_id] = scores.get(candidate_id, 0.0) + contribution
+
+    ranked = sorted(scores.items(), key=lambda pair: pair[1], reverse=True)
+    return dict(ranked[:limit * 3])
+
+
+def _similar_items(item_type, item_id, limit=5):
+    data = _data_for(item_type)
+    if data is None or not data.get('ids') or data.get('similarity_matrix') is None:
         return []
 
     ids = data['ids']
     if item_id not in ids:
         return []
 
-    index = ids.index(item_id)
-    row = data['matrix'][index]
-
-    ranked = sorted(range(len(row)), key=lambda j: row[j], reverse=True)
+    row = data['similarity_matrix'][ids.index(item_id)]
+    ranked = sorted(range(len(row)), key=lambda index: row[index], reverse=True)
 
     results = []
     for position in ranked:
@@ -233,63 +307,11 @@ def _similar_items(data, item_id, limit=5):
 
 
 def get_similar_properties(property_id, limit=5):
-    return _similar_items(property_tfidf_data, int(property_id), limit)
+    return _similar_items('PROPERTY', int(property_id), limit)
 
 
 def get_similar_products(product_id, limit=5):
-    return _similar_items(product_tfidf_data, int(product_id), limit)
-
-
-def get_cb_recommendations(user_id, item_type, limit=10):
-    behaviors = db_connector.fetch_user_behaviors(user_id)
-    if behaviors.empty:
-        return {}
-
-    views = behaviors[(behaviors['item_type'] == item_type) &
-                      (behaviors['action'] == 'VIEW') &
-                      (behaviors['item_id'] > 0)].copy()
-    if views.empty:
-        return {}
-
-    views = views.sort_values('timestamp', ascending=False).head(10)
-
-    data = property_tfidf_data if item_type == 'PROPERTY' else product_tfidf_data
-    if data is None or not data.get('ids'):
-        return {}
-
-    ids = data['ids']
-    matrix = data['matrix']
-    interacted = set(db_connector.get_user_interacted_ids(user_id, item_type, strong_only=False))
-
-    scores = {}
-    for position, (_, behavior) in enumerate(views.iterrows()):
-        viewed_id = int(behavior['item_id'])
-        if viewed_id not in ids:
-            continue
-
-        viewed_index = ids.index(viewed_id)
-        similarity_row = matrix[viewed_index]
-        recency_weight = 1.0 / (position + 1)
-
-        for j in range(len(ids)):
-            candidate_id = ids[j]
-            if candidate_id == viewed_id or candidate_id in interacted or candidate_id is None:
-                continue
-            contribution = float(similarity_row[j]) * recency_weight
-            if contribution > 0:
-                scores[candidate_id] = scores.get(candidate_id, 0.0) + contribution
-
-    scores = {item_id: score for item_id, score in scores.items() if score > 0}
-    ranked = sorted(scores.items(), key=lambda pair: pair[1], reverse=True)
-    return dict(ranked[:limit * 3])
-
-
-def _approved_item_ids(item_type, city=None):
-    if item_type == 'PROPERTY':
-        rows = db_connector.fetch_approved_properties(city=city)
-    else:
-        rows = db_connector.fetch_approved_products(city=city)
-    return [int(row['id']) for row in rows]
+    return _similar_items('PRODUCT', int(product_id), limit)
 
 
 def hybrid_recommend(user_id, item_type, city=None, limit=10):
@@ -301,43 +323,40 @@ def hybrid_recommend(user_id, item_type, city=None, limit=10):
     already_interacted = set(db_connector.get_user_interacted_ids(user_id, item_type, strong_only=False))
 
     candidates = [item_id for item_id in approved_ids if item_id not in strong_excluded]
-    candidate_set = set(candidates)
+    if not candidates:
+        return []
 
-    cf_scores = get_cf_recommendations(user_id, item_type, candidates, already_interacted)
-    cb_scores = {item_id: score for item_id, score
-                 in get_cb_recommendations(user_id, item_type, limit * 3).items()
-                 if item_id in candidate_set}
+    profile_scores = get_profile_scores(user_id, item_type, candidates, already_interacted)
+    item_scores = {item_id: score for item_id, score in
+                   get_item_similarity_scores(user_id, item_type, limit).items()
+                   if item_id in set(candidates)}
 
-    if cf_scores and cb_scores:
-        cf_normalized = _min_max_normalize(cf_scores)
-        cb_normalized = _min_max_normalize(cb_scores)
-
+    if profile_scores and item_scores:
+        profile_normalized = _min_max_normalize(profile_scores)
+        item_normalized = _min_max_normalize(item_scores)
         final_scores = {}
         for item_id in candidates:
-            combined = (CF_WEIGHT * cf_normalized.get(item_id, 0.0) +
-                        CB_WEIGHT * cb_normalized.get(item_id, 0.0))
+            combined = (CF_WEIGHT * profile_normalized.get(item_id, 0.0) +
+                        CB_WEIGHT * item_normalized.get(item_id, 0.0))
             if combined > 0:
                 final_scores[item_id] = combined
+        return [item_id for item_id, _ in
+                sorted(final_scores.items(), key=lambda pair: pair[1], reverse=True)][:limit]
 
-        sorted_ids = [item_id for item_id, _ in
-                      sorted(final_scores.items(), key=lambda pair: pair[1], reverse=True)]
-    elif cb_scores:
-        cb_normalized = _min_max_normalize(cb_scores)
-        sorted_ids = [item_id for item_id, _ in
-                      sorted(cb_normalized.items(), key=lambda pair: pair[1], reverse=True)
-                      if item_id in candidate_set]
-    elif cf_scores:
-        cf_normalized = _min_max_normalize(cf_scores)
-        sorted_ids = [item_id for item_id, _ in
-                      sorted(cf_normalized.items(), key=lambda pair: pair[1], reverse=True)
-                      if item_id in candidate_set]
-    else:
-        return _popularity_fallback(item_type, city or DEFAULT_CITY, limit)
+    if profile_scores:
+        profile_normalized = _min_max_normalize(profile_scores)
+        return [item_id for item_id, _ in
+                sorted(profile_normalized.items(), key=lambda pair: pair[1], reverse=True)][:limit]
 
-    return sorted_ids[:limit]
+    if item_scores:
+        item_normalized = _min_max_normalize(item_scores)
+        return [item_id for item_id, _ in
+                sorted(item_normalized.items(), key=lambda pair: pair[1], reverse=True)][:limit]
+
+    return _cold_start_recommendations(item_type, city or DEFAULT_CITY, limit)
 
 
-def _popularity_fallback(item_type, city, limit=10):
+def _cold_start_recommendations(item_type, city, limit=10):
     if item_type == 'PROPERTY':
         rows = db_connector.fetch_approved_properties(city=city)
         rows = sorted(rows, key=lambda row: _to_datetime(row.get('created_at')), reverse=True)
@@ -378,68 +397,8 @@ def get_trending(item_type, city=DEFAULT_CITY, limit=10):
                   sorted(scores.items(), key=lambda pair: pair[1], reverse=True)]
 
     if not ranked_ids:
-        ranked_ids = _popularity_fallback(item_type, city, limit)
-        return ranked_ids[:limit]
+        return _cold_start_recommendations(item_type, city, limit)
 
     valid_set = set(_approved_item_ids(item_type, city=city))
     filtered = [item_id for item_id in ranked_ids if item_id in valid_set]
     return filtered[:limit]
-
-
-def save_all_models():
-    _ensure_model_dir()
-    summary = {}
-
-    global property_svd_model, product_svd_model, property_tfidf_data, product_tfidf_data
-
-    property_tfidf_data = build_property_content_matrix()
-    summary['property_tfidf_items'] = len(property_tfidf_data['ids'])
-
-    product_tfidf_data = build_product_content_matrix()
-    summary['product_tfidf_items'] = len(product_tfidf_data['ids'])
-
-    property_svd_model = train_cf_model('PROPERTY')
-    product_svd_model = train_cf_model('PRODUCT')
-
-    summary['property_svd'] = property_svd_model is not None
-    summary['product_svd'] = product_svd_model is not None
-
-    logger.info("All models saved: %s", summary)
-    return summary
-
-
-def load_all_models():
-    global property_svd_model, product_svd_model, property_tfidf_data, product_tfidf_data
-
-    with open(_model_path('PROPERTY', 'svd'), 'rb') as handle:
-        property_svd_model = pickle.load(handle)
-    with open(_model_path('PRODUCT', 'svd'), 'rb') as handle:
-        product_svd_model = pickle.load(handle)
-    with open(_model_path('PROPERTY', 'tfidf'), 'rb') as handle:
-        property_tfidf_data = pickle.load(handle)
-    with open(_model_path('PRODUCT', 'tfidf'), 'rb') as handle:
-        product_tfidf_data = pickle.load(handle)
-
-    logger.info("Loaded all models from %s", MODEL_DIR)
-    return True
-
-
-def load_or_train_all_models():
-    _ensure_model_dir()
-    try:
-        paths = [
-            _model_path('PROPERTY', 'svd'),
-            _model_path('PRODUCT', 'svd'),
-            _model_path('PROPERTY', 'tfidf'),
-            _model_path('PRODUCT', 'tfidf')
-        ]
-        if all(os.path.exists(path) for path in paths):
-            load_all_models()
-            return True
-
-        logger.info("Model files missing, training fresh models")
-        save_all_models()
-        return True
-    except Exception as exc:
-        logger.error("Could not prepare ML models: %s", exc)
-        return False

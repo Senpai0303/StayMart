@@ -1,0 +1,215 @@
+\chapter{Literature Review}
+
+\section{Introduction}
+The evolution of online two-sided marketplaces and accommodation discovery networks has transformed global commerce over the past two decades. Platforms connecting buyers with sellers, and property hosts with prospective tenants, rely fundamentally on the reduction of transaction costs, the mitigation of information asymmetry, and the efficient pairing of supply and demand. However, the operational dynamics of localized, multi-category platforms—particularly those combining long-term student tenancy with consumer re-commerce in non-metropolitan hill geographies—present distinct algorithmic, architectural, and socio-technical challenges that remain inadequately addressed by generalized commercial products.
+
+This chapter presents a comprehensive literature survey examining:
+\begin{enumerate}
+    \item Existing commercial paradigms in accommodation and re-commerce (e.g., OLX, Quikr, Airbnb, Flatmates, MagicBricks).
+    \item Mathematical and algorithmic foundations of modern recommendation engines, contrasting Collaborative Filtering, Content-Based Filtering, and Hybrid formulations.
+    \item Architectural patterns in distributed systems, evaluating monolithic enterprise designs against decoupled microservice topologies.
+    \item Front-end design systems and performance paradigms, analyzing the trade-offs between heavy single-page application (SPA) frameworks and optimized vanilla JavaScript architectures.
+    \item Explicit research and practical gaps identified within the regional context of Uttarakhand.
+\end{enumerate}
+
+\section{Survey and Critical Evaluation of Existing Systems}
+To establish an empirical baseline, we evaluate several benchmark commercial platforms across key functional dimensions: domain focus, transaction models, moderation mechanisms, recommendation intelligence, and regional adaptability.
+
+\subsection{OLX and Quikr (General Classifieds)}
+OLX and Quikr represent traditional horizontal consumer-to-consumer (C2C) classified platforms. They allow public users to publish listings across hundreds of arbitrary categories, ranging from real estate and automobiles to jobs and household appliances. 
+\begin{itemize}
+    \item \textbf{Strengths:} Massive brand recognition, high initial inventory volume, and nationwide market reach.
+    \item \textbf{Limitations:} Horizontal classifieds suffer severely from listing degradation, identity fraud, and lack of domain specialization. In the accommodation domain, OLX fails to capture vital residential parameters such as room sharing capacities (single, double, triple), floor numbers, electricity billing rules, meal inclusion, curfew timings, or student security deposit refund terms. Furthermore, these platforms lack automated listing pre-moderation, resulting in high concentrations of obsolete posts, fraudulent advance-payment scams, and duplicate broker spam.
+\end{itemize}
+
+\subsection{Airbnb and Booking.com (Short-Term Hospitality)}
+Airbnb popularized peer-to-peer homestay accommodations, establishing sophisticated UI standards, verified reviews, and integrated calendar booking engines.
+\begin{itemize}
+    \item \textbf{Strengths:} Polished user interface, robust host identity verification, dynamic pricing models, and comprehensive reservation management.
+    \item \textbf{Limitations:} Airbnb's economic and contractual model is fundamentally engineered for short-term tourism (daily tariffs, steep service fees ranging from 14\% to 20\%, and mandatory instant card payments). In student hubs like Dehradun, long-term tenants seek monthly or semester-based leasing arrangements without recurring percentage-based platform commissions. Furthermore, Airbnb does not support consumer marketplace re-commerce, requiring students to navigate separate platforms for furnishing their rooms.
+\end{itemize}
+
+\subsection{Flatmates and Nestaway (Shared Rental Networks)}
+Specialized co-living and roommate discovery platforms, such as Flatmates (Australia/UK) and Nestaway (India), focus explicitly on urban shared living.
+\begin{itemize}
+    \item \textbf{Strengths:} Detailed roommate preference profiling, gender filtering, and structured deposit management.
+    \item \textbf{Limitations:} In the Indian market, Nestaway and similar operators function primarily as managed property companies rather than open community marketplaces; they impose rigid operational contracts, charge high management premiums, and concentrate almost exclusively on tier-1 metropolises (Bengaluru, Pune, NCR). They maintain zero infrastructure or operational presence in Uttarakhand's educational cities like Dehradun or Roorkee.
+\end{itemize}
+
+\subsection{MagicBricks and 99acres (Commercial Real Estate)}
+These platforms dominate the formal Indian real estate and property sale ecosystem.
+\begin{itemize}
+    \item \textbf{Strengths:} Comprehensive legal verification for commercial land and apartment sales; extensive builder tie-ups.
+    \item \textbf{Limitations:} Their business models are heavily monetized around licensed real estate agents and brokers who purchase lead packages. A student seeking an inexpensive ₹5,000/month single room near Graphic Era Hill University is subjected to aggressive broker phone calls demanding upfront fees, defeating the objective of direct, transparent student-to-owner tenancy.
+\end{itemize}
+
+\begin{table}[htbp]
+\centering
+\caption{Comparative Feature Matrix: StayMart vs. Existing Commercial Platforms}
+\label{tab:comparative_matrix}
+\footnotesize
+\begin{tabularx}{\textwidth}{lccccc}
+\toprule
+\textbf{Feature Dimension} & \textbf{OLX} & \textbf{Airbnb} & \textbf{MagicBricks} & \textbf{Nestaway} & \textbf{StayMart (Proposed)} \\
+\midrule
+Primary Focus & Horizontal C2C & Short-Term Stays & Property Sales & Managed Rental & Student Stays + Re-commerce \\
+Hyperlocal Granularity & National & Global / Tourist & Metro Agents & Tier-1 Metros & Uttarakhand Corridors \\
+Brokerage / Commission & Variable / Spam & 14\%--20\% & Broker Leads & Monthly Margin & \textbf{Zero Brokerage} \\
+Room-Level Inventory & No & Whole Property & No & Managed Beds & \textbf{Yes (Single/Double/Dorm)} \\
+Re-commerce Integration & Standalone & None & None & None & \textbf{Yes (Unified Marketplace)} \\
+Direct In-App Messaging & Basic & Host Only & Lead Form & Agent Support & \textbf{Yes (Real-Time Peer Chat)} \\
+ML Recommendation Engine & Static Search & Collaborative & Keyword Filter & Basic Heuristic & \textbf{TF-IDF + Cosine Hybrid} \\
+Listing Pre-Moderation & No (Reactive) & Verified & Agent Filtered & Company Audit & \textbf{Yes (Admin Approval Gate)} \\
+Realistic Photographic Standard & Low / Stock & High & Stock Render & Managed Shoot & \textbf{Verified (authentic student/host uploads)} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Theoretical Analysis of Recommendation Algorithms}
+Recommender systems represent a foundational subclass of information filtering algorithms designed to predict user preference ratings and surface relevant candidate items from high-dimensional catalogues \cite{resnick1997recommender}. In this section, we analyze the mathematical and conceptual foundations of Collaborative Filtering, Content-Based Filtering, and Hybrid formulations to justify the selection of StayMart's recommendation architecture.
+
+\subsection{Collaborative Filtering (CF)}
+Collaborative Filtering techniques predict a user's interest in a target item by synthesizing historical interaction patterns (ratings, purchases, clicks) across a multitude of users \cite{sarwar2001item}. CF methods are generally subdivided into memory-based (neighborhood) and model-based approaches.
+
+\subsubsection{User-Based and Item-Based Collaborative Filtering}
+In User-Based Collaborative Filtering, the similarity between user $u$ and user $v$ is typically computed using the Pearson Correlation Coefficient:
+\begin{equation}
+\text{sim}(u, v) = \frac{\sum_{i \in I_{uv}} (r_{u, i} - \bar{r}_u)(r_{v, i} - \bar{r}_v)}{\sqrt{\sum_{i \in I_{uv}} (r_{u, i} - \bar{r}_u)^2} \sqrt{\sum_{i \in I_{uv}} (r_{v, i} - \bar{r}_v)^2}}
+\end{equation}
+where $I_{uv}$ represents the set of items rated by both users, $r_{u, i}$ is the rating given by user $u$ to item $i$, and $\bar{r}_u$ is the mean rating of user $u$.
+
+In Item-Based Collaborative Filtering, the similarity between items $i$ and $j$ is calculated across all users who have interacted with both items:
+\begin{equation}
+\text{sim}(i, j) = \frac{\sum_{u \in U_{ij}} (r_{u, i} - \bar{r}_i)(r_{u, j} - \bar{r}_j)}{\sqrt{\sum_{u \in U_{ij}} (r_{u, i} - \bar{r}_i)^2} \sqrt{\sum_{u \in U_{ij}} (r_{u, j} - \bar{r}_j)^2}}
+\end{equation}
+
+\subsubsection{Model-Based Matrix Factorization (SVD)}
+Matrix factorization models map both users and items to a joint latent factor space of dimensionality $f$ \cite{koren2009matrix}. The interaction between user $u$ and item $i$ is estimated through the inner product of their latent vectors:
+\begin{equation}
+\hat{r}_{ui} = \mu + b_u + b_i + p_u^T q_i
+\end{equation}
+where $\mu$ is the overall average rating, $b_u$ is user bias, $b_i$ is item bias, $p_u \in \mathbb{R}^f$ is the user latent vector, and $q_i \in \mathbb{R}^f$ is the item latent vector.
+
+\subsubsection{Critical Drawbacks of Collaborative Filtering for Localized Marketplaces}
+While CF performs exceptionally well in dense, high-volume consumer ecosystems (such as Netflix movie streaming or Amazon retail), it suffers from fatal limitations when applied to regional marketplaces like StayMart:
+\begin{enumerate}
+    \item \textbf{The Cold-Start Problem:} Newly posted rental accommodations or one-of-a-kind pre-owned products have zero initial interactions. In CF, an item with no ratings cannot be represented in the latent factor space and will never be recommended, crippling newly registered student sellers.
+    \item \textbf{Extreme Matrix Sparsity:} In a localized marketplace with 500 properties and 2,000 users, the user-item interaction matrix density typically falls below $0.05\%$. Under such extreme sparsity, neighborhood overlap is virtually non-existent, causing correlation coefficients to collapse.
+    \item \textbf{Unique Asset Exclusivity:} Unlike digital media that can be consumed concurrently by millions of users, physical accommodations have finite capacity, and second-hand marketplace products represent single-inventory items ($N=1$). Once purchased, the item ceases to be available, invalidating long-term collaborative co-occurrence patterns.
+\end{enumerate}
+
+\subsection{Content-Based Filtering (CBF)}
+Content-Based Filtering recommends items based on the similarity between item attribute representations and a profile of user preferences derived from their past interactions \cite{lops2011content}.
+
+\subsubsection{The Vector Space Model and TF-IDF Formulation}
+In StayMart, each accommodation or product listing is transformed into a rich textual document $d$ constructed by concatenating its structural and semantic attributes:
+\begin{equation}
+d = \text{Title} \oplus \text{Description} \oplus \text{Category} \oplus \text{City} \oplus \text{Area} \oplus \text{PriceTier} \oplus \text{Amenities}
+\end{equation}
+
+To convert textual documents into numerical vectors suitable for geometric distance calculation, we employ Term Frequency-Inverse Document Frequency (TF-IDF) weighting \cite{salton1988term}.
+
+\textbf{1. Term Frequency (TF):} Measures the relative frequency of term $t$ within document $d$:
+\begin{equation}
+\text{TF}(t, d) = \frac{f_{t, d}}{\sum_{t' \in d} f_{t', d}}
+\end{equation}
+where $f_{t, d}$ is the raw count of term $t$ in document $d$.
+
+\textbf{2. Inverse Document Frequency (IDF):} Down-weights ubiquitous, non-discriminative terms while amplifying rare, informative tokens across the entire corpus $D$:
+\begin{equation}
+\text{IDF}(t, D) = \log\left(\frac{1 + |D|}{1 + |\{d \in D : t \in d\}|}\right) + 1
+\end{equation}
+where $|D|$ is the total number of documents in the collection, and $|\{d \in D : t \in d\}|$ is the document frequency of term $t$. The smoothing constant of $1$ prevents division-by-zero errors for out-of-vocabulary tokens.
+
+\textbf{3. Combined TF-IDF Weight:}
+\begin{equation}
+w_{t, d} = \text{TF}(t, d) \times \text{IDF}(t, D)
+\end{equation}
+
+Each document $d$ is subsequently represented as an $n$-dimensional normalized feature vector $\vec{v}_d = [w_{1, d}, w_{2, d}, \dots, w_{n, d}]^T$, where $n$ denotes the vocabulary size across unigrams and bigrams.
+
+\subsubsection{Cosine Similarity Metric}
+The semantic similarity between two listing vectors $\vec{u}$ and $\vec{v}$ is evaluated using Cosine Similarity, which measures the cosine of the angle between two non-zero vectors in inner product space:
+\begin{equation}
+\text{CosineSim}(\vec{u}, \vec{v}) = \frac{\vec{u} \cdot \vec{v}}{\|\vec{u}\|_2 \|\vec{v}\|_2} = \frac{\sum_{i=1}^n u_i v_i}{\sqrt{\sum_{i=1}^n u_i^2} \sqrt{\sum_{i=1}^n v_i^2}}
+\end{equation}
+
+Because vectors are $L_2$-normalized during vectorization ($\|\vec{u}\|_2 = 1$), the cosine similarity reduces directly to the dot product:
+\begin{equation}
+\text{CosineSim}(\vec{u}, \vec{v}) = \vec{u}^T \vec{v}
+\end{equation}
+This formulation guarantees computational efficiency, enabling the Flask ML microservice to compute pairwise matrix multiplications in sub-5ms times using vectorized BLAS routines in NumPy and scikit-learn \cite{pedregosa2011scikit}.
+
+\subsection{Hybrid Behavioral Re-Ranking Framework}
+To combine the cold-start resilience of Content-Based Filtering with the empirical signals of user engagement, StayMart implements a hybrid re-ranking strategy \cite{burke2002hybrid}. 
+
+Let $B_u = \{(i_k, a_k, \tau_k)\}_{k=1}^m$ represent the behavioral interaction history of user $u$, where $i_k$ is the interacted item, $a_k \in \{\text{VIEW}, \text{SEARCH}, \text{WISHLIST}, \text{CONTACT}, \text{BOOK}, \text{ORDER}\}$ is the recorded action, and $\tau_k$ is the time elapsed since the action.
+
+Each action is assigned an empirical behavioral significance weight $W(a_k)$:
+\begin{equation}
+W(a_k) = 
+\begin{cases}
+1.0, & a_k = \text{VIEW} \\
+2.0, & a_k = \text{SEARCH} \\
+3.0, & a_k = \text{WISHLIST} \\
+4.0, & a_k = \text{CONTACT} \\
+5.0, & a_k \in \{\text{BOOK}, \text{ORDER}\}
+\end{cases}
+\end{equation}
+
+The user's dynamic preference vector $\vec{p}_u$ is synthesized as a weighted centroid of their interacted item vectors, adjusted with an exponential time-decay parameter $\lambda$:
+\begin{equation}
+\vec{p}_u = \sum_{k=1}^m W(a_k) e^{-\lambda \tau_k} \vec{v}_{i_k}
+\end{equation}
+
+The overall recommendation affinity score $S(u, c)$ for candidate item $c$ located in city $C_c$ is determined by:
+\begin{equation}
+S(u, c) = \alpha \cdot \text{CosineSim}(\vec{p}_u, \vec{v}_c) + \beta \cdot \text{LocalityBonus}(u, C_c) + \gamma \cdot \text{PopularityPrior}(c)
+\end{equation}
+where $\alpha, \beta, \gamma$ are tuning hyper-parameters satisfying $\alpha + \beta + \gamma = 1.0$. This ensures that recommendations strictly align with the user's geographic corridor while dynamically adapting to their stated interests.
+
+\section{Architectural Paradigms: Monolithic vs. Distributed Microservices}
+In architecting enterprise web applications, the division of responsibilities across compute boundaries is an important engineering decision \cite{newman2021building, fielding2000architectural}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{diagrams/deployment_arch.png}
+    \caption{Distributed Microservice Deployment Topology vs. Monolithic Boundaries}
+    \label{fig:deployment_topology}
+\end{figure}
+
+\subsection{The Monolithic Approach}
+In a traditional monolithic Spring Boot application, all operations—including transactional user registration, relational CRUD operations, file uploads, and mathematical vector calculations—execute within a single Java Virtual Machine (JVM). While monoliths offer simplicity in initial deployment and zero network serialization overhead, they exhibit substantial drawbacks for data science workloads:
+\begin{itemize}
+    \item \textbf{Library Ecosystem Limitations:} Natural Language Processing, sparse matrix algebra, and scikit-learn models have mature, highly optimized implementations in Python (NumPy, SciPy, scikit-learn), whereas equivalent Java alternatives (Deeplearning4j, Tribuo) lack community parity and impose excessive memory footprints.
+    \item \textbf{CPU Resource Contention:} Heavy vector operations running on the JVM thread pool can starve Tomcat of worker threads, causing HTTP request latency spikes for standard read/write database transactions.
+\end{itemize}
+
+\subsection{StayMart's Decoupled Microservice Topology}
+StayMart implements a hybrid decoupled topology:
+\begin{enumerate}
+    \item \textbf{Spring Boot 3.3 Core Backend on Java 17 LTS (Port 8080):} Manages transactional ACID operations, Spring Security JWT authentication, relational JPA entity mappings, and administrative moderation workflows.
+    \item \textbf{Flask ML Microservice (Port 5000):} Operates as an independent, lightweight Python service dedicated to text vectorization, model serialization via joblib, and matrix similarity evaluation.
+    \item \textbf{Fault-Tolerant Resilience:} Communication between Spring Boot and Flask occurs via HTTP REST calls managed by \texttt{MlServiceClient} with strict timeouts (2000ms connect, 3000ms read). If the ML microservice is slow or offline, the Spring Boot core backend intercepts the failure and smoothly falls back to database queries matching the requested city and category, preventing 500 errors.
+\end{enumerate}
+
+\section{Modern Frontend Architectures: Vanilla JS vs. Heavy SPAs}
+Modern web development is heavily dominated by complex Single Page Application (SPA) frameworks, most notably React, Angular, and Vue. While these frameworks provide component abstractions, they introduce significant real-world costs:
+\begin{itemize}
+    \item \textbf{Massive Bundle Overhead:} Typical production React bundles frequently exceed 500KB to 1.5MB of minified JavaScript, resulting in sluggish First Contentful Paint (FCP) and Time to Interactive (TTI) metrics, especially on low-bandwidth mobile networks in hilly regions.
+    \item \textbf{Build Tooling Fragility:} Reliance on Webpack, Vite, Babel, and nested npm dependency trees introduces supply-chain vulnerabilities, build deprecation cycles, and high hosting complexity.
+\end{itemize}
+
+StayMart intentionally adopts an optimized \textbf{Vanilla HTML5, CSS3, and Modern JavaScript (ES6+)} architecture with zero build steps. Modern ECMAScript features—including async/await, native fetch, template literals, and CSS custom properties (variables)—provide full architectural expressiveness while maintaining negligible page weight ($< 45\text{ KB}$ per page view), near-instantaneous load times, and effortless static hosting on platforms such as Vercel, Netlify, or standard Nginx containers.
+
+\section{Identified Research and Practical Gaps}
+Our systematic review reveals four definitive gaps in existing literature and marketplace software:
+\begin{enumerate}
+    \item \textbf{Absence of Dual-Inventory Platforms:} No existing commercial platform bridges the gap between residential accommodation tenancy and localized student product re-commerce within a unified interface.
+    \item \textbf{Lack of Uttarakhand Hyperlocal Optimization:} National platforms treat Uttarakhand as a monolithic entity, ignoring critical local neighborhood boundaries (e.g., distinguishing between Ballupur, Clementown, and Rajpur Road within Dehradun).
+    \item \textbf{Vulnerability to Cold-Start in C2C Classifieds:} Existing classifieds rely on keyword searching or chronological feeds, failing to utilize lightweight content-based vector embeddings to surface relevant listings to non-active or new users.
+    \item \textbf{Prohibitive Intermediary Friction:} Pervasive brokerage fees and commission structures exploit transient student populations, demonstrating a pressing need for a verified, zero-brokerage, community-moderated ecosystem.
+\end{enumerate}
+
+\section{Summary}
+This chapter established the academic and architectural foundations for StayMart. Through critical evaluation, we demonstrated why generalized platforms like OLX and Airbnb fail the student tenancy demographic in Uttarakhand. We analyzed recommendation theory to prove that Content-Based TF-IDF vectorization with behavioral re-ranking provides the optimal algorithmic solution to overcome matrix sparsity and cold-start obstacles. Finally, we validated our distributed Spring Boot and Flask microservice topology alongside a lightweight Vanilla JS frontend design. The following chapter details the formal software requirements and architectural modeling of the StayMart system.

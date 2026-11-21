@@ -1,0 +1,146 @@
+{
+  "total_checks": 23,
+  "passed": 23,
+  "failed": 0,
+  "verdict": "APPROVE",
+  "checks": [
+    {
+      "id": "ADV-01",
+      "description": "execute_suite marks status FAIL and failed=1 on return_code 1",
+      "status": "PASS",
+      "details": "rc=1, status=FAIL, failed=1"
+    },
+    {
+      "id": "ADV-02",
+      "description": "execute_suite catches Exception and flags FAIL on missing executable",
+      "status": "PASS",
+      "details": "rc=1, status=FAIL, stderr=[WinError 2] The system cannot find the file specified"
+    },
+    {
+      "id": "ADV-03",
+      "description": "parse_backend_tests flags 13 failures on non-zero return code",
+      "status": "PASS",
+      "details": "run=13, pass=0, fail=13"
+    },
+    {
+      "id": "ADV-04",
+      "description": "parse_backend_tests extracts exact failed count (3) from JUnit output",
+      "status": "PASS",
+      "details": "run=13, pass=10, fail=3"
+    },
+    {
+      "id": "ADV-05",
+      "description": "parse_viewport_tests flags 30 failures on non-zero return code",
+      "status": "PASS",
+      "details": "run=30, pass=0, fail=30"
+    },
+    {
+      "id": "ADV-06",
+      "description": "parse_navigation_tests detects failed navigation suites and defects",
+      "status": "PASS",
+      "details": "run=8, pass=5, fail=3"
+    },
+    {
+      "id": "ADV-07",
+      "description": "parse_ai_artifacts flags all 87 files failed on returncode 1",
+      "status": "PASS",
+      "details": "run=87, pass=0, fail=87"
+    },
+    {
+      "id": "ADV-08",
+      "description": "parse_deployment_audit flags failure on returncode 1 with empty stdout",
+      "status": "PASS",
+      "details": "run=35, pass=0, fail=35"
+    },
+    {
+      "id": "ADV-09",
+      "description": "parse_pdf_compiler flags 1 failure on returncode 1",
+      "status": "PASS",
+      "details": "run=1, pass=0, fail=1"
+    },
+    {
+      "id": "ADV-10",
+      "description": "parse_smoke_tests flags 96 failures on returncode 1 with missing json",
+      "status": "PASS",
+      "details": "run=96, pass=0, fail=96"
+    },
+    {
+      "id": "ADV-11",
+      "description": "render_dashboard returns True when all suites pass cleanly",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "ADV-12",
+      "description": "render_dashboard returns False when any suite return_code is non-zero",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "ADV-13",
+      "description": "render_dashboard returns False when return_code is 0 but failed > 0",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "ADV-14",
+      "description": "master_verification_summary.json records overall_verdict FAIL and suites_failed 1",
+      "status": "PASS",
+      "details": "overall_verdict=FAIL, suites_failed=1"
+    },
+    {
+      "id": "ADV-15",
+      "description": "--help displays usage and options with exit code 0",
+      "status": "PASS",
+      "details": "rc=0"
+    },
+    {
+      "id": "ADV-16",
+      "description": "Unrecognized option is rejected with argparse exit code 2",
+      "status": "PASS",
+      "details": "rc=2"
+    },
+    {
+      "id": "ADV-17",
+      "description": "--skip-slow flag behavior documented (unrecognized option -> exit code 2)",
+      "status": "PASS",
+      "details": "rc=2, stderr=usage: run_all_verifications.py [-h] [--skip-pdf]\nrun_all_verifications.py: error: unrecognized arguments: --skip-slow"
+    },
+    {
+      "id": "ADV-18",
+      "description": "Master runner exits with code 1 when underlying suite fails",
+      "status": "PASS",
+      "details": "rc=1"
+    },
+    {
+      "id": "ADV-19",
+      "description": "Master runner outputs [ALERT] for failed suite",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "ADV-20",
+      "description": "Dashboard table explicitly marks Suite 5 as FAIL",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "ADV-21",
+      "description": "Dashboard summary row displays overall FAIL status",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "ADV-22",
+      "description": "Console output displays diagnostic failure message",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "ADV-23",
+      "description": "master_verification_summary.json records overall_verdict FAIL and suites_failed 1",
+      "status": "PASS",
+      "details": ""
+    }
+  ]
+}

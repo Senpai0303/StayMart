@@ -49,10 +49,11 @@ public class Order {
     @JoinColumn(name = "seller_id", nullable = false)
     private User seller;
 
+    @Column(name = "quantity", nullable = false)
     @Builder.Default
     private Integer quantity = 1;
 
-    @Column(precision = 10, scale = 2)
+    @Column(name = "amount", precision = 10, scale = 2)
     private BigDecimal amount;
 
     @Enumerated(EnumType.STRING)
@@ -67,7 +68,7 @@ public class Order {
     private LocalDate rentEnd;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "status", nullable = false)
     @Builder.Default
     private OrderStatus status = OrderStatus.PENDING;
 

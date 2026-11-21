@@ -1,0 +1,914 @@
+{
+  "timestamp": "2026-11-21T03:30:28.355Z",
+  "staticChecks": {
+    "inlineGridStyles": [],
+    "cssTokens": {
+      "totalDefined": 55,
+      "missingInGlobal": [],
+      "missingInDashboard": []
+    },
+    "brokenRedirects": []
+  },
+  "viewportChecks": [
+    {
+      "page": "index.html",
+      "viewport": "Adversarial Narrow (iPhone SE 1st gen)",
+      "width": 320,
+      "height": 568,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "index.html",
+      "viewport": "Mobile Standard (iPhone SE / 12 mini)",
+      "width": 375,
+      "height": 667,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 375,
+        "docClientWidth": 375,
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "index.html",
+      "viewport": "Mobile Large (iPhone Pro Max / Pixel)",
+      "width": 414,
+      "height": 896,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 414,
+        "docClientWidth": 414,
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "index.html",
+      "viewport": "Tablet Standard (iPad portrait)",
+      "width": 768,
+      "height": 1024,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 768,
+        "docClientWidth": 768,
+        "bodyScrollWidth": 768,
+        "bodyClientWidth": 768,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "index.html",
+      "viewport": "Desktop Standard (HD laptop)",
+      "width": 1280,
+      "height": 800,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 1280,
+        "docClientWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "bodyClientWidth": 1280,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "index.html",
+      "viewport": "Desktop Widescreen (Full HD)",
+      "width": 1920,
+      "height": 1080,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 1920,
+        "docClientWidth": 1920,
+        "bodyScrollWidth": 1920,
+        "bodyClientWidth": 1920,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Adversarial Narrow (iPhone SE 1st gen)",
+      "width": 320,
+      "height": 568,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Mobile Standard (iPhone SE / 12 mini)",
+      "width": 375,
+      "height": 667,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 375,
+        "docClientWidth": 375,
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Mobile Large (iPhone Pro Max / Pixel)",
+      "width": 414,
+      "height": 896,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 414,
+        "docClientWidth": 414,
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Tablet Standard (iPad portrait)",
+      "width": 768,
+      "height": 1024,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 768,
+        "docClientWidth": 768,
+        "bodyScrollWidth": 768,
+        "bodyClientWidth": 768,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Desktop Standard (HD laptop)",
+      "width": 1280,
+      "height": 800,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 1280,
+        "docClientWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "bodyClientWidth": 1280,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "search-properties.html",
+      "viewport": "Desktop Widescreen (Full HD)",
+      "width": 1920,
+      "height": 1080,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 1920,
+        "docClientWidth": 1920,
+        "bodyScrollWidth": 1920,
+        "bodyClientWidth": 1920,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Adversarial Narrow (iPhone SE 1st gen)",
+      "width": 320,
+      "height": 568,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Mobile Standard (iPhone SE / 12 mini)",
+      "width": 375,
+      "height": 667,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 375,
+        "docClientWidth": 375,
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Mobile Large (iPhone Pro Max / Pixel)",
+      "width": 414,
+      "height": 896,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 414,
+        "docClientWidth": 414,
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Tablet Standard (iPad portrait)",
+      "width": 768,
+      "height": 1024,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 768,
+        "docClientWidth": 768,
+        "bodyScrollWidth": 768,
+        "bodyClientWidth": 768,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Desktop Standard (HD laptop)",
+      "width": 1280,
+      "height": 800,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 1280,
+        "docClientWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "bodyClientWidth": 1280,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "search-products.html",
+      "viewport": "Desktop Widescreen (Full HD)",
+      "width": 1920,
+      "height": 1080,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 1920,
+        "docClientWidth": 1920,
+        "bodyScrollWidth": 1920,
+        "bodyClientWidth": 1920,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Adversarial Narrow (iPhone SE 1st gen)",
+      "width": 320,
+      "height": 568,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Mobile Standard (iPhone SE / 12 mini)",
+      "width": 375,
+      "height": 667,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 375,
+        "docClientWidth": 375,
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Mobile Large (iPhone Pro Max / Pixel)",
+      "width": 414,
+      "height": 896,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 414,
+        "docClientWidth": 414,
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Tablet Standard (iPad portrait)",
+      "width": 768,
+      "height": 1024,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 768,
+        "docClientWidth": 768,
+        "bodyScrollWidth": 768,
+        "bodyClientWidth": 768,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Desktop Standard (HD laptop)",
+      "width": 1280,
+      "height": 800,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 1280,
+        "docClientWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "bodyClientWidth": 1280,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "property-detail.html",
+      "viewport": "Desktop Widescreen (Full HD)",
+      "width": 1920,
+      "height": 1080,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 1920,
+        "docClientWidth": 1920,
+        "bodyScrollWidth": 1920,
+        "bodyClientWidth": 1920,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Adversarial Narrow (iPhone SE 1st gen)",
+      "width": 320,
+      "height": 568,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Mobile Standard (iPhone SE / 12 mini)",
+      "width": 375,
+      "height": 667,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 375,
+        "docClientWidth": 375,
+        "bodyScrollWidth": 375,
+        "bodyClientWidth": 375,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Mobile Large (iPhone Pro Max / Pixel)",
+      "width": 414,
+      "height": 896,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 414,
+        "docClientWidth": 414,
+        "bodyScrollWidth": 414,
+        "bodyClientWidth": 414,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Tablet Standard (iPad portrait)",
+      "width": 768,
+      "height": 1024,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 768,
+        "docClientWidth": 768,
+        "bodyScrollWidth": 768,
+        "bodyClientWidth": 768,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Desktop Standard (HD laptop)",
+      "width": 1280,
+      "height": 800,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 1280,
+        "docClientWidth": 1280,
+        "bodyScrollWidth": 1280,
+        "bodyClientWidth": 1280,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    },
+    {
+      "page": "product-detail.html",
+      "viewport": "Desktop Widescreen (Full HD)",
+      "width": 1920,
+      "height": 1080,
+      "status": "PASS",
+      "evaluation": {
+        "docScrollWidth": 1920,
+        "docClientWidth": 1920,
+        "bodyScrollWidth": 1920,
+        "bodyClientWidth": 1920,
+        "hasDocOverflow": false,
+        "hasBodyOverflow": false,
+        "overflowsViewport": false,
+        "internalOverflowElementsCount": 0,
+        "internalOverflowElements": []
+      }
+    }
+  ],
+  "mobileComponentVisibility": [
+    {
+      "page": "index.html",
+      "visibility": {
+        "mobileMenuToggle": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        "mobileSearchTrigger": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 38,
+            "height": 38
+          }
+        },
+        "mobileSearchDrawer": {
+          "exists": true,
+          "display": "none",
+          "visibility": "visible",
+          "opacity": "0",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        "mobileBottomNav": {
+          "exists": true,
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 375,
+            "height": 58
+          }
+        },
+        "postChooserOverlay": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "0",
+          "rect": {
+            "width": 375,
+            "height": 667
+          }
+        },
+        "mobileDetailCtaBar": {
+          "exists": false
+        }
+      },
+      "hasToggleBug": false,
+      "hasSearchTriggerBug": false
+    },
+    {
+      "page": "search-properties.html",
+      "visibility": {
+        "mobileMenuToggle": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        "mobileSearchTrigger": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 38,
+            "height": 38
+          }
+        },
+        "mobileSearchDrawer": {
+          "exists": true,
+          "display": "none",
+          "visibility": "visible",
+          "opacity": "0",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        "mobileBottomNav": {
+          "exists": true,
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 375,
+            "height": 58
+          }
+        },
+        "postChooserOverlay": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "0",
+          "rect": {
+            "width": 375,
+            "height": 667
+          }
+        },
+        "mobileDetailCtaBar": {
+          "exists": false
+        }
+      },
+      "hasToggleBug": false,
+      "hasSearchTriggerBug": false
+    },
+    {
+      "page": "search-products.html",
+      "visibility": {
+        "mobileMenuToggle": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        "mobileSearchTrigger": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 38,
+            "height": 38
+          }
+        },
+        "mobileSearchDrawer": {
+          "exists": true,
+          "display": "none",
+          "visibility": "visible",
+          "opacity": "0",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        "mobileBottomNav": {
+          "exists": true,
+          "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 375,
+            "height": 58
+          }
+        },
+        "postChooserOverlay": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "0",
+          "rect": {
+            "width": 375,
+            "height": 667
+          }
+        },
+        "mobileDetailCtaBar": {
+          "exists": false
+        }
+      },
+      "hasToggleBug": false,
+      "hasSearchTriggerBug": false
+    },
+    {
+      "page": "property-detail.html",
+      "visibility": {
+        "mobileMenuToggle": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        "mobileSearchTrigger": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 38,
+            "height": 38
+          }
+        },
+        "mobileSearchDrawer": {
+          "exists": true,
+          "display": "none",
+          "visibility": "visible",
+          "opacity": "0",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        "mobileBottomNav": {
+          "exists": true,
+          "display": "none",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        "postChooserOverlay": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "0",
+          "rect": {
+            "width": 375,
+            "height": 667
+          }
+        },
+        "mobileDetailCtaBar": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 375,
+            "height": 68
+          }
+        }
+      },
+      "hasToggleBug": false,
+      "hasSearchTriggerBug": false
+    },
+    {
+      "page": "product-detail.html",
+      "visibility": {
+        "mobileMenuToggle": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 40,
+            "height": 40
+          }
+        },
+        "mobileSearchTrigger": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 38,
+            "height": 38
+          }
+        },
+        "mobileSearchDrawer": {
+          "exists": true,
+          "display": "none",
+          "visibility": "visible",
+          "opacity": "0",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        "mobileBottomNav": {
+          "exists": true,
+          "display": "none",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 0,
+            "height": 0
+          }
+        },
+        "postChooserOverlay": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "0",
+          "rect": {
+            "width": 375,
+            "height": 667
+          }
+        },
+        "mobileDetailCtaBar": {
+          "exists": true,
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "width": 375,
+            "height": 68
+          }
+        }
+      },
+      "hasToggleBug": false,
+      "hasSearchTriggerBug": false
+    }
+  ],
+  "interactionChecks": [
+    {
+      "test": "openMobileDrawer",
+      "result": {
+        "opened": true,
+        "scrollWidth": 375,
+        "clientWidth": 375
+      }
+    },
+    {
+      "test": "Filter Drawer Click",
+      "result": {
+        "opened": true,
+        "scrollWidth": 375,
+        "clientWidth": 375
+      }
+    },
+    {
+      "test": "Post Chooser Modal Click",
+      "result": {
+        "opened": true,
+        "scrollWidth": 375,
+        "clientWidth": 375
+      }
+    },
+    {
+      "test": "Booking Sheet Modal Click",
+      "result": {
+        "opened": true,
+        "scrollWidth": 375,
+        "clientWidth": 375
+      }
+    },
+    {
+      "test": "Order Sheet Modal Click",
+      "result": {
+        "opened": true,
+        "scrollWidth": 375,
+        "clientWidth": 375
+      }
+    }
+  ],
+  "defectsIdentified": [],
+  "verdict": "APPROVE"
+}

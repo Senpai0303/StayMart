@@ -1,0 +1,90 @@
+{
+  "timestamp": "2026-11-21T03:31:57Z",
+  "overall_verdict": "PASS",
+  "total_suites": 7,
+  "suites_passed": 7,
+  "suites_failed": 0,
+  "total_tests_run": 292,
+  "total_tests_passed": 292,
+  "total_tests_failed": 0,
+  "total_duration_seconds": 97.66,
+  "suites": [
+    {
+      "index": 1,
+      "name": "Spring Boot Backend Tests (JUnit 5)",
+      "command": "C:\\Users\\divya\\AppData\\Local\\Programs\\Python\\Python312\\python.exe scripts/run_backend_tests.py",
+      "tests_run": 13,
+      "passed": 13,
+      "failed": 0,
+      "duration_seconds": 8.34,
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "index": 2,
+      "name": "Headless Chrome Viewports (320px-1920px)",
+      "command": "node scripts/run_viewport_tests.js",
+      "tests_run": 30,
+      "passed": 30,
+      "failed": 0,
+      "duration_seconds": 43.15,
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "index": 3,
+      "name": "Navigation & DOM Link Verification",
+      "command": "C:\\Users\\divya\\AppData\\Local\\Programs\\Python\\Python312\\python.exe scripts/verify_m1_navigation.py",
+      "tests_run": 8,
+      "passed": 8,
+      "failed": 0,
+      "duration_seconds": 8.03,
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "index": 4,
+      "name": "AI Artifact Pattern Scanner (87 files)",
+      "command": "C:\\Users\\divya\\AppData\\Local\\Programs\\Python\\Python312\\python.exe scripts/scan_ai_artifacts.py",
+      "tests_run": 87,
+      "passed": 87,
+      "failed": 0,
+      "duration_seconds": 0.6,
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "index": 5,
+      "name": "Cloud Deployment & Manifest Audit",
+      "command": "C:\\Users\\divya\\AppData\\Local\\Programs\\Python\\Python312\\python.exe scripts/test_m4_adversarial_audit.py",
+      "tests_run": 47,
+      "passed": 47,
+      "failed": 0,
+      "duration_seconds": 0.06,
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "index": 6,
+      "name": "Academic PDF Report Compiler",
+      "command": "C:\\Users\\divya\\AppData\\Local\\Programs\\Python\\Python312\\python.exe scripts/compile_report_pdf.py",
+      "tests_run": 1,
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 30.72,
+      "return_code": 0,
+      "status": "PASS"
+    },
+    {
+      "index": 7,
+      "name": "Multi-Tier API Smoke Test Suite",
+      "command": "C:\\Users\\divya\\AppData\\Local\\Programs\\Python\\Python312\\python.exe scripts/run_smoke_tests.py",
+      "tests_run": 106,
+      "passed": 106,
+      "failed": 0,
+      "duration_seconds": 6.75,
+      "return_code": 0,
+      "status": "PASS"
+    }
+  ]
+}

@@ -2,7 +2,8 @@ async function logBehavior(action, itemType = null, itemId = null, searchQuery =
   const token = localStorage.getItem('staymart_token');
   if (!token) return;
   try {
-    await fetch(`${BASE_URL}/behaviors`, {
+    const baseUrl = (typeof BASE_URL !== 'undefined' ? BASE_URL : '/api').replace(/\/+$/, '');
+    await fetch(`${baseUrl}/behaviors`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

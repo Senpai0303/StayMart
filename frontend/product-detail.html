@@ -3,28 +3,76 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
   <title>Product Detail - StayMart</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>"/>
-  <link rel="stylesheet" href="css/global.css"/>
+  <link rel="stylesheet" href="css/global.css?v=4.1.0"/>
 </head>
-<body>
-  <nav class="navbar">
+<body class="detail-page">
+  <!-- Commercial Navbar -->
+  <header class="navbar" id="siteNavbar">
     <div class="navbar-inner">
-      <a href="index.html" class="logo">StayMart<small>Dehradun · Uttarakhand</small></a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="search-properties.html">Properties</a>
-        <a href="search-products.html" class="active">Products</a>
+      <div class="nav-left">
+        <button class="nav-mobile-toggle" id="mobileMenuToggle" aria-label="Open mobile menu" onclick="openMobileDrawer()">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+
+        <a href="index.html" class="logo">
+          <span class="logo-stay">Stay</span><span class="logo-mart">Mart</span>
+          <span class="logo-badge">UK</span>
+        </a>
       </div>
+
+      <form class="nav-search-bar" onsubmit="window.location.href='search-products.html?q=' + encodeURIComponent(document.getElementById('navSearchInput').value.trim()); return false;">
+        <input id="navSearchInput" type="text" placeholder="Find laptops, mobiles, bikes, furniture..."/>
+        <button type="submit" class="nav-search-btn" title="Search">🔍</button>
+      </form>
+
+      <nav class="nav-links">
+        <a href="search-properties.html">Accommodations</a>
+        <a href="search-products.html" class="active">Buy & Sell</a>
+      </nav>
+
+      <button type="button" class="nav-icon-btn mobile-search-trigger" id="mobileSearchTrigger" aria-label="Search" onclick="toggleMobileSearch()">
+        🔍
+      </button>
+
       <div class="nav-actions"></div>
     </div>
-  </nav>
 
-  <div class="container" style="padding-top:32px">
+    <!-- Expandable Mobile Search Drawer -->
+    <div class="mobile-search-drawer" id="mobileSearchDrawer">
+      <form class="mobile-search-form" onsubmit="window.location.href='search-products.html?q=' + encodeURIComponent(document.getElementById('mobileSearchInput').value.trim()); return false;">
+        <div class="mobile-search-inner">
+          <span class="search-lens">🔍</span>
+          <input id="mobileSearchInput" type="text" placeholder="Search laptops, phones, bikes..."/>
+          <button type="button" class="mobile-search-clear" onclick="clearMobileSearch()">✕</button>
+        </div>
+      </form>
+    </div>
+  </header>
+
+  <!-- Subnavbar -->
+  <div class="category-strip">
+    <div class="category-strip-inner">
+      <a href="index.html" class="cat-strip-item cat-all">ALL CATEGORIES ▼</a>
+      <a href="search-products.html?category=Electronics" class="cat-strip-item">Laptops & Computers</a>
+      <a href="search-products.html?category=Mobile%20Phones" class="cat-strip-item">Mobiles & Gadgets</a>
+      <a href="search-products.html?category=Vehicles" class="cat-strip-item">Bikes & Scooters</a>
+      <a href="search-products.html?category=Furniture" class="cat-strip-item">🛋️ Furniture</a>
+      <a href="search-properties.html" class="cat-strip-item">PGs & Flats</a>
+    </div>
+  </div>
+
+  <div class="container" style="padding-top:20px;padding-bottom:40px">
     <nav class="breadcrumb">
       <a href="index.html">Home</a><span class="sep">›</span>
-      <a href="search-products.html">Products</a><span class="sep">›</span>
-      <span>Product Detail</span>
+      <a href="search-products.html">Marketplace</a><span class="sep">›</span>
+      <span id="breadcrumbProductTitle">Product Detail</span>
     </nav>
 
     <div id="detailRoot">
@@ -36,9 +84,12 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a href="index.html" class="logo">StayMart<small>Dehradun · Uttarakhand</small></a>
-          <p style="margin-top:14px;color:var(--text-secondary);font-size:14px;max-width:340px">
-            StayMart is Uttarakhand's trusted community marketplace for rentals and re-commerce. 🔥
+          <a href="index.html" class="logo">
+            <span class="logo-stay">Stay</span><span class="logo-mart">Mart</span>
+            <span class="logo-badge">UK</span>
+          </a>
+          <p style="margin-top:14px;color:rgba(255,255,255,0.7);font-size:14px;max-width:340px;line-height:1.6">
+            StayMart connects students across Dehradun and Uttarakhand to buy and sell pre-loved campus essentials with zero brokerage.
           </p>
         </div>
         <div>
@@ -46,9 +97,8 @@
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="search-properties.html">Property Rentals</a></li>
+            <li><a href="search-products.html">Browse Classifieds</a></li>
             <li><a href="post-product.html">Post a Product</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="register.html">Register</a></li>
           </ul>
         </div>
         <div>
@@ -58,12 +108,14 @@
             <li><a href="search-products.html?city=Rishikesh">Rishikesh</a></li>
             <li><a href="search-products.html?city=Mussoorie">Mussoorie</a></li>
             <li><a href="search-products.html?city=Haridwar">Haridwar</a></li>
-            <li><a href="search-products.html?city=Nainital">Nainital</a></li>
             <li><a href="search-products.html?city=Roorkee">Roorkee</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">© 2026 StayMart · Made with 💚 in Dehradun</div>
+      <div class="footer-bottom" style="margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:13px;display:flex;justify-content:space-between;align-items:center;">
+        <div>© 2026 StayMart · Built for students in Uttarakhand</div>
+        <div>Zero Brokerage · Direct student-to-student</div>
+      </div>
     </div>
   </footer>
 
@@ -72,10 +124,186 @@
     <button class="lb-btn lb-close" onclick="closeLightbox()">×</button>
   </div>
 
-  <script src="js/api.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/behavior.js"></script>
-  <script src="js/utils.js"></script>
-  <script src="js/product-detail.js"></script>
+  <script src="js/api.js?v=4.1.0"></script>
+  <script src="js/auth.js?v=4.1.0"></script>
+  <script src="js/behavior.js?v=4.1.0"></script>
+  <script src="js/utils.js?v=4.1.0"></script>
+  <script src="js/stats.js?v=4.1.0"></script>
+  <script src="js/product-detail.js?v=4.1.0"></script>
+
+  <!-- Fixed Mobile Sticky Bottom Action Bar -->
+  <aside class="mobile-detail-cta-bar" id="mobileDetailCtaBar">
+    <div class="cta-price-group">
+      <div class="cta-price-val" id="mobileCtaPrice">₹—</div>
+      <div class="cta-status-badge" id="mobileCtaBadge">● In Stock</div>
+    </div>
+    <div class="cta-btn-group">
+      <button type="button" class="cta-icon-action" id="mobileCtaWishlist" onclick="toggleWishlist(event)" title="Save to wishlist">♡</button>
+      <button type="button" class="cta-icon-action" id="mobileCtaChat" onclick="contactSeller()" title="Chat with Seller">💬</button>
+      <button type="button" class="btn btn-primary cta-primary-btn" id="mobileCtaBuyBtn" onclick="openMobileOrderSheet()">Buy Now</button>
+    </div>
+  </aside>
+
+  <!-- Mobile Order Sheet Modal -->
+  <div class="booking-sheet-overlay" id="orderSheetOverlay" onclick="closeMobileOrderSheet(event)">
+    <div class="booking-sheet" onclick="event.stopPropagation()">
+      <div class="sheet-drag-handle"></div>
+      <div class="booking-sheet-header">
+        <div>
+          <div class="sheet-title" style="text-align:left;font-size:16px;">Quick Purchase / Rent</div>
+          <div style="font-size:12px;color:var(--text-secondary);" id="mobileOrderSheetSub">—</div>
+        </div>
+        <button type="button" class="sheet-close" onclick="closeMobileOrderSheet()" aria-label="Close">✕</button>
+      </div>
+
+      <div class="booking-sheet-body">
+        <div class="input-group">
+          <label for="mobileQtySelect">Quantity</label>
+          <select id="mobileQtySelect" onchange="syncOrderQty(this.value)">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+
+        <div class="input-group" id="mobileOrderTypeGroup" style="display:none">
+          <label for="mobileOrderTypeSelect">Order Type</label>
+          <select id="mobileOrderTypeSelect" onchange="syncOrderType(this.value)">
+            <option value="BUY">Buy (one-time)</option>
+            <option value="RENT">Rent (monthly)</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="mobileOrderMessage">Message to Seller (optional)</label>
+          <textarea id="mobileOrderMessage" rows="2" placeholder="e.g. Free this weekend for campus pickup?" maxlength="300"></textarea>
+        </div>
+
+        <div class="total-display mb-12">
+          <span class="total-label">Total Amount</span>
+          <span class="total-value" id="mobileOrderTotal">—</span>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block" id="mobileConfirmOrderBtn" onclick="executeMobileOrder()">Place Order</button>
+        <p class="sheet-safety-note">🛡️ Zero advance fee. Inspect in person on campus before paying the seller directly.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Drawer & Backdrop -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileDrawer()"></div>
+
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation">
+    <div class="drawer-header">
+      <div class="drawer-user-card" id="drawerUserCard">
+        <div class="drawer-user-avatar">👤</div>
+        <div class="drawer-user-meta">
+          <div class="drawer-user-name">Welcome, Student!</div>
+          <div class="drawer-user-role">Dehradun & Uttarakhand Hub</div>
+        </div>
+      </div>
+      <button class="drawer-close-btn" onclick="closeMobileDrawer()" aria-label="Close menu">✕</button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="drawer-post-cards">
+        <a href="post-property.html" class="drawer-post-card card-property">
+          <span class="post-card-icon">🏠</span>
+          <div class="post-card-text">
+            <strong>List a PG / Room</strong>
+            <small>Zero Brokerage · Free</small>
+          </div>
+        </a>
+        <a href="post-product.html" class="drawer-post-card card-product">
+          <span class="post-card-icon">🏷️</span>
+          <div class="post-card-text">
+            <strong>Sell Pre-Loved Gear</strong>
+            <small>Tech, Cycles, Books</small>
+          </div>
+        </a>
+      </div>
+
+      <div class="drawer-group-title">Browse Marketplace</div>
+      <nav class="drawer-links">
+        <a href="index.html" class="drawer-link"><span class="link-icon">🏠</span> Home</a>
+        <a href="search-properties.html" class="drawer-link"><span class="link-icon">🛏️</span> Student Accommodations & PGs</a>
+        <a href="search-products.html" class="drawer-link active"><span class="link-icon">🛒</span> Student Buy & Sell Re-Commerce</a>
+        <a href="search-products.html?category=Electronics" class="drawer-link sub-link"><span>•</span> Laptops & Computer Gear</a>
+        <a href="search-products.html?category=Mobile%20Phones" class="drawer-link sub-link"><span>•</span> Mobile Phones</a>
+        <a href="search-products.html?category=Vehicles" class="drawer-link sub-link"><span>•</span> Scooters & Bicycles</a>
+        <a href="search-products.html?category=Books" class="drawer-link sub-link"><span>•</span> Tech & GATE Textbooks</a>
+      </nav>
+
+      <div class="drawer-group-title">Campus Hubs</div>
+      <div class="drawer-campus-grid">
+        <a href="search-properties.html?q=Graphic+Era" class="drawer-campus-chip">🎓 Graphic Era (GEU)</a>
+        <a href="search-properties.html?q=UPES" class="drawer-campus-chip">🎓 UPES Dehradun</a>
+        <a href="search-properties.html?q=DIT" class="drawer-campus-chip">🎓 DIT University</a>
+        <a href="search-properties.html?q=Roorkee" class="drawer-campus-chip">🏛️ IIT Roorkee</a>
+        <a href="search-properties.html?city=Rishikesh" class="drawer-campus-chip">🏔️ Rishikesh</a>
+      </div>
+
+      <div id="drawerAccountSection" style="display:none">
+        <div class="drawer-group-title">My Student Space</div>
+        <nav class="drawer-links" id="drawerAccountLinks"></nav>
+      </div>
+    </div>
+
+    <div class="drawer-footer" id="drawerFooter"></div>
+  </aside>
+
+  <!-- Mobile Sticky Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile Navigation">
+    <a href="search-properties.html" class="bottom-nav-item" data-tab="properties">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-label">Explore</span>
+    </a>
+    <a href="search-products.html" class="bottom-nav-item active" data-tab="products">
+      <span class="nav-icon">🛒</span>
+      <span class="nav-label">Market</span>
+    </a>
+    <div class="bottom-nav-post-wrap">
+      <button class="bottom-nav-post-btn" onclick="openPostChooser(event)" aria-label="Post a listing">
+        <span class="post-plus">+</span>
+      </button>
+      <span class="nav-label">Post</span>
+    </div>
+    <a href="pages/user/chat.html" class="bottom-nav-item" data-tab="chat" id="bottomTabChat">
+      <span class="nav-icon">💬</span>
+      <span class="nav-label">Chats</span>
+    </a>
+    <a href="pages/user/dashboard.html" class="bottom-nav-item" data-tab="account" id="bottomTabAccount">
+      <span class="nav-icon">👤</span>
+      <span class="nav-label">Account</span>
+    </a>
+  </nav>
+
+  <!-- Post Chooser Modal Sheet -->
+  <div class="post-chooser-overlay" id="postChooserOverlay" onclick="closePostChooser(event)">
+    <div class="post-chooser-sheet" onclick="event.stopPropagation()">
+      <div class="sheet-drag-handle"></div>
+      <div class="sheet-title">What would you like to list?</div>
+      <p class="sheet-desc">Reach 8,000+ local students across Dehradun, Rishikesh & Roorkee</p>
+      <div class="chooser-card-list">
+        <a href="post-property.html" class="chooser-card-item">
+          <div class="chooser-icon-box" style="background:#e0f2fe;color:#0284c7">🏠</div>
+          <div class="chooser-text">
+            <div class="chooser-head">List an Accommodation</div>
+            <div class="chooser-info">Post a PG room, student hostel, shared flat, or 1 BHK</div>
+          </div>
+          <span class="chooser-chevron">›</span>
+        </a>
+        <a href="post-product.html" class="chooser-card-item">
+          <div class="chooser-icon-box" style="background:#fef3c7;color:#d97706">📦</div>
+          <div class="chooser-text">
+            <div class="chooser-head">Sell or Rent a Product</div>
+            <div class="chooser-info">Laptops, study tables, bicycles, books, electronics</div>
+          </div>
+          <span class="chooser-chevron">›</span>
+        </a>
+      </div>
+      <button type="button" class="btn btn-secondary btn-block mt-8" onclick="closePostChooser()">Cancel</button>
+    </div>
+  </div>
 </body>
 </html>

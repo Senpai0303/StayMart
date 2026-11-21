@@ -34,7 +34,9 @@ async function loadCategories() {
       const isAccommodation = type === 'ACCOMMODATION' || accommodationKeys.some(function (k) {
         return name.includes(k);
       });
-      const link = isAccommodation ? 'search-properties.html' : 'search-products.html';
+      const link = isAccommodation 
+        ? `search-properties.html?type=${encodeURIComponent(category.name)}`
+        : `search-products.html?category=${encodeURIComponent(category.name)}`;
       grid.insertAdjacentHTML('beforeend', `
         <a class="category-card" href="${link}">
           <span class="category-icon">${escapeHtml(category.icon) || '🏷️'}</span>
@@ -60,14 +62,14 @@ async function loadFeatured() {
   try {
     if (loggedInUserId) {
       const recs = await RecommendationAPI.getForUser(loggedInUserId, 8);
-      if (recs && recs.length) items = recs.slice(0, 4);
+      if (recs && recs.length) items = recs.slice(0, 8);
     }
   } catch (error) {
-    // recommendations endpoint not wired up yet -> fall back to latest listings
+    // recommendations endpoint fallback
   }
   if (!items.length) {
     try {
-      const page = await PropertyAPI.getAll({ page: 0, size: 4, sort: 'createdAt,desc' });
+      const page = await PropertyAPI.getAll({ page: 0, size: 8, sort: 'createdAt,desc' });
       items = page.content || [];
     } catch (error) {
       grid.innerHTML = emptyStateHtml('🏠', 'No properties found', 'Be the first to post a listing.');

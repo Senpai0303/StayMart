@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; padding: 40px; background: #0f172a; font-family: 'Segoe UI', Inter, sans-serif; color: #f8fafc; }
+  .canvas { width: 1400px; margin: 0 auto; }
+  .title { text-align: center; font-size: 26px; font-weight: 700; color: #38bdf8; margin-bottom: 30px; letter-spacing: 0.5px; }
+  .grid { display: grid; grid-template-columns: 280px 480px 480px; gap: 30px; align-items: stretch; }
+  .col-box { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+  .col-title { font-size: 18px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #334155; padding-bottom: 12px; }
+  .layer { background: #0f172a; border: 1px solid #475569; border-radius: 10px; padding: 14px; margin-bottom: 14px; }
+  .layer-title { font-size: 14px; font-weight: 600; color: #38bdf8; margin-bottom: 6px; }
+  .layer-desc { font-size: 12px; color: #94a3b8; line-height: 1.4; }
+  .badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .bg-blue { background: #1e3a8a; color: #93c5fd; }
+  .bg-green { background: #064e3b; color: #6ee7b7; }
+  .bg-purple { background: #581c87; color: #d8b4fe; }
+  .bg-amber { background: #78350f; color: #fde68a; }
+  .flow-arrow { text-align: center; color: #64748b; font-size: 20px; margin: 8px 0; font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">StayMart 3-Tier Distributed System Architecture</div>
+  <div class="grid">
+    <!-- Presentation Tier -->
+    <div class="col-box" style="border-top: 4px solid #38bdf8;">
+      <div class="col-title" style="color: #38bdf8;">🖥️ Client / Presentation Layer</div>
+      <div class="layer">
+        <div class="layer-title">Public Web Portal</div>
+        <div class="layer-desc">Landing, Filtered Search, Detail Views, Interactive Modals, Responsive Glassmorphic UI</div>
+        <div style="margin-top:8px;">
+          <span class="badge bg-blue">HTML5</span>
+          <span class="badge bg-blue">CSS3 (Inter)</span>
+          <span class="badge bg-blue">Vanilla JS ES6+</span>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-title">User Self-Service Portal</div>
+        <div class="layer-desc">Dashboard, Listing Creator, Booking Management, Order Tracking, Real-time Chat UI</div>
+      </div>
+      <div class="layer">
+        <div class="layer-title">Admin Management Console</div>
+        <div class="layer-desc">KPI Analytics, Chart.js Visualizations, Listing Moderation (Approve/Reject), Category & Location CRUD</div>
+        <div style="margin-top:8px;">
+          <span class="badge bg-blue">Chart.js</span>
+          <span class="badge bg-blue">Fetch API</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Application / Business Tier -->
+    <div class="col-box" style="border-top: 4px solid #10b981;">
+      <div class="col-title" style="color: #10b981;">⚙️ Core Backend Service (Spring Boot 3.3)</div>
+      <div class="layer">
+        <div class="layer-title">Security & API Gateway Layer</div>
+        <div class="layer-desc">JWT Authentication Filter, Role-Based Access Control (ROLE_USER, ROLE_ADMIN), CORS Policy</div>
+        <div style="margin-top:8px;"><span class="badge bg-green">Spring Security</span><span class="badge bg-green">JWT (HMAC-SHA256)</span></div>
+      </div>
+      <div class="layer">
+        <div class="layer-title">RESTful Controller Layer (16 Controllers)</div>
+        <div class="layer-desc">Property, Product, Room, Booking, Order, Chat, Wishlist, Review, Location, Category, Behavior, Analytics</div>
+        <div style="margin-top:8px;"><span class="badge bg-green">springdoc OpenAPI 3.0</span><span class="badge bg-green">Swagger UI</span></div>
+      </div>
+      <div class="layer">
+        <div class="layer-title">Service & Business Logic Engine</div>
+        <div class="layer-desc">Transactional Workflows, State Machine Moderation, Behavioral Event Ingestion, ML Proxy Client</div>
+      </div>
+      <div class="layer">
+        <div class="layer-title">Data Access & ORM Layer</div>
+        <div class="layer-desc">Spring Data JPA, Hibernate ORM 6.5, HikariCP Connection Pooling, Strict DDL Validation</div>
+      </div>
+    </div>
+
+    <!-- Data & ML Microservice Tier -->
+    <div class="col-box" style="border-top: 4px solid #a855f7;">
+      <div class="col-title" style="color: #a855f7;">🧠 Data Storage & ML Engine</div>
+      <div class="layer">
+        <div class="layer-title">Relational Database (MySQL 8.0)</div>
+        <div class="layer-desc">12 Normalized Tables: Users, Locations, Categories, Properties, Rooms, Products, Bookings, Orders, Chats, Wishlists, Reviews, UserBehaviors</div>
+        <div style="margin-top:8px;"><span class="badge bg-amber">MySQL 8.0</span><span class="badge bg-amber">InnoDB Engine</span><span class="badge bg-amber">Foreign Keys</span></div>
+      </div>
+      <div class="layer">
+        <div class="layer-title">ML Recommendation Microservice (Flask)</div>
+        <div class="layer-desc">TF-IDF Vectorization of textual features, Cosine Similarity computation, User Behavioral Weighting (View/Wishlist/Order), Content-Based Recommendation</div>
+        <div style="margin-top:8px;">
+          <span class="badge bg-purple">Python 3.11</span>
+          <span class="badge bg-purple">scikit-learn</span>
+          <span class="badge bg-purple">pandas</span>
+          <span class="badge bg-purple">Flask CORS</span>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="layer-title">Persistent File Storage</div>
+        <div class="layer-desc">Multi-part media uploads, serialized TF-IDF joblib model storage, automated model refresher</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; padding: 40px; background: #0b1120; font-family: 'Segoe UI', Inter, sans-serif; color: #f8fafc; }
+  .canvas { width: 1400px; margin: 0 auto; text-align: center; }
+  .title { font-size: 26px; font-weight: 700; color: #38bdf8; margin-bottom: 30px; }
+  .infra-grid { display: grid; grid-template-columns: 280px 80px 480px 80px 380px; align-items: center; }
+  .box { background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 22px; text-align: left; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+  .b-title { font-size: 16px; font-weight: bold; margin-bottom: 8px; color: #38bdf8; }
+  .b-sub { font-size: 12px; color: #94a3b8; line-height: 1.5; }
+  .tag { display: inline-block; padding: 3px 8px; background: #334155; color: #e2e8f0; border-radius: 6px; font-size: 11px; margin-top: 8px; font-weight: 600; }
+  .arrow { font-size: 28px; color: #64748b; font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">StayMart Production Hosting & Cloud Deployment Architecture</div>
+  <div class="infra-grid">
+    <!-- Internet / Clients -->
+    <div class="box" style="border-color: #38bdf8;">
+      <div class="b-title">🌐 End Users & Clients</div>
+      <div class="b-sub">Mobile Browsers, Desktop Web, Tablet Devices across Uttarakhand.</div>
+      <div class="tag">HTTPS / WSS</div>
+    </div>
+
+    <div class="arrow">➔</div>
+
+    <!-- Edge / Ingress -->
+    <div class="box" style="border-color: #10b981;">
+      <div class="b-title" style="color:#10b981;">🛡️ Edge Ingress / Reverse Proxy</div>
+      <div class="b-sub">Nginx High-Performance Reverse Proxy + SSL Termination (Let's Encrypt). Static assets caching, rate limiting, and request routing:</div>
+      <div style="margin-top:10px; font-size:12px; color:#cbd5e1;">
+        • <code>/</code> ➔ Static Frontend (Port 5500 / Vercel CDN)<br>
+        • <code>/api/*</code> ➔ Spring Boot Backend (Port 8080)<br>
+        • <code>/ml/*</code> ➔ ML Microservice (Port 5000)
+      </div>
+      <div class="tag">Nginx 1.25 / Docker</div>
+    </div>
+
+    <div class="arrow">➔</div>
+
+    <!-- Container Runtime / Cloud Host -->
+    <div class="box" style="border-color: #a855f7;">
+      <div class="b-title" style="color:#a855f7;">☁️ Host / Docker Engine</div>
+      <div class="b-sub">Ubuntu 22.04 LTS VPS (AWS EC2 / DigitalOcean)</div>
+      <div style="margin-top:10px; font-size:12px; color:#cbd5e1;">
+        📦 <b>Backend Container:</b> Eclipse Temurin JDK 21, Spring Boot JAR<br><br>
+        📦 <b>ML Container:</b> Python 3.11, Flask + Gunicorn WSGI, scikit-learn<br><br>
+        📦 <b>Database Container:</b> MySQL 8.0 with Persistent NVMe Docker Volume
+      </div>
+      <div class="tag">Docker Compose / Systemd</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

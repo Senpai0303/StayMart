@@ -1,7 +1,10 @@
 {
   "version": 2,
+  "cleanUrls": true,
   "rewrites": [
     { "source": "/", "destination": "/frontend/index.html" },
+    { "source": "/api/(.*)", "destination": "https://staymart-backend.onrender.com/api/$1" },
+    { "source": "/uploads/(.*)", "destination": "https://staymart-backend.onrender.com/uploads/$1" },
     { "source": "/(.*)", "destination": "/frontend/$1" }
   ]
 }
