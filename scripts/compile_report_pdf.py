@@ -92,17 +92,33 @@ REF_MAP = {
     'tab:dict_products': '4.6',
     'tab:test_execution_matrix': '7.1',
     'fig:high_level_arch': '1.1',
+    'fig:framework_overview': '1.1',
     'fig:microservice_topology': '2.1',
+    'fig:deployment_topology': '2.1',
     'fig:dfd_level0': '3.1',
+    'fig:dfd0': '3.1',
     'fig:seq_booking': '3.2',
     'fig:erd_model': '4.1',
     'fig:swagger_ui': '5.1',
+    'fig:swagger_api': '5.1',
+    'fig:ml_pipeline': '5.2',
+    'fig:landing_page_ui': '6.1',
     'fig:walkthrough_landing': '6.1',
+    'fig:auth_screens': '6.2',
+    'fig:search_screens': '6.3',
+    'fig:detail_screens': '6.4',
+    'fig:post_screens': '6.5',
+    'fig:user_dashboard_ui': '6.6',
+    'fig:user_portal_screens': '6.6',
+    'fig:chat_ui': '6.6',
+    'fig:admin_dashboard_ui': '6.7',
+    'fig:admin_management_screens': '6.7',
     'fig:walkthrough_search': '7.1',
     'fig:walkthrough_detail': '7.2',
     'fig:walkthrough_product_screens': '7.3',
     'fig:walkthrough_chat': '7.4',
     'fig:walkthrough_admin': '7.5',
+    'fig:walkthrough_bookings': '7.6',
     'fig:cloud_topology': '8.1',
     'lst:dockerfile_backend': '8.1',
     'lst:dockerfile_ml': '8.2',
@@ -297,8 +313,9 @@ def latex_to_html_content(tex, ch_num=None, app_letter=None):
         img_match = re.search(r'\\includegraphics\[.*?\]\{([^}]+)\}', m.group(0))
         subfigs = re.findall(r'\\begin\{subfigure\}[\s\S]*?\\includegraphics\[.*?\]\{([^}]+)\}[\s\S]*?\\caption\{([^}]+)\}[\s\S]*?\\end\{subfigure\}', m.group(0))
         
+        ch_class = f" fig-ch{ch_num}" if ch_num is not None else ""
         if subfigs:
-            html_fig = '<div class="figure-container"><div class="subfig-row">'
+            html_fig = f'<div class="figure-container{ch_class}"><div class="subfig-row">'
             for img, sub_cap in subfigs:
                 img_path = img.replace('\\', '/')
                 if not img_path.startswith('http') and not os.path.isabs(img_path):
@@ -326,7 +343,7 @@ def latex_to_html_content(tex, ch_num=None, app_letter=None):
                     img = f"file:///D:/Mini5th/report/{img}"
                 elif os.path.exists(img):
                     img = f"file:///D:/Mini5th/{img}"
-            html_fig = f'<div class="figure-container"><img src="{img}" alt="{cap}"><div class="figure-caption">{caption_html}</div></div>'
+            html_fig = f'<div class="figure-container{ch_class}"><img src="{img}" alt="{cap}"><div class="figure-caption">{caption_html}</div></div>'
             key = f"___BLOCK_PLACEHOLDER_{block_counter}___"
             block_counter += 1
             blocks[key] = html_fig
@@ -557,18 +574,21 @@ FIGURE_DEFINITIONS = [
     ("3.2", "UML Sequence Diagram: Accommodation Booking and Confirmation Flow", "[[LOC:FIG_3_2]]"),
     ("4.1", "Entity-Relationship (ER) Diagram of the StayMart Relational Database Schema", "[[LOC:FIG_4_1]]"),
     ("5.1", "Springdoc OpenAPI 3.0 Swagger UI Exposing Core Backend REST Endpoints", "[[LOC:FIG_5_1]]"),
+    ("5.2", "Machine Learning Content-Based Recommendation Pipeline with TF-IDF Vectorization", "[[LOC:FIG_5_2]]"),
     ("6.1", "StayMart Public Landing Page Featuring Commercial Header, Campus Chips, and Category Discovery", "[[LOC:FIG_6_1]]"),
-    ("6.2", "Faceted Search Portals Featuring Authentic Verified Photography", "[[LOC:FIG_6_2]]"),
-    ("6.3", "Listing Detail Pages Featuring Interactive Media Galleries and Direct Host Actions", "[[LOC:FIG_6_3]]"),
-    ("6.4", "Personalized User Dashboard Displaying KPI Tiles, Recommendations, and Activity", "[[LOC:FIG_6_4]]"),
-    ("6.5", "Real-Time Peer-to-Peer Messaging Interface Between Tenant and Host", "[[LOC:FIG_6_5]]"),
-    ("6.6", "Administrative Analytics Console with Live Chart.js Visualizations", "[[LOC:FIG_6_6]]"),
+    ("6.2", "Authentication Portals Featuring Clean Credential Inputs and Password Visibility Toggles", "[[LOC:FIG_6_2]]"),
+    ("6.3", "Faceted Search Portals Featuring Authentic Verified Photography", "[[LOC:FIG_6_3]]"),
+    ("6.4", "Listing Detail Pages Featuring Interactive Media Galleries and Direct Host Actions", "[[LOC:FIG_6_4]]"),
+    ("6.5", "Self-Service Listing Creation Portals for Accommodations and Student Marketplace", "[[LOC:FIG_6_5]]"),
+    ("6.6", "Self-Service User Dashboard and Real-Time Peer Messaging Interfaces", "[[LOC:FIG_6_6]]"),
+    ("6.7", "Administrative Console Featuring Live Platform Metrics and Pre-Publication Moderation Queue", "[[LOC:FIG_6_7]]"),
     ("7.1", "Step 1: Accommodation Search with Faceted Filtering", "[[LOC:FIG_7_1]]"),
     ("7.2", "Step 2: Property Detail View with Room Selection Widget", "[[LOC:FIG_7_2]]"),
-    ("7.3", "Step 3: Marketplace Product Catalogue", "[[LOC:FIG_7_3]]"),
+    ("7.3", "Step 3: Marketplace Product Discovery and Inspection", "[[LOC:FIG_7_3]]"),
     ("7.4", "Step 4: Peer-to-Peer Chat Between Student and Caretaker", "[[LOC:FIG_7_4]]"),
-    ("7.5", "Step 5: Administrative Dashboard and Moderation Queue", "[[LOC:FIG_7_5]]"),
-    ("8.1", "Production Multi-Service Cloud Hosting Topology", "[[LOC:FIG_8_1]]"),
+    ("7.5", "Step 5: Administrative Dashboard, Moderation Queue, and User Directory", "[[LOC:FIG_7_5]]"),
+    ("7.6", "Step 6: User Booking Management and Reservation Status Lifecycle", "[[LOC:FIG_7_6]]"),
+    ("8.1", "Production Multi-Service Cloud Hosting Topology Across Free-Tier Providers", "[[LOC:FIG_8_1]]"),
 ]
 
 TABLE_DEFINITIONS = [
@@ -709,24 +729,44 @@ def build_html_document(page_map=None):
 
   .figure-container {
     text-align: center;
-    margin: 12px 0;
+    margin: 8px 0;
     page-break-inside: avoid;
   }
 
   .figure-container img {
     max-width: 80%;
-    max-height: 210px;
+    max-height: 195px;
     object-fit: contain;
     height: auto;
     border: 1px solid #ddd;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   }
 
+  .fig-ch5 img {
+    max-height: 130px;
+  }
+
+  .fig-ch5.figure-container {
+    margin: 6px 0;
+  }
+
+  .fig-ch6 img {
+    max-height: 145px;
+  }
+
+  .fig-ch6.figure-container {
+    margin: 6px 0;
+  }
+
+  .fig-ch7 img {
+    max-height: 195px;
+  }
+
   .subfig-row {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
 
   .subfig {
@@ -737,16 +777,37 @@ def build_html_document(page_map=None):
 
   .subfig img {
     max-width: 100%;
-    max-height: 140px;
+    max-height: 105px;
     object-fit: contain;
     height: auto;
     border: 1px solid #ddd;
   }
 
   .subfig-cap {
-    font-size: 9pt;
+    font-size: 8.5pt;
     font-style: italic;
     margin-top: 2px;
+  }
+
+  .lof-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4px 0 8px 0;
+    font-size: 8pt;
+    page-break-inside: avoid;
+  }
+
+  .lof-table th, .lof-table td {
+    border: 1px solid #333;
+    padding: 2.2px 5px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.15;
+  }
+
+  .lof-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
   }
 
   .code-container {
@@ -1020,8 +1081,8 @@ def build_html_document(page_map=None):
 <!-- LIST OF FIGURES (PAGE 9) -->
 <div class="page-break">
   <span class="page-marker">[[LOC:LOF]]</span>
-  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">List of Figures</div>
-  <table>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:12px; margin-top:16px;">List of Figures</div>
+  <table class="lof-table">
     <thead><tr><th>Fig. No.</th><th>Title of Figure</th><th style="text-align: right;">Page</th></tr></thead>
     <tbody>
 {lof_rows}
@@ -1079,12 +1140,14 @@ def build_html_document(page_map=None):
     return doc
 
 def run_chrome_pdf(html_path, pdf_path):
+    temp_user_dir = r"C:\Users\divya\AppData\Local\Temp\chrome_report_profile"
     cmd = [
         CHROME,
         "--headless",
         "--no-sandbox",
         "--disable-gpu",
         "--no-pdf-header-footer",
+        f"--user-data-dir={temp_user_dir}",
         f"--print-to-pdf={pdf_path}",
         f"file:///{html_path.replace(os.sep, '/')}"
     ]

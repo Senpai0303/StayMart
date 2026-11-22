@@ -127,24 +127,44 @@
 
   .figure-container {
     text-align: center;
-    margin: 12px 0;
+    margin: 8px 0;
     page-break-inside: avoid;
   }
 
   .figure-container img {
     max-width: 80%;
-    max-height: 210px;
+    max-height: 195px;
     object-fit: contain;
     height: auto;
     border: 1px solid #ddd;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   }
 
+  .fig-ch5 img {
+    max-height: 130px;
+  }
+
+  .fig-ch5.figure-container {
+    margin: 6px 0;
+  }
+
+  .fig-ch6 img {
+    max-height: 145px;
+  }
+
+  .fig-ch6.figure-container {
+    margin: 6px 0;
+  }
+
+  .fig-ch7 img {
+    max-height: 195px;
+  }
+
   .subfig-row {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
 
   .subfig {
@@ -155,16 +175,37 @@
 
   .subfig img {
     max-width: 100%;
-    max-height: 140px;
+    max-height: 105px;
     object-fit: contain;
     height: auto;
     border: 1px solid #ddd;
   }
 
   .subfig-cap {
-    font-size: 9pt;
+    font-size: 8.5pt;
     font-style: italic;
     margin-top: 2px;
+  }
+
+  .lof-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4px 0 8px 0;
+    font-size: 8pt;
+    page-break-inside: avoid;
+  }
+
+  .lof-table th, .lof-table td {
+    border: 1px solid #333;
+    padding: 2.2px 5px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.15;
+  }
+
+  .lof-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
   }
 
   .code-container {
@@ -598,7 +639,7 @@
   <div class="toc-row" style="  padding-left: 16px;">
     <span class="toc-title">6.5 Self-Service User and Admin Management Portals</span>
     <span class="toc-leader"></span>
-    <span class="toc-page">46</span>
+    <span class="toc-page">47</span>
   </div>
   <div class="toc-row" style="font-weight: bold; margin-top: 6px; ">
     <span class="toc-title">Chapter 7 Verification, Testing, and System Walkthrough</span>
@@ -750,8 +791,8 @@
 <!-- LIST OF FIGURES (PAGE 9) -->
 <div class="page-break">
   <span class="page-marker">[[LOC:LOF]]</span>
-  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">List of Figures</div>
-  <table>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:12px; margin-top:16px;">List of Figures</div>
+  <table class="lof-table">
     <thead><tr><th>Fig. No.</th><th>Title of Figure</th><th style="text-align: right;">Page</th></tr></thead>
     <tbody>
     <tr>
@@ -785,33 +826,43 @@
       <td style="width: 12%; text-align: right; font-weight: bold;">34</td>
     </tr>
     <tr>
+      <td style="width: 12%;">5.2</td>
+      <td style="width: 76%;">Machine Learning Content-Based Recommendation Pipeline with TF-IDF Vectorization</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">37</td>
+    </tr>
+    <tr>
       <td style="width: 12%;">6.1</td>
       <td style="width: 76%;">StayMart Public Landing Page Featuring Commercial Header, Campus Chips, and Category Discovery</td>
       <td style="width: 12%; text-align: right; font-weight: bold;">40</td>
     </tr>
     <tr>
       <td style="width: 12%;">6.2</td>
-      <td style="width: 76%;">Faceted Search Portals Featuring Authentic Verified Photography</td>
+      <td style="width: 76%;">Authentication Portals Featuring Clean Credential Inputs and Password Visibility Toggles</td>
       <td style="width: 12%; text-align: right; font-weight: bold;">45</td>
     </tr>
     <tr>
       <td style="width: 12%;">6.3</td>
-      <td style="width: 76%;">Listing Detail Pages Featuring Interactive Media Galleries and Direct Host Actions</td>
+      <td style="width: 76%;">Faceted Search Portals Featuring Authentic Verified Photography</td>
       <td style="width: 12%; text-align: right; font-weight: bold;">46</td>
     </tr>
     <tr>
       <td style="width: 12%;">6.4</td>
-      <td style="width: 76%;">Personalized User Dashboard Displaying KPI Tiles, Recommendations, and Activity</td>
-      <td style="width: 12%; text-align: right; font-weight: bold;">47</td>
+      <td style="width: 76%;">Listing Detail Pages Featuring Interactive Media Galleries and Direct Host Actions</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">46</td>
     </tr>
     <tr>
       <td style="width: 12%;">6.5</td>
-      <td style="width: 76%;">Real-Time Peer-to-Peer Messaging Interface Between Tenant and Host</td>
+      <td style="width: 76%;">Self-Service Listing Creation Portals for Accommodations and Student Marketplace</td>
       <td style="width: 12%; text-align: right; font-weight: bold;">47</td>
     </tr>
     <tr>
       <td style="width: 12%;">6.6</td>
-      <td style="width: 76%;">Administrative Analytics Console with Live Chart.js Visualizations</td>
+      <td style="width: 76%;">Self-Service User Dashboard and Real-Time Peer Messaging Interfaces</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">47</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">6.7</td>
+      <td style="width: 76%;">Administrative Console Featuring Live Platform Metrics and Pre-Publication Moderation Queue</td>
       <td style="width: 12%; text-align: right; font-weight: bold;">48</td>
     </tr>
     <tr>
@@ -826,8 +877,8 @@
     </tr>
     <tr>
       <td style="width: 12%;">7.3</td>
-      <td style="width: 76%;">Step 3: Marketplace Product Catalogue</td>
-      <td style="width: 12%; text-align: right; font-weight: bold;">56</td>
+      <td style="width: 76%;">Step 3: Marketplace Product Discovery and Inspection</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">55</td>
     </tr>
     <tr>
       <td style="width: 12%;">7.4</td>
@@ -836,12 +887,17 @@
     </tr>
     <tr>
       <td style="width: 12%;">7.5</td>
-      <td style="width: 76%;">Step 5: Administrative Dashboard and Moderation Queue</td>
+      <td style="width: 76%;">Step 5: Administrative Dashboard, Moderation Queue, and User Directory</td>
       <td style="width: 12%; text-align: right; font-weight: bold;">56</td>
     </tr>
     <tr>
+      <td style="width: 12%;">7.6</td>
+      <td style="width: 76%;">Step 6: User Booking Management and Reservation Status Lifecycle</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">57</td>
+    </tr>
+    <tr>
       <td style="width: 12%;">8.1</td>
-      <td style="width: 76%;">Production Multi-Service Cloud Hosting Topology</td>
+      <td style="width: 76%;">Production Multi-Service Cloud Hosting Topology Across Free-Tier Providers</td>
       <td style="width: 12%; text-align: right; font-weight: bold;">58</td>
     </tr>
 
@@ -957,7 +1013,7 @@
 </ul>
 <span class="page-marker">[[LOC:SEC_1_5]]</span><h2 class="section-title">1.5 Proposed Framework and Value Proposition</h2>
 <p>StayMart provides three key practical advantages over informal methods:</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/diagrams/arch_diagram.png" alt="High-Level Distributed Framework of the StayMart Platform"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_1_1]]</span><strong>Figure 1.1:</strong> High-Level Distributed Framework of the StayMart Platform</div></div>
+<div class="figure-container fig-ch1"><img src="file:///D:/Mini5th/report/diagrams/arch_diagram.png" alt="High-Level Distributed Framework of the StayMart Platform"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_1_1]]</span><strong>Figure 1.1:</strong> High-Level Distributed Framework of the StayMart Platform</div></div>
 <ol>
 <li><strong>Zero-Brokerage Direct Connection:</strong> Connects students directly with verified property caretakers and student sellers without middleman commissions, keeping off-campus housing affordable.</li>
 <li><strong>Verified Photographic Asset Standard:</strong> Listings emphasize authentic photographs of rooms, study desks, and equipment taken by students and caretakers rather than generic stock imagery.</li>
@@ -1071,7 +1127,7 @@
 <p>The overall recommendation affinity score <em>S(u, c)</em> for candidate item <em>c</em> located in city <em>C_c</em> is determined by: \begin{equation} S(u, c) = \alpha \cdot \text{CosineSim}(\vec{p}_u, \vec{v}_c) + \beta \cdot \text{LocalityBonus}(u, C_c) + \gamma \cdot \text{PopularityPrior}(c) \end{equation} where <em>\alpha, \beta, \gamma</em> are tuning hyper-parameters satisfying <em>\alpha + \beta + \gamma = 1.0</em>. This ensures that recommendations strictly align with the user's geographic corridor while dynamically adapting to their stated interests.</p>
 <span class="page-marker">[[LOC:SEC_2_4]]</span><h2 class="section-title">2.4 Architectural Paradigms: Monolithic vs. Distributed Microservices</h2>
 <p>In architecting enterprise web applications, the division of responsibilities across compute boundaries is an important engineering decision [newman2021building, fielding2000architectural].</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/diagrams/deployment_arch.png" alt="Distributed Microservice Deployment Topology vs. Monolithic Boundaries"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_2_1]]</span><strong>Figure 2.1:</strong> Distributed Microservice Deployment Topology vs. Monolithic Boundaries</div></div>
+<div class="figure-container fig-ch2"><img src="file:///D:/Mini5th/report/diagrams/deployment_arch.png" alt="Distributed Microservice Deployment Topology vs. Monolithic Boundaries"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_2_1]]</span><strong>Figure 2.1:</strong> Distributed Microservice Deployment Topology vs. Monolithic Boundaries</div></div>
 <h3 class="subsection-title">2.4.1 The Monolithic Approach</h3>
 <p>In a traditional monolithic Spring Boot application, all operations—including transactional user registration, relational CRUD operations, file uploads, and mathematical vector calculations—execute within a single Java Virtual Machine (JVM). While monoliths offer simplicity in initial deployment and zero network serialization overhead, they exhibit substantial drawbacks for data science workloads:</p>
 <ul>
@@ -1111,7 +1167,7 @@
 <span class="page-marker">[[LOC:SEC_3_2]]</span><h2 class="section-title">3.2 Software Requirements Specification (SRS)</h2>
 <h3 class="subsection-title">3.2.1 User Personas and Actor Hierarchy</h3>
 <p>StayMart delineates four primary actor classifications interacting within the platform ecosystem:</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/diagrams/dfd_level0.png" alt="Data Flow Diagram Level 0 (Context Level Diagram) for the StayMart System"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_3_1]]</span><strong>Figure 3.1:</strong> Data Flow Diagram Level 0 (Context Level Diagram) for the StayMart System</div></div>
+<div class="figure-container fig-ch3"><img src="file:///D:/Mini5th/report/diagrams/dfd_level0.png" alt="Data Flow Diagram Level 0 (Context Level Diagram) for the StayMart System"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_3_1]]</span><strong>Figure 3.1:</strong> Data Flow Diagram Level 0 (Context Level Diagram) for the StayMart System</div></div>
 <ol>
 <li><strong>Guest User (Unauthenticated Public Visitor):</strong> Prospective students, parents, or local citizens browsing property and product catalogues. They have read-only privileges for approved listings, public categories, and regional filters, but must authenticate to interact directly with hosts or place reservations.</li>
 <li><strong>Verified Tenant / Buyer (Authenticated Standard User):</strong> Registered users possessing a valid JWT bearer token. They can save listings to their personal wishlist, submit booking requests for accommodations, initiate purchase/rental orders for marketplace products, rate properties and sellers, and engage in real-time internal chat.</li>
@@ -1169,7 +1225,7 @@
 </ol>
 <span class="page-marker">[[LOC:SEC_3_4]]</span><h2 class="section-title">3.4 UML Behavioral Modeling: Sequence Diagrams</h2>
 <p>To illustrate the temporal interaction and message passing between system components during business-critical workflows, Figure 3.2 details the complete lifecycle of an accommodation booking transaction.</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/diagrams/seq_booking.png" alt="UML Sequence Diagram: Accommodation Booking and Confirmation Flow"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_3_2]]</span><strong>Figure 3.2:</strong> UML Sequence Diagram: Accommodation Booking and Confirmation Flow</div></div>
+<div class="figure-container fig-ch3"><img src="file:///D:/Mini5th/report/diagrams/seq_booking.png" alt="UML Sequence Diagram: Accommodation Booking and Confirmation Flow"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_3_2]]</span><strong>Figure 3.2:</strong> UML Sequence Diagram: Accommodation Booking and Confirmation Flow</div></div>
 <p>The sequence executes through eight calculated stages:</p>
 <ol>
 <li>The prospective tenant selects a target property and room, submitting an HTTP <code>POST /api/bookings</code> request containing <code>propertyId</code>, <code>roomId</code>, <code>checkInDate</code>, and <code>durationMonths</code>.</li>
@@ -1243,7 +1299,7 @@
 </ol>
 <span class="page-marker">[[LOC:SEC_4_2]]</span><h2 class="section-title">4.2 Entity-Relationship (ER) Modeling</h2>
 <p>Figure 4.1 illustrates the complete Entity-Relationship diagram for the StayMart database schema.</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/diagrams/er_diagram.png" alt="Entity-Relationship (ER) Diagram of the StayMart Relational Database Schema"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_4_1]]</span><strong>Figure 4.1:</strong> Entity-Relationship (ER) Diagram of the StayMart Relational Database Schema</div></div>
+<div class="figure-container fig-ch4"><img src="file:///D:/Mini5th/report/diagrams/er_diagram.png" alt="Entity-Relationship (ER) Diagram of the StayMart Relational Database Schema"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_4_1]]</span><strong>Figure 4.1:</strong> Entity-Relationship (ER) Diagram of the StayMart Relational Database Schema</div></div>
 <p>The schema models key relationships across the student marketplace:</p>
 <ul>
 <li><strong>Users to Properties (<em>1:N</em>):</strong> A registered user can list multiple accommodations (<code>properties.posted_by</code>).</li>
@@ -1455,7 +1511,7 @@
 <p>The core backend is built on Spring Boot 3.3.5 and Spring Framework 6.1.14 running on Java 17 LTS. The application uses modern Java language features—including immutable record classes for Data Transfer Objects (DTOs), text blocks for readable queries, enhanced switch expressions, and pattern matching for instanceof—alongside standard thread-pool request execution on embedded Apache Tomcat.</p>
 <h3 class="subsection-title">5.2.1 Architectural Layering: Controller-Service-Repository Pattern</h3>
 <p>The backend organizes business logic through the standard Controller-Service-Repository pattern:</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/screenshots/swagger_api.png" alt="Springdoc OpenAPI 3.0 Swagger UI Exposing Core Backend REST Endpoints"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_5_1]]</span><strong>Figure 5.1:</strong> Springdoc OpenAPI 3.0 Swagger UI Exposing Core Backend REST Endpoints</div></div>
+<div class="figure-container fig-ch5"><img src="file:///D:/Mini5th/report/screenshots/swagger_api.png" alt="Springdoc OpenAPI 3.0 Swagger UI Exposing Core Backend REST Endpoints"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_5_1]]</span><strong>Figure 5.1:</strong> Springdoc OpenAPI 3.0 Swagger UI Exposing Core Backend REST Endpoints</div></div>
 <p>The 16 REST controllers in <code>src/main/java/com/staymart/controller/</code> are organized into four functional groups:</p>
 <ol>
 <li><strong>Identity and Profile Management:</strong> <code>AuthController</code> (registration and login), <code>UserController</code> (profile management and verification), and <code>FileController</code> (photograph asset uploads).</li>
@@ -1576,6 +1632,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         tokens.append(&quot;budget_tier_premium&quot;)
     return &quot; &quot;.join(tokens)</pre></div>
 <p>The composite corpus is transformed into a continuous vector space using <code>TfidfVectorizer</code> with unigrams and bigrams <em>(1, 2)</em>, sublinear term frequency scaling, and English stop-word filtering. Cosine similarity calculates relevance scores: \begin{equation} \text{Similarity}(\vec{u}, \vec{v}) = \frac{\vec{u} \cdot \vec{v}}{\|\vec{u}\|_2 \|\vec{v}\|_2} \end{equation}</p>
+<div class="figure-container fig-ch5"><img src="file:///D:/Mini5th/report/diagrams/ml_pipeline.png" alt="Machine Learning Content-Based Recommendation Pipeline with TF-IDF Vectorization"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_5_2]]</span><strong>Figure 5.2:</strong> Machine Learning Content-Based Recommendation Pipeline with TF-IDF Vectorization</div></div>
 <span class="page-marker">[[LOC:SEC_5_5]]</span><h2 class="section-title">5.5 Fault-Tolerant Fallback Integration in Spring Boot</h2>
 <p>The Spring Boot backend interacts with the Flask ML microservice through <code>MlServiceClient</code>. To ensure platform availability when the ML service is offline or starting up, <code>MlServiceClient</code> configures a 2000ms connection timeout and a 3000ms read timeout:</p>
 <div class="code-container"><pre>SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
@@ -1591,21 +1648,13 @@ public class RecommendationService {
     private final PropertyService propertyService;
     private final ProductService productService;
 
-    public RecommendationService(MlServiceClient mlServiceClient,
-                                 PropertyService propertyService,
-                                 ProductService productService) {
-        this.mlServiceClient = mlServiceClient;
-        this.propertyService = propertyService;
-        this.productService = productService;
-    }
-
     public List&lt;PropertyResponse&gt; recommendedProperties(Long userId, String city, int limit) {
         List&lt;Long&gt; ids = mlServiceClient.fetchRecommendedPropertyIds(userId, resolveCity(city), limit);
         List&lt;PropertyResponse&gt; properties = ids.isEmpty()
                 ? List.of()
                 : propertyService.findRecommendedProperties(ids, limit);
         if (properties.isEmpty()) {
-            return propertyService.latestApproved(limit);
+            return propertyService.latestApproved(limit); // Resilient JPA fallback
         }
         return properties;
     }
@@ -1628,7 +1677,7 @@ public class RecommendationService {
 </ol>
 <span class="page-marker">[[LOC:SEC_6_2]]</span><h2 class="section-title">6.2 Design Philosophy and Visual Design System</h2>
 <p>Rather than adopting trendy dark-mode templates or ubiquitous AI archetypes (such as warm cream canvases paired with terracotta accents or near-black backgrounds with neon highlights), StayMart establishes an authentic, high-trust visual identity grounded in the physical and academic geography of Uttarakhand.</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/screenshots/landing_page.png" alt="StayMart Modern Landing Interface Featuring Alpine Navy Navigation, Refined Campus Chips, and Real-Time Marketplace Metrics"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_1]]</span><strong>Figure 6.1:</strong> StayMart Modern Landing Interface Featuring Alpine Navy Navigation, Refined Campus Chips, and Real-Time Marketplace Metrics</div></div>
+<div class="figure-container fig-ch6"><img src="file:///D:/Mini5th/report/screenshots/landing_page.png" alt="StayMart Modern Landing Interface Featuring Alpine Navy Navigation, Refined Campus Chips, and Real-Time Marketplace Metrics"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_1]]</span><strong>Figure 6.1:</strong> StayMart Modern Landing Interface Featuring Alpine Navy Navigation, Refined Campus Chips, and Real-Time Marketplace Metrics</div></div>
 <p>The visual system is governed by three fundamental design tenets:</p>
 <ul>
 <li><strong>Subject-Matter Grounding:</strong> The user interface is purpose-built for student reality in Dehradun, Prem Nagar, Clement Town, Rajpur Road, and Bhimtal. Features such as campus gate proximity badges (&ldquo;400m from GEHU Gate 2&rdquo;), verified roommate preferences (Boys, Girls, Co-ed), and room essential categories directly address outstation student life.</li>
@@ -1754,46 +1803,45 @@ public class RecommendationService {
 <li><strong>Real-Time Metrics Ribbon:</strong> Showcases verified listing tallies, student savings benchmarks, and college-ID verification rates.</li>
 <li><strong>Interactive Student Savings Workbench:</strong> Enables students and parents to model annual cost reductions through zero-brokerage rentals and circular campus commerce.</li>
 </ul>
-<h3 class="subsection-title">6.4.2 Faceted Accommodation and Product Search Portals</h3>
+<h3 class="subsection-title">6.4.2 Authentication and Onboarding Portals</h3>
+<p>To ensure security and user privacy, StayMart provides dedicated authentication portals for student registration and login (<code>login.html</code> and <code>register.html</code>). Following modern usability guidelines, credential fields load completely clean with browser autofill disabled, interactive password visibility toggles, and real-time validation checks for institutional email formats:</p>
+<div class="figure-container fig-ch6"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/login_page.png" alt="Student and Host Login Interface"><div class="subfig-cap">(Student and Host Login Interface)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/register_page.png" alt="Student Registration with Verification"><div class="subfig-cap">(Student Registration with Verification)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_2]]</span><strong>Figure 6.2:</strong> Student and Host Login Interface</div></div>
+<h3 class="subsection-title">6.4.3 Faceted Accommodation and Product Search Portals</h3>
 <p>The search interfaces (<code>search-properties.html</code> and <code>search-products.html</code>) provide multi-attribute faceted filtering:</p>
-<div class="figure-container"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/search_properties.png" alt="Property Search with Amenities Filter"><div class="subfig-cap">(Property Search with Amenities Filter)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/search_products.png" alt="Product Search with Category Filter"><div class="subfig-cap">(Product Search with Category Filter)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_2]]</span><strong>Figure 6.2:</strong> Property Search with Amenities Filter</div></div>
+<div class="figure-container fig-ch6"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/search_properties.png" alt="Property Search with Amenities Filter"><div class="subfig-cap">(Property Search with Amenities Filter)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/search_products.png" alt="Product Search with Category Filter"><div class="subfig-cap">(Product Search with Category Filter)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_3]]</span><strong>Figure 6.3:</strong> Property Search with Amenities Filter</div></div>
 <ul>
 <li><strong>Faceted Filter Controls:</strong> Multi-variable filtering by city, neighborhood zone, accommodation type (PG, Flat, Hostel), budget slider, gender preference (Boys, Girls, Co-ed), and essential student amenities (WiFi, Power Backup, Meals Included, AC).</li>
 <li><strong>Standardized 4:3 Image Cards:</strong> Displays authentic room and product photography, price tags with transparent monthly breakdown, campus proximity tags, and live room vacancy status.</li>
 <li><strong>Mobile Filter Drawer:</strong> On viewport widths under 768px, filters collapse into an intuitive slide-up drawer with persistent filter count badges, ensuring zero horizontal overflow.</li>
 </ul>
-<h3 class="subsection-title">6.4.3 Listing Detail Portals</h3>
+<h3 class="subsection-title">6.4.4 Listing Detail Portals</h3>
 <p>Detail views (<code>property-detail.html</code> and <code>product-detail.html</code>) present verified information:</p>
-<div class="figure-container"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/property_detail.png" alt="Property Details and Room Booking Widget"><div class="subfig-cap">(Property Details and Room Booking Widget)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/product_detail.png" alt="Product Details with Specifications"><div class="subfig-cap">(Product Details with Specifications)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_3]]</span><strong>Figure 6.3:</strong> Property Details and Room Booking Widget</div></div>
+<div class="figure-container fig-ch6"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/property_detail.png" alt="Property Details and Room Booking Widget"><div class="subfig-cap">(Property Details and Room Booking Widget)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/product_detail.png" alt="Product Details with Specifications"><div class="subfig-cap">(Product Details with Specifications)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_4]]</span><strong>Figure 6.4:</strong> Property Details and Room Booking Widget</div></div>
 <ul>
 <li><strong>High-Resolution Photo Gallery:</strong> Thumbnail-driven interactive gallery enabling outstation students to inspect room conditions prior to visiting.</li>
 <li><strong>Direct Host Connection Card:</strong> Features verified landlord identity badges and direct WhatsApp and phone dialing actions, eliminating middleman interference.</li>
 <li><strong>Dynamic Room Reservation Module:</strong> Allows students to select sharing configuration (Single, Double, Triple), set lease durations, review total estimated costs, and submit direct booking inquiries.</li>
 <li><strong>Mobile Sticky Action Bar:</strong> On handheld screens, a fixed bottom action bar provides continuous access to &ldquo;Call Host&rdquo; and &ldquo;Book Room&rdquo; buttons without requiring manual scrolling.</li>
 </ul>
+<h3 class="subsection-title">6.4.5 Listing Submission and Publishing Portals</h3>
+<p>Registered hosts and students publish listings through dedicated self-service forms (<code>post-property.html</code> and <code>post-product.html</code>). Forms guide users through structured attributes including room types, amenities, photographs, and pricing tiers:</p>
+<div class="figure-container fig-ch6"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/post_property.png" alt="Accommodation Listing Submission Portal"><div class="subfig-cap">(Accommodation Listing Submission Portal)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/post_product.png" alt="Student Re-Commerce Product Form"><div class="subfig-cap">(Student Re-Commerce Product Form)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_5]]</span><strong>Figure 6.5:</strong> Accommodation Listing Submission Portal</div></div>
 <span class="page-marker">[[LOC:SEC_6_5]]</span><h2 class="section-title">6.5 Self-Service User and Admin Management Portals</h2>
-<h3 class="subsection-title">6.5.1 User Dashboard and Account Management</h3>
-<p>The user dashboard (<code>pages/user/dashboard.html</code>) aggregates personal interactions:</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/screenshots/user_dashboard.png" alt="User Dashboard Showing Activity Summaries and Recommendations"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_4]]</span><strong>Figure 6.4:</strong> User Dashboard Showing Activity Summaries and Recommendations</div></div>
+<h3 class="subsection-title">6.5.1 User Dashboard and Peer Messaging Portals</h3>
+<p>The user dashboard (<code>pages/user/dashboard.html</code>) and messaging center (<code>pages/user/chat.html</code>) centralize student interactions and communication:</p>
+<div class="figure-container fig-ch6"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/user_dashboard.png" alt="User Activity Dashboard and Recommendations"><div class="subfig-cap">(User Activity Dashboard and Recommendations)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/user_chat.png" alt="In-App Peer Chat with Caretaker"><div class="subfig-cap">(In-App Peer Chat with Caretaker)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_6]]</span><strong>Figure 6.6:</strong> User Activity Dashboard and Recommendations</div></div>
 <ul>
 <li><strong>Operational Activity Cards:</strong> Quantitative metrics tracking active booking inquiries, submitted orders, personal listings, and saved wishlist items.</li>
 <li><strong>Lifecycle Status Indicators:</strong> Visual indicators tracking booking states (<code>PENDING</code>, <code>CONFIRMED</code>, <code>COMPLETED</code>, <code>CANCELLED</code>).</li>
 <li><strong>Tailored Machine Learning Recommendations:</strong> Dynamic listing carousel generated by the TF-IDF recommendation microservice based on browsing behavior.</li>
+<li><strong>Conversational Messaging Pane:</strong> Direct student-to-host chat with unread indicators, avatar badges, and listing context.</li>
 </ul>
-<h3 class="subsection-title">6.5.2 Peer-to-Peer Messaging Portal</h3>
-<p>Direct communication between students and accommodation caretakers takes place in <code>pages/user/chat.html</code>:</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/screenshots/user_chat.png" alt="Peer-to-Peer Chat Interface Between Student and Caretaker"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_5]]</span><strong>Figure 6.5:</strong> Peer-to-Peer Chat Interface Between Student and Caretaker</div></div>
+<h3 class="subsection-title">6.5.2 Administrative Moderation and Governance Console</h3>
+<p>Platform moderators operate through <code>pages/admin/dashboard.html</code> to review listings and govern platform health:</p>
+<div class="figure-container fig-ch6"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/admin_dashboard.png" alt="Administrative Metrics Console"><div class="subfig-cap">(Administrative Metrics Console)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/admin_pending_properties.png" alt="Listing Moderation Approval Queue"><div class="subfig-cap">(Listing Moderation Approval Queue)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_7]]</span><strong>Figure 6.7:</strong> Administrative Metrics Console</div></div>
 <ul>
-<li>Unified conversation thread listing with live unread indicators.</li>
-<li>Conversational chat pane with message timestamps and sender avatars.</li>
-<li>Contextual initialization: clicking &ldquo;Message Caretaker&rdquo; on a property pre-populates the chat input with the listing title and pricing details.</li>
-</ul>
-<h3 class="subsection-title">6.5.3 Administrative Moderation Console</h3>
-<p>Platform moderators operate through <code>pages/admin/dashboard.html</code>:</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/screenshots/admin_dashboard.png" alt="Administrative Console with Platform Metrics and Moderation Controls"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_6]]</span><strong>Figure 6.6:</strong> Administrative Console with Platform Metrics and Moderation Controls</div></div>
-<ul>
-<li>Quantitative platform health tallies: total registered students, verified properties, vacant rooms, active product ads, and pending reviews.</li>
-<li>Moderation Workflows: Enables staff to inspect newly posted student PGs and products, verify uploaded photographs and pricing fairness, and approve or reject submissions prior to public catalog indexing.</li>
+<li><strong>Quantitative Platform Health Tallies:</strong> Total registered students, verified properties, vacant rooms, active product ads, and pending reviews.</li>
+<li><strong>Moderation Workflows:</strong> Enables staff to inspect newly posted student PGs and products, verify uploaded photographs and pricing fairness, and approve or reject submissions prior to public catalog indexing.</li>
 </ul>
 <span class="page-marker">[[LOC:SEC_6_6]]</span><h2 class="section-title">6.6 Summary</h2>
 <p>This chapter presented the comprehensive frontend architecture of StayMart. By implementing a modern commercial light design system with native HTML5, CSS3 Custom Properties, and ES6 JavaScript, the platform avoids client-side framework bloat while providing sub-second page rendering and high visual dignity. The design is grounded in the authentic needs of Uttarakhand students, featuring the Himalayan Alpine Navy and Radiant Amber palette, Plus Jakarta Sans typography, interactive savings calculators, and multi-viewport responsive resilience. The subsequent chapter presents software verification methodologies, automated test suites, and empirical evaluation results.</p>
@@ -1871,31 +1919,34 @@ public class RecommendationService {
 <li><strong>Multi-Tier API Contract Smoke Suite:</strong> 106 live contract assertions covering REST endpoints, DTO models, JPA relational constraints, Flask ML routes, and recommendation fallback resilience.</li>
 </ol>
 <p>Across all 7 suites and 292 individual tests, the platform achieves a 100% pass rate with zero defects identified.</p>
-<span class="page-marker">[[LOC:SEC_7_7]]</span><h2 class="section-title">7.7 Performance and Resource Benchmarking</h2>
+<h3 class="subsection-title">7.6.2 Performance and Resource Benchmarking</h3>
 <p>Local performance benchmarking was conducted to ensure the backend operates comfortably within the memory limits of free cloud hosting:</p>
 <ul>
 <li><strong>API Response Times:</strong> Core search endpoints (<code>/api/properties</code>) averaged under 35ms response time on standard hardware; transactional endpoints (<code>/api/bookings</code>) averaged under 50ms including database commit.</li>
 <li><strong>Database Connection Pool:</strong> HikariCP maintained optimal connection pooling, typically utilizing 2 to 4 active connections and peaking at 8 during burst requests, safely inside the maximum pool limit of 10.</li>
 <li><strong>JVM Memory Footprint:</strong> JVM heap consumption stabilized around 240 MB after startup warm-up, well below the 384 MB limit configured for free cloud hosting containers.</li>
 </ul>
-<span class="page-marker">[[LOC:SEC_7_8]]</span><h2 class="section-title">7.8 Comprehensive Visual Walkthrough of Running System</h2>
+<span class="page-marker">[[LOC:SEC_7_7]]</span><h2 class="section-title">7.7 Comprehensive Visual Walkthrough of Running System</h2>
 <p>This section illustrates key user journeys on the live StayMart platform.</p>
-<h3 class="subsection-title">7.8.1 1. Public Search and Discovery Flow</h3>
+<h3 class="subsection-title">7.7.1 1. Public Search and Discovery Flow</h3>
 <p>A student visiting the platform enters a search for accommodations near Graphic Era in Dehradun. On the search page (Figure 7.1), the student filters for Boys PGs with WiFi and Power Backup. The system displays verified listings with photos, rents, and vacancy counts.</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/screenshots/search_properties.png" alt="Step 1: Accommodation Search with Faceted Filtering"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_1]]</span><strong>Figure 7.1:</strong> Step 1: Accommodation Search with Faceted Filtering</div></div>
-<h3 class="subsection-title">7.8.2 2. Accommodation Inspection and Reservation Flow</h3>
+<div class="figure-container fig-ch7"><img src="file:///D:/Mini5th/report/screenshots/search_properties.png" alt="Step 1: Accommodation Search with Faceted Filtering"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_1]]</span><strong>Figure 7.1:</strong> Step 1: Accommodation Search with Faceted Filtering</div></div>
+<h3 class="subsection-title">7.7.2 2. Accommodation Inspection and Reservation Flow</h3>
 <p>Selecting &ldquo;Sunrise Boys PG&rdquo; opens the property detail view (Figure 7.2). The student browses room photos, inspects amenities, selects a Single Room (₹6,500/month) for a 3-month duration, and submits a booking request without paying broker fees.</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/screenshots/property_detail.png" alt="Step 2: Property Detail View with Room Selection Widget"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_2]]</span><strong>Figure 7.2:</strong> Step 2: Property Detail View with Room Selection Widget</div></div>
-<h3 class="subsection-title">7.8.3 3. Marketplace Re-Commerce Flow</h3>
+<div class="figure-container fig-ch7"><img src="file:///D:/Mini5th/report/screenshots/property_detail.png" alt="Step 2: Property Detail View with Room Selection Widget"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_2]]</span><strong>Figure 7.2:</strong> Step 2: Property Detail View with Room Selection Widget</div></div>
+<h3 class="subsection-title">7.7.3 3. Marketplace Re-Commerce Flow</h3>
 <p>Students can also buy and sell pre-owned campus essentials. Navigating to the Products portal (Figure 7.3), the student views second-hand laptops, smartphones, bicycles, and textbooks listed by passing-out seniors at affordable prices.</p>
-<div class="figure-container"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/search_products.png" alt="Marketplace Product Catalogue"><div class="subfig-cap">(Marketplace Product Catalogue)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/product_detail.png" alt="Product Inspection Page"><div class="subfig-cap">(Product Inspection Page)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_3]]</span><strong>Figure 7.3:</strong> Marketplace Product Catalogue</div></div>
-<h3 class="subsection-title">7.8.4 4. In-App Conversational Communication</h3>
+<div class="figure-container fig-ch7"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/search_products.png" alt="Marketplace Product Catalogue"><div class="subfig-cap">(Marketplace Product Catalogue)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/product_detail.png" alt="Product Inspection Page"><div class="subfig-cap">(Product Inspection Page)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_3]]</span><strong>Figure 7.3:</strong> Marketplace Product Catalogue</div></div>
+<h3 class="subsection-title">7.7.4 4. In-App Conversational Communication</h3>
 <p>Clicking &ldquo;Message Seller&rdquo; opens the in-app chat (Figure 7.4), automatically initializing a conversation quoting the listing title so both parties have clear context.</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/screenshots/user_chat_active.png" alt="Step 4: Peer-to-Peer Chat Between Student and Caretaker"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_4]]</span><strong>Figure 7.4:</strong> Step 4: Peer-to-Peer Chat Between Student and Caretaker</div></div>
-<h3 class="subsection-title">7.8.5 5. Administrative Moderation and Governance</h3>
-<p>Platform administrators access the moderation console (Figure 7.5) to review pending property submissions and inspect user metrics.</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/screenshots/admin_dashboard.png" alt="Step 5: Administrative Dashboard and Moderation Queue"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_5]]</span><strong>Figure 7.5:</strong> Step 5: Administrative Dashboard and Moderation Queue</div></div>
-<span class="page-marker">[[LOC:SEC_7_9]]</span><h2 class="section-title">7.9 Summary</h2>
+<div class="figure-container fig-ch7"><img src="file:///D:/Mini5th/report/screenshots/user_chat_active.png" alt="Step 4: Peer-to-Peer Chat Between Student and Caretaker"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_4]]</span><strong>Figure 7.4:</strong> Step 4: Peer-to-Peer Chat Between Student and Caretaker</div></div>
+<h3 class="subsection-title">7.7.5 5. Administrative Moderation and Governance</h3>
+<p>Platform administrators access the moderation console (Figure 7.5) to review pending property submissions and inspect user accounts across Uttarakhand campuses.</p>
+<div class="figure-container fig-ch7"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/admin_dashboard.png" alt="Administrative Overview and Metrics"><div class="subfig-cap">(Administrative Overview and Metrics)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/admin_all_users.png" alt="Registered Student and Host Directory"><div class="subfig-cap">(Registered Student and Host Directory)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_5]]</span><strong>Figure 7.5:</strong> Administrative Overview and Metrics</div></div>
+<h3 class="subsection-title">7.7.6 6. User Bookings and Reservation Lifecycle Flow</h3>
+<p>Students track their accommodation booking requests and product orders in real time via their dedicated bookings console (Figure 7.6). When a property host approves a pending reservation, the booking status transitions dynamically to <code>CONFIRMED</code>, triggering an automated confirmation voucher, reservation summary, and direct caretaker communication channel.</p>
+<div class="figure-container fig-ch7"><img src="file:///D:/Mini5th/report/screenshots/user_bookings.png" alt="Step 6: User Booking Management and Reservation Status Lifecycle"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_6]]</span><strong>Figure 7.6:</strong> Step 6: User Booking Management and Reservation Status Lifecycle</div></div>
+<span class="page-marker">[[LOC:SEC_7_8]]</span><h2 class="section-title">7.8 Summary</h2>
 <p>This chapter detailed the verification and testing of StayMart. All fourteen core test cases passed successfully. Penetration testing validated resistance against SQL injection, XSS, and JWT tampering. Resilience testing confirmed that the backend gracefully falls back to database queries when the ML microservice is slow or offline. Automated mobile viewport testing proved zero layout breakages from 320px to 1280px widths. The next chapter presents our cloud deployment architecture, free-tier hosting topology, and local development runbooks.</p>
 </div>
 
@@ -1910,7 +1961,7 @@ public class RecommendationService {
 </ol>
 <span class="page-marker">[[LOC:SEC_8_2]]</span><h2 class="section-title">8.2 Free-Tier Production Cloud Hosting Topology</h2>
 <p>The production cloud topology decouples the system into four zero-cost tiers, eliminating single points of failure while respecting free-tier memory and compute constraints.</p>
-<div class="figure-container"><img src="file:///D:/Mini5th/report/diagrams/deployment_arch.png" alt="StayMart Production Cloud Hosting Topology Across Free-Tier Providers"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_8_1]]</span><strong>Figure 8.1:</strong> StayMart Production Cloud Hosting Topology Across Free-Tier Providers</div></div>
+<div class="figure-container fig-ch8"><img src="file:///D:/Mini5th/report/diagrams/deployment_arch.png" alt="StayMart Production Cloud Hosting Topology Across Free-Tier Providers"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_8_1]]</span><strong>Figure 8.1:</strong> StayMart Production Cloud Hosting Topology Across Free-Tier Providers</div></div>
 <p>The four tiers operate as follows:</p>
 <ul>
 <li><strong>Tier 1: Static Edge CDN (Vercel):</strong> The vanilla HTML5/CSS3/JavaScript frontend is deployed to Vercel's global edge network. Vercel automatically provides HTTPS SSL certificates, global CDN caching, and sub-20ms Time-to-First-Byte (TTFB). Reverse proxy rewrite rules in <code>vercel.json</code> route all <code>/api/*</code> calls directly to the Spring Boot backend, completely avoiding Cross-Origin Resource Sharing (CORS) complexities in production.</li>

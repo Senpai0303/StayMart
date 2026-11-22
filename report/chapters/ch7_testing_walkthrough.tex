@@ -88,7 +88,7 @@ The complete verification suite executes sequentially and produces a unified pas
 
 Across all 7 suites and 292 individual tests, the platform achieves a 100\% pass rate with zero defects identified.
 
-\section{Performance and Resource Benchmarking}
+\subsection{Performance and Resource Benchmarking}
 Local performance benchmarking was conducted to ensure the backend operates comfortably within the memory limits of free cloud hosting:
 \begin{itemize}
     \item \textbf{API Response Times:} Core search endpoints (\texttt{/api/properties}) averaged under 35ms response time on standard hardware; transactional endpoints (\texttt{/api/bookings}) averaged under 50ms including database commit.
@@ -148,13 +148,31 @@ Clicking ``Message Seller'' opens the in-app chat (Figure \ref{fig:walkthrough_c
 \end{figure}
 
 \subsection{5. Administrative Moderation and Governance}
-Platform administrators access the moderation console (Figure \ref{fig:walkthrough_admin}) to review pending property submissions and inspect user metrics.
+Platform administrators access the moderation console (Figure \ref{fig:walkthrough_admin}) to review pending property submissions and inspect user accounts across Uttarakhand campuses.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.92\textwidth]{screenshots/admin_dashboard.png}
-    \caption{Step 5: Administrative Dashboard and Moderation Queue}
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{screenshots/admin_dashboard.png}
+        \caption{Administrative Overview and Metrics}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{screenshots/admin_all_users.png}
+        \caption{Registered Student and Host Directory}
+    \end{subfigure}
+    \caption{Step 5: Administrative Dashboard, Moderation Queue, and User Directory}
     \label{fig:walkthrough_admin}
+\end{figure}
+
+\subsection{6. User Bookings and Reservation Lifecycle Flow}
+Students track their accommodation booking requests and product orders in real time via their dedicated bookings console (Figure \ref{fig:walkthrough_bookings}). When a property host approves a pending reservation, the booking status transitions dynamically to \texttt{CONFIRMED}, triggering an automated confirmation voucher, reservation summary, and direct caretaker communication channel.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.92\textwidth]{screenshots/user_bookings.png}
+    \caption{Step 6: User Booking Management and Reservation Status Lifecycle}
+    \label{fig:walkthrough_bookings}
 \end{figure}
 
 \section{Summary}

@@ -166,6 +166,13 @@ The composite corpus is transformed into a continuous vector space using \texttt
 \text{Similarity}(\vec{u}, \vec{v}) = \frac{\vec{u} \cdot \vec{v}}{\|\vec{u}\|_2 \|\vec{v}\|_2}
 \end{equation}
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.92\textwidth]{diagrams/ml_pipeline.png}
+    \caption{Machine Learning Content-Based Recommendation Pipeline with TF-IDF Vectorization}
+    \label{fig:ml_pipeline}
+\end{figure}
+
 \section{Fault-Tolerant Fallback Integration in Spring Boot}
 The Spring Boot backend interacts with the Flask ML microservice through \texttt{MlServiceClient}. To ensure platform availability when the ML service is offline or starting up, \texttt{MlServiceClient} configures a 2000ms connection timeout and a 3000ms read timeout:
 
@@ -188,21 +195,13 @@ public class RecommendationService {
     private final PropertyService propertyService;
     private final ProductService productService;
 
-    public RecommendationService(MlServiceClient mlServiceClient,
-                                 PropertyService propertyService,
-                                 ProductService productService) {
-        this.mlServiceClient = mlServiceClient;
-        this.propertyService = propertyService;
-        this.productService = productService;
-    }
-
     public List<PropertyResponse> recommendedProperties(Long userId, String city, int limit) {
         List<Long> ids = mlServiceClient.fetchRecommendedPropertyIds(userId, resolveCity(city), limit);
         List<PropertyResponse> properties = ids.isEmpty()
                 ? List.of()
                 : propertyService.findRecommendedProperties(ids, limit);
         if (properties.isEmpty()) {
-            return propertyService.latestApproved(limit);
+            return propertyService.latestApproved(limit); // Resilient JPA fallback
         }
         return properties;
     }
