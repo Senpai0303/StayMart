@@ -38,3 +38,41 @@
 2026-11-22 16:27:57,856 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 16:27:57] "GET /trending?type=PROPERTY&city=Dehradun&limit=8 HTTP/1.1" 200 -
 2026-11-22 16:27:57,960 INFO staymart-ml - [2026-11-22 16:27:57.959751] user=1 city=Dehradun type=PROPERTY ids -> 6 results
 2026-11-22 16:27:57,961 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 16:27:57] "GET /recommend/properties/1?city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 16:44:30,591 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 16:44:30] "GET /health HTTP/1.1" 200 -
+2026-11-22 16:44:30,831 INFO staymart-ml - [2026-11-22 16:44:30.831548] trending city=Dehradun type=PROPERTY -> 8 results
+2026-11-22 16:44:30,833 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 16:44:30] "GET /trending?type=PROPERTY&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 16:44:30,927 INFO staymart-ml - [2026-11-22 16:44:30.926634] trending city=Dehradun type=PRODUCT -> 8 results
+2026-11-22 16:44:30,928 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 16:44:30] "GET /trending?type=PRODUCT&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 16:44:33,067 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 16:44:33] "GET /health HTTP/1.1" 200 -
+2026-11-22 16:48:46,789 INFO staymart-ml - [2026-11-22 16:48:46.789062] trending city=Dehradun type=PROPERTY -> 8 results
+2026-11-22 16:48:46,791 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 16:48:46] "GET /trending?type=PROPERTY&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 16:48:46,933 INFO staymart-ml - [2026-11-22 16:48:46.933574] trending city=Dehradun type=PRODUCT -> 8 results
+2026-11-22 16:48:46,935 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 16:48:46] "GET /trending?type=PRODUCT&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 16:55:47,044 INFO staymart-ml - [2026-11-22 16:55:47.044599] trending city=Dehradun type=PRODUCT -> 8 results
+2026-11-22 16:55:47,044 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 16:55:47] "GET /trending?type=PRODUCT&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 16:55:47,138 INFO staymart-ml - [2026-11-22 16:55:47.138514] trending city=Dehradun type=PROPERTY -> 8 results
+2026-11-22 16:55:47,138 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 16:55:47] "GET /trending?type=PROPERTY&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 16:57:12,482 INFO staymart-ml - [2026-11-22 16:57:12.481602] trending city=Dehradun type=PROPERTY -> 8 results
+2026-11-22 16:57:12,534 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 16:57:12] "GET /trending?type=PROPERTY&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 16:57:12,703 INFO staymart-ml - [2026-11-22 16:57:12.703338] trending city=Dehradun type=PRODUCT -> 8 results
+2026-11-22 16:57:12,705 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 16:57:12] "GET /trending?type=PRODUCT&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 17:04:42,436 INFO staymart-ml - [2026-11-22 17:04:42.436730] trending city=Dehradun type=PRODUCT -> 8 results
+2026-11-22 17:04:42,437 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 17:04:42] "GET /trending?type=PRODUCT&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 17:04:42,620 INFO staymart-ml - [2026-11-22 17:04:42.620248] trending city=Dehradun type=PROPERTY -> 8 results
+2026-11-22 17:04:42,622 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 17:04:42] "GET /trending?type=PROPERTY&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 17:04:46,148 INFO staymart-ml - [2026-11-22 17:04:46.148240] trending city=Dehradun type=PRODUCT -> 8 results
+2026-11-22 17:04:46,150 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 17:04:46] "GET /trending?type=PRODUCT&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 17:04:46,251 INFO staymart-ml - [2026-11-22 17:04:46.251724] trending city=Dehradun type=PROPERTY -> 8 results
+2026-11-22 17:04:46,253 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 17:04:46] "GET /trending?type=PROPERTY&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 17:27:14,207 INFO staymart-ml - [2026-11-22 17:27:14.207278] trending city=Dehradun type=PRODUCT -> 8 results
+2026-11-22 17:27:14,210 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 17:27:14] "GET /trending?type=PRODUCT&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 17:27:14,216 INFO staymart-ml - [2026-11-22 17:27:14.216457] trending city=Dehradun type=PROPERTY -> 8 results
+2026-11-22 17:27:14,217 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 17:27:14] "GET /trending?type=PROPERTY&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 17:27:14,283 INFO staymart-ml - [2026-11-22 17:27:14.283362] user=11 city=Dehradun type=PROPERTY ids -> 8 results
+2026-11-22 17:27:14,284 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 17:27:14] "GET /recommend/properties/11?city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 17:28:57,456 INFO staymart-ml - [2026-11-22 17:28:57.456311] trending city=Dehradun type=PROPERTY -> 8 results
+2026-11-22 17:28:57,457 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 17:28:57] "GET /trending?type=PROPERTY&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 17:28:57,458 INFO staymart-ml - [2026-11-22 17:28:57.458312] trending city=Dehradun type=PRODUCT -> 8 results
+2026-11-22 17:28:57,459 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 17:28:57] "GET /trending?type=PRODUCT&city=Dehradun&limit=8 HTTP/1.1" 200 -
+2026-11-22 17:28:57,479 INFO staymart-ml - [2026-11-22 17:28:57.479386] user=12 city=Dehradun type=PROPERTY ids -> 8 results
+2026-11-22 17:28:57,480 INFO werkzeug - 127.0.0.1 - - [22/Nov/2026 17:28:57] "GET /recommend/properties/12?city=Dehradun&limit=8 HTTP/1.1" 200 -
