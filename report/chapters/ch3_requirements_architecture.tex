@@ -1,138 +1,88 @@
 \chapter{System Requirements and High-Level Architecture}
 
 \section{Introduction}
-The development of a resilient, distributed, two-sided marketplace requires rigorous requirements elicitation and structured architectural modeling. This chapter formalizes the Software Requirements Specification (SRS) for StayMart, establishing its functional and non-functional constraints. Furthermore, it details the system's structural and behavioral characteristics through standard Unified Modeling Language (UML) specifications and multi-level Data Flow Diagrams (DFD Level 0, Level 1, and Level 2), establishing a formal blueprint for subsequent implementation.
+Engineering a resilient, distributed, two-sided marketplace requires structured requirements specification and formal architectural modeling. This chapter establishes the Software Requirements Specification (SRS), non-functional constraints, 3-tier distributed architecture, UML sequence interactions, and operational environments for StayMart.
 
 \section{Software Requirements Specification (SRS)}
 
 \subsection{User Personas and Actor Hierarchy}
 StayMart delineates four primary actor classifications interacting within the platform ecosystem:
+\begin{enumerate}
+    \item \textbf{Guest User:} Unauthenticated visitor with read-only access to approved listings, regional filters, and public categories.
+    \item \textbf{Verified Tenant / Buyer:} Registered user authenticated via JWT bearer token with privileges to book rooms, order items, save wishlists, and initiate peer chat.
+    \item \textbf{Property Host / Seller:} Authenticated listing author managing room inventories, pricing tiers, deposits, condition notes, and order state transitions.
+    \item \textbf{Platform Administrator:} Privileged operator (\texttt{ROLE\_ADMIN}) governing pre-publication moderation, auditing accounts, and viewing telemetry.
+\end{enumerate}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\textwidth]{diagrams/dfd_level0.png}
+    \includegraphics[width=0.92\textwidth]{diagrams/dfd_level0.png}
     \caption{Data Flow Diagram Level 0 (Context Level Diagram) for the StayMart System}
     \label{fig:dfd0}
 \end{figure}
 
-\begin{enumerate}
-    \item \textbf{Guest User (Unauthenticated Public Visitor):} Prospective students, parents, or local citizens browsing property and product catalogues. They have read-only privileges for approved listings, public categories, and regional filters, but must authenticate to interact directly with hosts or place reservations.
-    \item \textbf{Verified Tenant / Buyer (Authenticated Standard User):} Registered users possessing a valid JWT bearer token. They can save listings to their personal wishlist, submit booking requests for accommodations, initiate purchase/rental orders for marketplace products, rate properties and sellers, and engage in real-time internal chat.
-    \item \textbf{Property Host / Product Seller (Owner / Lister):} Authenticated users who author listings. Hosts define room availability, pricing tiers, security deposits, and house rules. Sellers post electronics, vehicles, furniture, and academic items for direct sale or temporary rental. Both roles manage incoming requests and status transitions via their dedicated dashboards.
-    \item \textbf{Platform Administrator (System Operator):} Privileged operators authenticated under the \texttt{ROLE\_ADMIN} authority. Administrators possess platform-wide governance permissions: approving or rejecting pending listings, auditing user accounts, activating or deactivating malicious actors, managing the taxonomy of categories and geographical locations, and inspecting executive telemetry charts.
-\end{enumerate}
-
 \subsection{Functional Requirements (FR)}
-The functional scope is structured into eight core modules:
+The functional scope is structured into eight core modules summarized in Table \ref{tab:functional_reqs}.
 
 \begin{table}[htbp]
 \centering
 \caption{Comprehensive Functional Requirements Specification}
 \label{tab:functional_reqs}
 \footnotesize
-\begin{tabularx}{\textwidth}{lp{4.2cm}X}
+\begin{tabularx}{\textwidth}{lp{3.8cm}X}
 \toprule
 \textbf{Module ID} & \textbf{Module Name} & \textbf{Functional Description and Expected System Behavior} \\
 \midrule
-\textbf{FR-01} & Authentication \& RBAC & User registration with email uniqueness checks, BCrypt password hashing ($cost=10$), JWT generation (HMAC-SHA256, 24-hour expiration), role enforcement (\texttt{ROLE\_USER}, \texttt{ROLE\_ADMIN}). \\
-\textbf{FR-02} & Accommodation Management & CRUD operations for properties (PG, Hostel, Flat, Room, Hotel, Dormitory) with amenities, room inventories, deposit requirements, address mapping, and multi-image JSON payloads. \\
-\textbf{FR-03} & Room-Level Inventory & Associating multi-unit properties with individual rooms (Single, Double, Triple, Dorm bed) specifying room number, floor, price, and instant availability toggles. \\
-\textbf{FR-04} & Product Marketplace & CRUD operations for pre-owned goods (Sell vs. Rent) across 10 categories, capturing condition grading (Brand New, Like New, Good, Fair), brand, pricing, and wear notes. \\
-\textbf{FR-05} & Lifecycle Transactions & End-to-end booking state machine (\texttt{PENDING} $\rightarrow$ \texttt{CONFIRMED} $\rightarrow$ \texttt{COMPLETED} / \texttt{CANCELLED}) and product order state machine with inventory decrement and owner notifications. \\
-\textbf{FR-06} & Peer-to-Peer Messaging & Internal real-time messaging engine supporting bi-directional chat between buyers/tenants and sellers/hosts, unread message badges, and contextual inquiry linking. \\
-\textbf{FR-07} & ML Recommendations & Asynchronous integration with Python microservice to deliver personalized properties/products, similar item carousels, and top-rated item rankings based on implicit behavioral logs. \\
-\textbf{FR-08} & Admin Governance & Pre-publication moderation queue, user deactivation rules (prohibiting deletion of users with active listings), location/category CRUD, and Chart.js analytical aggregation. \\
+\textbf{FR-01} & Authentication \& RBAC & Email uniqueness check, BCrypt password hashing ($cost=10$), JWT generation (HMAC-SHA256, 24h expiration), role enforcement (\texttt{ROLE\_USER}, \texttt{ROLE\_ADMIN}). \\
+\textbf{FR-02} & Accommodation Mgmt & CRUD operations for 6 property types with amenities, room inventories, security deposits, address mapping, and multi-image JSON payloads. \\
+\textbf{FR-03} & Room-Level Inventory & Multi-unit property association with discrete rooms (Single, Double, Triple, Dorm) specifying room number, floor, rent, and vacancy toggles. \\
+\textbf{FR-04} & Product Marketplace & CRUD operations for student goods across 10 categories (Sell vs. Rent), capturing condition grading (Brand New to Fair) and wear specifications. \\
+\textbf{FR-05} & Lifecycle Transactions & End-to-end booking state machine (\texttt{PENDING} $\rightarrow$ \texttt{CONFIRMED} $\rightarrow$ \texttt{COMPLETED} / \texttt{CANCELLED}) and order decrement workflows. \\
+\textbf{FR-06} & Peer-to-Peer Messaging & Real-time bilateral chat between buyers/tenants and sellers/hosts with unread badges and listing context injection. \\
+\textbf{FR-07} & ML Recommendations & Asynchronous microservice integration delivering personalized listings, similar item carousels, and top-rated rankings based on telemetry. \\
+\textbf{FR-08} & Admin Governance & Pre-publication moderation queue, account deactivation rules, location/category CRUD, and telemetry chart aggregation. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \subsection{Non-Functional Requirements (NFR)}
-To ensure system reliability and usability, StayMart defines the following non-functional requirements:
-
 \begin{enumerate}
-    \item \textbf{Performance and Latency (NFR-01):} Core read APIs (e.g., retrieving filtered properties, catalog categories) must exhibit an average response time of $t_{\text{resp}} < 50\text{ ms}$ under concurrent load. Recommendation endpoints invoking the Python ML microservice must return within $t_{\text{ml}} < 120\text{ ms}$.
-    \item \textbf{Security and Privacy (NFR-02):} All sensitive credentials must be hashed via BCrypt before relational persistence. Spring Data JPA parameterized queries prevent SQL injection, and input validation with output HTML escaping protects against Cross-Site Scripting (XSS). Stateless JWT bearer tokens manage session authentication and role-based access control.
-    \item \textbf{Data Integrity and Concurrency (NFR-03):} Database operations modifying inventory states (such as room booking confirmations or product checkouts) must execute within isolated Spring \texttt{@Transactional} boundaries adhering to ACID guarantees to eliminate race conditions.
-    \item \textbf{Scalability and Decoupling (NFR-04):} The system must maintain architectural independence between the compute-intensive ML microservice and the transaction-heavy Spring Boot core, allowing independent horizontal scaling behind an edge gateway.
-    \item \textbf{Usability and Accessibility (NFR-05):} The client interface must achieve high performance scores, maintain responsive layouts across viewports ranging from 320px (compact mobile) to 1280px+ (desktop monitors), and enforce accessible contrast ratios across clean classifieds components styled after OLX and Amazon.
+    \item \textbf{Performance (NFR-01):} Core read APIs must respond in $t_{\text{resp}} < 50\text{ ms}$; recommendation endpoints must return within $t_{\text{ml}} < 120\text{ ms}$.
+    \item \textbf{Security (NFR-02):} BCrypt password hashing, Spring Data JPA parameterized queries preventing SQL injection, output sanitization via \texttt{escapeHtml()}, and stateless JWT tokens.
+    \item \textbf{Data Integrity (NFR-03):} Inventory modifications execute within isolated Spring \texttt{@Transactional} boundaries adhering to ACID guarantees.
+    \item \textbf{Decoupling (NFR-04):} The ML microservice is isolated from the transactional Spring Boot core, enabling independent horizontal scaling.
+    \item \textbf{Usability (NFR-05):} Responsive layouts from 320px (mobile) to 1280px+ (desktop) adhering to WCAG AAA contrast and zero horizontal overflow.
 \end{enumerate}
 
 \section{High-Level 3-Tier Distributed Architecture}
-StayMart is designed around a decoupled, three-tier distributed architecture, separating concerns between client rendering, business orchestration, and persistent analytical storage:
-
+StayMart partitions responsibilities across three decoupled distributed tiers:
 \begin{enumerate}
-    \item \textbf{Tier 1: Presentation Tier (Client Web Portal):} 
-    Constructed without heavy compilation frameworks, Tier 1 utilizes modular vanilla JavaScript (ES6+), semantic HTML5, and CSS3. It communicates with Tier 2 strictly over asynchronous HTTPS using JSON payloads via the standard Fetch API. Client-side authentication tokens are managed in local storage and propagated via HTTP \texttt{Authorization: Bearer <JWT>} headers.
-    
-    \item \textbf{Tier 2: Application / Business Logic Tier (Spring Boot 3.3):}
-    Executing within an Eclipse Temurin OpenJDK 17 LTS runtime, Tier 2 acts as the authoritative transaction coordinator. It implements a layered Controller-Service-Repository architectural pattern:
-    \begin{itemize}
-        \item \textit{Controller Layer:} Exposes 16 RESTful resource controllers documented via springdoc-openapi.
-        \item \textit{Security Layer:} Custom \texttt{JwtAuthenticationFilter} intercepting inbound requests, validating digital signatures, and populating the Spring Security \texttt{SecurityContextHolder}.
-        \item \textit{Service Layer:} Encapsulates transactional business logic, state machine validation, entity transformations, and cross-cutting error handling.
-        \item \textit{Data Access Layer:} 12 Spring Data JPA interfaces backed by Hibernate ORM 6.5 and HikariCP connection pooling.
-    \end{itemize}
-
-    \item \textbf{Tier 3: Persistence and Machine Learning Tier:}
-    Tier 3 comprises two specialized engines:
-    \begin{itemize}
-        \item \textit{Relational Engine (MySQL 8.0 InnoDB):} Provides robust ACID guarantees across 12 third-normal-form relational tables with indexed foreign keys.
-        \item \textit{Intelligence Engine (Python 3.11 / Flask WSGI):} Operates as an independent analytical microservice querying the database via optimized MySQL connectors, transforming textual listings into TF-IDF sparse matrices, and serving cosine similarity predictions over lightweight REST endpoints.
-    \end{itemize}
+    \item \textbf{Presentation Tier (Client Portal):} Vanilla ES6 JavaScript, HTML5, and CSS3 communicating asynchronously over HTTPS via JSON payloads. Stateless JWT tokens are stored in browser storage and transmitted via \texttt{Authorization: Bearer <JWT>} headers.
+    \item \textbf{Business Tier (Spring Boot 3.3 Core):} Executing on Eclipse Temurin OpenJDK 17 LTS, this tier implements a Controller-Service-Repository pattern across 16 REST resource controllers, custom \texttt{JwtAuthenticationFilter}, transactional service handlers, and 12 Spring Data JPA repositories.
+    \item \textbf{Persistence and ML Tier:} MySQL 8.0 InnoDB provides ACID persistence across 12 normalized tables. A companion Python 3.11 / Flask WSGI service executes TF-IDF vectorization and serves similarity predictions via REST endpoints.
 \end{enumerate}
 
 \section{UML Behavioral Modeling: Sequence Diagrams}
-To illustrate the temporal interaction and message passing between system components during business-critical workflows, Figure \ref{fig:seq_booking} details the complete lifecycle of an accommodation booking transaction.
+Figure \ref{fig:seq_booking} details the complete lifecycle of an accommodation booking transaction across the three tiers.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\textwidth]{diagrams/seq_booking.png}
+    \includegraphics[width=0.92\textwidth]{diagrams/seq_booking.png}
     \caption{UML Sequence Diagram: Accommodation Booking and Confirmation Flow}
     \label{fig:seq_booking}
 \end{figure}
 
-The sequence executes through eight calculated stages:
-\begin{enumerate}
-    \item The prospective tenant selects a target property and room, submitting an HTTP \texttt{POST /api/bookings} request containing \texttt{propertyId}, \texttt{roomId}, \texttt{checkInDate}, and \texttt{durationMonths}.
-    \item The Spring Boot controller authenticates the JWT token, maps the request to \texttt{BookingService}, and validates room availability.
-    \item The service initiates a transaction, persisting the booking record in MySQL with an initial status of \texttt{PENDING}.
-    \item The system synchronously invokes \texttt{BehaviorService} to log an implicit engagement event (\texttt{action = BOOK, weight = 5.0}), updating the tenant's preference profile in the ML pipeline.
-    \item The API returns an \texttt{ApiResponse<BookingResponse>} payload (HTTP 201 Created) to the client UI.
-    \item Concurrently, the property host is alerted via their ``Requests Received'' dashboard console.
-    \item Upon reviewing tenant credentials, the host dispatches an HTTP \texttt{PATCH /api/bookings/\{id\}/status?status=CONFIRMED} request.
-    \item The backend updates the relational state to \texttt{CONFIRMED}, decrements the available room count, and unlocks direct conversational messaging between host and tenant.
-\end{enumerate}
-
-\section{Data Flow Modeling (DFD Levels 1 and 2)}
-
-\subsection{DFD Level 1: Subsystem Functional Decomposition}
-DFD Level 1 decomposes the monolithic context process into seven distinct, communicating functional processes:
-\begin{itemize}
-    \item \textbf{Process 1.0 (Identity \& Session Management):} Receives login/registration credentials, verifies hashes against Data Store D1 (Users), and emits signed JWT tokens.
-    \item \textbf{Process 2.0 (Property \& Inventory Service):} Handles property listings, room allocations, and geocoding against Data Store D2 (Properties) and D3 (Rooms).
-    \item \textbf{Process 3.0 (Marketplace Re-commerce Service):} Governs product publications, condition grading, and category taxonomy against Data Store D4 (Products) and D5 (Categories).
-    \item \textbf{Process 4.0 (Booking \& Order State Engine):} Manages transactional reservations and purchasing contracts against Data Store D6 (Bookings) and D7 (Orders).
-    \item \textbf{Process 5.0 (Conversational Messaging Engine):} Dispatches, queues, and retrieves persistent text messages against Data Store D8 (Chats).
-    \item \textbf{Process 6.0 (Behavioral Analytics \& ML Ingestion):} Intercepts user navigation events, recording telemetry into Data Store D9 (User Behaviors), and triggers model retraining in the Python ML container.
-    \item \textbf{Process 7.0 (Administrative Moderation \& Telemetry):} Evaluates pending queues, updating status flags across D2 and D4, and extracts aggregated counts for visual dashboard telemetry.
-\end{itemize}
-
-\subsection{DFD Level 2: Detailed Transaction State Transitions}
-DFD Level 2 focuses specifically on Process 4.0 (Booking \& Order Lifecycle). A booking request enters through a validation filter verifying that:
-\begin{equation}
-\text{AvailableRooms}(P_k) > 0 \quad \land \quad \text{CheckInDate} \ge \text{CurrentDate}
-\end{equation}
-If valid, the record enters the \texttt{PENDING} state. A timer transition allows the host to transition the state to \texttt{CONFIRMED} or \texttt{REJECTED}. Once confirmed, physical check-in transitions the state to \texttt{COMPLETED}, which automatically unlocks the review and rating submission pipeline for Data Store D10 (Reviews).
+The sequence executes through eight calculated stages: (1) tenant submits \texttt{POST /api/bookings}; (2) controller validates JWT and room capacity; (3) service persists booking as \texttt{PENDING}; (4) \texttt{BehaviorService} synchronously logs telemetry ($\text{weight}=5.0$); (5) API returns \texttt{ApiResponse<BookingResponse>} (201 Created); (6) host is alerted via requests dashboard; (7) host submits \texttt{PATCH /api/bookings/\{id\}/status?status=CONFIRMED}; (8) status transitions to \texttt{CONFIRMED}, available bed count decrements, and direct chat is unlocked.
 
 \section{Hardware and Software Operational Environments}
-Table \ref{tab:environment_specs} summarizes the recommended hardware and software configurations required to host, develop, and operate StayMart.
+Table \ref{tab:environment_specs} summarizes the operational specifications required to host and execute the StayMart platform.
 
 \begin{table}[htbp]
 \centering
 \caption{System Hardware and Software Operational Specifications}
 \label{tab:environment_specs}
 \footnotesize
-\begin{tabularx}{\textwidth}{lp{4.5cm}X}
+\begin{tabularx}{\textwidth}{lp{4.2cm}X}
 \toprule
 \textbf{Layer} & \textbf{Specification Parameter} & \textbf{Recommended Value / Deployment Minimum} \\
 \midrule
@@ -144,12 +94,12 @@ Table \ref{tab:environment_specs} summarizes the recommended hardware and softwa
 \multirow{4}{*}{\textbf{Backend}} & Java Runtime & Eclipse Temurin OpenJDK 17 LTS \\
 & Framework & Spring Boot 3.3.5 (Spring Framework 6.1.14) \\
 & Build Tool & Apache Maven 3.9.9+ \\
-& Embedded Servlet Container & Apache Tomcat 10.1.31 (HTTP Port 8080) \\
+& Embedded Servlet & Apache Tomcat 10.1.31 (HTTP Port 8080) \\
 \midrule
 \multirow{4}{*}{\textbf{ML Service}} & Python Interpreter & Python 3.11.9+ \\
 & Scientific Packages & scikit-learn 1.3.0, pandas 2.0.3, numpy 1.24.4 \\
 & Web Framework & Flask 2.3.3 with Flask-CORS 4.0.0 \\
-& WSGI Production Server & Python 3.11 threaded runtime (development) / Gunicorn (container deployment) \\
+& Production WSGI & Threaded runtime (development) / Gunicorn (Docker) \\
 \midrule
 \multirow{3}{*}{\textbf{Database}} & Relational Database & MySQL Community Server 8.0.35+ \\
 & Storage Engine & InnoDB with UTF8MB4 Character Set \\
@@ -157,10 +107,10 @@ Table \ref{tab:environment_specs} summarizes the recommended hardware and softwa
 \midrule
 \multirow{3}{*}{\textbf{Frontend}} & Client Technologies & Semantic HTML5, CSS3 Custom Properties, JavaScript ES6+ \\
 & Visual Rendering & Chart.js 4.4+ (Dashboard Telemetry) \\
-& Static Host / Server & Python 3 \texttt{http.server} (Dev) / Nginx 1.25 / Vercel Edge \\
+& Static Host / Server & Multi-threaded Python server (Dev) / Vercel Edge CDN \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \section{Summary}
-This chapter established the rigorous Software Requirements Specification for StayMart, detailing four user personas, eight core functional modules, and strict non-functional constraints. Through UML sequence modeling and multi-tier Data Flow Diagrams, the internal communication pathways and state transition rules were rigorously specified. The following chapter explores the relational database schema, Entity-Relationship modeling, and normalization proofs.
+This chapter formalised the SRS for StayMart across four personas, eight functional modules, and strict performance and security constraints. Through UML sequence modeling and 3-tier decoupling, the interaction contracts were established. The next chapter explores database relational modeling and normalization analysis.

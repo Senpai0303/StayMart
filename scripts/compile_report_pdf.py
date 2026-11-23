@@ -12,7 +12,7 @@ OVERLAY_HTML = r"D:\Mini5th\report\compiled\overlay.html"
 OVERLAY_PDF = r"D:\Mini5th\report\compiled\overlay.pdf"
 OUTPUT_PDF = r"D:\Mini5th\StayMart_Project_Report.pdf"
 
-print("Building complete academic report document conforming strictly to GEHU specifications (80 Pages)...")
+print("Building complete academic report document conforming strictly to GEHU specifications (50 Pages)...")
 
 chapters = {}
 for ch in range(1, 10):
@@ -740,6 +740,14 @@ def build_html_document(page_map=None):
     height: auto;
     border: 1px solid #ddd;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  .fig-ch1 img {
+    max-height: 135px;
+  }
+
+  .fig-ch1.figure-container {
+    margin: 4px 0;
   }
 
   .fig-ch5 img {

@@ -30,8 +30,8 @@ def verify_report_pdf():
 
     reader = pypdf.PdfReader(PDF_PATH)
     total_pages = len(reader.pages)
-    print(f"[PASS] Total page count: {total_pages} (Requirement: 80 pages)", flush=True)
-    assert total_pages == 80, f"Expected 80 pages, got {total_pages}"
+    print(f"[PASS] Total page count: {total_pages} (Requirement: 50 pages)", flush=True)
+    assert total_pages == 50, f"Expected 50 pages, got {total_pages}"
 
     print(f"Pre-extracting text across all {total_pages} pages...", flush=True)
     all_texts = [p.extract_text() for p in reader.pages]

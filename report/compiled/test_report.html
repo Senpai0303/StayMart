@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>StayMart - Smart Student Housing and Campus Marketplace</title>
+<style>
+  @page {
+    size: A4;
+    margin-left: 3.5cm;
+    margin-top: 2.5cm;
+    margin-right: 1.25cm;
+    margin-bottom: 2.0cm;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    line-height: 1.60;
+    color: #111;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  p {
+    text-align: justify;
+    margin-bottom: 14px;
+    text-indent: 0.35in;
+  }
+
+  .no-indent { text-indent: 0; }
+  .page-break { page-break-before: always; }
+  .avoid-break { page-break-inside: avoid; }
+
+  h1.chapter-title {
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 18px;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+    line-height: 1.25;
+  }
+
+  h2.section-title {
+    font-size: 13pt;
+    font-weight: bold;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 2px;
+  }
+
+  h3.subsection-title {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+
+  h4.subsubsection-title {
+    font-size: 11.5pt;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+
+  ol, ul {
+    margin-top: 4px;
+    margin-bottom: 8px;
+    padding-left: 32px;
+  }
+
+  li {
+    margin-bottom: 3px;
+    text-align: justify;
+  }
+
+  ol.references-list {
+    font-size: 10pt;
+    line-height: 1.32;
+    margin-top: 6px;
+    margin-bottom: 0;
+    padding-left: 28px;
+  }
+
+  ol.references-list li {
+    margin-bottom: 4px;
+    text-align: justify;
+  }
+
+  .table-container {
+    margin: 12px 0;
+    page-break-inside: avoid;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 10px 0;
+    font-size: 9.5pt;
+    page-break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #333;
+    padding: 4px 6px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  .table-caption, .figure-caption {
+    font-size: 10pt;
+    font-style: italic;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+
+  .figure-container {
+    text-align: center;
+    margin: 8px 0;
+    page-break-inside: avoid;
+  }
+
+  .figure-container img {
+    max-width: 80%;
+    max-height: 195px;
+    object-fit: contain;
+    height: auto;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  .fig-ch1 img {
+    max-height: 135px;
+  }
+
+  .fig-ch1.figure-container {
+    margin: 4px 0;
+  }
+
+  .fig-ch5 img {
+    max-height: 130px;
+  }
+
+  .fig-ch5.figure-container {
+    margin: 6px 0;
+  }
+
+  .fig-ch6 img {
+    max-height: 145px;
+  }
+
+  .fig-ch6.figure-container {
+    margin: 6px 0;
+  }
+
+  .fig-ch7 img {
+    max-height: 195px;
+  }
+
+  .subfig-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 3px;
+  }
+
+  .subfig {
+    text-align: center;
+    flex: 1;
+    max-width: 48%;
+  }
+
+  .subfig img {
+    max-width: 100%;
+    max-height: 105px;
+    object-fit: contain;
+    height: auto;
+    border: 1px solid #ddd;
+  }
+
+  .subfig-cap {
+    font-size: 8.5pt;
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  .lof-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4px 0 8px 0;
+    font-size: 8pt;
+    page-break-inside: avoid;
+  }
+
+  .lof-table th, .lof-table td {
+    border: 1px solid #333;
+    padding: 2.2px 5px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.15;
+  }
+
+  .lof-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  .code-container {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-left: 3px solid #002f34;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8pt;
+    line-height: 1.25;
+    padding: 6px 8px;
+    margin: 8px 0;
+    overflow-x: auto;
+    page-break-inside: avoid;
+  }
+
+  .code-container pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  .cover-sheet, .title-sheet {
+    text-align: center;
+    height: 240mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    page-break-after: always;
+  }
+
+  .cover-title { font-size: 15pt; font-weight: bold; line-height: 1.25; }
+  .cover-report { font-size: 12pt; font-weight: bold; margin-top: 8px; }
+  .cover-sub { font-size: 11pt; font-style: italic; line-height: 1.25; margin-top: 6px; }
+  .cover-of { font-size: 11pt; font-style: italic; margin-top: 3px; }
+  .cover-degree { font-size: 11.5pt; font-weight: bold; margin-top: 5px; }
+  .cover-by { font-size: 11pt; font-style: italic; margin-top: 6px; }
+  .cover-team { margin-top: 4px; font-size: 11pt; font-weight: bold; line-height: 1.3; }
+  .cover-super { font-size: 11pt; font-style: italic; margin-top: 6px; }
+  .cover-mentor { font-size: 11.5pt; font-weight: bold; margin-top: 3px; }
+  .cover-mentor-desig { font-size: 10pt; font-style: italic; margin-top: 1px; }
+  .cover-logo { width: 1.75in; height: 1.75in; margin: 0 auto; display: block; }
+  .cover-school { font-size: 13pt; font-weight: bold; line-height: 1.25; }
+  .cover-date { font-size: 11.5pt; font-weight: bold; margin-top: 6px; }
+  .decl-header { font-size: 14pt; font-weight: bold; text-align: center; text-decoration: underline; margin-bottom: 20px; margin-top: 20px; }
+  .sig-block { margin-top: 30px; display: flex; justify-content: space-between; font-weight: bold; }
+
+  .toc-row {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 3px;
+    font-size: 10pt;
+  }
+  .toc-title { padding-right: 4px; }
+  .toc-leader { flex: 1; border-bottom: 1px dotted #555; margin: 0 4px; height: 0; transform: translateY(-4px); }
+  .toc-page { padding-left: 4px; text-align: right; font-weight: bold; }
+
+  .page-marker {
+    font-size: 0.1pt;
+    color: transparent;
+    line-height: 0;
+    display: inline-block;
+    user-select: none;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+  }
+</style>
+</head>
+<body>
+
+<!-- ANNEXURE II: COVER PAGE (EXACTLY PAGE 1) -->
+<div class="cover-sheet">
+  <div>
+    <div class="cover-title">STAYMART: SMART STUDENT HOUSING AND CAMPUS MARKETPLACE</div>
+    <div class="cover-report">A PROJECT REPORT</div>
+    <div class="cover-sub">Submitted in partial fulfilment of the requirements<br>for the award of the degree</div>
+    <div class="cover-of">of</div>
+    <div class="cover-degree">BACHELOR OF COMPUTER APPLICATIONS</div>
+    <div class="cover-by">by</div>
+    <div class="cover-team">
+      <div>DIVYANSH JOSHI</div>
+      <div>GORAV KUMAR</div>
+      <div>GORAV BHATT</div>
+      <div>DIVYANSHU MEHRA</div>
+    </div>
+    <div class="cover-super">Under the supervision of</div>
+    <div class="cover-mentor">Ms. TABISH RAO</div>
+    <div class="cover-mentor-desig">Faculty Mentor, School of Computing</div>
+  </div>
+
+  <div>
+    <img src="file:///D:/Mini5th/report/gehu_logo.png" class="cover-logo" alt="GEHU Seal">
+  </div>
+
+  <div>
+    <div class="cover-school">
+      SCHOOL OF COMPUTING,<br>
+      GRAPHIC ERA HILL UNIVERSITY, CLEMENTOWN,<br>
+      DEHRADUN-248002, UTTARAKHAND, INDIA
+    </div>
+    <div class="cover-date">NOVEMBER, 2026</div>
+  </div>
+</div>
+
+<!-- ANNEXURE III: TITLE PAGE (EXACTLY PAGE 2) -->
+<div class="title-sheet">
+  <div>
+    <div class="cover-title">STAYMART: SMART STUDENT HOUSING AND CAMPUS MARKETPLACE</div>
+    <div class="cover-report" style="margin-top: 14px;">PROJECT REPORT</div>
+    <div class="cover-by" style="margin-top: 8px;">by</div>
+    <div class="cover-team" style="margin-top: 4px;">
+      <div>DIVYANSH JOSHI</div>
+      <div>GORAV KUMAR</div>
+      <div>GORAV BHATT</div>
+      <div>DIVYANSHU MEHRA</div>
+    </div>
+    <div class="cover-super" style="margin-top: 8px;">Under the supervision of</div>
+    <div class="cover-mentor">Ms. TABISH RAO</div>
+    <div class="cover-mentor-desig">Faculty Mentor, School of Computing</div>
+  </div>
+
+  <div>
+    <img src="file:///D:/Mini5th/report/gehu_logo.png" class="cover-logo" alt="GEHU Seal">
+  </div>
+
+  <div>
+    <div class="cover-school">
+      School of Computing<br>
+      GRAPHIC ERA HILL UNIVERSITY,<br>
+      CLEMENTOWN, DEHRADUN-248002,<br>
+      UTTARAKHAND, INDIA
+    </div>
+    <div class="cover-date" style="margin-top: 8px;">NOVEMBER, 2026</div>
+  </div>
+</div>
+
+<!-- CANDIDATE'S DECLARATION (PAGE 3) -->
+<div class="page-break">
+  <span class="page-marker">[[LOC:DECLARATION]]</span>
+  <div class="decl-header">CANDIDATE’S DECLARATION</div>
+  <p>We hereby certify that the work which is being presented in the PROJECT REPORT entitled <strong>&ldquo;STAYMART: SMART STUDENT HOUSING AND CAMPUS MARKETPLACE&rdquo;</strong> in partial fulfillment of the requirements for the award of the Degree of <strong>Bachelor of Computer Applications</strong> and submitted in the School of Computing of the Graphic Era Hill University, Dehradun is an authentic record of our own work carried out under the supervision of <strong>Ms. Tabish Rao</strong>, Faculty Mentor, School of Computing, Graphic Era Hill University, Dehradun.</p>
+  
+  <p>The matter presented in this Project Report has not been submitted by us for the award of any other degree of this or any other institution.</p>
+
+  <div style="margin-top: 25px;">
+    <div style="font-weight: bold; font-size: 11pt; margin-bottom: 8px;">Signatures of the Candidates:</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 10.5pt;">
+      <div><strong>DIVYANSH JOSHI</strong><br><span style="color: #555; font-size: 9.5pt;">School of Computing, GEHU</span></div>
+      <div><strong>GORAV KUMAR</strong><br><span style="color: #555; font-size: 9.5pt;">School of Computing, GEHU</span></div>
+      <div><strong>GORAV BHATT</strong><br><span style="color: #555; font-size: 9.5pt;">School of Computing, GEHU</span></div>
+      <div><strong>DIVYANSHU MEHRA</strong><br><span style="color: #555; font-size: 9.5pt;">School of Computing, GEHU</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 25px;">
+    <p class="no-indent" style="font-size: 11.5pt;">This is to certify that the above statement made by the candidates is correct to the best of my/our knowledge.</p>
+  </div>
+
+  <div class="sig-block" style="margin-top: 30px; font-size: 11pt;">
+    <div>Date: November, 2026</div>
+    <div style="text-align: right;">
+      <div><strong>Signature of Mentor</strong></div>
+      <div style="margin-top: 4px;"><strong>Ms. TABISH RAO</strong></div>
+      <div style="font-size: 10pt; font-weight: normal; font-style: italic;">Faculty Mentor, School of Computing</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABSTRACT (PAGE 4) -->
+<div class="page-break">
+  <span class="page-marker">[[LOC:ABSTRACT]]</span>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">Abstract</div>
+  <p>Finding safe, affordable rental accommodation near university campuses in Uttarakhand—particularly around educational clusters in Dehradun, Rishikesh, and Roorkee—is a persistent challenge for outstation students. Incoming students frequently face steep broker commissions, misleading photos, and unverified rental terms. Concurrently, graduating seniors struggle to sell functional room essentials such as study tables, desert coolers, reference books, and second-hand two-wheelers, while incoming juniors buy the exact same goods brand new at retail prices. General classifieds like OLX suffer from broker spam and lack room-level vacancy details, while platforms like Airbnb cater exclusively to short-term tourists on daily tariffs.</p>
+
+  <p>To solve this practical problem, this project presents <strong>StayMart</strong>, an integrated student accommodation and campus re-commerce web application tailored for Uttarakhand. The platform is built on a decoupled multi-tier architecture: a Java 17 / Spring Boot 3.3 REST API handling core transactions and role-based access control with stateless JSON Web Tokens (JWT), a normalized MySQL 8.0 relational database with 12 tables, and an asynchronous Python 3.11 / Flask machine learning microservice running a TF-IDF and cosine similarity recommendation pipeline with automated database-driven fallbacks. The frontend is engineered using responsive vanilla HTML5, CSS3, and modern JavaScript inspired by familiar commercial classified interfaces (OLX and Amazon), avoiding heavy client-side framework overhead. Key features include zero-brokerage direct contact with verified property caretakers, peer-to-peer student messaging, room-level vacancy tracking, wishlist management, and an administrative moderation dashboard.</p>
+
+  <p>System evaluation confirms sub-50ms database queries under typical loads, reliable recommendation fallbacks when the ML microservice is offline, and clean mobile responsiveness across standard viewports. This report details the software requirements, relational schema, algorithm design, system implementation, and zero-cost cloud deployment guidelines for the platform.</p>
+</div>
+
+<!-- ACKNOWLEDGEMENTS (PAGE 5) -->
+<div class="page-break">
+  <span class="page-marker">[[LOC:ACKNOWLEDGEMENTS]]</span>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">Acknowledgements</div>
+  <p>We express our sincere gratitude to our project supervisor and mentor, <strong>Ms. Tabish Rao</strong>, School of Computing, Graphic Era Hill University, Dehradun, for her continuous encouragement, expert technical guidance, and constructive feedback throughout the ideation, system design, and implementation of the StayMart platform. Her valuable suggestions during architecture and system reviews significantly shaped the robust implementation of both the Spring Boot core service and the Python machine learning recommendation engine.</p>
+
+  <p>We also extend our heartfelt thanks to the Head of the Department and all esteemed faculty members of the School of Computing for providing the computing infrastructure, laboratory facilities, and academic encouragement essential for the successful completion of this major project.</p>
+
+  <p>Finally, we are deeply grateful to our parents, families, and peers for their constant support, understanding, and assistance in user acceptance testing and interface evaluation across varied mobile and desktop environments.</p>
+
+  <div style="margin-top: 30px;">
+    <div style="font-weight: bold; font-size: 11pt; margin-bottom: 8px; text-align: right;">Signatures of Candidates:</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; text-align: right; font-size: 10pt;">
+      <div><strong>DIVYANSH JOSHI</strong></div>
+      <div><strong>GORAV KUMAR</strong></div>
+      <div><strong>GORAV BHATT</strong></div>
+      <div><strong>DIVYANSHU MEHRA</strong></div>
+    </div>
+    <div style="text-align: right; margin-top: 6px; font-size: 10pt; font-style: italic;">Bachelor of Computer Applications (BCA)<br>School of Computing, GEHU Dehradun</div>
+  </div>
+</div>
+
+<!-- CONTENTS (PAGES 6-7) -->
+<div class="page-break">
+  <span class="page-marker">[[LOC:TOC]]</span>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">Contents</div>
+    <div class="toc-row" style="  ">
+    <span class="toc-title">Abstract</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">i</span>
+  </div>
+  <div class="toc-row" style="  ">
+    <span class="toc-title">Acknowledgements</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">i</span>
+  </div>
+  <div class="toc-row" style="  ">
+    <span class="toc-title">Contents</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">i</span>
+  </div>
+  <div class="toc-row" style="  ">
+    <span class="toc-title">List of Abbreviations</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">i</span>
+  </div>
+  <div class="toc-row" style="  ">
+    <span class="toc-title">List of Figures</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">i</span>
+  </div>
+  <div class="toc-row" style="  ">
+    <span class="toc-title">List of Tables</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">i</span>
+  </div>
+  <div class="toc-row" style="font-weight: bold; margin-top: 6px; ">
+    <span class="toc-title">Chapter 1 Introduction and Problem Statement</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">1.1 Introduction</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">1.2 Motivation</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">1.3 Problem Statement</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">1.4 Objectives and Project Scope</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">1.5 Proposed Framework and Value Proposition</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">1.6 Organization of the Project Report</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="font-weight: bold; margin-top: 6px; ">
+    <span class="toc-title">Chapter 2 Literature Review</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">2.1 Introduction</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">2.2 Survey and Critical Evaluation of Existing Systems</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">2.3 Theoretical Analysis of Recommendation Algorithms</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">2.4 Architectural Paradigms: Monolithic vs. Distributed Microservices</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">2.5 Modern Frontend Architectures: Vanilla JS vs. Heavy SPAs</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">2.6 Identified Research and Practical Gaps</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="font-weight: bold; margin-top: 6px; ">
+    <span class="toc-title">Chapter 3 System Requirements and Architecture</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">3.1 Software Requirements Specification (SRS)</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">3.2 Functional Requirements Matrix</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">3.3 Non-Functional Requirements (NFR)</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">3.4 Conceptual System Architecture and High-Level DFD</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">3.5 UML Sequence Diagram for Booking Workflow</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">3.6 Hardware and Software Operational Specifications</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">3.7 Security and Compliance Requirements</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="font-weight: bold; margin-top: 6px; ">
+    <span class="toc-title">Chapter 4 Database Design and Relational Modeling</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">4.1 Relational Architecture and Normalization Strategy</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">4.2 Entity-Relationship (ER) Modeling</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">4.3 Comprehensive Relational Data Dictionary</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">4.4 Database Normalization Analysis</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">4.5 Indexing Strategy and Referential Integrity</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="font-weight: bold; margin-top: 6px; ">
+    <span class="toc-title">Chapter 5 Backend and Machine Learning Microservice Implementation</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">5.1 Spring Boot Core Backend Architecture</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">5.2 Standardized API Envelope Pattern</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">5.3 Security Architecture: Spring Security and Stateless JWT</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">5.4 Machine Learning Recommendation Microservice</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">5.5 Fault-Tolerant Fallback Integration in Spring Boot</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="font-weight: bold; margin-top: 6px; ">
+    <span class="toc-title">Chapter 6 Frontend UI/UX Design System</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">6.1 Introduction</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">6.2 Design Philosophy and Visual Design System</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">6.3 Modular Client-Side JavaScript Architecture</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">6.4 Public Portals and User Flows</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">6.5 Self-Service User and Admin Management Portals</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="font-weight: bold; margin-top: 6px; ">
+    <span class="toc-title">Chapter 7 Verification, Testing, and System Walkthrough</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">7.1 Introduction</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">7.2 Testing Methodologies and Verification Strategy</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">7.3 Comprehensive Test Cases and Execution Results</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">7.4 Security Vulnerability and Penetration Testing</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">7.5 Machine Learning Engine and Resilience Fallback Evaluation</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">7.6 Automated Mobile Viewport and Smoke Testing</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">7.7 Comprehensive Visual Walkthrough of Running System</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="font-weight: bold; margin-top: 6px; ">
+    <span class="toc-title">Chapter 8 Deployment, Cloud Hosting, and Local Operations</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">8.1 Introduction</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">8.2 Free-Tier Production Cloud Hosting Topology</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">8.3 Multi-Service Containerization and Docker Configurations</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">8.4 Edge Routing and Reverse Proxy Rewrites</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">8.5 Static Edge Hosting with Vercel</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">8.6 Local Startup and Development Runbook</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">8.7 Continuous Integration with GitHub Actions</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="font-weight: bold; margin-top: 6px; ">
+    <span class="toc-title">Chapter 9 Conclusion and Future Scope</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">9.1 Summary of Contributions and Completed Milestones</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">9.2 Societal and Economic Impact in Uttarakhand</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">9.3 Lessons Learned During System Development</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">9.4 Limitations of the Current Implementation</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">9.5 Suggestions for Future Work and Technical Roadmap</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="  padding-left: 16px;">
+    <span class="toc-title">9.6 Concluding Remarks</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+  <div class="toc-row" style="font-weight: bold; margin-top: 6px; ">
+    <span class="toc-title">References</span>
+    <span class="toc-leader"></span>
+    <span class="toc-page">1</span>
+  </div>
+
+</div>
+
+<!-- LIST OF ABBREVIATIONS (PAGE 8) -->
+<div class="page-break">
+  <span class="page-marker">[[LOC:LOA]]</span>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">List of Abbreviations</div>
+  <table style="font-size: 9pt;">
+    <thead><tr><th style="width: 25%;">Abbreviation</th><th>Full Expansion</th><th style="width: 25%;">Abbreviation</th><th>Full Expansion</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ACID</strong></td><td>Atomicity, Consistency, Isolation, Durability</td><td><strong>JWT</strong></td><td>JSON Web Token</td></tr>
+      <tr><td><strong>API</strong></td><td>Application Programming Interface</td><td><strong>ML</strong></td><td>Machine Learning</td></tr>
+      <tr><td><strong>BCNF</strong></td><td>Boyce-Codd Normal Form</td><td><strong>NLP</strong></td><td>Natural Language Processing</td></tr>
+      <tr><td><strong>CORS</strong></td><td>Cross-Origin Resource Sharing</td><td><strong>ORM</strong></td><td>Object-Relational Mapping</td></tr>
+      <tr><td><strong>CSS</strong></td><td>Cascading Style Sheets</td><td><strong>PG</strong></td><td>Paying Guest Accommodation</td></tr>
+      <tr><td><strong>DFD</strong></td><td>Data Flow Diagram</td><td><strong>RBAC</strong></td><td>Role-Based Access Control</td></tr>
+      <tr><td><strong>DTO</strong></td><td>Data Transfer Object</td><td><strong>REST</strong></td><td>Representational State Transfer</td></tr>
+      <tr><td><strong>ERD</strong></td><td>Entity-Relationship Diagram</td><td><strong>SRS</strong></td><td>Software Requirements Specification</td></tr>
+      <tr><td><strong>HTML</strong></td><td>HyperText Markup Language</td><td><strong>TF</strong></td><td>Term Frequency</td></tr>
+      <tr><td><strong>HTTP</strong></td><td>Hypertext Transfer Protocol</td><td><strong>UI / UX</strong></td><td>User Interface / User Experience</td></tr>
+      <tr><td><strong>IDF</strong></td><td>Inverse Document Frequency</td><td><strong>UML</strong></td><td>Unified Modeling Language</td></tr>
+      <tr><td><strong>JPA</strong></td><td>Java Persistence API</td><td><strong>WSGI</strong></td><td>Web Server Gateway Interface</td></tr>
+      <tr><td><strong>JSON</strong></td><td>JavaScript Object Notation</td><td><strong>SPA</strong></td><td>Single Page Application</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- LIST OF FIGURES (PAGE 9) -->
+<div class="page-break">
+  <span class="page-marker">[[LOC:LOF]]</span>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:12px; margin-top:16px;">List of Figures</div>
+  <table class="lof-table">
+    <thead><tr><th>Fig. No.</th><th>Title of Figure</th><th style="text-align: right;">Page</th></tr></thead>
+    <tbody>
+    <tr>
+      <td style="width: 12%;">1.1</td>
+      <td style="width: 76%;">High-Level Distributed Framework of the StayMart Platform</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">2.1</td>
+      <td style="width: 76%;">Distributed Microservice Deployment Topology vs. Monolithic Boundaries</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">3.1</td>
+      <td style="width: 76%;">Data Flow Diagram Level 0 (Context Level Diagram) for the StayMart System</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">3.2</td>
+      <td style="width: 76%;">UML Sequence Diagram: Accommodation Booking and Confirmation Flow</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">4.1</td>
+      <td style="width: 76%;">Entity-Relationship (ER) Diagram of the StayMart Relational Database Schema</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">5.1</td>
+      <td style="width: 76%;">Springdoc OpenAPI 3.0 Swagger UI Exposing Core Backend REST Endpoints</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">5.2</td>
+      <td style="width: 76%;">Machine Learning Content-Based Recommendation Pipeline with TF-IDF Vectorization</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">6.1</td>
+      <td style="width: 76%;">StayMart Public Landing Page Featuring Commercial Header, Campus Chips, and Category Discovery</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">6.2</td>
+      <td style="width: 76%;">Authentication Portals Featuring Clean Credential Inputs and Password Visibility Toggles</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">6.3</td>
+      <td style="width: 76%;">Faceted Search Portals Featuring Authentic Verified Photography</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">6.4</td>
+      <td style="width: 76%;">Listing Detail Pages Featuring Interactive Media Galleries and Direct Host Actions</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">6.5</td>
+      <td style="width: 76%;">Self-Service Listing Creation Portals for Accommodations and Student Marketplace</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">6.6</td>
+      <td style="width: 76%;">Self-Service User Dashboard and Real-Time Peer Messaging Interfaces</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">6.7</td>
+      <td style="width: 76%;">Administrative Console Featuring Live Platform Metrics and Pre-Publication Moderation Queue</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">7.1</td>
+      <td style="width: 76%;">Step 1: Accommodation Search with Faceted Filtering</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">7.2</td>
+      <td style="width: 76%;">Step 2: Property Detail View with Room Selection Widget</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">7.3</td>
+      <td style="width: 76%;">Step 3: Marketplace Product Discovery and Inspection</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">7.4</td>
+      <td style="width: 76%;">Step 4: Peer-to-Peer Chat Between Student and Caretaker</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">7.5</td>
+      <td style="width: 76%;">Step 5: Administrative Dashboard, Moderation Queue, and User Directory</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">7.6</td>
+      <td style="width: 76%;">Step 6: User Booking Management and Reservation Status Lifecycle</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">8.1</td>
+      <td style="width: 76%;">Production Multi-Service Cloud Hosting Topology Across Free-Tier Providers</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<!-- LIST OF TABLES (PAGE 10) -->
+<div class="page-break">
+  <span class="page-marker">[[LOC:LOT]]</span>
+  <div style="font-size:14pt; font-weight:bold; text-align:center; margin-bottom:15px; margin-top:20px;">List of Tables</div>
+  <table>
+    <thead><tr><th>Table No.</th><th>Title of Table</th><th style="text-align: right;">Page</th></tr></thead>
+    <tbody>
+    <tr>
+      <td style="width: 12%;">2.1</td>
+      <td style="width: 76%;">Comparative Feature Matrix: StayMart vs. Existing Commercial Platforms</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">3.1</td>
+      <td style="width: 76%;">Comprehensive Functional Requirements Specification</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">3.2</td>
+      <td style="width: 76%;">System Hardware and Software Operational Specifications</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">4.1</td>
+      <td style="width: 76%;">Data Dictionary: users Table</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">4.2</td>
+      <td style="width: 76%;">Data Dictionary: locations Table</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">4.3</td>
+      <td style="width: 76%;">Data Dictionary: categories Table</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">4.4</td>
+      <td style="width: 76%;">Data Dictionary: properties Table</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">4.5</td>
+      <td style="width: 76%;">Data Dictionary: rooms Table</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">4.6</td>
+      <td style="width: 76%;">Data Dictionary: products Table</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+    <tr>
+      <td style="width: 12%;">7.1</td>
+      <td style="width: 76%;">Software Test Execution Record</td>
+      <td style="width: 12%; text-align: right; font-weight: bold;">1</td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div class="page-break">
+<span class="page-marker">[[LOC:CH_1]]</span><h1 class="chapter-title">Chapter 1<br>Introduction and Problem Statement</h1>
+<span class="page-marker">[[LOC:SEC_1_1]]</span><h2 class="section-title">1.1 Introduction</h2>
+<p>Every academic year, thousands of students relocate to higher education hubs across Uttarakhand, including Dehradun, Roorkee, and Rishikesh. Premier institutions such as Graphic Era Hill University (GEHU), UPES, and DIT University attract substantial student enrollments. Outstation scholars face two immediate logistical hurdles: securing safe, affordable accommodation and procuring essential room furnishings within student budgets.</p>
+<p>Despite high demand along corridors like Clement Town and Premnagar, the local rental market remains fragmented. Students encounter informal brokers charging high commissions, deceptive photos, and opaque lease terms. Simultaneously, graduating seniors discard functional essentials while incoming juniors purchase identical items brand new at retail rates. To resolve these challenges, this project presents <strong>StayMart</strong>—a unified student accommodation discovery and campus re-commerce marketplace engineered using Spring Boot 3.3, MySQL 8.0, Flask ML microservices, and a responsive native frontend.</p>
+<span class="page-marker">[[LOC:SEC_1_2]]</span><h2 class="section-title">1.2 Motivation</h2>
+<p>The core motivation for StayMart arises from persistent challenges in regional campus life:</p>
+<ol>
+<li><strong>Brokerage Overhead:</strong> Local brokers charge 50%&ndash;100% of one month's rent as non-refundable commission, imposing an upfront ₹5,000 to ₹10,000 burden on students.</li>
+<li><strong>Unverified Visuals and Amenities:</strong> Outstation students frequently encounter inaccurate photos, undisclosed curfews, and concealed utility limitations.</li>
+<li><strong>Re-Commerce Value Loss:</strong> Graduating seniors sell durable goods for scrap value, while juniors buy identical items at full market cost.</li>
+<li><strong>Absence of Contextual Discovery:</strong> Existing portals display listings across distant cities without campus proximity filtering or room vacancy awareness.</li>
+</ol>
+<span class="page-marker">[[LOC:SEC_1_3]]</span><h2 class="section-title">1.3 Problem Statement</h2>
+<p>The problem addressed in this project is formalized as: \begin{quote} <em>&ldquo;To design and implement a full-stack student accommodation and campus re-commerce web platform for Uttarakhand university corridors, connecting students directly with verified property hosts and student sellers with zero brokerage, room-level vacancy tracking, direct peer messaging, and content-based recommendations.&rdquo;</em> \end{quote}</p>
+<p>Key technical challenges encompass:</p>
+<ul>
+<li><strong>Dual-Domain Modeling:</strong> Unifying accommodation workflows (room configurations, amenities) with product classifieds (categories, condition grading, sell vs. rent).</li>
+<li><strong>Transactional Integrity:</strong> Preventing double-bookings on shared room inventory and ensuring atomic status transitions for single-quantity student goods.</li>
+<li><strong>Recommendation Dynamics:</strong> Delivering campus-relevant suggestions for newly registered students before extensive interaction history exists.</li>
+<li><strong>Lightweight Interface:</strong> Delivering a sub-second, mobile-first interface inspired by OLX and Amazon without heavy client build tooling.</li>
+</ul>
+<span class="page-marker">[[LOC:SEC_1_4]]</span><h2 class="section-title">1.4 Objectives and Project Scope</h2>
+<h3 class="subsection-title">1.4.1 Primary Engineering Objectives</h3>
+<ol>
+<li><strong>Architectural Decoupling:</strong> Implement a modular 3-tier architecture separating the Presentation Layer (Vanilla ES6), Business Tier (Spring Boot REST), Persistence Tier (MySQL InnoDB), and Intelligence Tier (Flask ML).</li>
+<li><strong>Role-Based Security:</strong> Enforce stateless authentication with HMAC-SHA256 signed JWTs and role-based access control (<code>ROLE_USER</code>, <code>ROLE_ADMIN</code>).</li>
+<li><strong>Content-Based Recommendations:</strong> Implement TF-IDF vectorization and cosine similarity scoring with resilient JPA database fallbacks.</li>
+<li><strong>Administrative Moderation:</strong> Deliver an administrative moderation console to review listings, verify photographs, and govern user accounts.</li>
+<li><strong>Peer Messaging and Cloud Hosting:</strong> Provide in-app chat for peer communication and containerize services for free-tier cloud deployment.</li>
+</ol>
+<h3 class="subsection-title">1.4.2 Project Scope and Regional Focus</h3>
+<p>The platform targets student belts across Uttarakhand: Dehradun (Clement Town, Premnagar, Rajpur Road), Rishikesh, Haridwar, and Roorkee. It supports six accommodation types (PG, Hostel, Flat, Room, Hotel, Dormitory) and ten consumer goods categories (Electronics, Mobiles, Furniture, Books, Appliances, Vehicles, Sports, Kitchen, Fashion, Others).</p>
+<span class="page-marker">[[LOC:SEC_1_5]]</span><h2 class="section-title">1.5 Proposed Framework and Value Proposition</h2>
+<p>StayMart introduces a verified, zero-brokerage campus ecosystem illustrated in Figure 1.1.</p>
+<div class="figure-container fig-ch1"><img src="file:///D:/Mini5th/report/diagrams/arch_diagram.png" alt="High-Level Distributed Framework of the StayMart Platform"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_1_1]]</span><strong>Figure 1.1:</strong> High-Level Distributed Framework of the StayMart Platform</div></div>
+<p>The platform provides three primary value propositions:</p>
+<ol>
+<li><strong>Zero-Brokerage Connection:</strong> Direct contact with verified hosts eliminates middleman commission fees for students.</li>
+<li><strong>Authentic Visuals:</strong> High-definition photographic assets uploaded by owners reflect genuine living conditions.</li>
+<li><strong>Campus-Centric Scoring:</strong> Hybrid TF-IDF vector matching surfaces relevant housing and essentials near the student's campus.</li>
+</ol>
+<span class="page-marker">[[LOC:SEC_1_6]]</span><h2 class="section-title">1.6 Organization of the Project Report</h2>
+<p>The report is structured into nine chapters: Chapter 2 reviews literature; Chapter 3 specifies software requirements and DFD/UML models; Chapter 4 details database schemas; Chapter 5 covers Spring Boot and ML implementations; Chapter 6 presents the UI/UX design system; Chapter 7 documents verification and walkthroughs; Chapter 8 outlines cloud deployment; and Chapter 9 summarizes conclusions and future scope.</p>
+</div>
+
+<div class="page-break">
+<span class="page-marker">[[LOC:CH_2]]</span><h1 class="chapter-title">Chapter 2<br>Literature Review</h1>
+<span class="page-marker">[[LOC:SEC_2_1]]</span><h2 class="section-title">2.1 Introduction</h2>
+<p>Online two-sided marketplaces and accommodation networks have transformed commerce by reducing transaction costs and pairing supply with demand. However, multi-category platforms combining long-term student tenancy with consumer re-commerce in non-metropolitan hill geographies present distinct algorithmic, architectural, and socio-technical challenges that remain unaddressed by generic platforms. This chapter surveys commercial solutions, analyzes recommendation algorithms, evaluates architectural paradigms, and formalizes practical research gaps in Uttarakhand.</p>
+<span class="page-marker">[[LOC:SEC_2_2]]</span><h2 class="section-title">2.2 Survey and Critical Evaluation of Existing Systems</h2>
+<p>To establish an empirical baseline, we evaluate benchmark platforms across domain focus, transaction models, moderation, and regional adaptability.</p>
+<h3 class="subsection-title">2.2.1 OLX and Quikr (General Classifieds)</h3>
+<p>Horizontal C2C classifieds suffer from lack of domain specialization. In accommodations, OLX fails to capture essential room sharing capacities, floor numbers, meal plans, electricity rules, curfews, or deposit refund policies. Furthermore, absence of pre-publication moderation produces outdated listings and broker spam.</p>
+<h3 class="subsection-title">2.2.2 Airbnb and Booking.com (Short-Term Hospitality)</h3>
+<p>Airbnb provides polished interfaces and calendar bookings, but its financial structure is built for short-term tourism with daily tariffs and 14%&ndash;20% service fees. Students in Dehradun require semester leasing without recurring percentage charges. Airbnb also lacks student re-commerce integration.</p>
+<h3 class="subsection-title">2.2.3 Flatmates and Nestaway (Shared Rental Networks)</h3>
+<p>Nestaway operates as a managed real estate company with rigid leases, management premiums, and focus limited to Tier-1 metropolises (Bengaluru, Pune, NCR), maintaining zero operational presence in Uttarakhand educational hubs like Dehradun or Roorkee.</p>
+<h3 class="subsection-title">2.2.4 MagicBricks and 99acres (Commercial Real Estate)</h3>
+<p>These platforms monetize through licensed brokers who purchase lead packs. Students seeking affordable ₹5,000/month rooms near Graphic Era Hill University face aggressive broker calls demanding upfront commissions, defeating direct student-to-owner tenancy.</p>
+<div class="table-container">
+  <div class="table-caption"><span class="page-marker">[[LOC:TAB_2_1]]</span><strong>Table 2.1:</strong> Comparative Feature Matrix: StayMart vs. Existing Commercial Platforms</div>
+  <table>
+    <thead>
+      <tr><th><strong>Feature Dimension</strong></th><th><strong>OLX</strong></th><th><strong>Airbnb</strong></th><th><strong>MagicBricks</strong></th><th><strong>Nestaway</strong></th><th><strong>StayMart (Proposed)</strong></th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Primary Focus</td><td>Horizontal C2C</td><td>Short-Term Stays</td><td>Property Sales</td><td>Managed Rental</td><td>Student Stays + Re-commerce</td></tr>
+      <tr><td>Hyperlocal Granularity</td><td>National</td><td>Global / Tourist</td><td>Metro Agents</td><td>Tier-1 Metros</td><td>Uttarakhand Corridors</td></tr>
+      <tr><td>Brokerage / Commission</td><td>Variable / Spam</td><td>14%&ndash;20%</td><td>Broker Leads</td><td>Monthly Margin</td><td><strong>Zero Brokerage</strong></td></tr>
+      <tr><td>Room-Level Inventory</td><td>No</td><td>Whole Property</td><td>No</td><td>Managed Beds</td><td><strong>Yes (Single/Double/Dorm)</strong></td></tr>
+      <tr><td>Re-commerce Integration</td><td>Standalone</td><td>None</td><td>None</td><td>None</td><td><strong>Yes (Unified Marketplace)</strong></td></tr>
+      <tr><td>Direct In-App Messaging</td><td>Basic</td><td>Host Only</td><td>Lead Form</td><td>Agent Support</td><td><strong>Yes (Real-Time Peer Chat)</strong></td></tr>
+      <tr><td>ML Recommendation Engine</td><td>Static Search</td><td>Collaborative</td><td>Keyword Filter</td><td>Basic Heuristic</td><td><strong>TF-IDF + Cosine Hybrid</strong></td></tr>
+      <tr><td>Listing Pre-Moderation</td><td>No (Reactive)</td><td>Verified</td><td>Agent Filtered</td><td>Company Audit</td><td><strong>Yes (Admin Approval Gate)</strong></td></tr>
+      <tr><td>Realistic Photographic Standard</td><td>Low / Stock</td><td>High</td><td>Stock Render</td><td>Managed Shoot</td><td><strong>Verified (authentic student/host uploads)</strong></td></tr>
+    </tbody>
+  </table>
+</div>
+<span class="page-marker">[[LOC:SEC_2_3]]</span><h2 class="section-title">2.3 Theoretical Analysis of Recommendation Algorithms</h2>
+<p>Recommender systems predict user preference ratings and surface candidate items from catalogues [resnick1997recommender]. We evaluate Collaborative Filtering against Content-Based and Hybrid approaches to justify StayMart's design.</p>
+<h3 class="subsection-title">2.3.1 Collaborative Filtering (CF) and Its Regional Limitations</h3>
+<p>Collaborative Filtering predicts interest based on historical interaction patterns across users [sarwar2001item]. Pearson Correlation evaluates neighborhood similarity: \begin{equation} \text{sim}(u, v) = \frac{\sum_{i \in I_{uv}} (r_{u, i} - \bar{r}_u)(r_{v, i} - \bar{r}_v)}{\sqrt{\sum_{i \in I_{uv}} (r_{u, i} - \bar{r}_u)^2} \sqrt{\sum_{i \in I_{uv}} (r_{v, i} - \bar{r}_v)^2}} \end{equation} While effective for dense media catalogues [koren2009matrix], CF fails in regional classifieds due to three obstacles: (1) <em>Cold-Start Problem</em>: new room and item listings have zero historical ratings; (2) <em>Matrix Sparsity</em>: localized density typically falls below <em>0.05%</em>; (3) <em>Inventory Exclusivity</em>: second-hand goods represent single-inventory assets (<em>N=1</em>) that vanish upon purchase.</p>
+<h3 class="subsection-title">2.3.2 Content-Based Filtering (CBF) and Vector Space Modeling</h3>
+<p>Content-Based Filtering evaluates item attribute similarity against user preference profiles [lops2011content]. Each listing is synthesized into an attribute document: \begin{equation} d = \text{Title} \oplus \text{Description} \oplus \text{Category} \oplus \text{City} \oplus \text{Area} \oplus \text{PriceTier} \oplus \text{Amenities} \end{equation} Term Frequency-Inverse Document Frequency (TF-IDF) weights term importance [salton1988term]: \begin{equation} \text{TF}(t, d) = \frac{f_{t, d}}{\sum_{t' \in d} f_{t', d}}, \quad \text{IDF}(t, D) = \log\left(\frac{1 + |D|}{1 + |\{d \in D : t \in d\}|}\right) + 1 \end{equation} \begin{equation} w_{t, d} = \text{TF}(t, d) &times; \text{IDF}(t, D) \end{equation} With <em>L_2</em>-normalized vectors (<em>\|\vec{u}\|_2 = 1</em>), Cosine Similarity simplifies to the dot product, enabling sub-5ms BLAS computations in scikit-learn [pedregosa2011scikit]: \begin{equation} \text{CosineSim}(\vec{u}, \vec{v}) = \vec{u}^T \vec{v} \end{equation}</p>
+<h3 class="subsection-title">2.3.3 Hybrid Behavioral Re-Ranking Framework</h3>
+<p>To combine content cold-start resilience with user engagement signals, StayMart implements a weighted hybrid re-ranking strategy [burke2002hybrid]. Actions <em>a_k</em> are assigned empirical weights: <em>\text{VIEW} = 1.0</em>, <em>\text{SEARCH} = 2.0</em>, <em>\text{WISHLIST} = 3.0</em>, <em>\text{CONTACT} = 4.0</em>, <em>\text{BOOK/ORDER} = 5.0</em>. The user profile <em>\vec{p}_u</em> incorporates exponential time decay: \begin{equation} \vec{p}_u = \sum_{k=1}^m W(a_k) e^{-\lambda \tau_k} \vec{v}_{i_k} \end{equation} The composite recommendation score combines cosine similarity, campus proximity, and popularity: \begin{equation} S(u, c) = \alpha \cdot \text{CosineSim}(\vec{p}_u, \vec{v}_c) + \beta \cdot \text{LocalityBonus}(u, C_c) + \gamma \cdot \text{PopularityPrior}(c) \end{equation} where <em>\alpha + \beta + \gamma = 1.0</em>, ensuring recommendations strictly align with the student's geographic corridor.</p>
+<span class="page-marker">[[LOC:SEC_2_4]]</span><h2 class="section-title">2.4 Architectural Paradigms: Monolithic vs. Distributed Microservices</h2>
+<p>In architecting enterprise web applications, the division of responsibilities across compute boundaries is a pivotal design decision [newman2021building, fielding2000architectural].</p>
+<div class="figure-container fig-ch2"><img src="file:///D:/Mini5th/report/diagrams/deployment_arch.png" alt="Distributed Microservice Deployment Topology vs. Monolithic Boundaries"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_2_1]]</span><strong>Figure 2.1:</strong> Distributed Microservice Deployment Topology vs. Monolithic Boundaries</div></div>
+<p>A monolithic Spring Boot application executes transactional CRUD and intensive ML vector computations within a single JVM. This causes library limitations (Java lacks native scikit-learn parity) and CPU contention during heavy matrix calculations. StayMart adopts a decoupled topology:</p>
+<ol>
+<li><strong>Spring Boot 3.3 Core (Port 8080):</strong> Coordinates ACID transactions, JWT authentication, JPA relational entities, and moderation state transitions.</li>
+<li><strong>Flask ML Microservice (Port 5000):</strong> Operates as an independent service dedicated to TF-IDF transformations, model serialization, and matrix similarity evaluation.</li>
+<li><strong>Fault-Tolerant Circuit Fallback:</strong> Communication occurs via HTTP REST with 2000ms connect and 3000ms read timeouts. If the ML service is offline, Spring Boot gracefully falls back to database-driven queries matching city and category, eliminating HTTP 500 errors.</li>
+</ol>
+<span class="page-marker">[[LOC:SEC_2_5]]</span><h2 class="section-title">2.5 Modern Frontend Architectures: Vanilla JS vs. Heavy SPAs</h2>
+<p>Modern single-page application (SPA) frameworks (React, Angular) introduce substantial JavaScript payloads (500KB&ndash;1.5MB minified) and build fragility, degrading performance on congested campus cellular networks. StayMart intentionally adopts a <strong>Vanilla HTML5, CSS3, and ES6+ JavaScript</strong> architecture with zero build steps, delivering sub-45 KB payloads, sub-second rendering, and direct static edge deployment on Vercel or CDN nodes.</p>
+<span class="page-marker">[[LOC:SEC_2_6]]</span><h2 class="section-title">2.6 Identified Practical Gaps and Chapter Summary</h2>
+<p>Our systematic review reveals four definitive market gaps: (1) absence of dual-inventory accommodation and re-commerce platforms; (2) lack of Uttarakhand hyperlocal campus granularity; (3) cold-start vulnerability in C2C classifieds; and (4) exploitative brokerage fees.</p>
+<p>In summary, Content-Based TF-IDF vectorization with behavioral re-ranking resolves the sparsity problem, while a decoupled Spring Boot and Flask microservice architecture paired with a lightweight Vanilla JS frontend provides the optimal balance of transactional integrity, ML compute isolation, and mobile performance. The next chapter details system requirements and architectural modeling.</p>
+</div>
+
+<div class="page-break">
+<span class="page-marker">[[LOC:CH_3]]</span><h1 class="chapter-title">Chapter 3<br>System Requirements and High-Level Architecture</h1>
+<span class="page-marker">[[LOC:SEC_3_1]]</span><h2 class="section-title">3.1 Introduction</h2>
+<p>Engineering a resilient, distributed, two-sided marketplace requires structured requirements specification and formal architectural modeling. This chapter establishes the Software Requirements Specification (SRS), non-functional constraints, 3-tier distributed architecture, UML sequence interactions, and operational environments for StayMart.</p>
+<span class="page-marker">[[LOC:SEC_3_2]]</span><h2 class="section-title">3.2 Software Requirements Specification (SRS)</h2>
+<h3 class="subsection-title">3.2.1 User Personas and Actor Hierarchy</h3>
+<p>StayMart delineates four primary actor classifications interacting within the platform ecosystem:</p>
+<ol>
+<li><strong>Guest User:</strong> Unauthenticated visitor with read-only access to approved listings, regional filters, and public categories.</li>
+<li><strong>Verified Tenant / Buyer:</strong> Registered user authenticated via JWT bearer token with privileges to book rooms, order items, save wishlists, and initiate peer chat.</li>
+<li><strong>Property Host / Seller:</strong> Authenticated listing author managing room inventories, pricing tiers, deposits, condition notes, and order state transitions.</li>
+<li><strong>Platform Administrator:</strong> Privileged operator (<code>ROLE_ADMIN</code>) governing pre-publication moderation, auditing accounts, and viewing telemetry.</li>
+</ol>
+<div class="figure-container fig-ch3"><img src="file:///D:/Mini5th/report/diagrams/dfd_level0.png" alt="Data Flow Diagram Level 0 (Context Level Diagram) for the StayMart System"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_3_1]]</span><strong>Figure 3.1:</strong> Data Flow Diagram Level 0 (Context Level Diagram) for the StayMart System</div></div>
+<h3 class="subsection-title">3.2.2 Functional Requirements (FR)</h3>
+<p>The functional scope is structured into eight core modules summarized in Table 3.1.</p>
+<div class="table-container">
+  <div class="table-caption"><span class="page-marker">[[LOC:TAB_3_1]]</span><strong>Table 3.1:</strong> Comprehensive Functional Requirements Specification</div>
+  <table>
+    <thead>
+      <tr><th><strong>Module ID</strong></th><th><strong>Module Name</strong></th><th><strong>Functional Description and Expected System Behavior</strong></th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>FR-01</strong></td><td>Authentication &amp; RBAC</td><td>Email uniqueness check, BCrypt password hashing (<em>cost=10</em>), JWT generation (HMAC-SHA256, 24h expiration), role enforcement (<code>ROLE_USER</code>, <code>ROLE_ADMIN</code>).</td></tr>
+      <tr><td><strong>FR-02</strong></td><td>Accommodation Mgmt</td><td>CRUD operations for 6 property types with amenities, room inventories, security deposits, address mapping, and multi-image JSON payloads.</td></tr>
+      <tr><td><strong>FR-03</strong></td><td>Room-Level Inventory</td><td>Multi-unit property association with discrete rooms (Single, Double, Triple, Dorm) specifying room number, floor, rent, and vacancy toggles.</td></tr>
+      <tr><td><strong>FR-04</strong></td><td>Product Marketplace</td><td>CRUD operations for student goods across 10 categories (Sell vs. Rent), capturing condition grading (Brand New to Fair) and wear specifications.</td></tr>
+      <tr><td><strong>FR-05</strong></td><td>Lifecycle Transactions</td><td>End-to-end booking state machine (<code>PENDING</code> <em>&rarr;</em> <code>CONFIRMED</code> <em>&rarr;</em> <code>COMPLETED</code> / <code>CANCELLED</code>) and order decrement workflows.</td></tr>
+      <tr><td><strong>FR-06</strong></td><td>Peer-to-Peer Messaging</td><td>Real-time bilateral chat between buyers/tenants and sellers/hosts with unread badges and listing context injection.</td></tr>
+      <tr><td><strong>FR-07</strong></td><td>ML Recommendations</td><td>Asynchronous microservice integration delivering personalized listings, similar item carousels, and top-rated rankings based on telemetry.</td></tr>
+      <tr><td><strong>FR-08</strong></td><td>Admin Governance</td><td>Pre-publication moderation queue, account deactivation rules, location/category CRUD, and telemetry chart aggregation.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="subsection-title">3.2.3 Non-Functional Requirements (NFR)</h3>
+<ol>
+<li><strong>Performance (NFR-01):</strong> Core read APIs must respond in <em>t_{\text{resp}} &lt; 50\text{ ms}</em>; recommendation endpoints must return within <em>t_{\text{ml}} &lt; 120\text{ ms}</em>.</li>
+<li><strong>Security (NFR-02):</strong> BCrypt password hashing, Spring Data JPA parameterized queries preventing SQL injection, output sanitization via <code>escapeHtml()</code>, and stateless JWT tokens.</li>
+<li><strong>Data Integrity (NFR-03):</strong> Inventory modifications execute within isolated Spring <code>@Transactional</code> boundaries adhering to ACID guarantees.</li>
+<li><strong>Decoupling (NFR-04):</strong> The ML microservice is isolated from the transactional Spring Boot core, enabling independent horizontal scaling.</li>
+<li><strong>Usability (NFR-05):</strong> Responsive layouts from 320px (mobile) to 1280px+ (desktop) adhering to WCAG AAA contrast and zero horizontal overflow.</li>
+</ol>
+<span class="page-marker">[[LOC:SEC_3_3]]</span><h2 class="section-title">3.3 High-Level 3-Tier Distributed Architecture</h2>
+<p>StayMart partitions responsibilities across three decoupled distributed tiers:</p>
+<ol>
+<li><strong>Presentation Tier (Client Portal):</strong> Vanilla ES6 JavaScript, HTML5, and CSS3 communicating asynchronously over HTTPS via JSON payloads. Stateless JWT tokens are stored in browser storage and transmitted via <code>Authorization: Bearer &lt;JWT&gt;</code> headers.</li>
+<li><strong>Business Tier (Spring Boot 3.3 Core):</strong> Executing on Eclipse Temurin OpenJDK 17 LTS, this tier implements a Controller-Service-Repository pattern across 16 REST resource controllers, custom <code>JwtAuthenticationFilter</code>, transactional service handlers, and 12 Spring Data JPA repositories.</li>
+<li><strong>Persistence and ML Tier:</strong> MySQL 8.0 InnoDB provides ACID persistence across 12 normalized tables. A companion Python 3.11 / Flask WSGI service executes TF-IDF vectorization and serves similarity predictions via REST endpoints.</li>
+</ol>
+<span class="page-marker">[[LOC:SEC_3_4]]</span><h2 class="section-title">3.4 UML Behavioral Modeling: Sequence Diagrams</h2>
+<p>Figure 3.2 details the complete lifecycle of an accommodation booking transaction across the three tiers.</p>
+<div class="figure-container fig-ch3"><img src="file:///D:/Mini5th/report/diagrams/seq_booking.png" alt="UML Sequence Diagram: Accommodation Booking and Confirmation Flow"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_3_2]]</span><strong>Figure 3.2:</strong> UML Sequence Diagram: Accommodation Booking and Confirmation Flow</div></div>
+<p>The sequence executes through eight calculated stages: (1) tenant submits <code>POST /api/bookings</code>; (2) controller validates JWT and room capacity; (3) service persists booking as <code>PENDING</code>; (4) <code>BehaviorService</code> synchronously logs telemetry (<em>\text{weight}=5.0</em>); (5) API returns <code>ApiResponse&lt;BookingResponse&gt;</code> (201 Created); (6) host is alerted via requests dashboard; (7) host submits <code>PATCH /api/bookings/\{id\}/status?status=CONFIRMED</code>; (8) status transitions to <code>CONFIRMED</code>, available bed count decrements, and direct chat is unlocked.</p>
+<span class="page-marker">[[LOC:SEC_3_5]]</span><h2 class="section-title">3.5 Hardware and Software Operational Environments</h2>
+<p>Table 3.2 summarizes the operational specifications required to host and execute the StayMart platform.</p>
+<div class="table-container">
+  <div class="table-caption"><span class="page-marker">[[LOC:TAB_3_2]]</span><strong>Table 3.2:</strong> System Hardware and Software Operational Specifications</div>
+  <table>
+    <thead>
+      <tr><th><strong>Layer</strong></th><th><strong>Specification Parameter</strong></th><th><strong>Recommended Value / Deployment Minimum</strong></th></tr>
+    </thead>
+    <tbody>
+      <tr><td rowspan="4"><strong>Hardware</strong></td><td>CPU Architecture</td><td>x86_64 (AMD64) or ARM64 (AWS Graviton), 4+ Cores</td></tr>
+      <tr><td>RAM</td><td>8 GB Minimum (16 GB Recommended for Dockerized Prod)</td></tr>
+      <tr><td>Storage</td><td>50 GB NVMe SSD (Persistent MySQL Volume + Uploads)</td></tr>
+      <tr><td>Network</td><td>100 Mbps Full-Duplex Network Interface Card</td></tr>
+      <tr><td rowspan="4"><strong>Backend</strong></td><td>Java Runtime</td><td>Eclipse Temurin OpenJDK 17 LTS</td></tr>
+      <tr><td>Framework</td><td>Spring Boot 3.3.5 (Spring Framework 6.1.14)</td></tr>
+      <tr><td>Build Tool</td><td>Apache Maven 3.9.9+</td></tr>
+      <tr><td>Embedded Servlet</td><td>Apache Tomcat 10.1.31 (HTTP Port 8080)</td></tr>
+      <tr><td rowspan="4"><strong>ML Service</strong></td><td>Python Interpreter</td><td>Python 3.11.9+</td></tr>
+      <tr><td>Scientific Packages</td><td>scikit-learn 1.3.0, pandas 2.0.3, numpy 1.24.4</td></tr>
+      <tr><td>Web Framework</td><td>Flask 2.3.3 with Flask-CORS 4.0.0</td></tr>
+      <tr><td>Production WSGI</td><td>Threaded runtime (development) / Gunicorn (Docker)</td></tr>
+      <tr><td rowspan="3"><strong>Database</strong></td><td>Relational Database</td><td>MySQL Community Server 8.0.35+</td></tr>
+      <tr><td>Storage Engine</td><td>InnoDB with UTF8MB4 Character Set</td></tr>
+      <tr><td>Connection Pool</td><td>HikariCP (Maximum Pool Size: 10 Connections)</td></tr>
+      <tr><td rowspan="3"><strong>Frontend</strong></td><td>Client Technologies</td><td>Semantic HTML5, CSS3 Custom Properties, JavaScript ES6+</td></tr>
+      <tr><td>Visual Rendering</td><td>Chart.js 4.4+ (Dashboard Telemetry)</td></tr>
+      <tr><td>Static Host / Server</td><td>Multi-threaded Python server (Dev) / Vercel Edge CDN</td></tr>
+    </tbody>
+  </table>
+</div>
+<span class="page-marker">[[LOC:SEC_3_6]]</span><h2 class="section-title">3.6 Summary</h2>
+<p>This chapter formalised the SRS for StayMart across four personas, eight functional modules, and strict performance and security constraints. Through UML sequence modeling and 3-tier decoupling, the interaction contracts were established. The next chapter explores database relational modeling and normalization analysis.</p>
+</div>
+
+<div class="page-break">
+<span class="page-marker">[[LOC:CH_4]]</span><h1 class="chapter-title">Chapter 4<br>Database Design and Relational Modeling</h1>
+<span class="page-marker">[[LOC:SEC_4_1]]</span><h2 class="section-title">4.1 Introduction</h2>
+<p>A platform coordinating real-time room bookings, peer re-commerce orders, in-app messaging, and behavioral telemetry requires a robust relational persistence layer. StayMart utilizes <strong>MySQL 8.0</strong> with the <strong>InnoDB</strong> storage engine to guarantee ACID transaction properties, foreign key integrity, row-level locking, and native JSON attribute storage. This chapter details Entity-Relationship modeling, relational data dictionaries, normalization proofs, and indexing strategies.</p>
+<span class="page-marker">[[LOC:SEC_4_2]]</span><h2 class="section-title">4.2 Entity-Relationship (ER) Modeling</h2>
+<p>Figure 4.1 illustrates the Entity-Relationship diagram for the StayMart database schema.</p>
+<div class="figure-container fig-ch4"><img src="file:///D:/Mini5th/report/diagrams/er_diagram.png" alt="Entity-Relationship (ER) Diagram of the StayMart Relational Database Schema"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_4_1]]</span><strong>Figure 4.1:</strong> Entity-Relationship (ER) Diagram of the StayMart Relational Database Schema</div></div>
+<p>The schema models key domain associations across the campus ecosystem:</p>
+<ul>
+<li><strong>Users to Properties (<em>1:N</em>):</strong> Hosts author multiple accommodation listings (<code>properties.posted_by</code>).</li>
+<li><strong>Properties to Rooms (<em>1:N</em>):</strong> Properties contain discrete room configurations (<code>rooms.property_id</code>) specifying sharing types and pricing.</li>
+<li><strong>Locations to Listings (<em>1:N</em>):</strong> Geographic nodes (<code>locations.id</code>) standardize campus areas across properties and classifieds.</li>
+<li><strong>Categories to Products (<em>1:N</em>):</strong> Products map into a 10-category re-commerce taxonomy (<code>categories.id</code>).</li>
+<li><strong>Users to Bookings and Orders (<em>1:N</em>):</strong> Students initiate room reservations (<code>bookings.booker_id</code>) and product orders (<code>orders.buyer_id</code>).</li>
+<li><strong>Users to Peer Chat (<em>N:M</em> via <code>chats</code>):</strong> Bilateral communication is recorded linking <code>sender_id</code> and <code>receiver_id</code> with listing context.</li>
+<li><strong>Users to Telemetry (<em>1:N</em>):</strong> Navigation events (views, wishlists, inquiries) are logged in <code>user_behaviors</code> to train recommendations.</li>
+</ul>
+<span class="page-marker">[[LOC:SEC_4_3]]</span><h2 class="section-title">4.3 Relational Schema Data Dictionaries</h2>
+<p>The schema comprises twelve normalized tables. Data dictionaries for the core domain entities are detailed in Tables 4.1 through 4.6.</p>
+<div class="table-container">
+  <div class="table-caption"><span class="page-marker">[[LOC:TAB_4_1]]</span><strong>Table 4.1:</strong> Data Dictionary: <code>users</code> Table</div>
+  <table>
+    <thead>
+      <tr><th><strong>Column</strong></th><th><strong>Data Type</strong></th><th><strong>Null</strong></th><th><strong>Default</strong></th><th><strong>Description</strong></th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>id</code></td><td><code>BIGINT</code></td><td>NO</td><td>AUTO_INCR</td><td>Primary Key, unique user identifier.</td></tr>
+      <tr><td><code>name</code></td><td><code>VARCHAR(100)</code></td><td>NO</td><td>None</td><td>Full name of the student or property host.</td></tr>
+      <tr><td><code>email</code></td><td><code>VARCHAR(150)</code></td><td>NO</td><td>None</td><td>Unique login email address.</td></tr>
+      <tr><td><code>password_hash</code></td><td><code>VARCHAR(255)</code></td><td>NO</td><td>None</td><td>BCrypt password hash (<em>cost=10</em>).</td></tr>
+      <tr><td><code>phone</code></td><td><code>VARCHAR(15)</code></td><td>YES</td><td>NULL</td><td>Contact phone number for direct inquiries.</td></tr>
+      <tr><td><code>role</code></td><td><code>ENUM</code></td><td>NO</td><td>'USER'</td><td>User role: <code>USER</code> or <code>ADMIN</code>.</td></tr>
+      <tr><td><code>city</code></td><td><code>VARCHAR(100)</code></td><td>YES</td><td>'Dehradun'</td><td>Primary campus city in Uttarakhand.</td></tr>
+      <tr><td><code>is_active</code></td><td><code>BOOLEAN</code></td><td>NO</td><td>TRUE</td><td>Active account status flag.</td></tr>
+      <tr><td><code>is_verified</code></td><td><code>BOOLEAN</code></td><td>NO</td><td>FALSE</td><td>Student ID / Landlord verification indicator.</td></tr>
+      <tr><td><code>created_at</code></td><td><code>TIMESTAMP</code></td><td>NO</td><td>CURRENT_TS</td><td>Account registration timestamp.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-container">
+  <div class="table-caption"><span class="page-marker">[[LOC:TAB_4_2]]</span><strong>Table 4.2:</strong> Data Dictionary: <code>locations</code> Table</div>
+  <table>
+    <thead>
+      <tr><th><strong>Column</strong></th><th><strong>Data Type</strong></th><th><strong>Null</strong></th><th><strong>Default</strong></th><th><strong>Description</strong></th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>id</code></td><td><code>BIGINT</code></td><td>NO</td><td>AUTO_INCR</td><td>Primary Key, geographic location identifier.</td></tr>
+      <tr><td><code>city</code></td><td><code>VARCHAR(100)</code></td><td>NO</td><td>None</td><td>City name (Dehradun, Roorkee, Rishikesh).</td></tr>
+      <tr><td><code>area</code></td><td><code>VARCHAR(100)</code></td><td>YES</td><td>NULL</td><td>Campus locality (e.g., Clement Town, Premnagar).</td></tr>
+      <tr><td><code>state</code></td><td><code>VARCHAR(100)</code></td><td>YES</td><td>'Uttarakhand'</td><td>State jurisdiction.</td></tr>
+      <tr><td><code>pincode</code></td><td><code>VARCHAR(10)</code></td><td>YES</td><td>NULL</td><td>Postal code identifier.</td></tr>
+      <tr><td><code>latitude/longitude</code></td><td><code>DECIMAL</code></td><td>YES</td><td>NULL</td><td>GPS coordinates for map alignment.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-container">
+  <div class="table-caption"><span class="page-marker">[[LOC:TAB_4_3]]</span><strong>Table 4.3:</strong> Data Dictionary: <code>categories</code> Table</div>
+  <table>
+    <thead>
+      <tr><th><strong>Column</strong></th><th><strong>Data Type</strong></th><th><strong>Null</strong></th><th><strong>Default</strong></th><th><strong>Description</strong></th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>id</code></td><td><code>BIGINT</code></td><td>NO</td><td>AUTO_INCR</td><td>Primary Key, taxonomy identifier.</td></tr>
+      <tr><td><code>name</code></td><td><code>VARCHAR(100)</code></td><td>NO</td><td>None</td><td>Category name (Electronics, Furniture, Books, etc.).</td></tr>
+      <tr><td><code>type</code></td><td><code>ENUM</code></td><td>NO</td><td>None</td><td>Scope: <code>ACCOMMODATION</code> or <code>PRODUCT</code>.</td></tr>
+      <tr><td><code>icon</code></td><td><code>VARCHAR(50)</code></td><td>YES</td><td>NULL</td><td>Visual badge or icon class string.</td></tr>
+      <tr><td><code>parent_id</code></td><td><code>BIGINT</code></td><td>YES</td><td>NULL</td><td>Self-referencing FK for sub-taxonomies.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-container">
+  <div class="table-caption"><span class="page-marker">[[LOC:TAB_4_4]]</span><strong>Table 4.4:</strong> Data Dictionary: <code>properties</code> Table</div>
+  <table>
+    <thead>
+      <tr><th><strong>Column</strong></th><th><strong>Data Type</strong></th><th><strong>Null</strong></th><th><strong>Default</strong></th><th><strong>Description</strong></th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>id</code></td><td><code>BIGINT</code></td><td>NO</td><td>AUTO_INCR</td><td>Primary Key, accommodation listing ID.</td></tr>
+      <tr><td><code>posted_by</code></td><td><code>BIGINT</code></td><td>NO</td><td>None</td><td>FK <em>&rarr;</em> <code>users(id)</code>.</td></tr>
+      <tr><td><code>title</code></td><td><code>VARCHAR(200)</code></td><td>NO</td><td>None</td><td>Property listing title headline.</td></tr>
+      <tr><td><code>type</code></td><td><code>ENUM</code></td><td>NO</td><td>None</td><td>PG, ROOM, HOSTEL, HOTEL, FLAT, DORMITORY.</td></tr>
+      <tr><td><code>gender_pref</code></td><td><code>ENUM</code></td><td>NO</td><td>'ANY'</td><td>Gender filter: MALE, FEMALE, or ANY.</td></tr>
+      <tr><td><code>location_id</code></td><td><code>BIGINT</code></td><td>YES</td><td>NULL</td><td>FK <em>&rarr;</em> <code>locations(id)</code>.</td></tr>
+      <tr><td><code>price_per_month</code></td><td><code>DECIMAL(10,2)</code></td><td>YES</td><td>NULL</td><td>Base monthly rental rate (INR).</td></tr>
+      <tr><td><code>deposit_amount</code></td><td><code>DECIMAL(10,2)</code></td><td>NO</td><td>0.00</td><td>Security deposit amount.</td></tr>
+      <tr><td><code>amenities</code></td><td><code>JSON</code></td><td>YES</td><td>NULL</td><td>JSON array of amenity tags (WiFi, AC, Meals).</td></tr>
+      <tr><td><code>total/avail_rooms</code></td><td><code>INT</code></td><td>NO</td><td>1</td><td>Capacity and live vacant room counters.</td></tr>
+      <tr><td><code>images</code></td><td><code>JSON</code></td><td>YES</td><td>NULL</td><td>JSON array of verified photograph URLs.</td></tr>
+      <tr><td><code>status</code></td><td><code>ENUM</code></td><td>NO</td><td>'PENDING'</td><td>Moderation state: PENDING, APPROVED, REJECTED.</td></tr>
+      <tr><td><code>is_available</code></td><td><code>BOOLEAN</code></td><td>NO</td><td>TRUE</td><td>Listing availability visibility toggle.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-container">
+  <div class="table-caption"><span class="page-marker">[[LOC:TAB_4_5]]</span><strong>Table 4.5:</strong> Data Dictionary: <code>rooms</code> Table</div>
+  <table>
+    <thead>
+      <tr><th><strong>Column</strong></th><th><strong>Data Type</strong></th><th><strong>Null</strong></th><th><strong>Default</strong></th><th><strong>Description</strong></th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>id</code></td><td><code>BIGINT</code></td><td>NO</td><td>AUTO_INCR</td><td>Primary Key, room unit identifier.</td></tr>
+      <tr><td><code>property_id</code></td><td><code>BIGINT</code></td><td>NO</td><td>None</td><td>FK <em>&rarr;</em> <code>properties(id)</code>.</td></tr>
+      <tr><td><code>room_number</code></td><td><code>VARCHAR(20)</code></td><td>YES</td><td>NULL</td><td>Room number or bed identifier.</td></tr>
+      <tr><td><code>type</code></td><td><code>ENUM</code></td><td>NO</td><td>None</td><td>SINGLE, DOUBLE, TRIPLE, or DORMITORY.</td></tr>
+      <tr><td><code>price</code></td><td><code>DECIMAL(10,2)</code></td><td>YES</td><td>NULL</td><td>Monthly rent for this sharing tier.</td></tr>
+      <tr><td><code>capacity/floor</code></td><td><code>INT</code></td><td>NO</td><td>1</td><td>Occupant count and building floor number.</td></tr>
+      <tr><td><code>is_available</code></td><td><code>BOOLEAN</code></td><td>NO</td><td>TRUE</td><td>Individual room vacancy status.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-container">
+  <div class="table-caption"><span class="page-marker">[[LOC:TAB_4_6]]</span><strong>Table 4.6:</strong> Data Dictionary: <code>products</code> Table</div>
+  <table>
+    <thead>
+      <tr><th><strong>Column</strong></th><th><strong>Data Type</strong></th><th><strong>Null</strong></th><th><strong>Default</strong></th><th><strong>Description</strong></th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>id</code></td><td><code>BIGINT</code></td><td>NO</td><td>AUTO_INCR</td><td>Primary Key, product classified ID.</td></tr>
+      <tr><td><code>posted_by</code></td><td><code>BIGINT</code></td><td>NO</td><td>None</td><td>FK <em>&rarr;</em> <code>users(id)</code>.</td></tr>
+      <tr><td><code>category_id</code></td><td><code>BIGINT</code></td><td>YES</td><td>NULL</td><td>FK <em>&rarr;</em> <code>categories(id)</code>.</td></tr>
+      <tr><td><code>title</code></td><td><code>VARCHAR(200)</code></td><td>NO</td><td>None</td><td>Item headline (e.g., HP Laptop, Cooler).</td></tr>
+      <tr><td><code>price</code></td><td><code>DECIMAL(10,2)</code></td><td>NO</td><td>None</td><td>Listed price or rental fee (INR).</td></tr>
+      <tr><td><code>listing_type</code></td><td><code>ENUM</code></td><td>NO</td><td>'SELL'</td><td>Classification: SELL, RENT, or BOTH.</td></tr>
+      <tr><td><code>condition</code></td><td><code>ENUM</code></td><td>NO</td><td>'GOOD'</td><td>NEW, LIKE_NEW, GOOD, FAIR, or OLD.</td></tr>
+      <tr><td><code>images</code></td><td><code>JSON</code></td><td>YES</td><td>NULL</td><td>JSON array of authentic item photos.</td></tr>
+      <tr><td><code>status</code></td><td><code>ENUM</code></td><td>NO</td><td>'PENDING'</td><td>Moderation state: PENDING, APPROVED, REJECTED.</td></tr>
+      <tr><td><code>is_available</code></td><td><code>BOOLEAN</code></td><td>NO</td><td>TRUE</td><td>Re-commerce inventory flag (active vs. sold).</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>The remaining interaction entities are formalized as: (1) <code>bookings</code> (tracks accommodation check-ins, lease duration, deposits, and approval states); (2) <code>orders</code> (governs re-commerce buy/rent checkouts and quantity decrements); (3) <code>wishlists</code> (unique compound key on <code>(user_id, item_type, item_id)</code>); (4) <code>reviews</code> (1&ndash;5 star ratings linked to confirmed stays); (5) <code>chats</code> (bilateral message records with read receipts); and (6) <code>user_behaviors</code> (implicit engagement telemetry for ML models).</p>
+<span class="page-marker">[[LOC:SEC_4_4]]</span><h2 class="section-title">4.4 Database Normalization Analysis</h2>
+<p>To eliminate redundancy and prevent insertion, update, and deletion anomalies, the schema is evaluated against formal normal forms:</p>
+<ul>
+<li><strong>First Normal Form (1NF):</strong> All attributes contain atomic scalar values. Storing serialized photo URLs and amenity lists within MySQL 8.0 native <code>JSON</code> datatypes functions as atomic document storage, avoiding unnecessary join tables while strictly preserving 1NF.</li>
+<li><strong>Second Normal Form (2NF):</strong> All tables utilize single-column surrogate primary keys (<code>id BIGINT AUTO_INCREMENT</code>). Because candidate keys contain no composite attributes, partial key dependencies cannot exist; 2NF is satisfied unconditionally.</li>
+<li><strong>Third Normal Form (3NF):</strong> Transitive dependencies are systematically eliminated. In unnormalized designs, properties storing address attributes directly introduce <em>\text{PropertyID} &rarr; \text{Pincode} &rarr; \text{City}</em>. Isolating geographic entities into <code>locations</code> ensures all non-key columns depend strictly and non-transitively on the primary key, satisfying 3NF.</li>
+<li><strong>Boyce-Codd Normal Form (BCNF):</strong> For every functional dependency <em>X &rarr; Y</em>, <em>X</em> is a superkey (primary key <code>id</code> or unique <code>email</code>). The schema complies with BCNF.</li>
+</ul>
+<span class="page-marker">[[LOC:SEC_4_5]]</span><h2 class="section-title">4.5 Indexing Strategy and Referential Integrity</h2>
+<p>To guarantee sub-50ms query latency under concurrent load, B-Tree indexes are deployed across critical access paths:</p>
+<ol>
+<li><strong>Foreign Key Indexes:</strong> Indexed foreign keys on <code>properties(posted_by)</code>, <code>rooms(property_id)</code>, and <code>orders(product_id)</code> ensure relational joins execute via index range scans rather than full table scans.</li>
+<li><strong>Composite Search Indexes:</strong> Catalog endpoints frequently filter by approval and availability. Composite indexes on <code>(status, is_available, created_at)</code> enable MySQL to evaluate search predicates directly from the index tree.</li>
+<li><strong>Telemetry Stream Indexes:</strong> High-throughput event ingestion in <code>user_behaviors</code> is indexed on <code>(user_id, created_at)</code>, allowing the recommendation engine to retrieve historical interactions in sub-10ms.</li>
+</ol>
+<span class="page-marker">[[LOC:SEC_4_6]]</span><h2 class="section-title">4.6 Summary</h2>
+<p>This chapter detailed StayMart's relational database architecture, ER modeling, data dictionaries, normalization proofs, and indexing strategies. MySQL 8.0 InnoDB ensures ACID consistency for bookings and orders, while native JSON columns efficiently handle media assets. The following chapter explores backend implementation and the machine learning recommendation microservice.</p>
+</div>
+
+<div class="page-break">
+<span class="page-marker">[[LOC:CH_5]]</span><h1 class="chapter-title">Chapter 5<br>Backend and Machine Learning Microservice Implementation</h1>
+<span class="page-marker">[[LOC:SEC_5_1]]</span><h2 class="section-title">5.1 Introduction</h2>
+<p>StayMart's backend decouples transactional core operations from machine learning analytics:</p>
+<ol>
+<li><strong>Spring Boot 3.3 Backend (Java 17 LTS):</strong> Coordinates authentication, bookings, product orders, peer chat, and moderation using typed Java services and Spring Data JPA.</li>
+<li><strong>Python 3.11 / Flask ML Microservice:</strong> Asynchronous service handling text preprocessing, TF-IDF vectorization, and cosine similarity rankings.</li>
+</ol>
+<span class="page-marker">[[LOC:SEC_5_2]]</span><h2 class="section-title">5.2 Spring Boot Core Backend Architecture</h2>
+<p>The backend leverages Spring Boot 3.3.5 and Spring Framework 6.1.14 running on Java 17 LTS, utilizing immutable record DTOs and HikariCP connection pooling on embedded Tomcat.</p>
+<h3 class="subsection-title">5.2.1 Architectural Layering: Controller-Service-Repository Pattern</h3>
+<p>The system structures business logic through the Controller-Service-Repository pattern across 16 REST controllers exposed via OpenAPI (Figure 5.1).</p>
+<div class="figure-container fig-ch5"><img src="file:///D:/Mini5th/report/screenshots/swagger_api.png" alt="Springdoc OpenAPI 3.0 Swagger UI Exposing Core Backend REST Endpoints"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_5_1]]</span><strong>Figure 5.1:</strong> Springdoc OpenAPI 3.0 Swagger UI Exposing Core Backend REST Endpoints</div></div>
+<p>Controllers are partitioned into: (1) Identity (<code>AuthController</code>, <code>UserController</code>); (2) Accommodations (<code>PropertyController</code>, <code>RoomController</code>, <code>LocationController</code>); (3) Marketplace (<code>ProductController</code>, <code>CategoryController</code>); and (4) Transactions (<code>BookingController</code>, <code>OrderController</code>, <code>ChatController</code>, <code>ReviewController</code>, <code>WishlistController</code>, <code>RecommendationController</code>, <code>AdminController</code>).</p>
+<h3 class="subsection-title">5.2.2 Standardized API Envelope Pattern</h3>
+<p>All endpoints emit a uniform <code>ApiResponse&lt;T&gt;</code> payload envelope to ensure consistent parsing:</p>
+<div class="code-container"><pre>public class ApiResponse&lt;T&gt; {
+    private boolean success;
+    private String message;
+    private T data;
+    private Long timestamp;
+
+    public static &lt;T&gt; ApiResponse&lt;T&gt; ok(T data) {
+        return new ApiResponse&lt;&gt;(true, &quot;Success&quot;, data, System.currentTimeMillis());
+    }
+    public static &lt;T&gt; ApiResponse&lt;T&gt; error(String message) {
+        return new ApiResponse&lt;&gt;(false, message, null, System.currentTimeMillis());
+    }
+}</pre></div>
+<span class="page-marker">[[LOC:SEC_5_3]]</span><h2 class="section-title">5.3 Security Architecture: Spring Security and Stateless JWT</h2>
+<p>Authentication is governed by Spring Security 6 with stateless JSON Web Tokens (HMAC-SHA256, 24-hour expiration) containing user identity and role authority.</p>
+<h3 class="subsection-title">5.3.1 JWT Authentication Filter Pipeline</h3>
+<p>Inbound requests are intercepted by <code>JwtAuthenticationFilter</code> before reaching servlet endpoints:</p>
+<div class="code-container"><pre>@Component
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+    private final JwtTokenProvider tokenProvider;
+    private final CustomUserDetailsService userDetailsService;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
+        String token = resolveToken(request);
+        if (StringUtils.hasText(token) &amp;&amp; tokenProvider.validateToken(token)) {
+            String email = tokenProvider.getEmailFromToken(token);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+            UsernamePasswordAuthenticationToken auth =
+                new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            SecurityContextHolder.getContext().setAuthentication(auth);
+        }
+        filterChain.doFilter(request, response);
+    }
+}</pre></div>
+<p>Layered security defenses include BCrypt (<em>cost=10</em>) password encryption, Hibernate ORM parameterized queries for SQL injection immunity, and frontend HTML escaping via <code>escapeHtml()</code>.</p>
+<span class="page-marker">[[LOC:SEC_5_4]]</span><h2 class="section-title">5.4 Machine Learning Recommendation Microservice</h2>
+<p>The Python 3.11 / Flask microservice vectorizes listing text using scikit-learn's <code>TfidfVectorizer</code> with unigram and bigram ranges <em>(1, 2)</em> and sublinear scaling.</p>
+<div class="figure-container fig-ch5"><img src="file:///D:/Mini5th/report/diagrams/ml_pipeline.png" alt="Machine Learning Content-Based Recommendation Pipeline with TF-IDF Vectorization"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_5_2]]</span><strong>Figure 5.2:</strong> Machine Learning Content-Based Recommendation Pipeline with TF-IDF Vectorization</div></div>
+<div class="code-container"><pre>def build_property_document(row):
+    tokens = [str(row[&#x27;title&#x27;]), str(row[&#x27;description&#x27;]), str(row[&#x27;type&#x27;]),
+              str(row[&#x27;gender_preference&#x27;]), str(row[&#x27;area&#x27;]), str(row[&#x27;city&#x27;]),
+              &quot; &quot;.join(json.loads(row[&#x27;amenities&#x27;])) if row[&#x27;amenities&#x27;] else &quot;&quot;]
+    price = float(row[&#x27;price_per_month&#x27;])
+    tokens.append(&quot;budget_tier_low&quot; if price &lt; 5000 else &quot;budget_tier_medium&quot; if price &lt;= 10000 else &quot;budget_tier_premium&quot;)
+    return &quot; &quot;.join(tokens)</pre></div>
+<p>Cosine similarity measures vector proximity in normalized space: <em>\text{Sim}(\vec{u}, \vec{v}) = \vec{u} \cdot \vec{v} / (\|\vec{u}\| \|\vec{v}\|)</em>.</p>
+<span class="page-marker">[[LOC:SEC_5_5]]</span><h2 class="section-title">5.5 Fault-Tolerant Fallback Integration in Spring Boot</h2>
+<p>The Spring Boot backend communicates with Flask via <code>MlServiceClient</code> configured with a 2000ms connection timeout and a 3000ms read timeout. If the ML service is offline or times out, <code>RecommendationService</code> gracefully triggers a JPA database fallback:</p>
+<div class="code-container"><pre>@Service
+public class RecommendationService {
+    private final MlServiceClient mlServiceClient;
+    private final PropertyService propertyService;
+
+    public List&lt;PropertyResponse&gt; recommendedProperties(Long userId, String city, int limit) {
+        List&lt;Long&gt; ids = mlServiceClient.fetchRecommendedPropertyIds(userId, resolveCity(city), limit);
+        List&lt;PropertyResponse&gt; properties = ids.isEmpty() ? List.of() : propertyService.findRecommendedProperties(ids, limit);
+        if (properties.isEmpty()) {
+            return propertyService.latestApproved(limit); // Resilient JPA fallback
+        }
+        return properties;
+    }
+}</pre></div>
+<span class="page-marker">[[LOC:SEC_5_6]]</span><h2 class="section-title">5.6 Summary</h2>
+<p>This chapter detailed the Controller-Service-Repository architecture across 16 REST endpoints, stateless JWT security, the Python TF-IDF recommendation engine, and the resilient database fallback mechanism. The next chapter explores the frontend UI/UX design system.</p>
+</div>
+
+<div class="page-break">
+<span class="page-marker">[[LOC:CH_6]]</span><h1 class="chapter-title">Chapter 6<br>Frontend Implementation and UI/UX Design System</h1>
+<span class="page-marker">[[LOC:SEC_6_1]]</span><h2 class="section-title">6.1 Introduction</h2>
+<p>StayMart's user interface is engineered to deliver an authentic, high-trust accommodation and classifieds marketplace specifically tailored for students in Uttarakhand. Traditional classifieds suffer from visual clutter and misleading photos, while heavy Single-Page Applications (SPAs) impose large JavaScript payloads that struggle on congested campus cellular networks. StayMart utilizes native HTML5, modern CSS3 custom properties, and modular ES6 JavaScript without bundler overhead, achieving sub-45 KB payloads and sub-second rendering.</p>
+<span class="page-marker">[[LOC:SEC_6_2]]</span><h2 class="section-title">6.2 Design Philosophy and Visual Design System</h2>
+<p>Rather than adopting generic dark-mode templates, StayMart establishes a high-trust commercial light aesthetic grounded in Uttarakhand's academic geography (Figure 6.1).</p>
+<div class="figure-container fig-ch6"><img src="file:///D:/Mini5th/report/screenshots/landing_page.png" alt="StayMart Modern Landing Interface Featuring Alpine Navy Navigation, Refined Campus Chips, and Real-Time Marketplace Metrics"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_1]]</span><strong>Figure 6.1:</strong> StayMart Modern Landing Interface Featuring Alpine Navy Navigation, Refined Campus Chips, and Real-Time Marketplace Metrics</div></div>
+<p>The visual system is governed by: (1) <em>Subject-Matter Grounding</em>: proximity chips (&ldquo;400m from GEHU Gate 2&rdquo;), verified roommate badges, and student gear categories; (2) <em>High-Contrast Commercial Dignity</em>: pearl white canvas (<code>\#f8fafc</code>), white cards (<code>\#ffffff</code>), and slate borders (<code>\#e2e8f0</code>); and (3) <em>Structured Elevation</em>: multi-layer soft shadows without distracting glassmorphism.</p>
+<h3 class="subsection-title">6.2.1 Color Palette and Design Tokens</h3>
+<p>Declared in <code>:root</code> in <code>frontend/css/global.css</code>, key tokens define semantic brand identity:</p>
+<div class="code-container"><pre>:root {
+  --header-bg: #0b1e36;          /* Deep Himalayan Alpine Navy */
+  --header-text: #ffffff;
+  --amazon-amber: #f59e0b;        /* Radiant Conversion Accent */
+  --success: #10b981;             /* Emerald Mint Verified */
+  --bg-page: #f8fafc;             /* Crisp Pearl White Canvas */
+  --bg-card: #ffffff;
+  --text-primary: #0b1e36;        /* High-contrast deep slate */
+  --text-secondary: #475569;      /* Slate subtitles (WCAG AAA) */
+  --border: #e2e8f0;              /* Delicate slate borders */
+  --shadow-md: 0 4px 16px -2px rgba(11, 30, 54, 0.08);
+  --font: &#x27;Inter&#x27;, -apple-system, sans-serif;
+  --font-display: &#x27;Plus Jakarta Sans&#x27;, var(--font);
+}</pre></div>
+<p>Typography combines geometric display headings in <strong>Plus Jakarta Sans</strong> with high-legibility body prose in <strong>Inter</strong>.</p>
+<span class="page-marker">[[LOC:SEC_6_3]]</span><h2 class="section-title">6.3 Modular Client-Side JavaScript Architecture</h2>
+<p>Frontend functionality is organized into modular scripts in <code>frontend/js/</code>:</p>
+<ul>
+<li><strong><code>api.js</code>:</strong> Manages dynamic base URL detection, automatic JWT token extraction/injection, and standardized <code>ApiResponse&lt;T&gt;</code> payload unwrapping.</li>
+<li><strong><code>auth.js</code>:</strong> Validates session state via <code>GET /api/users/me</code>, protects private routes, enforces admin guard roles, and coordinates header UI hydration.</li>
+<li><strong><code>stats.js</code> &amp; <code>charts.js</code>:</strong> Powers animated counters via <code>IntersectionObserver</code>, dual savings calculators, and Chart.js rental distributions.</li>
+<li><strong><code>utils.js</code> &amp; <code>behavior.js</code>:</strong> Provides XSS sanitization via <code>escapeHtml()</code>, Indian Rupee currency formatting, and non-blocking telemetry event tracking.</li>
+</ul>
+<span class="page-marker">[[LOC:SEC_6_4]]</span><h2 class="section-title">6.4 Public Portals and User Flows</h2>
+<h3 class="subsection-title">6.4.1 Authentication and Onboarding Portals</h3>
+<p>Dedicated authentication portals (<code>login.html</code> and <code>register.html</code>) feature empty form states with browser autofill disabled, interactive password visibility toggles, and real-time email validation (Figure 6.2).</p>
+<div class="figure-container fig-ch6"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/login_page.png" alt="Clean Student & Host Login Interface"><div class="subfig-cap">(Clean Student & Host Login Interface)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/register_page.png" alt="Student Registration with Verification"><div class="subfig-cap">(Student Registration with Verification)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_2]]</span><strong>Figure 6.2:</strong> Clean Student & Host Login Interface</div></div>
+<h3 class="subsection-title">6.4.2 Faceted Accommodation and Product Search Portals</h3>
+<p>The search portals (<code>search-properties.html</code> and <code>search-products.html</code>) provide multi-attribute faceted filtering (Figure 6.3).</p>
+<div class="figure-container fig-ch6"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/search_properties.png" alt="Property Search with Amenities Filter"><div class="subfig-cap">(Property Search with Amenities Filter)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/search_products.png" alt="Product Search with Category Filter"><div class="subfig-cap">(Product Search with Category Filter)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_3]]</span><strong>Figure 6.3:</strong> Property Search with Amenities Filter</div></div>
+<p>Features include: multi-variable filters (city, zone, budget, sharing type, amenities), standardized 4:3 image cards, and slide-up mobile filter drawers with zero horizontal overflow.</p>
+<h3 class="subsection-title">6.4.3 Listing Detail Portals</h3>
+<p>Detail views (<code>property-detail.html</code> and <code>product-detail.html</code>) present verified specifications, photo galleries, landlord contacts, and room reservation widgets (Figure 6.4).</p>
+<div class="figure-container fig-ch6"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/property_detail.png" alt="Property Details and Room Booking Widget"><div class="subfig-cap">(Property Details and Room Booking Widget)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/product_detail.png" alt="Product Details with Specifications"><div class="subfig-cap">(Product Details with Specifications)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_4]]</span><strong>Figure 6.4:</strong> Property Details and Room Booking Widget</div></div>
+<h3 class="subsection-title">6.4.4 Listing Submission and Publishing Portals</h3>
+<p>Registered hosts and students publish listings through structured self-service forms (<code>post-property.html</code> and <code>post-product.html</code>) guiding inventory creation (Figure 6.5).</p>
+<div class="figure-container fig-ch6"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/post_property.png" alt="Accommodation Listing Submission Form"><div class="subfig-cap">(Accommodation Listing Submission Form)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/post_product.png" alt="Student Re-Commerce Product Form"><div class="subfig-cap">(Student Re-Commerce Product Form)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_5]]</span><strong>Figure 6.5:</strong> Accommodation Listing Submission Form</div></div>
+<span class="page-marker">[[LOC:SEC_6_5]]</span><h2 class="section-title">6.5 Self-Service User and Admin Management Portals</h2>
+<h3 class="subsection-title">6.5.1 User Dashboard and Peer Messaging Portals</h3>
+<p>The user dashboard (<code>pages/user/dashboard.html</code>) and messaging center (<code>pages/user/chat.html</code>) consolidate personal interactions (Figure 6.6).</p>
+<div class="figure-container fig-ch6"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/user_dashboard.png" alt="User Activity Dashboard and Recommendations"><div class="subfig-cap">(User Activity Dashboard and Recommendations)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/user_chat.png" alt="In-App Peer Chat with Caretaker"><div class="subfig-cap">(In-App Peer Chat with Caretaker)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_6]]</span><strong>Figure 6.6:</strong> User Activity Dashboard and Recommendations</div></div>
+<h3 class="subsection-title">6.5.2 Administrative Moderation and Governance Console</h3>
+<p>Platform staff govern listings and users through <code>pages/admin/dashboard.html</code> (Figure 6.7).</p>
+<div class="figure-container fig-ch6"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/admin_dashboard.png" alt="Administrative Metrics Console"><div class="subfig-cap">(Administrative Metrics Console)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/admin_pending_properties.png" alt="Listing Moderation Approval Queue"><div class="subfig-cap">(Listing Moderation Approval Queue)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_6_7]]</span><strong>Figure 6.7:</strong> Administrative Metrics Console</div></div>
+<span class="page-marker">[[LOC:SEC_6_6]]</span><h2 class="section-title">6.6 Summary</h2>
+<p>This chapter detailed StayMart's commercial light design system, design tokens, modular ES6 JavaScript architecture, and responsive user flows across accommodations, re-commerce, and admin moderation. The following chapter presents verification, testing results, and system walkthroughs.</p>
+</div>
+
+<div class="page-break">
+<span class="page-marker">[[LOC:CH_7]]</span><h1 class="chapter-title">Chapter 7<br>Verification, Testing, and System Walkthrough</h1>
+<span class="page-marker">[[LOC:SEC_7_1]]</span><h2 class="section-title">7.1 Introduction</h2>
+<p>Testing a multi-tier student marketplace requires verifying business state transitions, stateless authentication boundaries, recommendation fallback resilience, and mobile layout stability across diverse devices. This chapter documents verification methodologies, test case execution records, automated 7-suite master testing, and an illustrated visual walkthrough of the live running system.</p>
+<span class="page-marker">[[LOC:SEC_7_2]]</span><h2 class="section-title">7.2 Testing Methodologies and Verification Strategy</h2>
+<p>Our verification strategy spans five distinct testing layers: (1) <em>Backend Unit Testing</em> using JUnit 5 and Mockito; (2) <em>Security Filter Verification</em> evaluating JWT interception and preflight OPTIONS handling; (3) <em>Resilience Testing</em> verifying database fallbacks when the Flask ML service is offline; (4) <em>Automated Viewport Auditing</em> verifying zero horizontal overflow from 320px to 1920px; and (5) <em>End-to-End Walkthroughs</em> confirming multi-step user transactions.</p>
+<span class="page-marker">[[LOC:SEC_7_3]]</span><h2 class="section-title">7.3 Comprehensive Test Cases and Execution Results</h2>
+<p>Table 7.1 documents the fourteen core test cases executed across the StayMart platform.</p>
+<div class="table-container">
+  <div class="table-caption"><span class="page-marker">[[LOC:TAB_7_1]]</span><strong>Table 7.1:</strong> Software Test Execution Record</div>
+  <table>
+    <thead>
+      <tr><th><strong>Test ID</strong></th><th><strong>Component / Flow</strong></th><th><strong>Input / Precondition</strong></th><th><strong>Expected System Behavior</strong></th><th><strong>Status</strong></th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>TC-01</strong></td><td>User Registration</td><td>Valid name, email, password</td><td>Account created (201), BCrypt hash saved, JWT returned</td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-02</strong></td><td>Duplicate Email</td><td>Registration with existing email</td><td>400 Bad Request: &ldquo;Email already in use&rdquo;</td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-03</strong></td><td>JWT Authentication</td><td>Login with valid credentials</td><td>200 OK, signed token with 24h expiration returned</td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-04</strong></td><td>Invalid Password</td><td>Login with incorrect password</td><td>401 Unauthorized, zero token issued</td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-05</strong></td><td>Property Search</td><td>Filter city: Dehradun, type: PG</td><td>Returns paginated JSON matching criteria (200 OK)</td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-06</strong></td><td>Booking Submission</td><td>Submit booking with propertyId=1</td><td>Booking created as <code>PENDING</code>, telemetry logged</td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-07</strong></td><td>Booking Confirm</td><td>Host approves pending booking</td><td>State updates to <code>CONFIRMED</code>, room decremented</td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-08</strong></td><td>Product Order</td><td>Order item id=5 (Laptop)</td><td>Order created as <code>PENDING</code>, inventory locked</td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-09</strong></td><td>Peer Chat Msg</td><td>User A messages User B</td><td>Message persisted, unread counter incremented</td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-10</strong></td><td>Wishlist Toggle</td><td>User bookmarks property id=2</td><td>Item added; subsequent check returns <code>true</code></td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-11</strong></td><td>Admin Moderation</td><td>Admin approves pending listing</td><td>Status changes from <code>PENDING</code> to <code>APPROVED</code></td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-12</strong></td><td>Admin Guard</td><td>Standard user requests admin API</td><td>Intercepted by security filter, 403 Forbidden</td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-13</strong></td><td>ML Personalization</td><td>User browses PGs, calls recommendations</td><td>Returns relevant PG listings in user's campus city</td><td><strong>PASS</strong></td></tr>
+      <tr><td><strong>TC-14</strong></td><td>ML Circuit Fallback</td><td>ML service down, user browses</td><td>Circuit fallback triggers: returns latest approved items</td><td><strong>PASS</strong></td></tr>
+    </tbody>
+  </table>
+</div>
+<span class="page-marker">[[LOC:SEC_7_4]]</span><h2 class="section-title">7.4 Security Vulnerability and Resilience Testing</h2>
+<p>Security testing evaluated StayMart against common threats: (1) <em>SQL Injection</em>: Spring Data JPA parameterized queries treat malicious SQL as literals; (2) <em>XSS Sanitization</em>: client inputs pass through <code>escapeHtml()</code> before DOM injection; (3) <em>JWT Tampering</em>: modifying role claims without the secret key triggers HMAC validation failure (401 Unauthorized); (4) <em>ML Circuit Fallback</em>: when Flask is unreachable, <code>RecommendationService</code> falls back to database queries without throwing HTTP 500 errors.</p>
+<span class="page-marker">[[LOC:SEC_7_5]]</span><h2 class="section-title">7.5 Automated Master Verification and Benchmarking</h2>
+<p>StayMart's 7-suite master verification pipeline (<code>scripts/run_all_verifications.py</code>) executes 292 empirical tests: (1) JUnit 5 backend tests (13); (2) Headless Chrome viewports 320px&ndash;1920px (30); (3) DOM link checks (8); (4) Authenticity scans across 87 files; (5) Cloud manifest audits (47); (6) PDF compiler audits; and (7) API contract smoke assertions (106). All 292 tests pass with 100% success rate. Local benchmarking recorded core search latency under 35ms and JVM heap stability at 240 MB.</p>
+<span class="page-marker">[[LOC:SEC_7_6]]</span><h2 class="section-title">7.6 Comprehensive Visual Walkthrough of Running System</h2>
+<h3 class="subsection-title">7.6.1 1. Public Search and Discovery Flow</h3>
+<p>A student visiting StayMart filters for Boys PGs with WiFi in Dehradun (Figure 7.1). Verified listings display transparent pricing and live vacancy counts.</p>
+<div class="figure-container fig-ch7"><img src="file:///D:/Mini5th/report/screenshots/search_properties.png" alt="Step 1: Accommodation Search with Faceted Filtering"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_1]]</span><strong>Figure 7.1:</strong> Step 1: Accommodation Search with Faceted Filtering</div></div>
+<h3 class="subsection-title">7.6.2 2. Accommodation Inspection and Reservation Flow</h3>
+<p>Selecting a listing opens the detail view (Figure 7.2). The student inspects room amenities, selects a Single Room for 3 months, and submits a booking inquiry.</p>
+<div class="figure-container fig-ch7"><img src="file:///D:/Mini5th/report/screenshots/property_detail.png" alt="Step 2: Property Detail View with Room Selection Widget"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_2]]</span><strong>Figure 7.2:</strong> Step 2: Property Detail View with Room Selection Widget</div></div>
+<h3 class="subsection-title">7.6.3 3. Marketplace Re-Commerce Flow</h3>
+<p>Navigating to the Products portal (Figure 7.3), students inspect second-hand laptops, smartphones, and furniture listed by graduating seniors.</p>
+<div class="figure-container fig-ch7"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/search_products.png" alt="Marketplace Product Catalogue"><div class="subfig-cap">(Marketplace Product Catalogue)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/product_detail.png" alt="Product Inspection Page"><div class="subfig-cap">(Product Inspection Page)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_3]]</span><strong>Figure 7.3:</strong> Marketplace Product Catalogue</div></div>
+<h3 class="subsection-title">7.6.4 4. In-App Conversational Communication</h3>
+<p>Clicking &ldquo;Message Seller&rdquo; initializes a chat session quoting the listing title for context (Figure 7.4).</p>
+<div class="figure-container fig-ch7"><img src="file:///D:/Mini5th/report/screenshots/user_chat_active.png" alt="Step 4: Peer-to-Peer Chat Between Student and Caretaker"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_4]]</span><strong>Figure 7.4:</strong> Step 4: Peer-to-Peer Chat Between Student and Caretaker</div></div>
+<h3 class="subsection-title">7.6.5 5. Administrative Moderation and Governance</h3>
+<p>Administrators access the moderation dashboard (Figure 7.5) to audit pending submissions and inspect registered student accounts.</p>
+<div class="figure-container fig-ch7"><div class="subfig-row"><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/admin_dashboard.png" alt="Administrative Overview and Metrics"><div class="subfig-cap">(Administrative Overview and Metrics)</div></div><div class="subfig"><img src="file:///D:/Mini5th/report/screenshots/admin_all_users.png" alt="Registered Student Directory"><div class="subfig-cap">(Registered Student Directory)</div></div></div><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_5]]</span><strong>Figure 7.5:</strong> Administrative Overview and Metrics</div></div>
+<h3 class="subsection-title">7.6.6 6. User Bookings and Reservation Lifecycle Flow</h3>
+<p>Students track reservations and orders in real time (Figure 7.6). Once confirmed by the host, confirmation vouchers and caretaker contacts are unlocked.</p>
+<div class="figure-container fig-ch7"><img src="file:///D:/Mini5th/report/screenshots/user_bookings.png" alt="Step 6: User Booking Management and Reservation Status Lifecycle"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_7_6]]</span><strong>Figure 7.6:</strong> Step 6: User Booking Management and Reservation Status Lifecycle</div></div>
+<span class="page-marker">[[LOC:SEC_7_7]]</span><h2 class="section-title">7.7 Summary</h2>
+<p>This chapter verified StayMart across 14 test cases, security penetrations, and 292 automated smoke assertions with zero defects. The visual walkthrough illustrated end-to-end user journeys from search to reservation and admin moderation. The next chapter details cloud deployment and operational procedures.</p>
+</div>
+
+<div class="page-break">
+<span class="page-marker">[[LOC:CH_8]]</span><h1 class="chapter-title">Chapter 8<br>Deployment, Cloud Hosting, and Local Startup Operations</h1>
+<span class="page-marker">[[LOC:SEC_8_1]]</span><h2 class="section-title">8.1 Introduction</h2>
+<p>A major challenge when developing full-stack university software projects is hosting costs. Commercial cloud providers incur recurring expenses for compute instances and managed databases. For StayMart, our goal was to architect a <strong>production-ready, 100% free-tier cloud deployment topology</strong> allowing students and evaluators to run the entire platform with zero ongoing costs.</p>
+<span class="page-marker">[[LOC:SEC_8_2]]</span><h2 class="section-title">8.2 Free-Tier Production Cloud Hosting Topology</h2>
+<p>The production cloud topology decouples the system into four zero-cost tiers respecting free-tier compute and memory bounds (Figure prod_cloud_arch).</p>
+<div class="figure-container fig-ch8"><img src="file:///D:/Mini5th/report/diagrams/deployment_arch.png" alt="Production Multi-Service Cloud Hosting Topology Across Free-Tier Providers"><div class="figure-caption"><span class="page-marker">[[LOC:FIG_8_1]]</span><strong>Figure 8.1:</strong> Production Multi-Service Cloud Hosting Topology Across Free-Tier Providers</div></div>
+<p>The four tiers operate as follows:</p>
+<ul>
+<li><strong>Tier 1: Static Edge CDN (Vercel):</strong> Serves static HTML5/CSS3/JavaScript files across global CDN edge nodes with automatic SSL and sub-20ms TTFB. Reverse proxy rewrites route <code>/api/*</code> to backend nodes, eliminating production CORS issues.</li>
+<li><strong>Tier 2: Core REST Backend (Render / Koyeb Free):</strong> The Spring Boot 3.3 service runs in a Linux container under Java 17 LTS with memory guardrails (<code>-Xmx384m -XX:+UseSerialGC</code>) to remain within 512 MB RAM limits.</li>
+<li><strong>Tier 3: ML Microservice (Render / Koyeb Free):</strong> The Python 3.11 / Flask microservice runs as an independent container with automated keep-alive health endpoints.</li>
+<li><strong>Tier 4: Managed Cloud Database (TiDB Serverless / Aiven Free):</strong> Provides 5 GB free storage with MySQL 8.0 wire compatibility, automated daily backups, and TLS encryption.</li>
+</ul>
+<span class="page-marker">[[LOC:SEC_8_3]]</span><h2 class="section-title">8.3 Multi-Service Containerization and Docker Configurations</h2>
+<p>Both backend microservices are containerized to guarantee environment parity between local development and cloud production.</p>
+<h3 class="subsection-title">8.3.1 Spring Boot Multi-Stage Dockerfile</h3>
+<p>Listing 8.1 presents the production multi-stage build packaging the executable JAR into an Eclipse Temurin Java 17 runtime container:</p>
+<div class="code-container"><pre># Stage 1: Build stage
+FROM maven:3.9.6-eclipse-temurin-17 AS build
+WORKDIR /app
+COPY pom.xml . &amp;&amp; RUN mvn dependency:go-offline -B
+COPY src ./src &amp;&amp; RUN mvn clean package -DskipTests
+
+# Stage 2: Runtime stage
+FROM eclipse-temurin:17-jre-jammy
+WORKDIR /app
+COPY --from=build /app/target/staymart-*.jar app.jar
+ENV PORT=8080 JAVA_OPTS=&quot;-Xmx384m -XX:+UseSerialGC&quot;
+EXPOSE 8080
+ENTRYPOINT [&quot;sh&quot;, &quot;-c&quot;, &quot;java $JAVA_OPTS -Dserver.port=${PORT} -jar app.jar&quot;]</pre></div>
+<h3 class="subsection-title">8.3.2 Python Flask ML Microservice Dockerfile</h3>
+<p>Listing 8.2 details the container configuration for the recommendation microservice:</p>
+<div class="code-container"><pre>FROM python:3.11-slim
+WORKDIR /app
+RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends gcc g++ &amp;&amp; rm -rf /var/lib/apt/lists/*
+COPY requirements.txt . &amp;&amp; RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+ENV PORT=5000
+EXPOSE 5000
+CMD [&quot;python&quot;, &quot;app.py&quot;]</pre></div>
+<span class="page-marker">[[LOC:SEC_8_4]]</span><h2 class="section-title">8.4 Edge Routing and Local Development Runbook</h2>
+<p>In production, edge routing is configured directly through <code>vercel.json</code> rewrite rules, forwarding <code>/api/(.*)</code> requests to the cloud backend while serving local frontend assets.</p>
+<p>For local development, an automated PowerShell orchestration script (<code>scripts/start-all.ps1</code>) boots MySQL on port 3306, seeds tables, runs Maven compilation, activates Python virtual environments, and starts the frontend proxy:</p>
+<div class="code-container"><pre># Automated single-command startup
+pwsh -File scripts/start-all.ps1
+
+# Manual fallback commands
+docker run --name staymart-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=staymart -p 3306:3306 -d mysql:8.0
+mvn spring-boot:run             # Starts backend at http://localhost:8080
+python ml-service/app.py        # Starts ML service at http://localhost:5000
+python scripts/serve_frontend.py 5500 # Serves frontend at http://localhost:5500</pre></div>
+<span class="page-marker">[[LOC:SEC_8_5]]</span><h2 class="section-title">8.5 Continuous Integration with GitHub Actions</h2>
+<p>Automated CI pipelines in <code>.github/workflows/ci.yml</code> verify Maven packaging, JUnit 5 unit tests, and Python syntax compilation on every pull request:</p>
+<div class="code-container"><pre>name: StayMart CI Pipeline
+on: [push, pull_request]
+jobs:
+  backend-build:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env: { MYSQL_ROOT_PASSWORD: root, MYSQL_DATABASE: staymart }
+        ports: [3306:3306]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with: { java-version: &#x27;17&#x27;, distribution: &#x27;temurin&#x27; }
+      - run: mvn clean verify -B
+  ml-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with: { python-version: &#x27;3.11&#x27; }
+      - run: cd ml-service &amp;&amp; pip install -r requirements.txt &amp;&amp; python -m py_compile app.py recommender.py</pre></div>
+<span class="page-marker">[[LOC:SEC_8_6]]</span><h2 class="section-title">8.6 Summary</h2>
+<p>This chapter detailed StayMart's 100% free-tier deployment topology combining Vercel, Render/Koyeb, and TiDB Serverless. We provided container specifications with JVM memory caps (<code>-Xmx384m</code>), documented reverse proxy rewrites, and provided local orchestration scripts. The final chapter presents project conclusions, societal impacts, and future directions.</p>
+</div>
+
+<div class="page-break">
+<span class="page-marker">[[LOC:CH_9]]</span><h1 class="chapter-title">Chapter 9<br>Conclusion and Future Scope</h1>
+<span class="page-marker">[[LOC:SEC_9_1]]</span><h2 class="section-title">9.1 Summary of Contributions and Completed Milestones</h2>
+<p>StayMart addresses the logistical and financial challenges encountered by outstation students relocating to higher education hubs in Uttarakhand. By integrating verified accommodation discovery with campus second-hand commerce, the platform connects students directly with verified property hosts and graduating seniors without intermediary brokerage fees.</p>
+<p>Key engineering contributions completed in this project include:</p>
+<ol>
+<li><strong>Multi-Tier Architecture and Security:</strong> A production distributed system combining a Java 17 LTS / Spring Boot 3.3 REST backend, an ACID-compliant MySQL 8.0 database, and stateless HMAC-SHA256 JWT security with role-based access control.</li>
+<li><strong>Content-Based Recommendation Engine:</strong> A TF-IDF and cosine similarity recommendation microservice built with Python and scikit-learn, backed by resilient JPA database fallbacks ensuring zero user-facing downtime.</li>
+<li><strong>Lightweight Classifieds Frontend:</strong> A responsive, mobile-first design system built using native HTML5, CSS3 Custom Properties, and modular ES6 JavaScript, delivering sub-45 KB payloads and sub-second rendering.</li>
+<li><strong>Governance and Cloud Deployment:</strong> Bilateral peer messaging, an administrative moderation portal with Chart.js analytics, and automated free-tier cloud deployment with JVM memory constraints.</li>
+</ol>
+<span class="page-marker">[[LOC:SEC_9_2]]</span><h2 class="section-title">9.2 Societal and Economic Impact in Uttarakhand</h2>
+<p>The deployment of StayMart provides direct practical advantages for higher education communities across Dehradun, Roorkee, and Rishikesh:</p>
+<ul>
+<li><strong>Brokerage Elimination:</strong> Direct connections around Graphic Era, UPES, and DIT eliminate non-refundable broker fees, saving students ₹5,000 to ₹15,000 per tenancy cycle.</li>
+<li><strong>Campus Circular Re-Commerce:</strong> Graduating seniors sell functional coolers, study desks, and reference books to incoming juniors, reducing waste and living expenses.</li>
+</ul>
+<span class="page-marker">[[LOC:SEC_9_3]]</span><h2 class="section-title">9.3 Lessons Learned During System Development</h2>
+<p>Key engineering takeaways from developing StayMart include:</p>
+<ol>
+<li><strong>Container Memory Guardrails:</strong> On free-tier cloud containers (512 MB RAM limit), JVM default memory allocations trigger OOM terminations. Setting <code>-Xmx384m</code> with Serial GC (<code>-XX:+UseSerialGC</code>) ensures container stability.</li>
+<li><strong>Defensive Fallback Engineering:</strong> Auxiliary ML microservices must be isolated with strict HTTP timeouts (2000ms connect, 3000ms read) and database fallbacks to protect transactional journeys.</li>
+</ol>
+<span class="page-marker">[[LOC:SEC_9_4]]</span><h2 class="section-title">9.4 Limitations of the Current Implementation</h2>
+<p>Current limitations include manual peer-to-peer UPI settlements without integrated escrow locks, periodic batch model vector updates rather than streaming embeddings, and absence of native GPS-based radius queries.</p>
+<span class="page-marker">[[LOC:SEC_9_5]]</span><h2 class="section-title">9.5 Suggestions for Future Work and Technical Roadmap</h2>
+<p>Future platform iterations will incorporate: (1) an integrated UPI escrow gateway holding security deposits until physical inspection; (2) geospatial radius filtering (e.g., &ldquo;within 1 km of GEHU&rdquo;) via MySQL Spatial; (3) Web Push notifications for immediate chat and booking alerts; and (4) collaborative filtering as platform transaction volumes expand.</p>
+<span class="page-marker">[[LOC:SEC_9_6]]</span><h2 class="section-title">9.6 Concluding Remarks</h2>
+<p>StayMart demonstrates that practical, student-centric software engineering can effectively solve tangible housing and economic challenges in regional educational corridors. By unifying robust Spring Boot transactions, normalized MySQL schemas, lightweight Python ML vector scoring, and an accessible classifieds user interface, the platform delivers an authentic, zero-cost digital marketplace tailored to higher education life across Uttarakhand.</p>
+</div>
+
+<div class="page-break">
+  <span class="page-marker">[[LOC:REFERENCES]]</span>
+  <h1 class="chapter-title">References</h1>
+  <ol class="references-list">
+    <li>Adomavicius, G. and Tuzhilin, A., 2005. Toward the next generation of recommender systems: A survey of the state-of-the-art and possible extensions. <em>IEEE Transactions on Knowledge and Data Engineering</em>, 17(6), pp.734-749.</li>
+    <li>Bauer, C., King, G. and Gregory, G., 2015. <em>Java Persistence with Hibernate, Second Edition</em>. Manning Publications.</li>
+    <li>Burke, R., 2002. Hybrid recommender systems: Survey and experiments. <em>User Modeling and User-Adapted Interaction</em>, 12(4), pp.331-370.</li>
+    <li>Fielding, R.T., 2000. <em>Architectural styles and the design of network-based software architectures</em>. Doctoral dissertation, University of California, Irvine.</li>
+    <li>Fowler, M., 2002. <em>Patterns of Enterprise Application Architecture</em>. Addison-Wesley Professional.</li>
+    <li>Gamma, E., Helm, R., Johnson, R. and Vlissides, J., 1994. <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>. Addison-Wesley.</li>
+    <li>Grigorik, I., 2013. <em>High Performance Browser Networking</em>. O'Reilly Media, Inc.</li>
+    <li>Kleppmann, M., 2017. <em>Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems</em>. O'Reilly Media, Inc.</li>
+    <li>Koren, Y., Bell, R. and Volinsky, C., 2009. Matrix factorization techniques for recommender systems. <em>Computer</em>, 42(8), pp.30-37.</li>
+    <li>Lops, P., De Gemmis, M. and Semeraro, G., 2011. Content-based recommender systems: State of the art and trends. In <em>Recommender Systems Handbook</em> (pp. 73-105). Springer.</li>
+    <li>Newman, S., 2021. <em>Building Microservices: Designing Fine-Grained Systems, Second Edition</em>. O'Reilly Media, Inc.</li>
+    <li>Pedregosa, F. et al., 2011. Scikit-learn: Machine Learning in Python. <em>Journal of Machine Learning Research</em>, 12, pp.2825-2830.</li>
+    <li>Resnick, P. and Varian, H.R., 1997. Recommender systems. <em>Communications of the ACM</em>, 40(3), pp.56-58.</li>
+    <li>Ricci, F., Rokach, L. and Shapira, B., 2015. <em>Recommender Systems Handbook</em>. Springer.</li>
+    <li>Salton, G. and Buckley, C., 1988. Term-weighting approaches in automatic text retrieval. <em>Information Processing & Management</em>, 24(5), pp.513-523.</li>
+    <li>Sarwar, B., Karypis, G., Konstan, J. and Riedl, J., 2001. Item-based collaborative filtering recommendation algorithms. In <em>Proceedings of the 10th International Conference on World Wide Web</em> (pp. 285-295).</li>
+    <li>Schafer, J.B., Frankowski, D., Herlocker, J. and Sen, S., 2001. E-commerce recommendation applications. <em>Data Mining and Knowledge Discovery</em>, 5(1), pp.115-153.</li>
+    <li>Silberschatz, A., Korth, H.F. and Sudarshan, S., 2020. <em>Database System Concepts, Seventh Edition</em>. McGraw-Hill Education.</li>
+    <li>Turnbull, J., 2016. <em>The Docker Book: Containerization is the new virtualization</em>. James Turnbull.</li>
+    <li>Walls, C., 2022. <em>Spring in Action, Sixth Edition</em>. Manning Publications.</li>
+  </ol>
+</div>
+</body></html>
